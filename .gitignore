@@ -72,3 +72,6 @@ gen/
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/material_theme_project_new.xml
 /.idea/compiler.xml
+
+# Python generated ANTLR files cache
+src/main/antlr/__pycache__/
