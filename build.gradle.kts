@@ -26,37 +26,23 @@ repositories {
 }
 
 group = "io.github.1c-syntax"
-gitVersioning.apply {
-    refs {
-        describeTagFirstParent = false
-        tag("v(?<tagVersion>[0-9].*)") {
-            version = "\${ref.tagVersion}\${dirty}"
-        }
+version = "0.1.0-SNAPSHOT"
 
-        branch("develop") {
-            version = "\${describe.tag.version.major}." +
-                    "\${describe.tag.version.minor.next}.0." +
-                    "\${describe.distance}-SNAPSHOT\${dirty}"
-        }
-
-        branch(".+") {
-            version = "\${ref}-\${commit.short}\${dirty}"
-        }
-    }
-
-    rev {
-        version = "\${commit.short}\${dirty}"
-    }
-}
 
 dependencies {
-    antlr("io.github.1c-syntax:antlr4:0.3.0")
+    antlr("org.antlr:antlr4:4.13.1")
+    implementation("org.antlr:antlr4-runtime:4.13.1")
 
-    // testing
-    testImplementation("io.github.1c-syntax:bsl-parser-testing:0.5.0") {
-        exclude("org.antlr:antlr-runtime")
-        exclude("org.antlr:ST4")
-    }
+    // JSON
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.17.2")
+
+    // Graphs
+    implementation("org.jgrapht:jgrapht-core:1.5.2")
+    implementation("org.jgrapht:jgrapht-io:1.5.2")
+
+    implementation("org.jspecify:jspecify:1.0.0")
+
 
     testImplementation(platform("org.junit:junit-bom:6.0.3"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
@@ -68,8 +54,11 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     withSourcesJar()
     withJavadocJar()
 }
@@ -315,4 +304,19 @@ jreleaser {
             }
         }
     }
+}
+
+
+tasks.register<JavaExec>("runSdql") {
+    group = "application"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.github._1c_syntax.bsl.parser.sdql.SdqlCli")
+    args = listOf("examples/example.sql", "examples/java_output_example")
+}
+
+tasks.register<JavaExec>("runSdql258") {
+    group = "application"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.github._1c_syntax.bsl.parser.sdql.SdqlCli")
+    args = listOf("examples/example_258.sql", "examples/java_output_258")
 }

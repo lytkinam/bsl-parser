@@ -1,0 +1,52 @@
+{
+  "0" : [ {
+    "alias" : "Сотрудник",
+    "expressionRaw" : "Сотрудники.Ссылка",
+    "exprType" : "field_ref",
+    "fieldRefs" : [ ]
+  }, {
+    "alias" : "Сотрудники.Наименование",
+    "expressionRaw" : "Сотрудники.Наименование",
+    "exprType" : "field_ref",
+    "fieldRefs" : [ ]
+  }, {
+    "alias" : "ГДЕ_УСЛОВИЕ",
+    "expressionRaw" : "Сотрудники.Уволен = ЛОЖЬ",
+    "exprType" : "where_condition",
+    "fieldRefs" : [ ]
+  } ],
+  "1" : [ {
+    "alias" : "ВТ_Сотрудники.Сотрудник",
+    "expressionRaw" : "ВТ_Сотрудники.Сотрудник",
+    "exprType" : "field_ref",
+    "fieldRefs" : [ ]
+  }, {
+    "alias" : "НачисленияДвижения.Сумма",
+    "expressionRaw" : "НачисленияДвижения.Сумма",
+    "exprType" : "field_ref",
+    "fieldRefs" : [ ]
+  }, {
+    "alias" : "ЛЕВОЕ_СОЕДИНЕНИЕ_НачисленияДвижения",
+    "expressionRaw" : "РегистрНакопления.Начисления",
+    "exprType" : "join_table",
+    "fieldRefs" : [ ]
+  }, {
+    "alias" : "ЛЕВОЕ_СОЕДИНЕНИЕ_НачисленияДвижения_УСЛОВИЕ",
+    "expressionRaw" : "ПО ВТ_Сотрудники.Сотрудник = НачисленияДвижения.Сотрудник",
+    "exprType" : "join_on_condition",
+    "fieldRefs" : [ ]
+  } ],
+  "2" : [ {
+    "alias" : "ВТ_Начисления.Сотрудник",
+    "expressionRaw" : "ВТ_Начисления.Сотрудник",
+    "exprType" : "field_ref",
+    "fieldRefs" : [ ]
+  }, {
+    "alias" : "ИтогоСумма",
+    "expressionRaw" : "СУММА(ВТ_Начисления.Сумма)",
+    "exprType" : "field_ref",
+    "fieldRefs" : [ ]
+  } ],
+  "3" : [ ],
+  "4" : [ ]
+}

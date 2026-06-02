@@ -235,7 +235,7 @@ public final class MethodDescriptionReader extends BSLDescriptionParserBaseVisit
     }
 
     if (!ctx.hyperlink().isEmpty()) { // считаем первой ссылкой
-      var link = ctx.hyperlink().getFirst();
+      var link = ctx.hyperlink().get(0);
       lastReadParam = TempParameterData.create(link.link);
       lastReadParam.addType(link, ctx);
       return ctx;
@@ -336,7 +336,7 @@ public final class MethodDescriptionReader extends BSLDescriptionParserBaseVisit
       if (ctx == null) {
         return empty();
       } else {
-        return new TempParameterData(ctx.getText(), SimpleRange.create(ctx.getTokens()), false);
+        return new TempParameterData(ctx.getText(), SimpleRange.create(List.of(ctx.getStart(), ctx.getStop())), false);
       }
     }
 
@@ -369,7 +369,7 @@ public final class MethodDescriptionReader extends BSLDescriptionParserBaseVisit
 
     private Optional<TempParameterTypeData> lastType() {
       if (!types.isEmpty()) {
-        return Optional.of(types.getLast());
+        return Optional.of(types.get(types.size() - 1));
       }
       return Optional.empty();
     }
@@ -550,7 +550,7 @@ public final class MethodDescriptionReader extends BSLDescriptionParserBaseVisit
 
     private Optional<TempParameterData> lastField() {
       if (!fields.isEmpty()) {
-        return Optional.of(fields.getLast());
+        return Optional.of(fields.get(fields.size() - 1));
       }
       return Optional.empty();
     }

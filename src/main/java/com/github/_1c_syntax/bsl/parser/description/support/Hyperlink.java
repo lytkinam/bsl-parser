@@ -93,10 +93,10 @@ public record Hyperlink(String link, String params, SimpleRange range) {
   public boolean equals(@Nullable Object other) {
     if (this == other) {
       return true;
-    } else if (!(other instanceof Hyperlink(String linkOther, String paramsOther, SimpleRange rangeOther))) {
+    } else if (!(other instanceof Hyperlink hyperlinkOther)) {
       return false;
     } else {
-      return link.equals(linkOther) && params.equals(paramsOther) && range.equals(rangeOther);
+      return link.equals(hyperlinkOther.link) && params.equals(hyperlinkOther.params) && range.equals(hyperlinkOther.range);
     }
   }
 

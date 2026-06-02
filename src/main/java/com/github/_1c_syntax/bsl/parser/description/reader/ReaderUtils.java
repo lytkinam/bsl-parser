@@ -74,8 +74,10 @@ public class ReaderUtils {
    * @return Список ссылок
    */
   public List<Hyperlink> readLinks(ParserRuleContext ast, int lineShift, int firstLineCharShift) {
+    @SuppressWarnings("unchecked")
     Collection<BSLDescriptionParser.HyperlinkContext> links =
-      Trees.findAllRuleNodes(ast, BSLDescriptionParser.RULE_hyperlink);
+      (Collection<BSLDescriptionParser.HyperlinkContext>)
+        (Collection<?>) Trees.findAllRuleNodes(ast, BSLDescriptionParser.RULE_hyperlink);
     if (!links.isEmpty()) {
       return links.stream()
         .map(

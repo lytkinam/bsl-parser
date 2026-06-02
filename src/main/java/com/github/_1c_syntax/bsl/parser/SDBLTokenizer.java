@@ -21,9 +21,9 @@
  */
 package com.github._1c_syntax.bsl.parser;
 
+import com.github._1c_syntax.bsl.parser.Tokenizer;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.Tokenizer;
 
 public class SDBLTokenizer extends Tokenizer<SDBLParser.QueryPackageContext, SDBLParser> {
   public SDBLTokenizer(String content) {

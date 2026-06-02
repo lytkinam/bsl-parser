@@ -1,0 +1,9 @@
+[ {
+  "id" : 0,
+  "type" : "temp_query",
+  "name" : "ВТ_Сотрудники",
+  "sql_file" : "query_texts/node_0.sql",
+  "md_file" : "query_texts/node_0.md",
+  "hash" : "ae726fb365676eb84e2fc4c6362ac5fe0e51fc07b210492a82e9d9c748068d2d",
+  "length" : 845
+} ]

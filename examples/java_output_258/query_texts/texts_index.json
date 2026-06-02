@@ -1,0 +1,9 @@
+[ {
+  "id" : 0,
+  "type" : "temp_query",
+  "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
+  "sql_file" : "query_texts/node_0.sql",
+  "md_file" : "query_texts/node_0.md",
+  "hash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
+  "length" : 295542
+} ]
