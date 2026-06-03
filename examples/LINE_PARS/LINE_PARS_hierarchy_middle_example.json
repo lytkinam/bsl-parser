@@ -184,8 +184,9 @@
   "name" : "ВТ_ПенсионныеСчета_ПР",
   "table_hierarchy" : [ {
     "id" : 25,
-    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1",
-    "type_hierarchy" : "subquery"
+    "name" : "Подзапрос",
+    "source" : "ВТ_ПенсионныеСчета_ПР_SUB_1",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 25,
@@ -445,12 +446,14 @@
     "type_hierarchy" : "from"
   }, {
     "id" : 48,
-    "name" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_1",
-    "type_hierarchy" : "subquery"
+    "name" : "уп_СостоянияПС",
+    "source" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_1",
+    "type_hierarchy" : "from"
   }, {
     "id" : 49,
-    "name" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_2",
-    "type_hierarchy" : "subquery"
+    "name" : "уп_СхемаСчета",
+    "source" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_2",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 48,
@@ -643,18 +646,15 @@
     "id" : 70,
     "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_4",
     "type_hierarchy" : "union"
-  }, {
-    "id" : 71,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1",
-    "type_hierarchy" : "subquery"
   } ]
 }, {
   "id" : 63,
   "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0",
   "table_hierarchy" : [ {
     "id" : 64,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1",
-    "type_hierarchy" : "subquery"
+    "name" : "ПодЗапрос",
+    "source" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 64,
@@ -789,8 +789,9 @@
   "name" : "ВТ_Суммы_ПР_ТранзитныеВиды",
   "table_hierarchy" : [ {
     "id" : 75,
-    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1",
-    "type_hierarchy" : "subquery"
+    "name" : "ПодЗапрос",
+    "source" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 75,

@@ -60,17 +60,7 @@ public class LineParsHierarchyBuilder {
       }
     }
 
-    // 3. Subqueries
-    for (int childId : node.getSubqueryIds()) {
-      LineParsNode child = nodeById.get(childId);
-      if (child != null) {
-        HierarchyNode childNode = new HierarchyNode();
-        childNode.setId(child.getId());
-        childNode.setName(child.getName());
-        childNode.setTypeHierarchy("subquery");
-        result.getTableHierarchy().add(childNode);
-      }
-    }
+    // Subqueries are handled via from[].subquery as regular data sources
 
     return result;
   }
@@ -107,8 +97,17 @@ public class LineParsHierarchyBuilder {
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getExternalDataSource());
       child.setTypeHierarchy("from");
       child.setSource(ds.getExternalDataSource());
+    } else if (ds.getSubquery() != null) {
+      child = new HierarchyNode();
+      String subqueryName = (String) ds.getSubquery();
+      child.setName(ds.getAlias() != null ? ds.getAlias() : subqueryName);
+      child.setTypeHierarchy("from");
+      child.setSource(subqueryName);
+      LineParsNode ref = nodeByName.get(subqueryName);
+      if (ref != null) {
+        child.setId(ref.getId());
+      }
     }
-    // subquery is handled separately via subqueryIds
 
     if (child != null) {
       parent.getTableHierarchy().add(child);
