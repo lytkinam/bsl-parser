@@ -12,6 +12,7 @@ import java.util.List;
 public class HierarchyNode {
   private Integer id;
   private String name;
+  private String source;
 
   @JsonProperty("type_hierarchy")
   private String typeHierarchy;

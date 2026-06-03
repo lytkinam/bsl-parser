@@ -85,6 +85,7 @@ public class LineParsHierarchyBuilder {
       child = new HierarchyNode();
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getTable());
       child.setTypeHierarchy("from");
+      child.setSource(ds.getTable());
       if (!ds.getTable().contains(".")) {
         LineParsNode ref = nodeByName.get(ds.getTable());
         if (ref != null) {
@@ -95,14 +96,17 @@ public class LineParsHierarchyBuilder {
       child = new HierarchyNode();
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getVirtualTable());
       child.setTypeHierarchy("from");
+      child.setSource(ds.getVirtualTable());
     } else if (ds.getParameterTable() != null) {
       child = new HierarchyNode();
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getParameterTable());
       child.setTypeHierarchy("from");
+      child.setSource(ds.getParameterTable());
     } else if (ds.getExternalDataSource() != null) {
       child = new HierarchyNode();
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getExternalDataSource());
       child.setTypeHierarchy("from");
+      child.setSource(ds.getExternalDataSource());
     }
     // subquery is handled separately via subqueryIds
 
