@@ -73,7 +73,7 @@ public class LineParsModelBuilder {
         part.setId(idCounter++);
         part.setSdblId(parent.getSdblId());
         part.setName("Часть_" + partCount);
-        part.setType("sub_query");
+        part.setType("union_query");
         part.setQuery(up.getQuery());
         part.setUpqueryId(parent.getId());
         nodes.add(part);
@@ -86,6 +86,8 @@ public class LineParsModelBuilder {
       if (!parent.getUnionNodesIds().isEmpty()) {
         parent.setUnionFirst(parent.getUnionNodesIds().get(0));
       }
+      // Remove unions from parent query — they are now separate nodes
+      ast.setUnions(null);
     }
   }
 

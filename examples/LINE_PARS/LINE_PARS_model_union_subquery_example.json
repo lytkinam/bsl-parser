@@ -31,150 +31,6 @@
         "fieldType" : "expression",
         "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.ИПС)",
         "alias" : "ТипРезерва"
-      } ],
-      "unions" : [ {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.СПС)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийПенсийИПС)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийПенсийСПС)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийВыкупныхСуммИПС)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийВыкупныхСуммСПС)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.ПожизненныхВыплат)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РПАР)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийПенсийПожизненныхВыплат)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийВыкупныхСуммПожизненныхВыплат)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийНаследниковИПС)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийНаследниковСПС)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНаследниковИПС)"
-          } ]
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНаследниковСПС)"
-          } ]
-        }
       } ]
     },
     "subqueryIds" : [ ],
@@ -184,7 +40,7 @@
     "id" : 2,
     "sdblId" : 1,
     "name" : "Часть_1",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -201,7 +57,7 @@
     "id" : 3,
     "sdblId" : 1,
     "name" : "Часть_2",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -218,7 +74,7 @@
     "id" : 4,
     "sdblId" : 1,
     "name" : "Часть_3",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -235,7 +91,7 @@
     "id" : 5,
     "sdblId" : 1,
     "name" : "Часть_4",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -252,7 +108,7 @@
     "id" : 6,
     "sdblId" : 1,
     "name" : "Часть_5",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -269,7 +125,7 @@
     "id" : 7,
     "sdblId" : 1,
     "name" : "Часть_6",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -286,7 +142,7 @@
     "id" : 8,
     "sdblId" : 1,
     "name" : "Часть_7",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -303,7 +159,7 @@
     "id" : 9,
     "sdblId" : 1,
     "name" : "Часть_8",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -320,7 +176,7 @@
     "id" : 10,
     "sdblId" : 1,
     "name" : "Часть_9",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -337,7 +193,7 @@
     "id" : 11,
     "sdblId" : 1,
     "name" : "Часть_10",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -354,7 +210,7 @@
     "id" : 12,
     "sdblId" : 1,
     "name" : "Часть_11",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -371,7 +227,7 @@
     "id" : 13,
     "sdblId" : 1,
     "name" : "Часть_12",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -388,7 +244,7 @@
     "id" : 14,
     "sdblId" : 1,
     "name" : "Часть_13",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -445,59 +301,7 @@
         "alias" : "уп_ОперацияНПО",
         "joins" : [ ]
       } ],
-      "where" : "уп_ОперацияНПО.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ уп_ОперацияНПО.СпособЗаполнения = \"Сторно\"\r\n\tИ уп_ОперацияНПО.Организация В(&Организация)",
-      "unions" : [ {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_ВозвратПенсий.Ссылка"
-          } ],
-          "from" : [ {
-            "table" : "Документ.уп_ВозвратПенсий",
-            "alias" : "уп_ВозвратПенсий",
-            "joins" : [ ]
-          } ],
-          "where" : "уп_ВозвратПенсий.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ уп_ВозвратПенсий.Организация В(&Организация)"
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_ВозвратПрочихНачисленийНПО.Ссылка"
-          } ],
-          "from" : [ {
-            "table" : "Документ.уп_ВозвратПрочихНачисленийНПО",
-            "alias" : "уп_ВозвратПрочихНачисленийНПО",
-            "joins" : [ ]
-          } ],
-          "where" : "уп_ВозвратПрочихНачисленийНПО.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ уп_ВозвратПрочихНачисленийНПО.Организация В(&Организация)"
-        }
-      }, {
-        "unionType" : "union_all",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "ДанныеДокумента.Ссылка"
-          } ],
-          "from" : [ {
-            "table" : "Документ.уп_НДФЛВозвратНалогаУчастникам",
-            "alias" : "ДанныеДокумента",
-            "joins" : [ ]
-          } ],
-          "where" : "ДанныеДокумента.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ ДанныеДокумента.Организация В(&Организация)"
-        }
-      } ]
+      "where" : "уп_ОперацияНПО.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ уп_ОперацияНПО.СпособЗаполнения = \"Сторно\"\r\n\tИ уп_ОперацияНПО.Организация В(&Организация)"
     },
     "subqueryIds" : [ ],
     "unionNodesIds" : [ 17, 18, 19 ],
@@ -506,7 +310,7 @@
     "id" : 17,
     "sdblId" : 3,
     "name" : "Часть_1",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -529,7 +333,7 @@
     "id" : 18,
     "sdblId" : 3,
     "name" : "Часть_2",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -552,7 +356,7 @@
     "id" : 19,
     "sdblId" : 3,
     "name" : "Часть_3",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -648,173 +452,6 @@
             "virtualTable" : "РегистрНакопления.уп_Резервы.Остатки(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
             "alias" : "уп_РезервыОстатки",
             "joins" : [ ]
-          } ],
-          "unions" : [ {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "уп_РезервыОбороты.НомерСчета"
-              } ],
-              "from" : [ {
-                "virtualTable" : "РегистрНакопления.уп_Резервы.Обороты(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\t&КонецПериода,\r\n\t\t\t\t,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-                "alias" : "уп_РезервыОбороты",
-                "joins" : [ ]
-              } ]
-            }
-          }, {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "уп_ВозвратыПрочихНачисленийНПООстатки.НомерСчета",
-                "alias" : "ПенсионныйСчет"
-              } ],
-              "from" : [ {
-                "virtualTable" : "РегистрНакопления.уп_ВозвратыПрочихНачисленийНПО.Остатки(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-                "alias" : "уп_ВозвратыПрочихНачисленийНПООстатки",
-                "joins" : [ ]
-              } ]
-            }
-          }, {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "уп_ВозвратыПрочихНачисленийНПООбороты.НомерСчета"
-              } ],
-              "from" : [ {
-                "virtualTable" : "РегистрНакопления.уп_ВозвратыПрочихНачисленийНПО.Обороты(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\t&КонецПериода,\r\n\t\t\t\t,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-                "alias" : "уп_ВозвратыПрочихНачисленийНПООбороты",
-                "joins" : [ ]
-              } ]
-            }
-          }, {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "уп_ВозвратыПенсийНПООстатки.НомерСчета",
-                "alias" : "ПенсионныйСчет"
-              } ],
-              "from" : [ {
-                "virtualTable" : "РегистрНакопления.уп_ВозвратыПенсийНПО.Остатки(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-                "alias" : "уп_ВозвратыПенсийНПООстатки",
-                "joins" : [ ]
-              } ]
-            }
-          }, {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "уп_ВозвратыПенсийНПООбороты.НомерСчета"
-              } ],
-              "from" : [ {
-                "virtualTable" : "РегистрНакопления.уп_ВозвратыПенсийНПО.Обороты(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\t&КонецПериода,\r\n\t\t\t\t,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-                "alias" : "уп_ВозвратыПенсийНПООбороты",
-                "joins" : [ ]
-              } ]
-            }
-          }, {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "уп_НачисленияПенсийОбороты.НомерСчета"
-              } ],
-              "from" : [ {
-                "virtualTable" : "РегистрНакопления.уп_НачисленияПенсий.Обороты(&НачалоПериода, &КонецПериода, , НомерСчета.Владелец.Организация В (&Организация))",
-                "alias" : "уп_НачисленияПенсийОбороты",
-                "joins" : [ ]
-              } ]
-            }
-          }, {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "уп_ПрочиеНачисленияОбороты.НомерСчета"
-              } ],
-              "from" : [ {
-                "virtualTable" : "РегистрНакопления.уп_ПрочиеНачисления.Обороты(&НачалоПериода, &КонецПериода, , Организация В (&Организация))",
-                "alias" : "уп_ПрочиеНачисленияОбороты",
-                "joins" : [ ]
-              } ],
-              "limitations" : "РАЗЛИЧНЫЕ"
-            }
-          }, {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "уп_СостоянияДоговораСрезПоследних.ПенсионныйДоговор.ПенсионныйСчет"
-              } ],
-              "from" : [ {
-                "virtualTable" : "РегистрСведений.уп_СостоянияДоговора.СрезПоследних(&КонецПериода, ПенсионныйДоговор.Организация В (&Организация))",
-                "alias" : "уп_СостоянияДоговораСрезПоследних",
-                "joins" : [ ]
-              } ],
-              "where" : "уп_СостоянияДоговораСрезПоследних.Состояние В (ЗНАЧЕНИЕ(Перечисление.уп_СостоянияДоговора.Действует))"
-            }
-          }, {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "СостоянияПС.НомерСчета"
-              } ],
-              "from" : [ {
-                "virtualTable" : "РегистрСведений.уп_СостоянияПС.СрезПоследних(&КонецПериода, НомерСчета.Владелец.Организация В (&Организация))",
-                "alias" : "СостоянияПС",
-                "joins" : [ ]
-              } ],
-              "where" : "СостоянияПС.Состояние В (ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.НакопительныйПериод), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ВыплатнойПериод), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.НачисленияПриостановлены), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ВыплатыПриостановлены), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ПодготовкаКЗакрытию))"
-            }
-          }, {
-            "unionType" : "union",
-            "query" : {
-              "startIndex" : 0,
-              "endIndex" : 0,
-              "type" : "select",
-              "select" : [ {
-                "fieldType" : "expression",
-                "text" : "уп_СостоянияПС.НомерСчета"
-              } ],
-              "from" : [ {
-                "table" : "РегистрСведений.уп_СостоянияПС",
-                "alias" : "уп_СостоянияПС",
-                "joins" : [ ]
-              } ],
-              "where" : "уп_СостоянияПС.Период МЕЖДУ &НачалоПериода И &КонецПериода\r\n\t\tИ уп_СостоянияПС.НомерСчета.Владелец.Организация В(&Организация)\r\n\t\tИ уп_СостоянияПС.Состояние <> ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ОжиданиеВзносов)"
-            }
           } ]
         },
         "alias" : "Подзапрос",
@@ -843,173 +480,6 @@
         "virtualTable" : "РегистрНакопления.уп_Резервы.Остатки(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
         "alias" : "уп_РезервыОстатки",
         "joins" : [ ]
-      } ],
-      "unions" : [ {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_РезервыОбороты.НомерСчета"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрНакопления.уп_Резервы.Обороты(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\t&КонецПериода,\r\n\t\t\t\t,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-            "alias" : "уп_РезервыОбороты",
-            "joins" : [ ]
-          } ]
-        }
-      }, {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_ВозвратыПрочихНачисленийНПООстатки.НомерСчета",
-            "alias" : "ПенсионныйСчет"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрНакопления.уп_ВозвратыПрочихНачисленийНПО.Остатки(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-            "alias" : "уп_ВозвратыПрочихНачисленийНПООстатки",
-            "joins" : [ ]
-          } ]
-        }
-      }, {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_ВозвратыПрочихНачисленийНПООбороты.НомерСчета"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрНакопления.уп_ВозвратыПрочихНачисленийНПО.Обороты(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\t&КонецПериода,\r\n\t\t\t\t,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-            "alias" : "уп_ВозвратыПрочихНачисленийНПООбороты",
-            "joins" : [ ]
-          } ]
-        }
-      }, {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_ВозвратыПенсийНПООстатки.НомерСчета",
-            "alias" : "ПенсионныйСчет"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрНакопления.уп_ВозвратыПенсийНПО.Остатки(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-            "alias" : "уп_ВозвратыПенсийНПООстатки",
-            "joins" : [ ]
-          } ]
-        }
-      }, {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_ВозвратыПенсийНПООбороты.НомерСчета"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрНакопления.уп_ВозвратыПенсийНПО.Обороты(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\t&КонецПериода,\r\n\t\t\t\t,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-            "alias" : "уп_ВозвратыПенсийНПООбороты",
-            "joins" : [ ]
-          } ]
-        }
-      }, {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_НачисленияПенсийОбороты.НомерСчета"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрНакопления.уп_НачисленияПенсий.Обороты(&НачалоПериода, &КонецПериода, , НомерСчета.Владелец.Организация В (&Организация))",
-            "alias" : "уп_НачисленияПенсийОбороты",
-            "joins" : [ ]
-          } ]
-        }
-      }, {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_ПрочиеНачисленияОбороты.НомерСчета"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрНакопления.уп_ПрочиеНачисления.Обороты(&НачалоПериода, &КонецПериода, , Организация В (&Организация))",
-            "alias" : "уп_ПрочиеНачисленияОбороты",
-            "joins" : [ ]
-          } ],
-          "limitations" : "РАЗЛИЧНЫЕ"
-        }
-      }, {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_СостоянияДоговораСрезПоследних.ПенсионныйДоговор.ПенсионныйСчет"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрСведений.уп_СостоянияДоговора.СрезПоследних(&КонецПериода, ПенсионныйДоговор.Организация В (&Организация))",
-            "alias" : "уп_СостоянияДоговораСрезПоследних",
-            "joins" : [ ]
-          } ],
-          "where" : "уп_СостоянияДоговораСрезПоследних.Состояние В (ЗНАЧЕНИЕ(Перечисление.уп_СостоянияДоговора.Действует))"
-        }
-      }, {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "СостоянияПС.НомерСчета"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрСведений.уп_СостоянияПС.СрезПоследних(&КонецПериода, НомерСчета.Владелец.Организация В (&Организация))",
-            "alias" : "СостоянияПС",
-            "joins" : [ ]
-          } ],
-          "where" : "СостоянияПС.Состояние В (ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.НакопительныйПериод), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ВыплатнойПериод), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.НачисленияПриостановлены), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ВыплатыПриостановлены), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ПодготовкаКЗакрытию))"
-        }
-      }, {
-        "unionType" : "union",
-        "query" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_СостоянияПС.НомерСчета"
-          } ],
-          "from" : [ {
-            "table" : "РегистрСведений.уп_СостоянияПС",
-            "alias" : "уп_СостоянияПС",
-            "joins" : [ ]
-          } ],
-          "where" : "уп_СостоянияПС.Период МЕЖДУ &НачалоПериода И &КонецПериода\r\n\t\tИ уп_СостоянияПС.НомерСчета.Владелец.Организация В(&Организация)\r\n\t\tИ уп_СостоянияПС.Состояние <> ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ОжиданиеВзносов)"
-        }
       } ]
     },
     "upqueryId" : 22,
@@ -1020,7 +490,7 @@
     "id" : 24,
     "sdblId" : 6,
     "name" : "Часть_1",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -1042,7 +512,7 @@
     "id" : 25,
     "sdblId" : 6,
     "name" : "Часть_2",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -1065,7 +535,7 @@
     "id" : 26,
     "sdblId" : 6,
     "name" : "Часть_3",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -1087,7 +557,7 @@
     "id" : 27,
     "sdblId" : 6,
     "name" : "Часть_4",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -1110,7 +580,7 @@
     "id" : 28,
     "sdblId" : 6,
     "name" : "Часть_5",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -1132,7 +602,7 @@
     "id" : 29,
     "sdblId" : 6,
     "name" : "Часть_6",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -1154,7 +624,7 @@
     "id" : 30,
     "sdblId" : 6,
     "name" : "Часть_7",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -1177,7 +647,7 @@
     "id" : 31,
     "sdblId" : 6,
     "name" : "Часть_8",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -1200,7 +670,7 @@
     "id" : 32,
     "sdblId" : 6,
     "name" : "Часть_9",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
@@ -1223,7 +693,7 @@
     "id" : 33,
     "sdblId" : 6,
     "name" : "Часть_10",
-    "type" : "sub_query",
+    "type" : "union_query",
     "query" : {
       "startIndex" : 0,
       "endIndex" : 0,
