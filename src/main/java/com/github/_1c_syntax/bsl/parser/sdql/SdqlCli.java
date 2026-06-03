@@ -3,6 +3,7 @@ package com.github._1c_syntax.bsl.parser.sdql;
 import com.github._1c_syntax.bsl.parser.sdql.export.QueryTextExporter;
 import com.github._1c_syntax.bsl.parser.sdql.fields.FieldsNodeBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.lineage.FieldLineageAnalyzer;
+import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsHierarchyBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsModelBuilder;
 
 import java.io.File;
@@ -39,7 +40,11 @@ public class SdqlCli {
 
         // 5. Build LINE_PARS model (subqueries, unions, expanded edges)
         LineParsModelBuilder lineParsBuilder = new LineParsModelBuilder();
-        lineParsBuilder.build(outputDir.toPath(), baseName);
+        java.nio.file.Path lineParsDir = lineParsBuilder.build(outputDir.toPath(), baseName);
+
+        // 6. Build LINE_PARS hierarchy extraction
+        LineParsHierarchyBuilder hierarchyBuilder = new LineParsHierarchyBuilder();
+        hierarchyBuilder.build(lineParsDir, baseName);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
     }

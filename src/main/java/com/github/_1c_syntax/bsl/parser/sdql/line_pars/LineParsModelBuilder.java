@@ -21,7 +21,7 @@ public class LineParsModelBuilder {
   private Map<Integer, Integer> subQueryCounters = new HashMap<>();
   private List<String> dropQueries = new ArrayList<>();
 
-  public void build(Path sdblParsDir, String baseName) throws IOException {
+  public Path build(Path sdblParsDir, String baseName) throws IOException {
     QueryModel sdblModel = MAPPER.readValue(
       sdblParsDir.resolve("sdbl_parse_model_" + baseName + ".json").toFile(),
       QueryModel.class);
@@ -56,6 +56,7 @@ public class LineParsModelBuilder {
     Files.createDirectories(lineParsDir);
     MAPPER.writerWithDefaultPrettyPrinter().writeValue(
       lineParsDir.resolve("LINE_PARS_model_" + baseName + ".json").toFile(), model);
+    return lineParsDir;
   }
 
   private void processAst(LineParsNode parent, QueryAst ast) {
