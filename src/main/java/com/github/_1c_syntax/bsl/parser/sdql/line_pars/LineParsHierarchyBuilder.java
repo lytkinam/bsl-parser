@@ -6,6 +6,7 @@ import com.github._1c_syntax.bsl.parser.sdql.model.JoinPart;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -25,13 +26,13 @@ public class LineParsHierarchyBuilder {
     Map<String, LineParsNode> nodeByName = model.getNodes().stream()
       .collect(Collectors.toMap(LineParsNode::getName, n -> n, (a, b) -> a));
 
-    List<HierarchyNode> roots = model.getNodes().stream()
-      .filter(n -> n.getUnionGroupId() == null && n.getUpqueryId() == null)
-      .map(n -> buildNode(n, nodeById, nodeByName))
-      .collect(Collectors.toList());
+    List<HierarchyNode> allNodes = new ArrayList<>();
+    for (LineParsNode node : model.getNodes()) {
+      allNodes.add(buildNode(node, nodeById, nodeByName));
+    }
 
     MAPPER.writerWithDefaultPrettyPrinter().writeValue(
-      lineParsDir.resolve("LINE_PARS_hierarchy_" + baseName + ".json").toFile(), roots);
+      lineParsDir.resolve("LINE_PARS_hierarchy_" + baseName + ".json").toFile(), allNodes);
   }
 
   private HierarchyNode buildNode(LineParsNode node, Map<Integer, LineParsNode> nodeById,
@@ -51,7 +52,9 @@ public class LineParsHierarchyBuilder {
     for (int childId : node.getUnionNodesIds()) {
       LineParsNode child = nodeById.get(childId);
       if (child != null) {
-        HierarchyNode childNode = buildNode(child, nodeById, nodeByName);
+        HierarchyNode childNode = new HierarchyNode();
+        childNode.setId(child.getId());
+        childNode.setName(child.getName());
         childNode.setTypeHierarchy("union");
         result.getTableHierarchy().add(childNode);
       }
@@ -61,7 +64,9 @@ public class LineParsHierarchyBuilder {
     for (int childId : node.getSubqueryIds()) {
       LineParsNode child = nodeById.get(childId);
       if (child != null) {
-        HierarchyNode childNode = buildNode(child, nodeById, nodeByName);
+        HierarchyNode childNode = new HierarchyNode();
+        childNode.setId(child.getId());
+        childNode.setName(child.getName());
         childNode.setTypeHierarchy("subquery");
         result.getTableHierarchy().add(childNode);
       }
@@ -79,10 +84,8 @@ public class LineParsHierarchyBuilder {
     if (ds.getTable() != null) {
       child = new HierarchyNode();
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getTable());
-      if (ds.getTable().contains(".")) {
-        child.setTypeHierarchy("table");
-      } else {
-        child.setTypeHierarchy("temp_table");
+      child.setTypeHierarchy("from");
+      if (!ds.getTable().contains(".")) {
         LineParsNode ref = nodeByName.get(ds.getTable());
         if (ref != null) {
           child.setId(ref.getId());
@@ -91,15 +94,15 @@ public class LineParsHierarchyBuilder {
     } else if (ds.getVirtualTable() != null) {
       child = new HierarchyNode();
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getVirtualTable());
-      child.setTypeHierarchy("virtual_table");
+      child.setTypeHierarchy("from");
     } else if (ds.getParameterTable() != null) {
       child = new HierarchyNode();
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getParameterTable());
-      child.setTypeHierarchy("parameter_table");
+      child.setTypeHierarchy("from");
     } else if (ds.getExternalDataSource() != null) {
       child = new HierarchyNode();
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getExternalDataSource());
-      child.setTypeHierarchy("external_data_source");
+      child.setTypeHierarchy("from");
     }
     // subquery is handled separately via subqueryIds
 

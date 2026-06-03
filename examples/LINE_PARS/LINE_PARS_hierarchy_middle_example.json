@@ -62,11 +62,53 @@
     "type_hierarchy" : "union"
   } ]
 }, {
+  "id" : 2,
+  "name" : "ВТ_ТипыРезервов_UNION_0"
+}, {
+  "id" : 3,
+  "name" : "ВТ_ТипыРезервов_UNION_1"
+}, {
+  "id" : 4,
+  "name" : "ВТ_ТипыРезервов_UNION_2"
+}, {
+  "id" : 5,
+  "name" : "ВТ_ТипыРезервов_UNION_3"
+}, {
+  "id" : 6,
+  "name" : "ВТ_ТипыРезервов_UNION_4"
+}, {
+  "id" : 7,
+  "name" : "ВТ_ТипыРезервов_UNION_5"
+}, {
+  "id" : 8,
+  "name" : "ВТ_ТипыРезервов_UNION_6"
+}, {
+  "id" : 9,
+  "name" : "ВТ_ТипыРезервов_UNION_7"
+}, {
+  "id" : 10,
+  "name" : "ВТ_ТипыРезервов_UNION_8"
+}, {
+  "id" : 11,
+  "name" : "ВТ_ТипыРезервов_UNION_9"
+}, {
+  "id" : 12,
+  "name" : "ВТ_ТипыРезервов_UNION_10"
+}, {
+  "id" : 13,
+  "name" : "ВТ_ТипыРезервов_UNION_11"
+}, {
+  "id" : 14,
+  "name" : "ВТ_ТипыРезервов_UNION_12"
+}, {
+  "id" : 15,
+  "name" : "ВТ_ТипыРезервов_UNION_13"
+}, {
   "id" : 16,
   "name" : "ВТ_ВидыПаспортов",
   "table_hierarchy" : [ {
     "name" : "ВидыДокументовФизическихЛиц",
-    "type_hierarchy" : "table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 17,
@@ -74,49 +116,61 @@
   "table_hierarchy" : [ {
     "id" : 18,
     "name" : "ВТ_ДокументыСторно_UNION_0",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "name" : "уп_ОперацияНПО",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 19,
     "name" : "ВТ_ДокументыСторно_UNION_1",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "name" : "уп_ВозвратПенсий",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 20,
     "name" : "ВТ_ДокументыСторно_UNION_2",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "name" : "уп_ВозвратПрочихНачисленийНПО",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 21,
     "name" : "ВТ_ДокументыСторно_UNION_3",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "name" : "ДанныеДокумента",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 18,
+  "name" : "ВТ_ДокументыСторно_UNION_0",
+  "table_hierarchy" : [ {
+    "name" : "уп_ОперацияНПО",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 19,
+  "name" : "ВТ_ДокументыСторно_UNION_1",
+  "table_hierarchy" : [ {
+    "name" : "уп_ВозвратПенсий",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 20,
+  "name" : "ВТ_ДокументыСторно_UNION_2",
+  "table_hierarchy" : [ {
+    "name" : "уп_ВозвратПрочихНачисленийНПО",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 21,
+  "name" : "ВТ_ДокументыСторно_UNION_3",
+  "table_hierarchy" : [ {
+    "name" : "ДанныеДокумента",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 22,
   "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
   "table_hierarchy" : [ {
     "name" : "ВидыДвижений",
-    "type_hierarchy" : "table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 23,
   "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
   "table_hierarchy" : [ {
     "name" : "ВидыДвижений",
-    "type_hierarchy" : "table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 24,
@@ -124,96 +178,132 @@
   "table_hierarchy" : [ {
     "id" : 25,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1",
-    "type_hierarchy" : "subquery",
-    "table_hierarchy" : [ {
-      "id" : 26,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_0",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_РезервыОстатки",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 27,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_1",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_РезервыОбороты",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 28,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_2",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_ВозвратыПрочихНачисленийНПООстатки",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 29,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_3",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_ВозвратыПрочихНачисленийНПООбороты",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 30,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_4",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_ВозвратыПенсийНПООстатки",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 31,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_5",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_ВозвратыПенсийНПООбороты",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 32,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_6",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_НачисленияПенсийОбороты",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 33,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_7",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_ПрочиеНачисленияОбороты",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 34,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_8",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_СостоянияДоговораСрезПоследних",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 35,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_9",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "СостоянияПС",
-        "type_hierarchy" : "virtual_table"
-      } ]
-    }, {
-      "id" : 36,
-      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_10",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "name" : "уп_СостоянияПС",
-        "type_hierarchy" : "table"
-      } ]
-    } ]
+    "type_hierarchy" : "subquery"
+  } ]
+}, {
+  "id" : 25,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1",
+  "table_hierarchy" : [ {
+    "id" : 26,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_0",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 27,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_1",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 28,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_2",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 29,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_3",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 30,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_4",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 31,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_5",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 32,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_6",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 33,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_7",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 34,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_8",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 35,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_9",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 36,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_10",
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 26,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_0",
+  "table_hierarchy" : [ {
+    "name" : "уп_РезервыОстатки",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 27,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_1",
+  "table_hierarchy" : [ {
+    "name" : "уп_РезервыОбороты",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 28,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_2",
+  "table_hierarchy" : [ {
+    "name" : "уп_ВозвратыПрочихНачисленийНПООстатки",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 29,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_3",
+  "table_hierarchy" : [ {
+    "name" : "уп_ВозвратыПрочихНачисленийНПООбороты",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 30,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_4",
+  "table_hierarchy" : [ {
+    "name" : "уп_ВозвратыПенсийНПООстатки",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 31,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_5",
+  "table_hierarchy" : [ {
+    "name" : "уп_ВозвратыПенсийНПООбороты",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 32,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_6",
+  "table_hierarchy" : [ {
+    "name" : "уп_НачисленияПенсийОбороты",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 33,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_7",
+  "table_hierarchy" : [ {
+    "name" : "уп_ПрочиеНачисленияОбороты",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 34,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_8",
+  "table_hierarchy" : [ {
+    "name" : "уп_СостоянияДоговораСрезПоследних",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 35,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_9",
+  "table_hierarchy" : [ {
+    "name" : "СостоянияПС",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 36,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_10",
+  "table_hierarchy" : [ {
+    "name" : "уп_СостоянияПС",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 37,
@@ -221,60 +311,66 @@
   "table_hierarchy" : [ {
     "id" : 38,
     "name" : "ВТ_ПенсионныеСчета_UNION_0",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 24,
-      "name" : "ВТ_ПенсионныеСчета_ПР",
-      "type_hierarchy" : "temp_table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 39,
     "name" : "ВТ_ПенсионныеСчета_UNION_1",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 24,
-      "name" : "ВТ_ПенсионныеСчета_ПР",
-      "type_hierarchy" : "temp_table"
-    } ]
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 38,
+  "name" : "ВТ_ПенсионныеСчета_UNION_0",
+  "table_hierarchy" : [ {
+    "id" : 24,
+    "name" : "ВТ_ПенсионныеСчета_ПР",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 39,
+  "name" : "ВТ_ПенсионныеСчета_UNION_1",
+  "table_hierarchy" : [ {
+    "id" : 24,
+    "name" : "ВТ_ПенсионныеСчета_ПР",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 40,
   "name" : "ВТ_ПричиныЗакрытия",
   "table_hierarchy" : [ {
     "name" : "уп_ПричиныЗакрытияПССрезПоследних",
-    "type_hierarchy" : "virtual_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 41,
   "name" : "ВТ_ВидыПенсионныхСчетов",
   "table_hierarchy" : [ {
     "name" : "уп_ВидПенсионногоСчетаСрезПоследних",
-    "type_hierarchy" : "virtual_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 42,
   "name" : "ВТ_ПенсионныеСчетаРПВ",
   "table_hierarchy" : [ {
     "name" : "Резервы",
-    "type_hierarchy" : "virtual_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 43,
   "name" : "ВТ_ТипыПенсийНачалоПериода",
   "table_hierarchy" : [ {
     "name" : "уп_СхемаСчетаНаНачало",
-    "type_hierarchy" : "virtual_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 44,
   "name" : "ВТ_ВыплатныеНачалоПериода",
   "table_hierarchy" : [ {
     "name" : "уп_СостоянияПССрезПервых",
-    "type_hierarchy" : "virtual_table"
+    "type_hierarchy" : "from"
   }, {
     "id" : 43,
     "name" : "ВТ_ТипыПенсийНачалоПериода",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 45,
@@ -282,14 +378,14 @@
   "table_hierarchy" : [ {
     "id" : 37,
     "name" : "ВТ_ПенсионныеСчета",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   }, {
     "name" : "уп_СостоянияПССрезПоследних",
-    "type_hierarchy" : "virtual_table"
+    "type_hierarchy" : "from"
   }, {
     "id" : 43,
     "name" : "ВТ_ТипыПенсийНачалоПериода",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 46,
@@ -297,15 +393,15 @@
   "table_hierarchy" : [ {
     "id" : 37,
     "name" : "ВТ_ПенсионныеСчета",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   }, {
     "id" : 44,
     "name" : "ВТ_ВыплатныеНачалоПериода",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   }, {
     "id" : 45,
     "name" : "ВТ_СостояниеНачалоПериода",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 47,
@@ -313,23 +409,29 @@
   "table_hierarchy" : [ {
     "id" : 37,
     "name" : "ВТ_ПенсионныеСчета",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   }, {
     "id" : 48,
     "name" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_1",
-    "type_hierarchy" : "subquery",
-    "table_hierarchy" : [ {
-      "name" : "РегистрСведений.уп_СостоянияПС",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "subquery"
   }, {
     "id" : 49,
     "name" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_2",
-    "type_hierarchy" : "subquery",
-    "table_hierarchy" : [ {
-      "name" : "РегистрСведений.уп_СхемаСчета",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "subquery"
+  } ]
+}, {
+  "id" : 48,
+  "name" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_1",
+  "table_hierarchy" : [ {
+    "name" : "РегистрСведений.уп_СостоянияПС",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 49,
+  "name" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_2",
+  "table_hierarchy" : [ {
+    "name" : "РегистрСведений.уп_СхемаСчета",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 50,
@@ -337,7 +439,7 @@
   "table_hierarchy" : [ {
     "id" : 47,
     "name" : "ВТ_ИзмененияВидаОбязательств_Предв",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 51,
@@ -345,21 +447,27 @@
   "table_hierarchy" : [ {
     "id" : 52,
     "name" : "ВТ_ВидыОбязательств_UNION_0",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 46,
-      "name" : "ВТ_ВидОбязательствНачало",
-      "type_hierarchy" : "temp_table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 53,
     "name" : "ВТ_ВидыОбязательств_UNION_1",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 50,
-      "name" : "ВТ_ИзмененияВидаОбязательств",
-      "type_hierarchy" : "temp_table"
-    } ]
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 52,
+  "name" : "ВТ_ВидыОбязательств_UNION_0",
+  "table_hierarchy" : [ {
+    "id" : 46,
+    "name" : "ВТ_ВидОбязательствНачало",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 53,
+  "name" : "ВТ_ВидыОбязательств_UNION_1",
+  "table_hierarchy" : [ {
+    "id" : 50,
+    "name" : "ВТ_ИзмененияВидаОбязательств",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 54,
@@ -367,11 +475,11 @@
   "table_hierarchy" : [ {
     "id" : 51,
     "name" : "ВТ_ВидыОбязательств",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   }, {
     "id" : 51,
     "name" : "ВТ_ВидыОбязательств_1",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 55,
@@ -379,7 +487,7 @@
   "table_hierarchy" : [ {
     "id" : 54,
     "name" : "ВТ_ВидыОбязательствДвижение",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 56,
@@ -387,11 +495,11 @@
   "table_hierarchy" : [ {
     "id" : 54,
     "name" : "ВТ_ВидыОбязательствДвижение",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   }, {
     "id" : 55,
     "name" : "ВТ_СчетаТранзитныеВидыОбязательств",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 57,
@@ -399,11 +507,11 @@
   "table_hierarchy" : [ {
     "id" : 54,
     "name" : "ВТ_ВидыОбязательствДвижение",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   }, {
     "id" : 56,
     "name" : "ВТ_СчетаНеТранзитныеВидыОбязательств",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 58,
@@ -411,11 +519,11 @@
   "table_hierarchy" : [ {
     "id" : 54,
     "name" : "ВТ_ВидыОбязательствДвижение",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   }, {
     "id" : 55,
     "name" : "ВТ_СчетаТранзитныеВидыОбязательств",
-    "type_hierarchy" : "temp_table"
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 59,
@@ -423,35 +531,41 @@
   "table_hierarchy" : [ {
     "id" : 60,
     "name" : "ВТ_СторнированныеСуммыТранзитныеВиды_UNION_0",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 58,
-      "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-      "type_hierarchy" : "temp_table"
-    }, {
-      "name" : "уп_НачисленияПенсий",
-      "type_hierarchy" : "table"
-    }, {
-      "id" : 17,
-      "name" : "ВТ_ДокументыСторно",
-      "type_hierarchy" : "temp_table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 61,
     "name" : "ВТ_СторнированныеСуммыТранзитныеВиды_UNION_1",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 58,
-      "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-      "type_hierarchy" : "temp_table"
-    }, {
-      "name" : "уп_ПрочиеНачисления",
-      "type_hierarchy" : "table"
-    }, {
-      "id" : 17,
-      "name" : "ВТ_ДокументыСторно",
-      "type_hierarchy" : "temp_table"
-    } ]
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 60,
+  "name" : "ВТ_СторнированныеСуммыТранзитныеВиды_UNION_0",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_НачисленияПенсий",
+    "type_hierarchy" : "from"
+  }, {
+    "id" : 17,
+    "name" : "ВТ_ДокументыСторно",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 61,
+  "name" : "ВТ_СторнированныеСуммыТранзитныеВиды_UNION_1",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_ПрочиеНачисления",
+    "type_hierarchy" : "from"
+  }, {
+    "id" : 17,
+    "name" : "ВТ_ДокументыСторно",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 62,
@@ -459,114 +573,147 @@
   "table_hierarchy" : [ {
     "id" : 63,
     "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 64,
-      "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1",
-      "type_hierarchy" : "subquery",
-      "table_hierarchy" : [ {
-        "id" : 65,
-        "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_0",
-        "type_hierarchy" : "union",
-        "table_hierarchy" : [ {
-          "id" : 58,
-          "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-          "type_hierarchy" : "temp_table"
-        }, {
-          "name" : "уп_Резервы",
-          "type_hierarchy" : "table"
-        } ]
-      }, {
-        "id" : 66,
-        "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_1",
-        "type_hierarchy" : "union",
-        "table_hierarchy" : [ {
-          "id" : 58,
-          "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-          "type_hierarchy" : "temp_table"
-        }, {
-          "name" : "уп_Резервы",
-          "type_hierarchy" : "table"
-        } ]
-      } ]
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 67,
     "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_1",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 58,
-      "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-      "type_hierarchy" : "temp_table"
-    }, {
-      "name" : "уп_ВозвратыПрочихНачисленийНПО",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 68,
     "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_2",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 58,
-      "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-      "type_hierarchy" : "temp_table"
-    }, {
-      "name" : "уп_ВозвратыПрочихНачисленийНПО",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 69,
     "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_3",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 58,
-      "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-      "type_hierarchy" : "temp_table"
-    }, {
-      "name" : "уп_ВозвратыПенсийНПО",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 70,
     "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_4",
-    "type_hierarchy" : "union",
-    "table_hierarchy" : [ {
-      "id" : 58,
-      "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-      "type_hierarchy" : "temp_table"
-    }, {
-      "name" : "уп_ВозвратыПенсийНПО",
-      "type_hierarchy" : "table"
-    } ]
+    "type_hierarchy" : "union"
   }, {
     "id" : 71,
     "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1",
-    "type_hierarchy" : "subquery",
-    "table_hierarchy" : [ {
-      "id" : 72,
-      "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_0",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "id" : 58,
-        "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-        "type_hierarchy" : "temp_table"
-      }, {
-        "name" : "уп_Резервы",
-        "type_hierarchy" : "table"
-      } ]
-    }, {
-      "id" : 73,
-      "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_1",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "id" : 58,
-        "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-        "type_hierarchy" : "temp_table"
-      }, {
-        "name" : "уп_Резервы",
-        "type_hierarchy" : "table"
-      } ]
-    } ]
+    "type_hierarchy" : "subquery"
+  } ]
+}, {
+  "id" : 63,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0",
+  "table_hierarchy" : [ {
+    "id" : 64,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1",
+    "type_hierarchy" : "subquery"
+  } ]
+}, {
+  "id" : 64,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1",
+  "table_hierarchy" : [ {
+    "id" : 65,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_0",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 66,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_1",
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 65,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_0",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_Резервы",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 66,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_1",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_Резервы",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 67,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_1",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_ВозвратыПрочихНачисленийНПО",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 68,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_2",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_ВозвратыПрочихНачисленийНПО",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 69,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_3",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_ВозвратыПенсийНПО",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 70,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_4",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_ВозвратыПенсийНПО",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 71,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1",
+  "table_hierarchy" : [ {
+    "id" : 72,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_0",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 73,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_1",
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 72,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_0",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_Резервы",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 73,
+  "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_1",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_Резервы",
+    "type_hierarchy" : "from"
   } ]
 }, {
   "id" : 74,
@@ -574,52 +721,67 @@
   "table_hierarchy" : [ {
     "id" : 75,
     "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1",
-    "type_hierarchy" : "subquery",
-    "table_hierarchy" : [ {
-      "id" : 76,
-      "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_0",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "id" : 62,
-        "name" : "ВТ_ОстаткиТранзитныеВиды",
-        "type_hierarchy" : "temp_table"
-      } ]
-    }, {
-      "id" : 77,
-      "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_1",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "id" : 58,
-        "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-        "type_hierarchy" : "temp_table"
-      }, {
-        "name" : "уп_Поступления",
-        "type_hierarchy" : "table"
-      } ]
-    }, {
-      "id" : 78,
-      "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_2",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "id" : 58,
-        "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-        "type_hierarchy" : "temp_table"
-      }, {
-        "name" : "уп_ИнвестДоход",
-        "type_hierarchy" : "table"
-      } ]
-    }, {
-      "id" : 79,
-      "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_3",
-      "type_hierarchy" : "union",
-      "table_hierarchy" : [ {
-        "id" : 58,
-        "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-        "type_hierarchy" : "temp_table"
-      }, {
-        "name" : "уп_ЗадолженностьПоПенсиям",
-        "type_hierarchy" : "table"
-      } ]
-    } ]
+    "type_hierarchy" : "subquery"
+  } ]
+}, {
+  "id" : 75,
+  "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1",
+  "table_hierarchy" : [ {
+    "id" : 76,
+    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_0",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 77,
+    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_1",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 78,
+    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_2",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 79,
+    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_3",
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 76,
+  "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_0",
+  "table_hierarchy" : [ {
+    "id" : 62,
+    "name" : "ВТ_ОстаткиТранзитныеВиды",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 77,
+  "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_1",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_Поступления",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 78,
+  "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_2",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_ИнвестДоход",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 79,
+  "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_3",
+  "table_hierarchy" : [ {
+    "id" : 58,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "type_hierarchy" : "from"
+  }, {
+    "name" : "уп_ЗадолженностьПоПенсиям",
+    "type_hierarchy" : "from"
   } ]
 } ]
