@@ -320,3 +320,10 @@ tasks.register<JavaExec>("runSdql258") {
     mainClass.set("com.github._1c_syntax.bsl.parser.sdql.SdqlCli")
     args = listOf("examples/example_258.sql", "examples/java_output_258")
 }
+
+tasks.register<JavaExec>("runSdqlMiddle") {
+    group = "application"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.github._1c_syntax.bsl.parser.sdql.SdqlCli")
+    args = listOf("examples/middle_example.sql", "examples/java_output_middle")
+}

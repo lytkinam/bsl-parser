@@ -1,0 +1,209 @@
+[ {
+  "id" : 0,
+  "type" : "temp_query",
+  "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
+  "sql_file" : "query_texts/node_0.sql",
+  "md_file" : "query_texts/node_0.md",
+  "hash" : "79ad7b6ac1d81d2c39d93f102b3c13077e8243ae5ee5af8841802b123f44a7ad",
+  "length" : 156
+}, {
+  "id" : 1,
+  "type" : "temp_query",
+  "name" : "ВТ_ТипыРезервов",
+  "sql_file" : "query_texts/node_1.sql",
+  "md_file" : "query_texts/node_1.md",
+  "hash" : "07f598f21ffdba2e70c13e44816b61a69d677ced2fcf9a65740685092311576a",
+  "length" : 1256
+}, {
+  "id" : 2,
+  "type" : "temp_query",
+  "name" : "ВТ_ВидыПаспортов",
+  "sql_file" : "query_texts/node_2.sql",
+  "md_file" : "query_texts/node_2.md",
+  "hash" : "e326a08f9d0ddeafb65d7cc238f003bd5c470fdf17d8dd16c7eb9e6421abdfbe",
+  "length" : 308
+}, {
+  "id" : 3,
+  "type" : "temp_query",
+  "name" : "ВТ_ДокументыСторно",
+  "sql_file" : "query_texts/node_3.sql",
+  "md_file" : "query_texts/node_3.md",
+  "hash" : "761e575cb9ee976e8443cd5e2de9e88d2a5a6724b00145557737cadb6682137f",
+  "length" : 1074
+}, {
+  "id" : 4,
+  "type" : "temp_query",
+  "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
+  "sql_file" : "query_texts/node_4.sql",
+  "md_file" : "query_texts/node_4.md",
+  "hash" : "d7964150c2856f4e00da2c8f033f26cc5966fc3e371031b9547a03de854570d6",
+  "length" : 641
+}, {
+  "id" : 5,
+  "type" : "temp_query",
+  "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
+  "sql_file" : "query_texts/node_5.sql",
+  "md_file" : "query_texts/node_5.md",
+  "hash" : "59e583cd62faa54cbfd46256b98ccec8bb8b34a9ee5506358d948f4a77cd45b9",
+  "length" : 996
+}, {
+  "id" : 6,
+  "type" : "temp_query",
+  "name" : "ВТ_ПенсионныеСчета_ПР",
+  "sql_file" : "query_texts/node_6.sql",
+  "md_file" : "query_texts/node_6.md",
+  "hash" : "3bd27cba4e79913a99fda1108b96763cd70c94041134fc284d247c85a3f0b594",
+  "length" : 4233
+}, {
+  "id" : 7,
+  "type" : "temp_query",
+  "name" : "ВТ_ПенсионныеСчета",
+  "sql_file" : "query_texts/node_7.sql",
+  "md_file" : "query_texts/node_7.md",
+  "hash" : "493a8123b979f3e1fa0380897406cbf4407c2aac5c22c95bdf3917f571a31540",
+  "length" : 586
+}, {
+  "id" : 8,
+  "type" : "temp_query",
+  "name" : "ВТ_ПричиныЗакрытия",
+  "sql_file" : "query_texts/node_8.sql",
+  "md_file" : "query_texts/node_8.md",
+  "hash" : "ac9e60ff345cacc1be96eca7aa081c697560f94e806a6cae10280acaa485313c",
+  "length" : 797
+}, {
+  "id" : 9,
+  "type" : "temp_query",
+  "name" : "ВТ_ВидыПенсионныхСчетов",
+  "sql_file" : "query_texts/node_9.sql",
+  "md_file" : "query_texts/node_9.md",
+  "hash" : "98d0e2a262c7d0332b4314a38c7a89fa1cb25ddfb5f903cad88fa7880437b5b9",
+  "length" : 522
+}, {
+  "id" : 10,
+  "type" : "temp_query",
+  "name" : "ВТ_ПенсионныеСчетаРПВ",
+  "sql_file" : "query_texts/node_10.sql",
+  "md_file" : "query_texts/node_10.md",
+  "hash" : "aee0c0c1c033e36d750e68f5482fadf371ed038176110e550813b093b82d048d",
+  "length" : 460
+}, {
+  "id" : 11,
+  "type" : "temp_query",
+  "name" : "ВТ_ТипыПенсийНачалоПериода",
+  "sql_file" : "query_texts/node_11.sql",
+  "md_file" : "query_texts/node_11.md",
+  "hash" : "b3cd58fe810688ecc4b0875622d7e1cb6d9c92c5858951a7637ad8df2ec0f230",
+  "length" : 592
+}, {
+  "id" : 12,
+  "type" : "temp_query",
+  "name" : "ВТ_ВыплатныеНачалоПериода",
+  "sql_file" : "query_texts/node_12.sql",
+  "md_file" : "query_texts/node_12.md",
+  "hash" : "436c511cd208a41e27776203a9502e8720af8cc508dc61d60a327cabea4303e5",
+  "length" : 1422
+}, {
+  "id" : 13,
+  "type" : "temp_query",
+  "name" : "ВТ_СостояниеНачалоПериода",
+  "sql_file" : "query_texts/node_13.sql",
+  "md_file" : "query_texts/node_13.md",
+  "hash" : "482c500aa7fe9bf13ab65e05bac0ce87aff647393a343c34a50a4e60c18ab67c",
+  "length" : 2629
+}, {
+  "id" : 14,
+  "type" : "temp_query",
+  "name" : "ВТ_ВидОбязательствНачало",
+  "sql_file" : "query_texts/node_14.sql",
+  "md_file" : "query_texts/node_14.md",
+  "hash" : "8668b9b570e23b2877ec2b03286a56321dbe1a958a122b429d9e2625d30ffc81",
+  "length" : 1443
+}, {
+  "id" : 15,
+  "type" : "temp_query",
+  "name" : "ВТ_ИзмененияВидаОбязательств_Предв",
+  "sql_file" : "query_texts/node_15.sql",
+  "md_file" : "query_texts/node_15.md",
+  "hash" : "205b7cf63274243159b07b51110aab6c415b2e50cc5f32cee56add5eeddb0f97",
+  "length" : 3720
+}, {
+  "id" : 16,
+  "type" : "temp_query",
+  "name" : "ВТ_ИзмененияВидаОбязательств",
+  "sql_file" : "query_texts/node_16.sql",
+  "md_file" : "query_texts/node_16.md",
+  "hash" : "e07b9fb087e2d3fa0df512e83043e41a92116de9f00e6ad75487a94666bf0d94",
+  "length" : 617
+}, {
+  "id" : 17,
+  "type" : "temp_query",
+  "name" : "ВТ_ВидыОбязательств",
+  "sql_file" : "query_texts/node_17.sql",
+  "md_file" : "query_texts/node_17.md",
+  "hash" : "73a88b423bc56d41df48d7d271af615d161bc5ad1155e7cf49b4c08659e9ca90",
+  "length" : 611
+}, {
+  "id" : 18,
+  "type" : "temp_query",
+  "name" : "ВТ_ВидыОбязательствДвижение",
+  "sql_file" : "query_texts/node_18.sql",
+  "md_file" : "query_texts/node_18.md",
+  "hash" : "63aa8d47b95a6deedc0d0b2791f3745e8ee4bcbb5561453fa4c5447ef404982f",
+  "length" : 1037
+}, {
+  "id" : 19,
+  "type" : "temp_query",
+  "name" : "ВТ_СчетаТранзитныеВидыОбязательств",
+  "sql_file" : "query_texts/node_19.sql",
+  "md_file" : "query_texts/node_19.md",
+  "hash" : "a416bd6dbe786eeb21fab5a1832ffbf5b08ab39e7b9dc24141f07ede39be594b",
+  "length" : 261
+}, {
+  "id" : 20,
+  "type" : "temp_query",
+  "name" : "ВТ_СчетаНеТранзитныеВидыОбязательств",
+  "sql_file" : "query_texts/node_20.sql",
+  "md_file" : "query_texts/node_20.md",
+  "hash" : "65da0669495c5f9d0ef3df4c59a6aad2b96d63c470eb8126c5d3d4b6305c1b50",
+  "length" : 447
+}, {
+  "id" : 21,
+  "type" : "temp_query",
+  "name" : "ВТ_НеТранзитныеВидыНачалоКонец",
+  "sql_file" : "query_texts/node_21.sql",
+  "md_file" : "query_texts/node_21.md",
+  "hash" : "abf0f4d61401dc0983b57a81cc4cc567baa0938f5c0dc8d88408e70e69e2cea9",
+  "length" : 622
+}, {
+  "id" : 22,
+  "type" : "temp_query",
+  "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+  "sql_file" : "query_texts/node_22.sql",
+  "md_file" : "query_texts/node_22.md",
+  "hash" : "b391128da139da075203535ec8954cbad842981406393f13c00985258488cbb1",
+  "length" : 614
+}, {
+  "id" : 23,
+  "type" : "temp_query",
+  "name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
+  "sql_file" : "query_texts/node_23.sql",
+  "md_file" : "query_texts/node_23.md",
+  "hash" : "89629a920dc1dcd6a83834f39c368e211d3f6716abfe96837e65f146a8a10f2f",
+  "length" : 3768
+}, {
+  "id" : 24,
+  "type" : "temp_query",
+  "name" : "ВТ_ОстаткиТранзитныеВиды",
+  "sql_file" : "query_texts/node_24.sql",
+  "md_file" : "query_texts/node_24.md",
+  "hash" : "b6fc9d0792b0c7df5aa1417b4b28240bb6aedae2686c003f966f8437c2716be1",
+  "length" : 8871
+}, {
+  "id" : 25,
+  "type" : "temp_query",
+  "name" : "ВТ_Суммы_ПР_ТранзитныеВиды",
+  "sql_file" : "query_texts/node_25.sql",
+  "md_file" : "query_texts/node_25.md",
+  "hash" : "d2889710932e9c7a2e33c8a5328a0abf00fbe23152dee5616d9c9e3ad2492b25",
+  "length" : 5597
+} ]
