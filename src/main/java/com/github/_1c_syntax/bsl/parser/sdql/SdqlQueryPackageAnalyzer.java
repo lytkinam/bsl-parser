@@ -66,7 +66,7 @@ public class SdqlQueryPackageAnalyzer {
         model.setEdges(edges);
         model.setSourceHash(sha256(content));
         model.setSourceLength(content.length());
-        ModelJsonMapper.write(model, Path.of(outputDir.getAbsolutePath(), "sdbl_parser_model_" + baseName + ".json"));
+        ModelJsonMapper.write(model, Path.of(outputDir.getAbsolutePath(), "sdbl_parse_model_" + baseName + ".json"));
     }
 
     private static String baseName(File file) {

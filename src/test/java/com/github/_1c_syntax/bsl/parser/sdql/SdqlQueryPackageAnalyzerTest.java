@@ -23,7 +23,7 @@ class SdqlQueryPackageAnalyzerTest {
 
         // model.json without text
         QueryModel model = ModelJsonMapper.read(
-            output.toPath().resolve("sdbl_parser_model_example.json"));
+            output.toPath().resolve("sdbl_parse_model_example.json"));
         assertThat(model.getNodes()).hasSize(5);
         assertThat(model.getEdges()).hasSize(2);
 
@@ -49,7 +49,7 @@ class SdqlQueryPackageAnalyzerTest {
         SdqlCli.main(new String[]{"examples/example_258.sql", output.getAbsolutePath()});
 
         QueryModel model = ModelJsonMapper.read(
-            output.toPath().resolve("sdbl_parser_model_example_258.json"));
+            output.toPath().resolve("sdbl_parse_model_example_258.json"));
         assertThat(model.getNodes()).hasSizeGreaterThan(100);
         assertThat(model.getEdges()).hasSizeGreaterThan(100);
 

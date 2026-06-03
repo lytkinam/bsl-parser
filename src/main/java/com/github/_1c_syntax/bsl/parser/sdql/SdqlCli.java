@@ -3,6 +3,7 @@ package com.github._1c_syntax.bsl.parser.sdql;
 import com.github._1c_syntax.bsl.parser.sdql.export.QueryTextExporter;
 import com.github._1c_syntax.bsl.parser.sdql.fields.FieldsNodeBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.lineage.FieldLineageAnalyzer;
+import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsModelBuilder;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -35,6 +36,10 @@ public class SdqlCli {
         // 4. Lineage analysis from model.json
         FieldLineageAnalyzer lineageAnalyzer = new FieldLineageAnalyzer();
         lineageAnalyzer.analyze(analyzer.getModel(), outputDir.toPath(), baseName);
+
+        // 5. Build LINE_PARS model (subqueries, unions, expanded edges)
+        LineParsModelBuilder lineParsBuilder = new LineParsModelBuilder();
+        lineParsBuilder.build(outputDir.toPath(), baseName);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
     }
