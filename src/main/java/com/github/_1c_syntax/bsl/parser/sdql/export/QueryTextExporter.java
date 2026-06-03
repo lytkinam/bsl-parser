@@ -21,13 +21,14 @@ public class QueryTextExporter {
         Files.createDirectories(textsDir);
 
         ArrayNode index = MAPPER.createArrayNode();
-        List<String> normalizedEntries = new ArrayList<>();
+        List<QueryNode> activeNodes = new ArrayList<>();
 
         for (QueryNode node : nodes) {
             String text = node.getText();
             if (text == null || text.isEmpty()) {
                 continue;
             }
+            activeNodes.add(node);
 
             // Write .sql (no trailing semicolon)
             String sqlName = String.format("node_%d.sql", node.getId());
@@ -48,22 +49,24 @@ public class QueryTextExporter {
             entry.put("hash", node.getTextHash());
             entry.put("length", node.getTextLength());
             index.add(entry);
-
-            // Collect for normalized_queries.sql (with semicolon added later)
-            normalizedEntries.add("-- Node " + node.getId() + " " + node.getName() + "\n" + text);
         }
 
         MAPPER.writerWithDefaultPrettyPrinter().writeValue(
             textsDir.resolve("texts_index.json").toFile(), index);
 
-        // Build normalized_queries.sql: add ; to all except the last
+        // Build normalized_queries.sql:
+        // //-- Node {id} {name}
+        // {text}
+        // ;
+        // (no semicolon for last entry)
         StringBuilder normalized = new StringBuilder();
-        for (int i = 0; i < normalizedEntries.size(); i++) {
-            normalized.append(normalizedEntries.get(i));
-            if (i < normalizedEntries.size() - 1) {
-                normalized.append(";");
+        for (int i = 0; i < activeNodes.size(); i++) {
+            QueryNode node = activeNodes.get(i);
+            normalized.append("//-- Node ").append(node.getId()).append(" ").append(node.getName()).append("\n");
+            normalized.append(node.getText()).append("\n");
+            if (i < activeNodes.size() - 1) {
+                normalized.append(";\n\n");
             }
-            normalized.append("\n\n");
         }
         Files.writeString(textsDir.resolve("normalized_queries.sql"), normalized.toString(), StandardCharsets.UTF_8);
     }
