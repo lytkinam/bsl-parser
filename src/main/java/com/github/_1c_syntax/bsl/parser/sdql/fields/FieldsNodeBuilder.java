@@ -93,7 +93,7 @@ public class FieldsNodeBuilder {
               if (jp.getCondition() != null) {
                 FieldRecord condRec = new FieldRecord();
                 condRec.setAlias(joinType + "_" + alias + "_УСЛОВИЕ");
-                condRec.setExpressionRaw("ПО " + jp.getCondition());
+                condRec.setExpressionRaw(jp.getCondition());
                 condRec.setExprType("join_on_condition");
                 condRec.setFieldRefs(extractFieldRefs(jp.getCondition(), aliases));
                 records.add(condRec);
