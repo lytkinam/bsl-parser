@@ -11,7 +11,6 @@
       "type" : "select",
       "into" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
       "select" : [ {
-        "fieldType" : "expression",
         "text" : "ВЫБОР\r\n\t\tКОГДА &ИСПОЛЬЗОВАТЬДЛЯНПО = 1                                \r\n\t\t\tТОГДА ИСТИНА\r\n\t\tИНАЧЕ ЛОЖЬ\r\n\tКОНЕЦ",
         "alias" : "Поле1"
       } ]
@@ -28,7 +27,6 @@
       "type" : "select",
       "into" : "ВТ_ТипыРезервов",
       "select" : [ {
-        "fieldType" : "expression",
         "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.ИПС)",
         "alias" : "ТипРезерва"
       } ],
@@ -37,7 +35,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.СПС)"
           } ]
         }
@@ -46,7 +43,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийПенсийИПС)"
           } ]
         }
@@ -55,7 +51,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийПенсийСПС)"
           } ]
         }
@@ -64,7 +59,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийВыкупныхСуммИПС)"
           } ]
         }
@@ -73,7 +67,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийВыкупныхСуммСПС)"
           } ]
         }
@@ -82,7 +75,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.ПожизненныхВыплат)"
           } ]
         }
@@ -91,7 +83,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РПАР)"
           } ]
         }
@@ -100,7 +91,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийПенсийПожизненныхВыплат)"
           } ]
         }
@@ -109,7 +99,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийВыкупныхСуммПожизненныхВыплат)"
           } ]
         }
@@ -118,7 +107,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийНаследниковИПС)"
           } ]
         }
@@ -127,7 +115,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийНаследниковСПС)"
           } ]
         }
@@ -136,7 +123,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНаследниковИПС)"
           } ]
         }
@@ -145,7 +131,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНаследниковСПС)"
           } ]
         }
@@ -163,7 +148,6 @@
       "type" : "select",
       "into" : "ВТ_ВидыПаспортов",
       "select" : [ {
-        "fieldType" : "expression",
         "text" : "ВидыДокументовФизическихЛиц.Ссылка",
         "alias" : "ВидДокумента"
       } ],
@@ -186,7 +170,6 @@
       "type" : "select",
       "into" : "ВТ_ДокументыСторно",
       "select" : [ {
-        "fieldType" : "expression",
         "text" : "уп_ОперацияНПО.Ссылка",
         "alias" : "ДокументСторно"
       } ],
@@ -201,7 +184,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "уп_ВозвратПенсий.Ссылка"
           } ],
           "from" : [ {
@@ -216,7 +198,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "уп_ВозвратПрочихНачисленийНПО.Ссылка"
           } ],
           "from" : [ {
@@ -231,7 +212,6 @@
         "query" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "ДанныеДокумента.Ссылка"
           } ],
           "from" : [ {
@@ -255,7 +235,6 @@
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
       "select" : [ {
-        "fieldType" : "expression",
         "text" : "ВидыДвижений.Ссылка",
         "alias" : "Ссылка"
       } ],
@@ -278,7 +257,6 @@
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
       "select" : [ {
-        "fieldType" : "expression",
         "text" : "ВидыДвижений.Ссылка",
         "alias" : "Ссылка"
       } ],
@@ -301,7 +279,6 @@
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета_ПР",
       "select" : [ {
-        "fieldType" : "expression",
         "text" : "Подзапрос.ПенсионныйСчет",
         "alias" : "ПенсионныйСчет"
       } ],
@@ -309,7 +286,6 @@
         "subquery" : {
           "type" : "select",
           "select" : [ {
-            "fieldType" : "expression",
             "text" : "уп_РезервыОстатки.НомерСчета",
             "alias" : "ПенсионныйСчет"
           } ],
@@ -323,7 +299,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "уп_РезервыОбороты.НомерСчета"
               } ],
               "from" : [ {
@@ -337,7 +312,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "уп_ВозвратыПрочихНачисленийНПООстатки.НомерСчета",
                 "alias" : "ПенсионныйСчет"
               } ],
@@ -352,7 +326,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "уп_ВозвратыПрочихНачисленийНПООбороты.НомерСчета"
               } ],
               "from" : [ {
@@ -366,7 +339,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "уп_ВозвратыПенсийНПООстатки.НомерСчета",
                 "alias" : "ПенсионныйСчет"
               } ],
@@ -381,7 +353,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "уп_ВозвратыПенсийНПООбороты.НомерСчета"
               } ],
               "from" : [ {
@@ -395,7 +366,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "уп_НачисленияПенсийОбороты.НомерСчета"
               } ],
               "from" : [ {
@@ -409,7 +379,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "уп_ПрочиеНачисленияОбороты.НомерСчета"
               } ],
               "from" : [ {
@@ -424,7 +393,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "уп_СостоянияДоговораСрезПоследних.ПенсионныйДоговор.ПенсионныйСчет"
               } ],
               "from" : [ {
@@ -439,7 +407,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "СостоянияПС.НомерСчета"
               } ],
               "from" : [ {
@@ -454,7 +421,6 @@
             "query" : {
               "type" : "select",
               "select" : [ {
-                "fieldType" : "expression",
                 "text" : "уп_СостоянияПС.НомерСчета"
               } ],
               "from" : [ {

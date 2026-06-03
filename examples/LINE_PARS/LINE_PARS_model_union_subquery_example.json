@@ -6,7 +6,6 @@
     "type" : "temp_query",
     "into" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ВЫБОР\r\n\t\tКОГДА &ИСПОЛЬЗОВАТЬДЛЯНПО = 1                                \r\n\t\t\tТОГДА ИСТИНА\r\n\t\tИНАЧЕ ЛОЖЬ\r\n\tКОНЕЦ",
       "alias" : "Поле1"
     } ]
@@ -17,7 +16,6 @@
     "type" : "temp_query",
     "into" : "ВТ_ТипыРезервов",
     "select" : [ {
-      "fieldType" : "union_field",
       "text" : "ТипРезерва",
       "alias" : "ТипРезерва"
     } ],
@@ -28,7 +26,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_0",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.ИПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -40,7 +37,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_1",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.СПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -52,7 +48,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_2",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийПенсийИПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -64,7 +59,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_3",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийПенсийСПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -76,7 +70,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_4",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийВыкупныхСуммИПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -88,7 +81,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_5",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийВыкупныхСуммСПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -100,7 +92,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_6",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.ПожизненныхВыплат)",
       "alias" : "ТипРезерва"
     } ],
@@ -112,7 +103,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_7",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РПАР)",
       "alias" : "ТипРезерва"
     } ],
@@ -124,7 +114,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_8",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийПенсийПожизненныхВыплат)",
       "alias" : "ТипРезерва"
     } ],
@@ -136,7 +125,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_9",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийВыкупныхСуммПожизненныхВыплат)",
       "alias" : "ТипРезерва"
     } ],
@@ -148,7 +136,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_10",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийНаследниковИПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -160,7 +147,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_11",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНачисленийНаследниковСПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -172,7 +158,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_12",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНаследниковИПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -184,7 +169,6 @@
     "name" : "ВТ_ТипыРезервов_UNION_13",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.РезервНаследниковСПС)",
       "alias" : "ТипРезерва"
     } ],
@@ -197,7 +181,6 @@
     "type" : "temp_query",
     "into" : "ВТ_ВидыПаспортов",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ВидыДокументовФизическихЛиц.Ссылка",
       "alias" : "ВидДокумента"
     } ],
@@ -214,7 +197,6 @@
     "type" : "temp_query",
     "into" : "ВТ_ДокументыСторно",
     "select" : [ {
-      "fieldType" : "union_field",
       "text" : "ДокументСторно",
       "alias" : "ДокументСторно"
     } ],
@@ -225,7 +207,6 @@
     "name" : "ВТ_ДокументыСторно_UNION_0",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_ОперацияНПО.Ссылка",
       "alias" : "ДокументСторно"
     } ],
@@ -243,7 +224,6 @@
     "name" : "ВТ_ДокументыСторно_UNION_1",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_ВозвратПенсий.Ссылка",
       "alias" : "ДокументСторно"
     } ],
@@ -261,7 +241,6 @@
     "name" : "ВТ_ДокументыСторно_UNION_2",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_ВозвратПрочихНачисленийНПО.Ссылка",
       "alias" : "ДокументСторно"
     } ],
@@ -279,7 +258,6 @@
     "name" : "ВТ_ДокументыСторно_UNION_3",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ДанныеДокумента.Ссылка",
       "alias" : "ДокументСторно"
     } ],
@@ -298,7 +276,6 @@
     "type" : "temp_query",
     "into" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ВидыДвижений.Ссылка",
       "alias" : "Ссылка"
     } ],
@@ -315,7 +292,6 @@
     "type" : "temp_query",
     "into" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "ВидыДвижений.Ссылка",
       "alias" : "Ссылка"
     } ],
@@ -332,7 +308,6 @@
     "type" : "temp_query",
     "into" : "ВТ_ПенсионныеСчета_ПР",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "Подзапрос.ПенсионныйСчет",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -350,7 +325,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1",
     "type" : "sub_query",
     "select" : [ {
-      "fieldType" : "union_field",
       "text" : "ПенсионныйСчет",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -362,7 +336,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_0",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_РезервыОстатки.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -379,7 +352,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_1",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_РезервыОбороты.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -396,7 +368,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_2",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_ВозвратыПрочихНачисленийНПООстатки.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -413,7 +384,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_3",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_ВозвратыПрочихНачисленийНПООбороты.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -430,7 +400,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_4",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_ВозвратыПенсийНПООстатки.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -447,7 +416,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_5",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_ВозвратыПенсийНПООбороты.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -464,7 +432,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_6",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_НачисленияПенсийОбороты.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -481,7 +448,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_7",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_ПрочиеНачисленияОбороты.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -499,7 +465,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_8",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_СостоянияДоговораСрезПоследних.ПенсионныйДоговор.ПенсионныйСчет",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -517,7 +482,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_9",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "СостоянияПС.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
@@ -535,7 +499,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_10",
     "type" : "union_query",
     "select" : [ {
-      "fieldType" : "expression",
       "text" : "уп_СостоянияПС.НомерСчета",
       "alias" : "ПенсионныйСчет"
     } ],
