@@ -80,11 +80,14 @@ public class LineParsModelBuilder {
         LineParsNode part = new LineParsNode();
         part.setId(idCounter++);
         part.setSdblId(parent.getSdblId());
-        part.setName("Часть_" + partCount);
+        part.setName(parent.getName() + "_UNION_" + partCount);
         part.setType("union_query");
         part.setUnionType(up.getUnionType());
         part.setQuery(up.getQuery());
-        part.setUpqueryId(parent.getId());
+        // unionFirst on subsequent union nodes points to the first one
+        if (partCount > 1) {
+          part.setUnionFirst(parent.getUnionNodesIds().get(0));
+        }
         nodes.add(part);
         parent.getUnionNodesIds().add(part.getId());
 
