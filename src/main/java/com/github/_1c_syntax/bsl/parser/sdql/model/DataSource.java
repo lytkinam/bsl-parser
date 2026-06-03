@@ -12,7 +12,8 @@ public class DataSource {
   private String virtualTable;
   private String parameterTable;
   private String externalDataSource;
-  private QueryAst subquery;
+  @com.fasterxml.jackson.databind.annotation.JsonDeserialize(as = QueryAst.class)
+  private Object subquery;
   private String alias;
   private List<JoinPart> joins;
 }

@@ -7,16 +7,18 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LineParsModelBuilder {
 
   private static final ObjectMapper MAPPER = new ObjectMapper();
 
   private int idCounter = 0;
-  private int unnamedSubQueryCount = 0;
   private int resultTableCount = 0;
   private List<LineParsNode> nodes = new ArrayList<>();
+  private Map<Integer, Integer> subQueryCounters = new HashMap<>();
   private List<String> dropQueries = new ArrayList<>();
 
   public void build(Path sdblParsDir, String baseName) throws IOException {
@@ -110,20 +112,26 @@ public class LineParsModelBuilder {
 
   private void processDataSource(LineParsNode parent, DataSource ds) {
     if (ds.getSubquery() != null) {
-      unnamedSubQueryCount++;
-      String alias = ds.getAlias() != null ? ds.getAlias() : "Подзапрос_" + unnamedSubQueryCount;
+      int count = subQueryCounters.getOrDefault(parent.getId(), 0) + 1;
+      subQueryCounters.put(parent.getId(), count);
+      String subName = parent.getName() + "_SUB_" + count;
+
+      QueryAst subqueryAst = (QueryAst) ds.getSubquery();
 
       LineParsNode sub = new LineParsNode();
       sub.setId(idCounter++);
       sub.setSdblId(parent.getSdblId());
-      sub.setName(alias);
+      sub.setName(subName);
       sub.setType("sub_query");
-      sub.setQuery(ds.getSubquery());
+      sub.setQuery(subqueryAst);
       sub.setUpqueryId(parent.getId());
       nodes.add(sub);
       parent.getSubqueryIds().add(sub.getId());
 
-      processAst(sub, ds.getSubquery());
+      // Replace subquery object with name string in parent query
+      ds.setSubquery(subName);
+
+      processAst(sub, subqueryAst);
     }
 
     if (ds.getJoins() != null) {

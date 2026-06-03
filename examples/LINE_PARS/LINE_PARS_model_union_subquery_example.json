@@ -379,19 +379,7 @@
         "alias" : "ПенсионныйСчет"
       } ],
       "from" : [ {
-        "subquery" : {
-          "type" : "select",
-          "select" : [ {
-            "fieldType" : "expression",
-            "text" : "уп_РезервыОстатки.НомерСчета",
-            "alias" : "ПенсионныйСчет"
-          } ],
-          "from" : [ {
-            "virtualTable" : "РегистрНакопления.уп_Резервы.Остатки(\r\n\t\t\t\t&НачалоПериода,\r\n\t\t\t\tОрганизация В (&Организация)\r\n\t\t\t\t\tИ ТипРезерва В\r\n\t\t\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов.ТипРезерва\r\n\t\t\t\t\t\tИЗ\r\n\t\t\t\t\t\t\tВТ_ТипыРезервов КАК ВТ_ТипыРезервов))",
-            "alias" : "уп_РезервыОстатки",
-            "joins" : [ ]
-          } ]
-        },
+        "subquery" : "ВТ_ПенсионныеСчета_ПР_SUB_1",
         "alias" : "Подзапрос",
         "joins" : [ ]
       } ],
@@ -402,7 +390,7 @@
   }, {
     "id" : 23,
     "sdblId" : 6,
-    "name" : "Подзапрос",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1",
     "type" : "sub_query",
     "query" : {
       "type" : "select",
@@ -422,7 +410,7 @@
   }, {
     "id" : 24,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_1",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_1",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
@@ -441,7 +429,7 @@
   }, {
     "id" : 25,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_2",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_2",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
@@ -462,7 +450,7 @@
   }, {
     "id" : 26,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_3",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_3",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
@@ -482,7 +470,7 @@
   }, {
     "id" : 27,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_4",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_4",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
@@ -503,7 +491,7 @@
   }, {
     "id" : 28,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_5",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_5",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
@@ -523,7 +511,7 @@
   }, {
     "id" : 29,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_6",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_6",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
@@ -543,7 +531,7 @@
   }, {
     "id" : 30,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_7",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_7",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
@@ -564,7 +552,7 @@
   }, {
     "id" : 31,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_8",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_8",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
@@ -585,7 +573,7 @@
   }, {
     "id" : 32,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_9",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_9",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
@@ -606,7 +594,7 @@
   }, {
     "id" : 33,
     "sdblId" : 6,
-    "name" : "Подзапрос_UNION_10",
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_10",
     "type" : "union_query",
     "alias" : "ПенсионныйСчет",
     "query" : {
