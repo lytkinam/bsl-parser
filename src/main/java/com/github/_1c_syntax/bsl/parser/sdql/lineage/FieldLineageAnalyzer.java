@@ -16,12 +16,16 @@ public class FieldLineageAnalyzer {
   private static final ObjectMapper MAPPER = new ObjectMapper();
 
   public void analyze(QueryModel model, Path outputDir) throws IOException {
-    Path lineageDir = outputDir.resolve("lineage");
+    analyze(model, outputDir, "default");
+  }
+
+  public void analyze(QueryModel model, Path outputDir, String baseName) throws IOException {
+    Path lineageDir = outputDir.resolve("lineage_" + baseName);
     Files.createDirectories(lineageDir);
 
     // Find all fields named "ВидОбязательств" or similar
     Map<String, List<FieldRecord>> fieldsNode = MAPPER.readValue(
-      outputDir.resolve("fields_node/fields_node.json").toFile(),
+      outputDir.resolve("fields_node_" + baseName + "/fields_node.json").toFile(),
       MAPPER.getTypeFactory().constructMapType(Map.class, String.class, List.class)
     );
 

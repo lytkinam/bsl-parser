@@ -311,26 +311,26 @@ tasks.register<JavaExec>("runSdql") {
     group = "application"
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set("com.github._1c_syntax.bsl.parser.sdql.SdqlCli")
-    args = listOf("examples/example.sql", "examples/java_output_example")
+    args = listOf("examples/example.sql", "examples/SDBL_PARS")
 }
 
 tasks.register<JavaExec>("runSdql258") {
     group = "application"
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set("com.github._1c_syntax.bsl.parser.sdql.SdqlCli")
-    args = listOf("examples/example_258.sql", "examples/java_output_258")
+    args = listOf("examples/example_258.sql", "examples/SDBL_PARS")
 }
 
 tasks.register<JavaExec>("runSdqlMiddle") {
     group = "application"
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set("com.github._1c_syntax.bsl.parser.sdql.SdqlCli")
-    args = listOf("examples/middle_example.sql", "examples/java_output_middle")
+    args = listOf("examples/middle_example.sql", "examples/SDBL_PARS")
 }
 
 tasks.register<JavaExec>("runSdqlUnion") {
     group = "application"
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set("com.github._1c_syntax.bsl.parser.sdql.SdqlCli")
-    args = listOf("examples/sdql/union_subquery_example.sql", "examples/java_output_union")
+    args = listOf("examples/sdbl/union_subquery_example.sql", "examples/SDBL_PARS")
 }

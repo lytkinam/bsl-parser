@@ -27,6 +27,10 @@ public class FieldsNodeBuilder {
   );
 
   public void build(QueryModel model, Path outputDir) throws IOException {
+    build(model, outputDir, "default");
+  }
+
+  public void build(QueryModel model, Path outputDir, String baseName) throws IOException {
     Map<String, List<FieldRecord>> fieldsNode = new LinkedHashMap<>();
     Map<String, List<TableAlias>> tableAliasMap = new LinkedHashMap<>();
 
@@ -107,7 +111,7 @@ public class FieldsNodeBuilder {
       fieldsNode.put(nid, records);
     }
 
-    Path fnDir = outputDir.resolve("fields_node");
+    Path fnDir = outputDir.resolve("fields_node_" + baseName);
     Files.createDirectories(fnDir);
     MAPPER.writerWithDefaultPrettyPrinter().writeValue(fnDir.resolve("fields_node.json").toFile(), fieldsNode);
     MAPPER.writerWithDefaultPrettyPrinter().writeValue(fnDir.resolve("table_alias_map.json").toFile(), tableAliasMap);

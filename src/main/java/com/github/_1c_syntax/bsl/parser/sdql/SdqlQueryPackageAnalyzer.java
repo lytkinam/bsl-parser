@@ -22,13 +22,17 @@ public class SdqlQueryPackageAnalyzer {
     public List<QueryNode> getFullNodes() { return fullNodes; }
 
     public void analyze(File sqlFile, File outputDir) throws Exception {
+        analyze(sqlFile, outputDir, baseName(sqlFile));
+    }
+
+    public void analyze(File sqlFile, File outputDir, String baseName) throws Exception {
         String content = Files.readString(sqlFile.toPath());
 
         // 1. PRIMARY PASS: split by ; → nodes.json (full text, comments, whitespace)
         fullNodes = NodeSplitter.split(content);
         computeHashes(fullNodes);
         outputDir.mkdirs();
-        NodesJsonMapper.write(fullNodes, new File(outputDir, "nodes.json"));
+        NodesJsonMapper.write(fullNodes, new File(outputDir, "sdbl_parse_nodes_" + baseName + ".json"));
 
         // 2. SECONDARY PASS: parse entire file via ANTLR → AST per node
         SDBLTokenizer tokenizer = new SDBLTokenizer(content);
@@ -62,7 +66,13 @@ public class SdqlQueryPackageAnalyzer {
         model.setEdges(edges);
         model.setSourceHash(sha256(content));
         model.setSourceLength(content.length());
-        ModelJsonMapper.write(model, Path.of(outputDir.getAbsolutePath(), "model.json"));
+        ModelJsonMapper.write(model, Path.of(outputDir.getAbsolutePath(), "sdbl_parser_model_" + baseName + ".json"));
+    }
+
+    private static String baseName(File file) {
+        String name = file.getName();
+        int dot = name.lastIndexOf('.');
+        return dot > 0 ? name.substring(0, dot) : name;
     }
 
     private void computeHashes(List<QueryNode> nodes) throws Exception {

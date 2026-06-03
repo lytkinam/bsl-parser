@@ -17,7 +17,11 @@ public class QueryTextExporter {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     public void export(List<QueryNode> nodes, Path outputDir) throws IOException {
-        Path textsDir = outputDir.resolve("query_texts");
+        export(nodes, outputDir, "default");
+    }
+
+    public void export(List<QueryNode> nodes, Path outputDir, String baseName) throws IOException {
+        Path textsDir = outputDir.resolve("query_texts_" + baseName);
         Files.createDirectories(textsDir);
 
         ArrayNode index = MAPPER.createArrayNode();
@@ -44,8 +48,8 @@ public class QueryTextExporter {
             entry.put("id", node.getId());
             entry.put("type", node.getType());
             entry.put("name", node.getName());
-            entry.put("sql_file", "query_texts/" + sqlName);
-            entry.put("md_file", "query_texts/" + mdName);
+            entry.put("sql_file", "query_texts_" + baseName + "/" + sqlName);
+            entry.put("md_file", "query_texts_" + baseName + "/" + mdName);
             entry.put("hash", node.getTextHash());
             entry.put("length", node.getTextLength());
             index.add(entry);

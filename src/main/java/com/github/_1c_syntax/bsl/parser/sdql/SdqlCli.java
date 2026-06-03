@@ -18,22 +18,30 @@ public class SdqlCli {
         File outputDir = new File(args[1]);
         outputDir.mkdirs();
 
+        String baseName = baseName(input);
+
         // 1. Primary analysis: nodes.json (full text) + model.json (stripped text)
         SdqlQueryPackageAnalyzer analyzer = new SdqlQueryPackageAnalyzer();
-        analyzer.analyze(input, outputDir);
+        analyzer.analyze(input, outputDir, baseName);
 
         // 2. Export query texts from primary nodes.json
         QueryTextExporter textExporter = new QueryTextExporter();
-        textExporter.export(analyzer.getFullNodes(), outputDir.toPath());
+        textExporter.export(analyzer.getFullNodes(), outputDir.toPath(), baseName);
 
         // 3. Build fields node from model.json
         FieldsNodeBuilder fieldsBuilder = new FieldsNodeBuilder();
-        fieldsBuilder.build(analyzer.getModel(), outputDir.toPath());
+        fieldsBuilder.build(analyzer.getModel(), outputDir.toPath(), baseName);
 
         // 4. Lineage analysis from model.json
         FieldLineageAnalyzer lineageAnalyzer = new FieldLineageAnalyzer();
-        lineageAnalyzer.analyze(analyzer.getModel(), outputDir.toPath());
+        lineageAnalyzer.analyze(analyzer.getModel(), outputDir.toPath(), baseName);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
+    }
+
+    private static String baseName(File file) {
+        String name = file.getName();
+        int dot = name.lastIndexOf('.');
+        return dot > 0 ? name.substring(0, dot) : name;
     }
 }
