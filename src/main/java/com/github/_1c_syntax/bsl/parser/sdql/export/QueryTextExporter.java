@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class QueryTextExporter {
@@ -20,7 +21,7 @@ public class QueryTextExporter {
         Files.createDirectories(textsDir);
 
         ArrayNode index = MAPPER.createArrayNode();
-        StringBuilder normalized = new StringBuilder();
+        List<String> normalizedEntries = new ArrayList<>();
 
         for (QueryNode node : nodes) {
             String text = node.getText();
@@ -28,7 +29,7 @@ public class QueryTextExporter {
                 continue;
             }
 
-            // Write .sql
+            // Write .sql (no trailing semicolon)
             String sqlName = String.format("node_%d.sql", node.getId());
             Files.writeString(textsDir.resolve(sqlName), text, StandardCharsets.UTF_8);
 
@@ -48,13 +49,22 @@ public class QueryTextExporter {
             entry.put("length", node.getTextLength());
             index.add(entry);
 
-            // normalized_queries.sql
-            normalized.append("-- Node ").append(node.getId()).append(" ").append(node.getName()).append("\n");
-            normalized.append(text).append("\n\n");
+            // Collect for normalized_queries.sql (with semicolon added later)
+            normalizedEntries.add("-- Node " + node.getId() + " " + node.getName() + "\n" + text);
         }
 
         MAPPER.writerWithDefaultPrettyPrinter().writeValue(
             textsDir.resolve("texts_index.json").toFile(), index);
+
+        // Build normalized_queries.sql: add ; to all except the last
+        StringBuilder normalized = new StringBuilder();
+        for (int i = 0; i < normalizedEntries.size(); i++) {
+            normalized.append(normalizedEntries.get(i));
+            if (i < normalizedEntries.size() - 1) {
+                normalized.append(";");
+            }
+            normalized.append("\n\n");
+        }
         Files.writeString(textsDir.resolve("normalized_queries.sql"), normalized.toString(), StandardCharsets.UTF_8);
     }
 }
