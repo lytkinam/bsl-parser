@@ -47,7 +47,7 @@ public class FieldsNodeBuilder {
       if (ast.getSelect() != null) {
         for (SelectField sf : ast.getSelect()) {
           FieldRecord rec = new FieldRecord();
-          rec.setAlias(sf.getAlias() != null ? sf.getAlias() : sf.getText());
+          rec.setAlias(sf.getAlias() != null ? sf.getAlias() : sanitizeAlias(sf.getText()));
           rec.setExpressionRaw(sf.getText());
           rec.setExprType(classifyExpr(sf.getText()));
           rec.setFieldRefs(extractFieldRefs(sf.getText(), aliases));
@@ -190,4 +190,12 @@ public class FieldsNodeBuilder {
     }
     return result;
   }
+
+
+
+  private String sanitizeAlias(String text) {
+    if (text == null) return "";
+    return text.replaceAll("[^\\p{L}\\p{N}]", "");
+  }
+
 }
