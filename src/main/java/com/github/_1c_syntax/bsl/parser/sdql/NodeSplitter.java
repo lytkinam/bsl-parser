@@ -25,7 +25,7 @@ public class NodeSplitter {
             String trimmed = line.trim();
             // Разделитель: строка заканчивается на ; и это не комментарий
             if (!trimmed.isEmpty() && trimmed.endsWith(";") && !trimmed.startsWith("//")) {
-                String text = buffer.toString().trim();
+                String text = trimSemicolon(buffer.toString().trim());
                 if (!text.isEmpty()) {
                     nodes.add(createNode(id++, text));
                 }
@@ -33,15 +33,21 @@ public class NodeSplitter {
             }
         }
 
-        // Остаток без закрывающей ; (например, последний запрос без ;)
+        // Остаток без закрывающей ;
         if (buffer.length() > 0) {
-            String text = buffer.toString().trim();
+            String text = trimSemicolon(buffer.toString().trim());
             if (!text.isEmpty()) {
                 nodes.add(createNode(id++, text));
             }
         }
 
         return nodes;
+    }
+
+    private static String trimSemicolon(String text) {
+        if (text == null || text.isEmpty()) return text;
+        // Удаляем trailing ; с возможными пробелами/переводами строк
+        return text.replaceAll(";\\s*$", "").trim();
     }
 
     private static QueryNode createNode(int id, String text) {
