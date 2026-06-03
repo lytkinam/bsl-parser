@@ -22,14 +22,29 @@
       "type" : "select",
       "into" : "ВТ_ТипыРезервов",
       "select" : [ {
+        "fieldType" : "union_field",
+        "text" : "ТипРезерва",
+        "alias" : "ТипРезерва"
+      } ]
+    },
+    "unionNodesIds" : [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+  }, {
+    "id" : 2,
+    "sdblId" : 1,
+    "name" : "ВТ_ТипыРезервов_UNION_0",
+    "type" : "union_query",
+    "query" : {
+      "type" : "select",
+      "select" : [ {
         "fieldType" : "expression",
         "text" : "ЗНАЧЕНИЕ(Перечисление.уп_ТипыРезерва.ИПС)",
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionNodesIds" : [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+    "unionGroupId" : 1,
+    "unionType" : "union_all"
   }, {
-    "id" : 2,
+    "id" : 3,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_1",
     "type" : "union_query",
@@ -41,10 +56,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 3,
+    "id" : 4,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_2",
     "type" : "union_query",
@@ -56,10 +71,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 4,
+    "id" : 5,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_3",
     "type" : "union_query",
@@ -71,10 +86,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 5,
+    "id" : 6,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_4",
     "type" : "union_query",
@@ -86,10 +101,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 6,
+    "id" : 7,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_5",
     "type" : "union_query",
@@ -101,10 +116,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 7,
+    "id" : 8,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_6",
     "type" : "union_query",
@@ -116,10 +131,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 8,
+    "id" : 9,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_7",
     "type" : "union_query",
@@ -131,10 +146,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 9,
+    "id" : 10,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_8",
     "type" : "union_query",
@@ -146,10 +161,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 10,
+    "id" : 11,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_9",
     "type" : "union_query",
@@ -161,10 +176,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 11,
+    "id" : 12,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_10",
     "type" : "union_query",
@@ -176,10 +191,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 12,
+    "id" : 13,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_11",
     "type" : "union_query",
@@ -191,10 +206,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 13,
+    "id" : 14,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_12",
     "type" : "union_query",
@@ -206,10 +221,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 14,
+    "id" : 15,
     "sdblId" : 1,
     "name" : "ВТ_ТипыРезервов_UNION_13",
     "type" : "union_query",
@@ -221,10 +236,10 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 1,
+    "unionGroupId" : 1,
     "unionType" : "union_all"
   }, {
-    "id" : 15,
+    "id" : 16,
     "sdblId" : 2,
     "name" : "ВТ_ВидыПаспортов",
     "type" : "temp_query",
@@ -244,13 +259,27 @@
       "where" : "ВидыДокументовФизическихЛиц.ИмяПредопределенныхДанных <> \"\""
     }
   }, {
-    "id" : 16,
+    "id" : 17,
     "sdblId" : 3,
     "name" : "ВТ_ДокументыСторно",
     "type" : "temp_query",
     "query" : {
       "type" : "select",
       "into" : "ВТ_ДокументыСторно",
+      "select" : [ {
+        "fieldType" : "union_field",
+        "text" : "ДокументСторно",
+        "alias" : "ДокументСторно"
+      } ]
+    },
+    "unionNodesIds" : [ 18, 19, 20, 21 ]
+  }, {
+    "id" : 18,
+    "sdblId" : 3,
+    "name" : "ВТ_ДокументыСторно_UNION_0",
+    "type" : "union_query",
+    "query" : {
+      "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
         "text" : "уп_ОперацияНПО.Ссылка",
@@ -263,9 +292,10 @@
       } ],
       "where" : "уп_ОперацияНПО.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ уп_ОперацияНПО.СпособЗаполнения = \"Сторно\"\r\n\tИ уп_ОперацияНПО.Организация В(&Организация)"
     },
-    "unionNodesIds" : [ 17, 18, 19 ]
+    "unionGroupId" : 17,
+    "unionType" : "union_all"
   }, {
-    "id" : 17,
+    "id" : 19,
     "sdblId" : 3,
     "name" : "ВТ_ДокументыСторно_UNION_1",
     "type" : "union_query",
@@ -283,10 +313,10 @@
       } ],
       "where" : "уп_ВозвратПенсий.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ уп_ВозвратПенсий.Организация В(&Организация)"
     },
-    "unionFirst" : 16,
+    "unionGroupId" : 17,
     "unionType" : "union_all"
   }, {
-    "id" : 18,
+    "id" : 20,
     "sdblId" : 3,
     "name" : "ВТ_ДокументыСторно_UNION_2",
     "type" : "union_query",
@@ -304,10 +334,10 @@
       } ],
       "where" : "уп_ВозвратПрочихНачисленийНПО.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ уп_ВозвратПрочихНачисленийНПО.Организация В(&Организация)"
     },
-    "unionFirst" : 16,
+    "unionGroupId" : 17,
     "unionType" : "union_all"
   }, {
-    "id" : 19,
+    "id" : 21,
     "sdblId" : 3,
     "name" : "ВТ_ДокументыСторно_UNION_3",
     "type" : "union_query",
@@ -325,10 +355,10 @@
       } ],
       "where" : "ДанныеДокумента.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ ДанныеДокумента.Организация В(&Организация)"
     },
-    "unionFirst" : 16,
+    "unionGroupId" : 17,
     "unionType" : "union_all"
   }, {
-    "id" : 20,
+    "id" : 22,
     "sdblId" : 4,
     "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
     "type" : "temp_query",
@@ -348,7 +378,7 @@
       "where" : "ВидыДвижений.Ссылка В (ЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыС_СПС_На_ИПС),\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыС_ИПС_На_СПС),\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыС_ИПС_На_ИПС),\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыС_СПС_в_РПАР),\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыС_ИПС_в_РПАР))"
     }
   }, {
-    "id" : 21,
+    "id" : 23,
     "sdblId" : 5,
     "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
     "type" : "temp_query",
@@ -368,7 +398,7 @@
       "where" : "ВидыДвижений.Ссылка В (ЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыС_ИПС_В_Страховой),\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыС_СПС_В_Страховой),\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыС_ИПС_В_РПВ),\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыИз_Страхового_На_ИПС),\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыИз_Страхового_На_СПС),\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ПереводыИз_Страхового_В_РПВ),\r\n//+ЮП 22.07.2025\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\tЗНАЧЕНИЕ(Перечисление.епс_ВидыДвиженияПенсионныхРезервов.ИныеПереводыМеждуСчетами)\r\n//-ЮП 22.07.2025\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t)"
     }
   }, {
-    "id" : 22,
+    "id" : 24,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР",
     "type" : "temp_query",
@@ -388,12 +418,27 @@
       "where" : "ИСТИНА \r\n\tИ Подзапрос.ПенсионныйСчет.Владелец.ДатаЗаключения МЕЖДУ &ДАТАЗАКЛЮЧЕНИЯНАЧАЛО И &ДАТАЗАКЛЮЧЕНИЯКОНЕЦ",
       "indexBy" : [ "Подзапрос.ПенсионныйСчет" ]
     },
-    "subqueryIds" : [ 23 ]
+    "subqueryIds" : [ 25 ]
   }, {
-    "id" : 23,
+    "id" : 25,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1",
     "type" : "sub_query",
+    "query" : {
+      "type" : "select",
+      "select" : [ {
+        "fieldType" : "union_field",
+        "text" : "ПенсионныйСчет",
+        "alias" : "ПенсионныйСчет"
+      } ]
+    },
+    "upqueryId" : 24,
+    "unionNodesIds" : [ 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36 ]
+  }, {
+    "id" : 26,
+    "sdblId" : 6,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_0",
+    "type" : "union_query",
     "query" : {
       "type" : "select",
       "select" : [ {
@@ -407,10 +452,10 @@
         "joins" : [ ]
       } ]
     },
-    "upqueryId" : 22,
-    "unionNodesIds" : [ 24, 25, 26, 27, 28, 29, 30, 31, 32, 33 ]
+    "unionGroupId" : 25,
+    "unionType" : "union_all"
   }, {
-    "id" : 24,
+    "id" : 27,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_1",
     "type" : "union_query",
@@ -427,10 +472,10 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   }, {
-    "id" : 25,
+    "id" : 28,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_2",
     "type" : "union_query",
@@ -447,10 +492,10 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   }, {
-    "id" : 26,
+    "id" : 29,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_3",
     "type" : "union_query",
@@ -467,10 +512,10 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   }, {
-    "id" : 27,
+    "id" : 30,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_4",
     "type" : "union_query",
@@ -487,10 +532,10 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   }, {
-    "id" : 28,
+    "id" : 31,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_5",
     "type" : "union_query",
@@ -507,10 +552,10 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   }, {
-    "id" : 29,
+    "id" : 32,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_6",
     "type" : "union_query",
@@ -527,10 +572,10 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   }, {
-    "id" : 30,
+    "id" : 33,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_7",
     "type" : "union_query",
@@ -548,10 +593,10 @@
       } ],
       "limitations" : "РАЗЛИЧНЫЕ"
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   }, {
-    "id" : 31,
+    "id" : 34,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_8",
     "type" : "union_query",
@@ -569,10 +614,10 @@
       } ],
       "where" : "уп_СостоянияДоговораСрезПоследних.Состояние В (ЗНАЧЕНИЕ(Перечисление.уп_СостоянияДоговора.Действует))"
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   }, {
-    "id" : 32,
+    "id" : 35,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_9",
     "type" : "union_query",
@@ -590,10 +635,10 @@
       } ],
       "where" : "СостоянияПС.Состояние В (ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.НакопительныйПериод), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ВыплатнойПериод), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.НачисленияПриостановлены), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ВыплатыПриостановлены), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ПодготовкаКЗакрытию))"
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   }, {
-    "id" : 33,
+    "id" : 36,
     "sdblId" : 6,
     "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_10",
     "type" : "union_query",
@@ -611,7 +656,7 @@
       } ],
       "where" : "уп_СостоянияПС.Период МЕЖДУ &НачалоПериода И &КонецПериода\r\n\t\tИ уп_СостоянияПС.НомерСчета.Владелец.Организация В(&Организация)\r\n\t\tИ уп_СостоянияПС.Состояние <> ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ОжиданиеВзносов)"
     },
-    "unionFirst" : 23,
+    "unionGroupId" : 25,
     "unionType" : "union"
   } ],
   "edges" : [ ],

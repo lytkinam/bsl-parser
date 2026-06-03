@@ -14,11 +14,10 @@ public class LineParsNode {
   private int sdblId;
   private String name;
   private String type;
-  private String alias;
   private QueryAst query;
   private Integer upqueryId;
   private List<Integer> subqueryIds = new ArrayList<>();
   private List<Integer> unionNodesIds = new ArrayList<>();
-  private Integer unionFirst;
+  private Integer unionGroupId;
   private String unionType;
 }

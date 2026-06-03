@@ -67,17 +67,41 @@ public class LineParsModelBuilder {
   }
 
   private void processAst(LineParsNode parent, QueryAst ast) {
-    // Process subqueries in FROM
-    if (ast.getFrom() != null) {
-      for (DataSource ds : ast.getFrom()) {
-        processDataSource(parent, ds);
-      }
-    }
-
-    // Process unions
+    // Process unions FIRST (before subqueries modify the AST)
     if (ast.getUnions() != null && !ast.getUnions().isEmpty()) {
+      QueryAst originalQuery = parent.getQuery();
+      List<SelectField> originalSelect = originalQuery.getSelect();
+
+      // Create UNION_0 from original query (copy before subquery modification)
+      QueryAst union0Query = copyQueryAst(originalQuery);
+      union0Query.setInto(null);
+      union0Query.setUnions(null);
+      // Ensure select aliases are preserved
+      if (originalSelect != null && union0Query.getSelect() != null) {
+        List<SelectField> union0Select = union0Query.getSelect();
+        for (int i = 0; i < Math.min(originalSelect.size(), union0Select.size()); i++) {
+          union0Select.get(i).setFieldType("expression");
+          if (originalSelect.get(i).getAlias() != null) {
+            union0Select.get(i).setAlias(originalSelect.get(i).getAlias());
+          }
+        }
+      }
+
+      LineParsNode union0 = new LineParsNode();
+      union0.setId(idCounter++);
+      union0.setSdblId(parent.getSdblId());
+      union0.setName(parent.getName() + "_UNION_0");
+      union0.setType("union_query");
+      union0.setUnionType("union_all");
+      union0.setQuery(union0Query);
+      union0.setUnionGroupId(parent.getId());
+      nodes.add(union0);
+      parent.getUnionNodesIds().add(union0.getId());
+
+      processAst(union0, union0Query);
+
+      // Process UnionPart as UNION_1, UNION_2, ...
       int partCount = 0;
-      List<LineParsNode> unionNodes = new ArrayList<>();
       for (UnionPart up : ast.getUnions()) {
         partCount++;
         LineParsNode part = new LineParsNode();
@@ -87,36 +111,57 @@ public class LineParsModelBuilder {
         part.setType("union_query");
         part.setUnionType(up.getUnionType());
         part.setQuery(up.getQuery());
+        part.setUnionGroupId(parent.getId());
 
-        // Copy aliases from parent's select fields into union part's select fields
-        if (parent.getQuery() != null && parent.getQuery().getSelect() != null
-            && up.getQuery() != null && up.getQuery().getSelect() != null) {
-          List<SelectField> parentSelect = parent.getQuery().getSelect();
+        // Copy aliases from original select into union part's select
+        if (originalSelect != null && up.getQuery() != null && up.getQuery().getSelect() != null) {
           List<SelectField> partSelect = up.getQuery().getSelect();
-          for (int i = 0; i < Math.min(parentSelect.size(), partSelect.size()); i++) {
-            if (parentSelect.get(i).getAlias() != null) {
-              partSelect.get(i).setAlias(parentSelect.get(i).getAlias());
+          for (int i = 0; i < Math.min(originalSelect.size(), partSelect.size()); i++) {
+            if (originalSelect.get(i).getAlias() != null) {
+              partSelect.get(i).setAlias(originalSelect.get(i).getAlias());
             }
           }
         }
 
         nodes.add(part);
         parent.getUnionNodesIds().add(part.getId());
-        unionNodes.add(part);
 
         if (up.getQuery() != null) {
           processAst(part, up.getQuery());
         }
       }
-      // Set unionFirst on ALL union nodes (including first) pointing to first union node
-      if (!unionNodes.isEmpty()) {
-        int parentId = parent.getId();
-        for (LineParsNode part : unionNodes) {
-          part.setUnionFirst(parentId);
+
+      // Replace parent query with virtual union fields (generate from scratch)
+      QueryAst virtualQuery = new QueryAst();
+      virtualQuery.setType(originalQuery.getType());
+      virtualQuery.setInto(originalQuery.getInto());
+      List<SelectField> virtualSelect = new ArrayList<>();
+      if (originalSelect != null) {
+        for (SelectField sf : originalSelect) {
+          SelectField vf = new SelectField();
+          vf.setFieldType("union_field");
+          vf.setText(sf.getAlias() != null ? sf.getAlias() : sf.getText());
+          vf.setAlias(sf.getAlias());
+          virtualSelect.add(vf);
         }
       }
-      // Remove unions from parent query — they are now separate nodes
-      ast.setUnions(null);
+      virtualQuery.setSelect(virtualSelect);
+      parent.setQuery(virtualQuery);
+    }
+
+    // Process subqueries in FROM
+    if (ast.getFrom() != null) {
+      for (DataSource ds : ast.getFrom()) {
+        processDataSource(parent, ds);
+      }
+    }
+  }
+
+  private QueryAst copyQueryAst(QueryAst source) {
+    try {
+      return MAPPER.readValue(MAPPER.writeValueAsString(source), QueryAst.class);
+    } catch (Exception e) {
+      throw new RuntimeException("Failed to copy QueryAst", e);
     }
   }
 
