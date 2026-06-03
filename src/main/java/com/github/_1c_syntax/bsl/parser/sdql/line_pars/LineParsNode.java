@@ -1,7 +1,9 @@
 package com.github._1c_syntax.bsl.parser.sdql.line_pars;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.github._1c_syntax.bsl.parser.sdql.model.QueryAst;
+import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
+import com.github._1c_syntax.bsl.parser.sdql.model.SelectField;
+import com.github._1c_syntax.bsl.parser.sdql.model.TotalBy;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -14,7 +16,20 @@ public class LineParsNode {
   private int sdblId;
   private String name;
   private String type;
-  private QueryAst query;
+  private String into;
+  private List<SelectField> select;
+  private List<DataSource> from;
+  private String where;
+  private List<String> groupBy;
+  private List<List<String>> groupByGroupingSets;
+  private String having;
+  private String forUpdate;
+  private List<String> indexBy;
+  private List<String> indexBySets;
+  private String limitations;
+  private Boolean autoorder;
+  private List<String> orderBy;
+  private TotalBy totals;
   private Integer upqueryId;
   private List<Integer> subqueryIds = new ArrayList<>();
   private List<Integer> unionNodesIds = new ArrayList<>();
