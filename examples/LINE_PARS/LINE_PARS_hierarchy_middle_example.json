@@ -1,0 +1,389 @@
+[ {
+  "id" : 0,
+  "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
+  "type" : "temp_query"
+}, {
+  "id" : 1,
+  "name" : "ВТ_ТипыРезервов",
+  "type" : "temp_query",
+  "table_hierarchy" : [ {
+    "id" : 2,
+    "name" : "ВТ_ТипыРезервов_UNION_0",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 3,
+    "name" : "ВТ_ТипыРезервов_UNION_1",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 4,
+    "name" : "ВТ_ТипыРезервов_UNION_2",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 5,
+    "name" : "ВТ_ТипыРезервов_UNION_3",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 6,
+    "name" : "ВТ_ТипыРезервов_UNION_4",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 7,
+    "name" : "ВТ_ТипыРезервов_UNION_5",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 8,
+    "name" : "ВТ_ТипыРезервов_UNION_6",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 9,
+    "name" : "ВТ_ТипыРезервов_UNION_7",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 10,
+    "name" : "ВТ_ТипыРезервов_UNION_8",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 11,
+    "name" : "ВТ_ТипыРезервов_UNION_9",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 12,
+    "name" : "ВТ_ТипыРезервов_UNION_10",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 13,
+    "name" : "ВТ_ТипыРезервов_UNION_11",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 14,
+    "name" : "ВТ_ТипыРезервов_UNION_12",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 15,
+    "name" : "ВТ_ТипыРезервов_UNION_13",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 16,
+  "name" : "ВТ_ВидыПаспортов",
+  "type" : "temp_query"
+}, {
+  "id" : 17,
+  "name" : "ВТ_ДокументыСторно",
+  "type" : "temp_query",
+  "table_hierarchy" : [ {
+    "id" : 18,
+    "name" : "ВТ_ДокументыСторно_UNION_0",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 19,
+    "name" : "ВТ_ДокументыСторно_UNION_1",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 20,
+    "name" : "ВТ_ДокументыСторно_UNION_2",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 21,
+    "name" : "ВТ_ДокументыСторно_UNION_3",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 22,
+  "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
+  "type" : "temp_query"
+}, {
+  "id" : 23,
+  "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
+  "type" : "temp_query"
+}, {
+  "id" : 24,
+  "name" : "ВТ_ПенсионныеСчета_ПР",
+  "type" : "temp_query",
+  "table_hierarchy" : [ {
+    "id" : 25,
+    "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1",
+    "type" : "sub_query",
+    "type_hierarchy" : "subquery",
+    "table_hierarchy" : [ {
+      "id" : 26,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_0",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 27,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_1",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 28,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_2",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 29,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_3",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 30,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_4",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 31,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_5",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 32,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_6",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 33,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_7",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 34,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_8",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 35,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_9",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 36,
+      "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_10",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    } ]
+  } ]
+}, {
+  "id" : 37,
+  "name" : "ВТ_ПенсионныеСчета",
+  "type" : "temp_query",
+  "table_hierarchy" : [ {
+    "id" : 38,
+    "name" : "ВТ_ПенсионныеСчета_UNION_0",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 39,
+    "name" : "ВТ_ПенсионныеСчета_UNION_1",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 40,
+  "name" : "ВТ_ПричиныЗакрытия",
+  "type" : "temp_query"
+}, {
+  "id" : 41,
+  "name" : "ВТ_ВидыПенсионныхСчетов",
+  "type" : "temp_query"
+}, {
+  "id" : 42,
+  "name" : "ВТ_ПенсионныеСчетаРПВ",
+  "type" : "temp_query"
+}, {
+  "id" : 43,
+  "name" : "ВТ_ТипыПенсийНачалоПериода",
+  "type" : "temp_query"
+}, {
+  "id" : 44,
+  "name" : "ВТ_ВыплатныеНачалоПериода",
+  "type" : "temp_query"
+}, {
+  "id" : 45,
+  "name" : "ВТ_СостояниеНачалоПериода",
+  "type" : "temp_query"
+}, {
+  "id" : 46,
+  "name" : "ВТ_ВидОбязательствНачало",
+  "type" : "temp_query"
+}, {
+  "id" : 47,
+  "name" : "ВТ_ИзмененияВидаОбязательств_Предв",
+  "type" : "temp_query",
+  "table_hierarchy" : [ {
+    "id" : 48,
+    "name" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_1",
+    "type" : "sub_query",
+    "type_hierarchy" : "subquery"
+  }, {
+    "id" : 49,
+    "name" : "ВТ_ИзмененияВидаОбязательств_Предв_SUB_2",
+    "type" : "sub_query",
+    "type_hierarchy" : "subquery"
+  } ]
+}, {
+  "id" : 50,
+  "name" : "ВТ_ИзмененияВидаОбязательств",
+  "type" : "temp_query"
+}, {
+  "id" : 51,
+  "name" : "ВТ_ВидыОбязательств",
+  "type" : "temp_query",
+  "table_hierarchy" : [ {
+    "id" : 52,
+    "name" : "ВТ_ВидыОбязательств_UNION_0",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 53,
+    "name" : "ВТ_ВидыОбязательств_UNION_1",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 54,
+  "name" : "ВТ_ВидыОбязательствДвижение",
+  "type" : "temp_query"
+}, {
+  "id" : 55,
+  "name" : "ВТ_СчетаТранзитныеВидыОбязательств",
+  "type" : "temp_query"
+}, {
+  "id" : 56,
+  "name" : "ВТ_СчетаНеТранзитныеВидыОбязательств",
+  "type" : "temp_query"
+}, {
+  "id" : 57,
+  "name" : "ВТ_НеТранзитныеВидыНачалоКонец",
+  "type" : "temp_query"
+}, {
+  "id" : 58,
+  "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+  "type" : "temp_query"
+}, {
+  "id" : 59,
+  "name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
+  "type" : "temp_query",
+  "table_hierarchy" : [ {
+    "id" : 60,
+    "name" : "ВТ_СторнированныеСуммыТранзитныеВиды_UNION_0",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 61,
+    "name" : "ВТ_СторнированныеСуммыТранзитныеВиды_UNION_1",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  } ]
+}, {
+  "id" : 62,
+  "name" : "ВТ_ОстаткиТранзитныеВиды",
+  "type" : "temp_query",
+  "table_hierarchy" : [ {
+    "id" : 63,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0",
+    "type" : "union_query",
+    "type_hierarchy" : "union",
+    "table_hierarchy" : [ {
+      "id" : 64,
+      "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1",
+      "type" : "sub_query",
+      "type_hierarchy" : "subquery",
+      "table_hierarchy" : [ {
+        "id" : 65,
+        "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_0",
+        "type" : "union_query",
+        "type_hierarchy" : "union"
+      }, {
+        "id" : 66,
+        "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_1",
+        "type" : "union_query",
+        "type_hierarchy" : "union"
+      } ]
+    } ]
+  }, {
+    "id" : 67,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_1",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 68,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_2",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 69,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_3",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 70,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_4",
+    "type" : "union_query",
+    "type_hierarchy" : "union"
+  }, {
+    "id" : 71,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1",
+    "type" : "sub_query",
+    "type_hierarchy" : "subquery",
+    "table_hierarchy" : [ {
+      "id" : 72,
+      "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_0",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 73,
+      "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_1",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    } ]
+  } ]
+}, {
+  "id" : 74,
+  "name" : "ВТ_Суммы_ПР_ТранзитныеВиды",
+  "type" : "temp_query",
+  "table_hierarchy" : [ {
+    "id" : 75,
+    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1",
+    "type" : "sub_query",
+    "type_hierarchy" : "subquery",
+    "table_hierarchy" : [ {
+      "id" : 76,
+      "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_0",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 77,
+      "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_1",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 78,
+      "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_2",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    }, {
+      "id" : 79,
+      "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_3",
+      "type" : "union_query",
+      "type_hierarchy" : "union"
+    } ]
+  } ]
+} ]
