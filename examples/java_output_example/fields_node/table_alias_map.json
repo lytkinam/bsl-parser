@@ -1,26 +1,26 @@
 {
   "0" : [ {
     "alias" : "Сотрудники",
-    "primaryTable" : "Справочник.Сотрудники",
+    "primary_table" : "Справочник.Сотрудники",
     "virtual" : false,
-    "joinType" : "ИЗ"
+    "join_type" : "ИЗ"
   } ],
   "1" : [ {
     "alias" : "ВТ_Сотрудники",
-    "primaryTable" : "ВТ_Сотрудники",
+    "primary_table" : "ВТ_Сотрудники",
     "virtual" : true,
-    "joinType" : "ИЗ"
+    "join_type" : "ИЗ"
   }, {
     "alias" : "НачисленияДвижения",
-    "primaryTable" : "РегистрНакопления.Начисления",
+    "primary_table" : "РегистрНакопления.Начисления",
     "virtual" : false,
-    "joinType" : "ЛЕВОЕ_СОЕДИНЕНИЕ"
+    "join_type" : "ЛЕВОЕ_СОЕДИНЕНИЕ"
   } ],
   "2" : [ {
     "alias" : "ВТ_Начисления",
-    "primaryTable" : "ВТ_Начисления",
+    "primary_table" : "ВТ_Начисления",
     "virtual" : true,
-    "joinType" : "ИЗ"
+    "join_type" : "ИЗ"
   } ],
   "3" : [ ],
   "4" : [ ]

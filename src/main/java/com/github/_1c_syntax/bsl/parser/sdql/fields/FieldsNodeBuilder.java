@@ -18,8 +18,8 @@ import java.util.regex.Pattern;
 
 public class FieldsNodeBuilder {
 
-  private static final ObjectMapper MAPPER = new ObjectMapper();
-  private static final Pattern FIELD_REF_PATTERN = Pattern.compile("([\\w]+)\\.([\\w.]+)");
+  private static final ObjectMapper MAPPER = new ObjectMapper().setPropertyNamingStrategy(com.fasterxml.jackson.databind.PropertyNamingStrategies.SNAKE_CASE);
+  private static final Pattern FIELD_REF_PATTERN = Pattern.compile("(?U)([\\w]+)\\.([\\w.]+)");
   private static final Set<String> KEYWORDS = Set.of(
     "NULL", "ИСТИНА", "ЛОЖЬ", "TRUE", "FALSE", "ЗНАЧЕНИЕ", "ДОБАВИТЬКДАТЕ",
     "НАЧАЛОПЕРИОДА", "КОНЕЦПЕРИОДА", "СУММА", "МИНИМУМ", "МАКСИМУМ", "СРЕДНЕЕ", "КОЛИЧЕСТВО"
