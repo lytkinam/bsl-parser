@@ -85,7 +85,7 @@
     "field_refs" : [ ]
   }, {
     "node_id" : 26,
-    "node_name" : "ВТ_ВыплатыПРТранзитныеВиды",
+    "node_name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
     "field_alias" : "ВидОбязательств",
     "expression" : null,
     "expr_type" : null,

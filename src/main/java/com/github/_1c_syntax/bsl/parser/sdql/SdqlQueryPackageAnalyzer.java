@@ -23,70 +23,64 @@ public class SdqlQueryPackageAnalyzer {
 
     public void analyze(File sqlFile, File outputDir) throws Exception {
         String content = Files.readString(sqlFile.toPath());
+
+        // 1. PRIMARY PASS: split by ; → nodes.json (full text, comments, whitespace)
+        fullNodes = NodeSplitter.split(content);
+        computeHashes(fullNodes);
+        outputDir.mkdirs();
+        NodesJsonMapper.write(fullNodes, new File(outputDir, "nodes.json"));
+
+        // 2. SECONDARY PASS: parse entire file via ANTLR → AST per node
         SDBLTokenizer tokenizer = new SDBLTokenizer(content);
         SDBLParser.QueryPackageContext ast = tokenizer.getAst();
         QueryPackageVisitor visitor = new QueryPackageVisitor(content);
         List<QueryAst> asts = visitor.visitQueryPackage(ast);
 
-        List<QueryNode> nodes = new ArrayList<>();
-        int id = 0;
-        for (QueryAst qast : asts) {
-            QueryNode node = new QueryNode();
-            node.setId(id++);
-            node.setQuery(qast);
-            String text = extractText(content, qast);
-            node.setText(text);
-            if (qast.getType() == null) {
-                node.setType("unknown");
-            } else if ("drop".equals(qast.getType())) {
-                node.setType("drop_query");
-                node.setName(qast.getInto());
-            } else if (qast.getInto() != null && !qast.getInto().isEmpty()) {
-                node.setType("temp_query");
-                node.setName(qast.getInto());
-            } else {
-                node.setType("result");
-                node.setName("Результат_" + id);
+        // 3. MERGE: attach AST to primary nodes by index
+        List<QueryNode> modelNodes = new ArrayList<>();
+        for (int i = 0; i < fullNodes.size(); i++) {
+            QueryNode primary = fullNodes.get(i);
+            QueryNode mn = new QueryNode();
+            mn.setId(primary.getId());
+            mn.setType(primary.getType());
+            mn.setName(primary.getName());
+            mn.setTextHash(primary.getTextHash());
+            mn.setTextLength(primary.getTextLength());
+            if (i < asts.size()) {
+                mn.setQuery(asts.get(i));
             }
-            nodes.add(node);
+            modelNodes.add(mn);
         }
 
-        List<QueryEdge> edges = resolveEdges(nodes);
-        computeHashes(nodes);
+        // 4. Resolve edges from AST
+        List<QueryEdge> edges = resolveEdges(modelNodes);
 
-        // Save full nodes (with text) to nodes.json
-        fullNodes = new ArrayList<>();
-        for (QueryNode n : nodes) {
-            QueryNode copy = new QueryNode();
-            copy.setId(n.getId());
-            copy.setType(n.getType());
-            copy.setName(n.getName());
-            copy.setText(n.getText());
-            copy.setTextHash(n.getTextHash());
-            copy.setTextLength(n.getTextLength());
-            copy.setQuery(n.getQuery());
-            fullNodes.add(copy);
-        }
-        outputDir.mkdirs();
-        NodesJsonMapper.write(fullNodes, new File(outputDir, "nodes.json"));
-
-        // Strip text for model.json
-        stripTextsForJson(nodes);
+        // 5. Strip text for model.json (temp_query/select)
+        stripTextsForJson(modelNodes);
         model = new QueryModel();
-        model.setNodes(nodes);
+        model.setNodes(modelNodes);
         model.setEdges(edges);
         model.setSourceHash(sha256(content));
         model.setSourceLength(content.length());
         ModelJsonMapper.write(model, Path.of(outputDir.getAbsolutePath(), "model.json"));
     }
 
-    private String extractText(String content, QueryAst qast) {
-        int start = qast.getStartIndex();
-        int end = qast.getEndIndex();
-        if (start >= 0 && end > start && end <= content.length()) {
-            return content.substring(start, end);
+    private void computeHashes(List<QueryNode> nodes) throws Exception {
+        for (QueryNode node : nodes) {
+            String text = node.getText();
+            if (text != null && !text.isEmpty()) {
+                node.setTextHash(sha256(text));
+                node.setTextLength(text.length());
+            }
         }
-        return "";
+    }
+
+    private void stripTextsForJson(List<QueryNode> nodes) {
+        for (QueryNode node : nodes) {
+            if ("temp_query".equals(node.getType()) || "select".equals(node.getType())) {
+                node.setText(null);
+            }
+        }
     }
 
     private List<QueryEdge> resolveEdges(List<QueryNode> nodes) {
@@ -132,24 +126,6 @@ public class SdqlQueryPackageAnalyzer {
                     edge.setToName(node.getName());
                     edges.add(edge);
                 }
-            }
-        }
-    }
-
-    private void computeHashes(List<QueryNode> nodes) throws Exception {
-        for (QueryNode node : nodes) {
-            String text = node.getText();
-            if (text != null && !text.isEmpty()) {
-                node.setTextHash(sha256(text));
-                node.setTextLength(text.length());
-            }
-        }
-    }
-
-    private void stripTextsForJson(List<QueryNode> nodes) {
-        for (QueryNode node : nodes) {
-            if ("temp_query".equals(node.getType()) || "select".equals(node.getType())) {
-                node.setText(null);
             }
         }
     }

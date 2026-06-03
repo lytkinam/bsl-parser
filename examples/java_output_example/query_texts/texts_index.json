@@ -4,38 +4,38 @@
   "name" : "ВТ_Сотрудники",
   "sql_file" : "query_texts/node_0.sql",
   "md_file" : "query_texts/node_0.md",
-  "hash" : "7384e825c7d22f3ad827ec00d9cbbc180fe9260866a2d379124427ed5a2eab3a",
-  "length" : 173
+  "hash" : "d0bcb03efb0bca89c26362ed7ef6b48e6e7845a00f06f791244f01de73571ecd",
+  "length" : 246
 }, {
   "id" : 1,
   "type" : "temp_query",
   "name" : "ВТ_Начисления",
   "sql_file" : "query_texts/node_1.sql",
   "md_file" : "query_texts/node_1.md",
-  "hash" : "5880f9c8125122d5c473a583de7907bc5e19e840e2da24ccd80f71cc9060cba8",
-  "length" : 267
+  "hash" : "8355d8771f249f90fd70440e3a46fb272fca6d55628542b519a8100e4f7f2a92",
+  "length" : 318
 }, {
   "id" : 2,
   "type" : "result",
   "name" : "Результат_3",
   "sql_file" : "query_texts/node_2.sql",
   "md_file" : "query_texts/node_2.md",
-  "hash" : "c684a1dd3aaf0a39add536d90102bc8e4572a244ac69c92c75a638c6ac589341",
-  "length" : 166
+  "hash" : "0245c4faa4009a001d49ea150779d2647dd5ab976c6a955f57f822025beac0ca",
+  "length" : 212
 }, {
   "id" : 3,
   "type" : "drop_query",
   "name" : "ВТ_Сотрудники",
   "sql_file" : "query_texts/node_3.sql",
   "md_file" : "query_texts/node_3.md",
-  "hash" : "38be09f0c301508f4a9c4bf56d91b1b135d0677f9137e37aca98111bbbe0feb2",
-  "length" : 24
+  "hash" : "7196fa6c2809d6fc7adfd82d6ba1548d5aece8dfceff7969d48d1319a17bd104",
+  "length" : 36
 }, {
   "id" : 4,
   "type" : "drop_query",
   "name" : "ВТ_Начисления",
   "sql_file" : "query_texts/node_4.sql",
   "md_file" : "query_texts/node_4.md",
-  "hash" : "f4d14ab909764d1ac7a09ab8ddfd9f8e078cc7c60a71719e114d0c9cb6d94b52",
-  "length" : 24
+  "hash" : "319aa4be25d1bf97c1bae55b1b97c86f5d1338adc3d54e15a9578397a140993a",
+  "length" : 25
 } ]
