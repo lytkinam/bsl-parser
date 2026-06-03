@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +27,8 @@ public class FieldsNodeBuilder {
   );
 
   public void build(QueryModel model, Path outputDir) throws IOException {
-    Map<String, List<FieldRecord>> fieldsNode = new HashMap<>();
-    Map<String, List<TableAlias>> tableAliasMap = new HashMap<>();
+    Map<String, List<FieldRecord>> fieldsNode = new LinkedHashMap<>();
+    Map<String, List<TableAlias>> tableAliasMap = new LinkedHashMap<>();
 
     for (QueryNode node : model.getNodes()) {
       String nid = String.valueOf(node.getId());
