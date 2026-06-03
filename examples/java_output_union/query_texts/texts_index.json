@@ -1,0 +1,57 @@
+[ {
+  "id" : 0,
+  "type" : "temp_query",
+  "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
+  "sql_file" : "query_texts/node_0.sql",
+  "md_file" : "query_texts/node_0.md",
+  "hash" : "79ad7b6ac1d81d2c39d93f102b3c13077e8243ae5ee5af8841802b123f44a7ad",
+  "length" : 156
+}, {
+  "id" : 1,
+  "type" : "temp_query",
+  "name" : "ВТ_ТипыРезервов",
+  "sql_file" : "query_texts/node_1.sql",
+  "md_file" : "query_texts/node_1.md",
+  "hash" : "07f598f21ffdba2e70c13e44816b61a69d677ced2fcf9a65740685092311576a",
+  "length" : 1256
+}, {
+  "id" : 2,
+  "type" : "temp_query",
+  "name" : "ВТ_ВидыПаспортов",
+  "sql_file" : "query_texts/node_2.sql",
+  "md_file" : "query_texts/node_2.md",
+  "hash" : "e326a08f9d0ddeafb65d7cc238f003bd5c470fdf17d8dd16c7eb9e6421abdfbe",
+  "length" : 308
+}, {
+  "id" : 3,
+  "type" : "temp_query",
+  "name" : "ВТ_ДокументыСторно",
+  "sql_file" : "query_texts/node_3.sql",
+  "md_file" : "query_texts/node_3.md",
+  "hash" : "761e575cb9ee976e8443cd5e2de9e88d2a5a6724b00145557737cadb6682137f",
+  "length" : 1074
+}, {
+  "id" : 4,
+  "type" : "temp_query",
+  "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
+  "sql_file" : "query_texts/node_4.sql",
+  "md_file" : "query_texts/node_4.md",
+  "hash" : "d7964150c2856f4e00da2c8f033f26cc5966fc3e371031b9547a03de854570d6",
+  "length" : 641
+}, {
+  "id" : 5,
+  "type" : "temp_query",
+  "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
+  "sql_file" : "query_texts/node_5.sql",
+  "md_file" : "query_texts/node_5.md",
+  "hash" : "59e583cd62faa54cbfd46256b98ccec8bb8b34a9ee5506358d948f4a77cd45b9",
+  "length" : 996
+}, {
+  "id" : 6,
+  "type" : "temp_query",
+  "name" : "ВТ_ПенсионныеСчета_ПР",
+  "sql_file" : "query_texts/node_6.sql",
+  "md_file" : "query_texts/node_6.md",
+  "hash" : "3bd27cba4e79913a99fda1108b96763cd70c94041134fc284d247c85a3f0b594",
+  "length" : 4233
+} ]
