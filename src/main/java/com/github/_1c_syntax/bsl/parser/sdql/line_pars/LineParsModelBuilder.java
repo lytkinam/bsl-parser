@@ -77,6 +77,7 @@ public class LineParsModelBuilder {
     // Process unions
     if (ast.getUnions() != null && !ast.getUnions().isEmpty()) {
       int partCount = 0;
+      List<LineParsNode> unionNodes = new ArrayList<>();
       for (UnionPart up : ast.getUnions()) {
         partCount++;
         LineParsNode part = new LineParsNode();
@@ -86,23 +87,32 @@ public class LineParsModelBuilder {
         part.setType("union_query");
         part.setUnionType(up.getUnionType());
         part.setQuery(up.getQuery());
-        // Alias from parent's first select field
+
+        // Copy aliases from parent's select fields into union part's select fields
         if (parent.getQuery() != null && parent.getQuery().getSelect() != null
-            && !parent.getQuery().getSelect().isEmpty()) {
-          String firstAlias = parent.getQuery().getSelect().get(0).getAlias();
-          if (firstAlias != null) {
-            part.setAlias(firstAlias);
+            && up.getQuery() != null && up.getQuery().getSelect() != null) {
+          List<SelectField> parentSelect = parent.getQuery().getSelect();
+          List<SelectField> partSelect = up.getQuery().getSelect();
+          for (int i = 0; i < Math.min(parentSelect.size(), partSelect.size()); i++) {
+            if (parentSelect.get(i).getAlias() != null) {
+              partSelect.get(i).setAlias(parentSelect.get(i).getAlias());
+            }
           }
         }
-        // unionFirst on subsequent union nodes points to the first one
-        if (partCount > 1) {
-          part.setUnionFirst(parent.getUnionNodesIds().get(0));
-        }
+
         nodes.add(part);
         parent.getUnionNodesIds().add(part.getId());
+        unionNodes.add(part);
 
         if (up.getQuery() != null) {
           processAst(part, up.getQuery());
+        }
+      }
+      // Set unionFirst on ALL union nodes (including first) pointing to first union node
+      if (!unionNodes.isEmpty()) {
+        int firstUnionId = unionNodes.get(0).getId();
+        for (LineParsNode part : unionNodes) {
+          part.setUnionFirst(firstUnionId);
         }
       }
       // Remove unions from parent query — they are now separate nodes
