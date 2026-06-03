@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class HierarchyNode {
-  private int id;
+  private Integer id;
   private String name;
 
   @JsonProperty("type_hierarchy")

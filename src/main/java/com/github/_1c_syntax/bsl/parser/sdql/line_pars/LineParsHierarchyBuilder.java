@@ -1,6 +1,8 @@
 package com.github._1c_syntax.bsl.parser.sdql.line_pars;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
+import com.github._1c_syntax.bsl.parser.sdql.model.JoinPart;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -20,38 +22,96 @@ public class LineParsHierarchyBuilder {
     Map<Integer, LineParsNode> nodeById = model.getNodes().stream()
       .collect(Collectors.toMap(LineParsNode::getId, n -> n));
 
+    Map<String, LineParsNode> nodeByName = model.getNodes().stream()
+      .collect(Collectors.toMap(LineParsNode::getName, n -> n, (a, b) -> a));
+
     List<HierarchyNode> roots = model.getNodes().stream()
       .filter(n -> n.getUnionGroupId() == null && n.getUpqueryId() == null)
-      .map(n -> buildNode(n, nodeById))
+      .map(n -> buildNode(n, nodeById, nodeByName))
       .collect(Collectors.toList());
 
     MAPPER.writerWithDefaultPrettyPrinter().writeValue(
       lineParsDir.resolve("LINE_PARS_hierarchy_" + baseName + ".json").toFile(), roots);
   }
 
-  private HierarchyNode buildNode(LineParsNode node, Map<Integer, LineParsNode> nodeById) {
+  private HierarchyNode buildNode(LineParsNode node, Map<Integer, LineParsNode> nodeById,
+                                   Map<String, LineParsNode> nodeByName) {
     HierarchyNode result = new HierarchyNode();
     result.setId(node.getId());
     result.setName(node.getName());
 
+    // 1. Data sources from FROM (including joins)
+    if (node.getFrom() != null) {
+      for (DataSource ds : node.getFrom()) {
+        extractDataSource(ds, result, nodeByName);
+      }
+    }
+
+    // 2. Union parts
     for (int childId : node.getUnionNodesIds()) {
       LineParsNode child = nodeById.get(childId);
       if (child != null) {
-        HierarchyNode childNode = buildNode(child, nodeById);
+        HierarchyNode childNode = buildNode(child, nodeById, nodeByName);
         childNode.setTypeHierarchy("union");
         result.getTableHierarchy().add(childNode);
       }
     }
 
+    // 3. Subqueries
     for (int childId : node.getSubqueryIds()) {
       LineParsNode child = nodeById.get(childId);
       if (child != null) {
-        HierarchyNode childNode = buildNode(child, nodeById);
+        HierarchyNode childNode = buildNode(child, nodeById, nodeByName);
         childNode.setTypeHierarchy("subquery");
         result.getTableHierarchy().add(childNode);
       }
     }
 
     return result;
+  }
+
+  private void extractDataSource(DataSource ds, HierarchyNode parent,
+                                  Map<String, LineParsNode> nodeByName) {
+    if (ds == null) return;
+
+    HierarchyNode child = null;
+
+    if (ds.getTable() != null) {
+      child = new HierarchyNode();
+      child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getTable());
+      if (ds.getTable().contains(".")) {
+        child.setTypeHierarchy("table");
+      } else {
+        child.setTypeHierarchy("temp_table");
+        LineParsNode ref = nodeByName.get(ds.getTable());
+        if (ref != null) {
+          child.setId(ref.getId());
+        }
+      }
+    } else if (ds.getVirtualTable() != null) {
+      child = new HierarchyNode();
+      child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getVirtualTable());
+      child.setTypeHierarchy("virtual_table");
+    } else if (ds.getParameterTable() != null) {
+      child = new HierarchyNode();
+      child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getParameterTable());
+      child.setTypeHierarchy("parameter_table");
+    } else if (ds.getExternalDataSource() != null) {
+      child = new HierarchyNode();
+      child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getExternalDataSource());
+      child.setTypeHierarchy("external_data_source");
+    }
+    // subquery is handled separately via subqueryIds
+
+    if (child != null) {
+      parent.getTableHierarchy().add(child);
+    }
+
+    // Process joins recursively
+    if (ds.getJoins() != null) {
+      for (JoinPart jp : ds.getJoins()) {
+        extractDataSource(jp.getSource(), parent, nodeByName);
+      }
+    }
   }
 }
