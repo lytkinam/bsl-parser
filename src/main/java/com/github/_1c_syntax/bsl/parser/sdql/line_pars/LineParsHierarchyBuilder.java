@@ -33,7 +33,6 @@ public class LineParsHierarchyBuilder {
     HierarchyNode result = new HierarchyNode();
     result.setId(node.getId());
     result.setName(node.getName());
-    result.setType(node.getType());
 
     for (int childId : node.getUnionNodesIds()) {
       LineParsNode child = nodeById.get(childId);
