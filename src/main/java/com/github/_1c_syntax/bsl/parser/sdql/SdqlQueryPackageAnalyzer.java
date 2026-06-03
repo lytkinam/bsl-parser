@@ -1,8 +1,9 @@
 package com.github._1c_syntax.bsl.parser.sdql;
 
-import com.github._1c_syntax.bsl.parser.SDBLTokenizer;
 import com.github._1c_syntax.bsl.parser.SDBLParser;
+import com.github._1c_syntax.bsl.parser.SDBLTokenizer;
 import com.github._1c_syntax.bsl.parser.sdql.io.ModelJsonMapper;
+import com.github._1c_syntax.bsl.parser.sdql.io.NodesJsonMapper;
 import com.github._1c_syntax.bsl.parser.sdql.model.*;
 import com.github._1c_syntax.bsl.parser.sdql.visitor.QueryPackageVisitor;
 
@@ -15,13 +16,15 @@ import java.util.*;
 public class SdqlQueryPackageAnalyzer {
 
     private QueryModel model;
+    private List<QueryNode> fullNodes;
 
     public QueryModel getModel() { return model; }
+    public List<QueryNode> getFullNodes() { return fullNodes; }
 
     public void analyze(File sqlFile, File outputDir) throws Exception {
         String content = Files.readString(sqlFile.toPath());
         SDBLTokenizer tokenizer = new SDBLTokenizer(content);
-        var ast = tokenizer.getAst();
+        SDBLParser.QueryPackageContext ast = tokenizer.getAst();
         QueryPackageVisitor visitor = new QueryPackageVisitor(content);
         List<QueryAst> asts = visitor.visitQueryPackage(ast);
 
@@ -31,7 +34,7 @@ public class SdqlQueryPackageAnalyzer {
             QueryNode node = new QueryNode();
             node.setId(id++);
             node.setQuery(qast);
-            String text = astText(content, ast, qast);
+            String text = extractText(content, qast);
             node.setText(text);
             if (qast.getType() == null) {
                 node.setType("unknown");
@@ -49,19 +52,41 @@ public class SdqlQueryPackageAnalyzer {
         }
 
         List<QueryEdge> edges = resolveEdges(nodes);
-        computeHashes(nodes, content);
+        computeHashes(nodes);
+
+        // Save full nodes (with text) to nodes.json
+        fullNodes = new ArrayList<>();
+        for (QueryNode n : nodes) {
+            QueryNode copy = new QueryNode();
+            copy.setId(n.getId());
+            copy.setType(n.getType());
+            copy.setName(n.getName());
+            copy.setText(n.getText());
+            copy.setTextHash(n.getTextHash());
+            copy.setTextLength(n.getTextLength());
+            copy.setQuery(n.getQuery());
+            fullNodes.add(copy);
+        }
+        outputDir.mkdirs();
+        NodesJsonMapper.write(fullNodes, new File(outputDir, "nodes.json"));
+
+        // Strip text for model.json
+        stripTextsForJson(nodes);
         model = new QueryModel();
         model.setNodes(nodes);
         model.setEdges(edges);
         model.setSourceHash(sha256(content));
         model.setSourceLength(content.length());
-        outputDir.mkdirs();
         ModelJsonMapper.write(model, Path.of(outputDir.getAbsolutePath(), "model.json"));
     }
 
-    private String astText(String content, SDBLParser.QueryPackageContext pkg, QueryAst qast) {
-        // simplistic: just return content for now
-        return content;
+    private String extractText(String content, QueryAst qast) {
+        int start = qast.getStartIndex();
+        int end = qast.getEndIndex();
+        if (start >= 0 && end > start && end <= content.length()) {
+            return content.substring(start, end);
+        }
+        return "";
     }
 
     private List<QueryEdge> resolveEdges(List<QueryNode> nodes) {
@@ -73,11 +98,11 @@ public class SdqlQueryPackageAnalyzer {
         }
         List<QueryEdge> edges = new ArrayList<>();
         for (QueryNode node : nodes) {
-            QueryAst ast = node.getQuery();
-            if (ast == null) continue;
+            QueryAst qast = node.getQuery();
+            if (qast == null) continue;
             Set<String> seen = new HashSet<>();
-            if (ast.getFrom() != null) {
-                for (DataSource ds : ast.getFrom()) {
+            if (qast.getFrom() != null) {
+                for (DataSource ds : qast.getFrom()) {
                     checkSource(ds, node, tempTables, edges, seen);
                     if (ds.getJoins() != null) {
                         for (JoinPart jp : ds.getJoins()) {
@@ -111,13 +136,18 @@ public class SdqlQueryPackageAnalyzer {
         }
     }
 
-    private void computeHashes(List<QueryNode> nodes, String content) throws Exception {
+    private void computeHashes(List<QueryNode> nodes) throws Exception {
         for (QueryNode node : nodes) {
             String text = node.getText();
-            if (text != null) {
+            if (text != null && !text.isEmpty()) {
                 node.setTextHash(sha256(text));
                 node.setTextLength(text.length());
             }
+        }
+    }
+
+    private void stripTextsForJson(List<QueryNode> nodes) {
+        for (QueryNode node : nodes) {
             if ("temp_query".equals(node.getType()) || "select".equals(node.getType())) {
                 node.setText(null);
             }

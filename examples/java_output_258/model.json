@@ -3,9 +3,11 @@
     "id" : 0,
     "type" : "temp_query",
     "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "e6082a3d9e026897f544f3069bbb1ce7df138b7a2044780d0359781c38d23db4",
+    "textLength" : 162,
     "query" : {
+      "startIndex" : 2,
+      "endIndex" : 164,
       "type" : "select",
       "into" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
       "select" : [ {
@@ -18,9 +20,11 @@
     "id" : 1,
     "type" : "temp_query",
     "name" : "ВТ_ТипыРезервов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "bf0dad41a5fd1eade13bb6e035806e90a09554ff1f9905002ec43704aebee4da",
+    "textLength" : 1323,
     "query" : {
+      "startIndex" : 171,
+      "endIndex" : 1494,
       "type" : "select",
       "into" : "ВТ_ТипыРезервов",
       "select" : [ {
@@ -31,6 +35,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -40,6 +46,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -49,6 +57,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -58,6 +68,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -67,6 +79,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -76,6 +90,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -85,6 +101,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -94,6 +112,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -103,6 +123,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -112,6 +134,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -121,6 +145,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -130,6 +156,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -139,6 +167,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -151,9 +181,11 @@
     "id" : 2,
     "type" : "temp_query",
     "name" : "ВТ_ВидыПаспортов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "72f7e8601c637d3e742c26aff7baee3cf3f697518eadd19b3fa6f8dd28b0d7a5",
+    "textLength" : 233,
     "query" : {
+      "startIndex" : 1583,
+      "endIndex" : 1816,
       "type" : "select",
       "into" : "ВТ_ВидыПаспортов",
       "select" : [ {
@@ -172,9 +204,11 @@
     "id" : 3,
     "type" : "temp_query",
     "name" : "ВТ_ДокументыСторно",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "712c1aedfe26c5d9aeccf7d4288c0c49ce03adb656f9ae880db8e6111d753acd",
+    "textLength" : 1031,
     "query" : {
+      "startIndex" : 1905,
+      "endIndex" : 2936,
       "type" : "select",
       "into" : "ВТ_ДокументыСторно",
       "select" : [ {
@@ -191,6 +225,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -206,6 +242,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -221,6 +259,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -239,9 +279,11 @@
     "id" : 4,
     "type" : "temp_query",
     "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "0836495f4b4dd4cacf990f026bd956e1e963c6453e27a528c2d5260ed18dfe19",
+    "textLength" : 636,
     "query" : {
+      "startIndex" : 2943,
+      "endIndex" : 3579,
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
       "select" : [ {
@@ -260,9 +302,11 @@
     "id" : 5,
     "type" : "temp_query",
     "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "75fcbb4e0e48807de18c733640f9beb0563edc3fb847f089b3ae82ef65622670",
+    "textLength" : 916,
     "query" : {
+      "startIndex" : 3685,
+      "endIndex" : 4601,
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
       "select" : [ {
@@ -281,9 +325,11 @@
     "id" : 6,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчета_ПР",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "1de761fa021decdfcc2e49c53054eb8f3d2dac403b69961e11fa9a799d70703c",
+    "textLength" : 4294,
     "query" : {
+      "startIndex" : 4708,
+      "endIndex" : 9002,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета_ПР",
       "select" : [ {
@@ -293,6 +339,8 @@
       } ],
       "from" : [ {
         "subquery" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -307,6 +355,8 @@
           "unions" : [ {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -321,6 +371,8 @@
           }, {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -336,6 +388,8 @@
           }, {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -350,6 +404,8 @@
           }, {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -365,6 +421,8 @@
           }, {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -379,6 +437,8 @@
           }, {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -393,6 +453,8 @@
           }, {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -408,6 +470,8 @@
           }, {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -423,6 +487,8 @@
           }, {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -438,6 +504,8 @@
           }, {
             "unionType" : "union",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -462,9 +530,11 @@
     "id" : 7,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчета",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "ec193a02f7077407157d05d45c4b99f5eb77fc06a47a42a13858f26f981bd9b0",
+    "textLength" : 521,
     "query" : {
+      "startIndex" : 9091,
+      "endIndex" : 9612,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета",
       "select" : [ {
@@ -482,6 +552,8 @@
       "unions" : [ {
         "unionType" : "union",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -501,9 +573,11 @@
     "id" : 8,
     "type" : "temp_query",
     "name" : "ВТ_ПричиныЗакрытия",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "4d247353829cc835adb9977fe00cdddff64d038af2fd0c5ae6b58f4eab7811c8",
+    "textLength" : 737,
     "query" : {
+      "startIndex" : 9701,
+      "endIndex" : 10438,
       "type" : "select",
       "into" : "ВТ_ПричиныЗакрытия",
       "select" : [ {
@@ -530,9 +604,11 @@
     "id" : 9,
     "type" : "temp_query",
     "name" : "ВТ_ВидыПенсионныхСчетов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "3bce1c242edb93e7ccc4830c77c01b9d6c0e526b921820a88e793713d63b7841",
+    "textLength" : 455,
     "query" : {
+      "startIndex" : 10527,
+      "endIndex" : 10982,
       "type" : "select",
       "into" : "ВТ_ВидыПенсионныхСчетов",
       "select" : [ {
@@ -555,9 +631,11 @@
     "id" : 10,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчетаРПВ",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "9d4f7c3ba3b2ee49be581a99b66c524ac807051b5fd32b918148efcf437a58bd",
+    "textLength" : 394,
     "query" : {
+      "startIndex" : 11071,
+      "endIndex" : 11465,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчетаРПВ",
       "select" : [ {
@@ -577,9 +655,11 @@
     "id" : 11,
     "type" : "temp_query",
     "name" : "ВТ_ТипыПенсийНачалоПериода",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "868b05c4a404d5ac32ccf8fc69ede9002c6aaa4b2ca82dfa9ab6dcd7fed26f29",
+    "textLength" : 533,
     "query" : {
+      "startIndex" : 11570,
+      "endIndex" : 12103,
       "type" : "select",
       "into" : "ВТ_ТипыПенсийНачалоПериода",
       "select" : [ {
@@ -601,9 +681,11 @@
     "id" : 12,
     "type" : "temp_query",
     "name" : "ВТ_ВыплатныеНачалоПериода",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "38a3750c0473f3c242d46e85fc3e03ebe03dcf5a459dc0d01891740c242a10e1",
+    "textLength" : 1366,
     "query" : {
+      "startIndex" : 12192,
+      "endIndex" : 13558,
       "type" : "select",
       "into" : "ВТ_ВыплатныеНачалоПериода",
       "select" : [ {
@@ -646,9 +728,11 @@
     "id" : 13,
     "type" : "temp_query",
     "name" : "ВТ_СостояниеНачалоПериода",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "d6f412b6242884a685979131cbbf5d7eac59ea7aaecd5944c43cb172e423e942",
+    "textLength" : 2591,
     "query" : {
+      "startIndex" : 13648,
+      "endIndex" : 16239,
       "type" : "select",
       "into" : "ВТ_СостояниеНачалоПериода",
       "select" : [ {
@@ -694,9 +778,11 @@
     "id" : 14,
     "type" : "temp_query",
     "name" : "ВТ_ВидОбязательствНачало",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "11ba2ae9462dc0e01125607dc3fbee2dfae0fe73d41ff30c1cb5334ab94316ef",
+    "textLength" : 1386,
     "query" : {
+      "startIndex" : 16329,
+      "endIndex" : 17715,
       "type" : "select",
       "into" : "ВТ_ВидОбязательствНачало",
       "select" : [ {
@@ -739,9 +825,11 @@
     "id" : 15,
     "type" : "temp_query",
     "name" : "ВТ_ИзмененияВидаОбязательств_Предв",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "ff3cb44c7a642e2d5a34dfad1e9341a1a9b559e1b8829b926e6a56f610da6cf0",
+    "textLength" : 3697,
     "query" : {
+      "startIndex" : 17820,
+      "endIndex" : 21517,
       "type" : "select",
       "into" : "ВТ_ИзмененияВидаОбязательств_Предв",
       "select" : [ {
@@ -772,6 +860,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -797,6 +887,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -826,9 +918,11 @@
     "id" : 16,
     "type" : "temp_query",
     "name" : "ВТ_ИзмененияВидаОбязательств",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "375f03edf920d4dfdc8d7550e3db2c9dfb55d8f054597e5e9893c54cbca57af4",
+    "textLength" : 529,
     "query" : {
+      "startIndex" : 21627,
+      "endIndex" : 22156,
       "type" : "select",
       "into" : "ВТ_ИзмененияВидаОбязательств",
       "select" : [ {
@@ -856,9 +950,11 @@
     "id" : 17,
     "type" : "temp_query",
     "name" : "ВТ_ВидыОбязательств",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "b7c8a6479ee19cdf6d0397d17fb4561a7374c7ecd77c9a79f4a8408e614c6d2f",
+    "textLength" : 545,
     "query" : {
+      "startIndex" : 22245,
+      "endIndex" : 22790,
       "type" : "select",
       "into" : "ВТ_ВидыОбязательств",
       "select" : [ {
@@ -882,6 +978,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -905,9 +1003,11 @@
     "id" : 18,
     "type" : "temp_query",
     "name" : "ВТ_ВидыОбязательствДвижение",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "fc279cbefff222fad4cf56c29a770c30e0ae1cd5cdc023aad7ffc9ea1438ed7a",
+    "textLength" : 918,
     "query" : {
+      "startIndex" : 22879,
+      "endIndex" : 23797,
       "type" : "select",
       "into" : "ВТ_ВидыОбязательствДвижение",
       "select" : [ {
@@ -946,9 +1046,11 @@
     "id" : 19,
     "type" : "temp_query",
     "name" : "ВТ_СчетаТранзитныеВидыОбязательств",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "5f6332c5b9de04cf810a2379ce57cfa9766fd7d1faf35e72fbaa8468c964dd5e",
+    "textLength" : 267,
     "query" : {
+      "startIndex" : 23860,
+      "endIndex" : 24127,
       "type" : "select",
       "into" : "ВТ_СчетаТранзитныеВидыОбязательств",
       "select" : [ {
@@ -968,9 +1070,11 @@
     "id" : 20,
     "type" : "temp_query",
     "name" : "ВТ_СчетаНеТранзитныеВидыОбязательств",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "4d198d20d3225d9731adef1fe5c8b0517907654112f5a2a764c1f786c175637a",
+    "textLength" : 455,
     "query" : {
+      "startIndex" : 24134,
+      "endIndex" : 24589,
       "type" : "select",
       "into" : "ВТ_СчетаНеТранзитныеВидыОбязательств",
       "select" : [ {
@@ -998,9 +1102,11 @@
     "id" : 21,
     "type" : "temp_query",
     "name" : "ВТ_НеТранзитныеВидыНачалоКонец",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "80d887ddaa3881170e29452df3828759a753a49b1d38c34b5f1a4f942775b58e",
+    "textLength" : 631,
     "query" : {
+      "startIndex" : 24596,
+      "endIndex" : 25227,
       "type" : "select",
       "into" : "ВТ_НеТранзитныеВидыНачалоКонец",
       "select" : [ {
@@ -1038,9 +1144,11 @@
     "id" : 22,
     "type" : "temp_query",
     "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "428292b83a1e1cff3a068bc3f449f028154c959499857a257fe3131bf1d24cd8",
+    "textLength" : 623,
     "query" : {
+      "startIndex" : 25234,
+      "endIndex" : 25857,
       "type" : "select",
       "into" : "ВТ_ТранзитныеВидыНачалоКонец",
       "select" : [ {
@@ -1078,9 +1186,11 @@
     "id" : 23,
     "type" : "temp_query",
     "name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "140758e56490f36d2e09eb466bceef5f2e8c1c1da737dfdd68386e3efa455cd4",
+    "textLength" : 3620,
     "query" : {
+      "startIndex" : 26074,
+      "endIndex" : 29694,
       "type" : "select",
       "into" : "ВТ_СторнированныеСуммыТранзитныеВиды",
       "select" : [ {
@@ -1138,6 +1248,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1195,9 +1307,11 @@
     "id" : 24,
     "type" : "temp_query",
     "name" : "ВТ_ОстаткиТранзитныеВиды",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "a2b80ada374f071e64a75f9281fdb219f9235d325764a3619d39d13cf5b68bc1",
+    "textLength" : 8996,
     "query" : {
+      "startIndex" : 29798,
+      "endIndex" : 38794,
       "type" : "select",
       "into" : "ВТ_ОстаткиТранзитныеВиды",
       "select" : [ {
@@ -1227,6 +1341,8 @@
       } ],
       "from" : [ {
         "subquery" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1271,6 +1387,8 @@
           "unions" : [ {
             "unionType" : "union_all",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -1322,6 +1440,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1367,6 +1487,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1412,6 +1534,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1457,6 +1581,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1505,9 +1631,11 @@
     "id" : 25,
     "type" : "temp_query",
     "name" : "ВТ_Суммы_ПР_ТранзитныеВиды",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "fbf15842231c1932ea68b4d8dbb5ff5ac35f9268e1c6b8c1ac1cc4b4ce1aa534",
+    "textLength" : 5742,
     "query" : {
+      "startIndex" : 38820,
+      "endIndex" : 44562,
       "type" : "select",
       "into" : "ВТ_Суммы_ПР_ТранзитныеВиды",
       "select" : [ {
@@ -1557,6 +1685,8 @@
       } ],
       "from" : [ {
         "subquery" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1611,6 +1741,8 @@
           "unions" : [ {
             "unionType" : "union_all",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -1668,6 +1800,8 @@
           }, {
             "unionType" : "union_all",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -1725,6 +1859,8 @@
           }, {
             "unionType" : "union_all",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -1790,9 +1926,11 @@
     "id" : 26,
     "type" : "temp_query",
     "name" : "ВТ_ВыплатыПРТранзитныеВиды",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "ce5d559df8ef9c8a6c03f74b122129dc18aa58e764ad525f87bada7a07ffc53c",
+    "textLength" : 10852,
     "query" : {
+      "startIndex" : 48584,
+      "endIndex" : 59436,
       "type" : "select",
       "into" : "ВТ_ВыплатыПРТранзитныеВиды",
       "select" : [ {
@@ -1846,6 +1984,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1895,6 +2035,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1943,6 +2085,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -1991,6 +2135,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -2043,9 +2189,11 @@
     "id" : 27,
     "type" : "temp_query",
     "name" : "ВТ_ВыплатыТранзитныеВиды",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "297c904080f6f41be1d0ad4ba90a78ddb87ed4067f094297a863feee1a0eda04",
+    "textLength" : 987,
     "query" : {
+      "startIndex" : 59525,
+      "endIndex" : 60512,
       "type" : "select",
       "into" : "ВТ_ВыплатыТранзитныеВиды",
       "select" : [ {
@@ -2093,9 +2241,11 @@
     "id" : 28,
     "type" : "temp_query",
     "name" : "ВТ_ПеремещенияВСтраховойРезервТранзитныеВиды",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "7b1be1e5b0c23e84a014b5efaa557e8b06aa7462f07ac3ecfd729310a09342bb",
+    "textLength" : 1772,
     "query" : {
+      "startIndex" : 60631,
+      "endIndex" : 62403,
       "type" : "select",
       "into" : "ВТ_ПеремещенияВСтраховойРезервТранзитныеВиды",
       "select" : [ {
@@ -2143,9 +2293,11 @@
     "id" : 29,
     "type" : "temp_query",
     "name" : "ВТ_ПереводыИзРегистров_РезервыТранзитныеВиды",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "add9e96211f3ea41094b280e654c5975d51d7ee5d6c106bacfa68a41168eb3d5",
+    "textLength" : 5219,
     "query" : {
+      "startIndex" : 62509,
+      "endIndex" : 67728,
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_РезервыТранзитныеВиды",
       "select" : [ {
@@ -2207,6 +2359,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -2271,9 +2425,11 @@
     "id" : 30,
     "type" : "temp_query",
     "name" : "ВТ_ПереводыИзРегистров_РегистрыТранзитныеВиды",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "a54500093ec2d0c0c6773942694c03987dfedb055191c38ec49753d7ed25aedd",
+    "textLength" : 1558,
     "query" : {
+      "startIndex" : 67817,
+      "endIndex" : 69375,
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_РегистрыТранзитныеВиды",
       "select" : [ {
@@ -2317,6 +2473,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -2359,9 +2517,11 @@
     "id" : 31,
     "type" : "temp_query",
     "name" : "ВТ_ПереводыТранзитныеВиды",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "78dfd51013fed5e412e0a23c5a75ffc7c3a62e86e7c109cdc69a6125ab88491b",
+    "textLength" : 992,
     "query" : {
+      "startIndex" : 69464,
+      "endIndex" : 70456,
       "type" : "select",
       "into" : "ВТ_ПереводыТранзитныеВиды",
       "select" : [ {
@@ -2400,9 +2560,11 @@
     "id" : 32,
     "type" : "temp_query",
     "name" : "ВТ_ОстаткиТранзитныеВиды_Предв",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "41bf8d3a7227e69594aab8c7e111a209966eb95c68d2089c04ad4a07404b8146",
+    "textLength" : 3255,
     "query" : {
+      "startIndex" : 70545,
+      "endIndex" : 73800,
       "type" : "select",
       "into" : "ВТ_ОстаткиТранзитныеВиды_Предв",
       "select" : [ {
@@ -2540,9 +2702,11 @@
     "id" : 33,
     "type" : "temp_query",
     "name" : "ВТ_ТранзитныеВидыНачалоКонец_Суммы",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "133eaf113b67613029c01e9a27c33620b49cd0bd73c2e1a94e54d697ded20444",
+    "textLength" : 1582,
     "query" : {
+      "startIndex" : 73809,
+      "endIndex" : 75391,
       "type" : "select",
       "into" : "ВТ_ТранзитныеВидыНачалоКонец_Суммы",
       "select" : [ {
@@ -2612,9 +2776,11 @@
     "id" : 34,
     "type" : "temp_query",
     "name" : "ВТ_ТранзитныеВиды_ГруппыСчетов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "22153d966845f09d24fb2750a90d29f4b17f352b6085921cf493b096865bab6e",
+    "textLength" : 2349,
     "query" : {
+      "startIndex" : 75526,
+      "endIndex" : 77875,
       "type" : "select",
       "into" : "ВТ_ТранзитныеВиды_ГруппыСчетов",
       "select" : [ {
@@ -2649,6 +2815,8 @@
           "joinType" : "inner",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -2718,9 +2886,11 @@
     "id" : 35,
     "type" : "temp_query",
     "name" : "ВТ_ТранзитныеВиды_ТипыДоговоровЕПС",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "d96a80866995f47d507ca5246529cd0374f1dd14b4bcb1db99144e55c5b9f1ca",
+    "textLength" : 1670,
     "query" : {
+      "startIndex" : 77883,
+      "endIndex" : 79553,
       "type" : "select",
       "into" : "ВТ_ТранзитныеВиды_ТипыДоговоровЕПС",
       "select" : [ {
@@ -2747,6 +2917,8 @@
           "joinType" : "inner",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -2792,9 +2964,11 @@
     "id" : 36,
     "type" : "temp_query",
     "name" : "ВТ_ТранзитныеВиды_ДатыФиксации",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "a50a433486178323fbcaceda150e8c2a3f2bf6a3b5a49c787fc96b4baf54cc96",
+    "textLength" : 2028,
     "query" : {
+      "startIndex" : 79560,
+      "endIndex" : 81588,
       "type" : "select",
       "into" : "ВТ_ТранзитныеВиды_ДатыФиксации",
       "select" : [ {
@@ -2825,6 +2999,8 @@
           "joinType" : "inner",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -2871,9 +3047,11 @@
     "id" : 37,
     "type" : "temp_query",
     "name" : "ВТ_ТранзитныеВиды_ПериодыГарантВосполнения",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "c632dfa77987767c10d61aca937c1f71bcf5349420eb53d4f0218841578f9e09",
+    "textLength" : 1778,
     "query" : {
+      "startIndex" : 81595,
+      "endIndex" : 83373,
       "type" : "select",
       "into" : "ВТ_ТранзитныеВиды_ПериодыГарантВосполнения",
       "select" : [ {
@@ -2900,6 +3078,8 @@
           "joinType" : "inner",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -2945,9 +3125,11 @@
     "id" : 38,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчета_Свойства_ТранзитныеОбязательства",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "d91d542a6a36d209942e8594dffd1eb3616b6159e3b8f2c87408ee30c551f4c5",
+    "textLength" : 6181,
     "query" : {
+      "startIndex" : 83464,
+      "endIndex" : 89645,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета_Свойства_ТранзитныеОбязательства",
       "select" : [ {
@@ -3131,9 +3313,11 @@
     "id" : 39,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчетаСПТ",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "ea091aa931d50b3f1b3efa661839d50d309c110f8c31450e6b089365ad75d912",
+    "textLength" : 1467,
     "query" : {
+      "startIndex" : 89829,
+      "endIndex" : 91296,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчетаСПТ",
       "select" : [ {
@@ -3187,9 +3371,11 @@
     "id" : 40,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчета_Свойства",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "92d04b66e5abe7de6b7625e0f792bf8346cde75f85241de310b43697a80cc1ea",
+    "textLength" : 7051,
     "query" : {
+      "startIndex" : 91385,
+      "endIndex" : 98436,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета_Свойства",
       "select" : [ {
@@ -3401,9 +3587,11 @@
     "id" : 41,
     "type" : "temp_query",
     "name" : "ВТ_СостоянияПенсионныхСчетов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "d3f24b29232f6303d4865884244baf4ae09d54e819bb7293b0be8c5ef6e43d3a",
+    "textLength" : 1762,
     "query" : {
+      "startIndex" : 98528,
+      "endIndex" : 100290,
       "type" : "select",
       "into" : "ВТ_СостоянияПенсионныхСчетов",
       "select" : [ {
@@ -3458,9 +3646,11 @@
     "id" : 42,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчета_НеИПС",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "9a9652688062904f87c85f0b64f6e05a3045136d3331317fe75d14a7fb444fc2",
+    "textLength" : 368,
     "query" : {
+      "startIndex" : 100379,
+      "endIndex" : 100747,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета_НеИПС",
       "select" : [ {
@@ -3484,9 +3674,11 @@
     "id" : 43,
     "type" : "temp_query",
     "name" : "ВТ_СчетаДоговоров_СчетаУчастников",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "c006df9ecb6544ed99432a07c3ada416a96b35e7f307ac438c5a93c8ece6f999",
+    "textLength" : 326,
     "query" : {
+      "startIndex" : 100836,
+      "endIndex" : 101162,
       "type" : "select",
       "into" : "ВТ_СчетаДоговоров_СчетаУчастников",
       "select" : [ {
@@ -3509,9 +3701,11 @@
     "id" : 44,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчета_Орг_ПС_ТР",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "d961f92b5ff74b7b4472cab5d94dbfff63abb57fb3ea0af0306140b5eeaa2a99",
+    "textLength" : 386,
     "query" : {
+      "startIndex" : 101251,
+      "endIndex" : 101637,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета_Орг_ПС_ТР",
       "select" : [ {
@@ -3542,9 +3736,11 @@
     "id" : 45,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчета_Орг_Уч_ПС",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "4f216bfc221e17c4b7597ad4b7105b311c5cb5d9a50b92f8657c2fa17c4cfb92",
+    "textLength" : 353,
     "query" : {
+      "startIndex" : 101726,
+      "endIndex" : 102079,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета_Орг_Уч_ПС",
       "select" : [ {
@@ -3571,9 +3767,11 @@
     "id" : 46,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеДоговоры",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "9498fd678b3b8b01e76a42953a49c0fb38d2aab5b46cc879f9679b99fb9702a6",
+    "textLength" : 186,
     "query" : {
+      "startIndex" : 102168,
+      "endIndex" : 102354,
       "type" : "select",
       "into" : "ВТ_ПенсионныеДоговоры",
       "select" : [ {
@@ -3592,9 +3790,11 @@
     "id" : 47,
     "type" : "temp_query",
     "name" : "ВТ_ПараметрыПенсионныхДоговоров",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "2a69ea1581a4ed60dcf9a0d16f9ef3bab756a0c5b6fef24f4010154033de95e4",
+    "textLength" : 582,
     "query" : {
+      "startIndex" : 102443,
+      "endIndex" : 103025,
       "type" : "select",
       "into" : "ВТ_ПараметрыПенсионныхДоговоров",
       "select" : [ {
@@ -3621,9 +3821,11 @@
     "id" : 48,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеДоговоры_Свойства",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "49f628ba9212bb6a6524c994598c9cf4bbb54c6693ba5a1b8a013c3943ffb09d",
+    "textLength" : 8779,
     "query" : {
+      "startIndex" : 103114,
+      "endIndex" : 111893,
       "type" : "select",
       "into" : "ВТ_ПенсионныеДоговоры_Свойства",
       "select" : [ {
@@ -3746,9 +3948,11 @@
     "id" : 49,
     "type" : "temp_query",
     "name" : "ВТ_СхемыПенсионныхСчетов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "6596c9fd61e1dfa583814045764ee97ff9e4af5b0ccd4a964eaf64ee8cdc344a",
+    "textLength" : 1579,
     "query" : {
+      "startIndex" : 111982,
+      "endIndex" : 113561,
       "type" : "select",
       "into" : "ВТ_СхемыПенсионныхСчетов",
       "select" : [ {
@@ -3831,9 +4035,11 @@
     "id" : 50,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСхемы",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "b8495da58a9ec745e880e828991363ab53e74412141ed78b61da66d0c012aab2",
+    "textLength" : 203,
     "query" : {
+      "startIndex" : 113650,
+      "endIndex" : 113853,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСхемы",
       "select" : [ {
@@ -3853,9 +4059,11 @@
     "id" : 51,
     "type" : "temp_query",
     "name" : "ВТ_Схемы_Свойства",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "f6e94af97ded905b5ad77d875ba1b671a3c1177a0b1d3e738e9a0555c0ea216f",
+    "textLength" : 4176,
     "query" : {
+      "startIndex" : 113942,
+      "endIndex" : 118118,
       "type" : "select",
       "into" : "ВТ_Схемы_Свойства",
       "select" : [ {
@@ -3955,9 +4163,11 @@
     "id" : 52,
     "type" : "temp_query",
     "name" : "ВТ_СхемыПенсионныхСчетов_ТранзитныеОбязательства",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "d560da688755f35f17eb00f62c6a7093bb68c39ae1c4d1e57294d3d07a5cd4c5",
+    "textLength" : 4272,
     "query" : {
+      "startIndex" : 118260,
+      "endIndex" : 122532,
       "type" : "select",
       "into" : "ВТ_СхемыПенсионныхСчетов_ТранзитныеОбязательства",
       "select" : [ {
@@ -4028,6 +4238,8 @@
           "joinType" : "inner",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -4099,9 +4311,11 @@
     "id" : 53,
     "type" : "temp_query",
     "name" : "ВТ_Вкладчики",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "b54beeb0504cb1c486bf6596deeb011e5144ade7cdebb93d127e3b3416a8eed5",
+    "textLength" : 279,
     "query" : {
+      "startIndex" : 122621,
+      "endIndex" : 122900,
       "type" : "select",
       "into" : "ВТ_Вкладчики",
       "select" : [ {
@@ -4125,9 +4339,11 @@
     "id" : 54,
     "type" : "temp_query",
     "name" : "ВТ_ФизическиеЛица",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "c0794fbf683b570d748a690d2c357ff46dc83ad164c4bd45d2c05cd20ba8ff35",
+    "textLength" : 571,
     "query" : {
+      "startIndex" : 122989,
+      "endIndex" : 123560,
       "type" : "select",
       "into" : "ВТ_ФизическиеЛица",
       "select" : [ {
@@ -4149,6 +4365,8 @@
       "unions" : [ {
         "unionType" : "union",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -4172,9 +4390,11 @@
     "id" : 55,
     "type" : "temp_query",
     "name" : "ВТ_ВкладчикиУчастники",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "d2943fb556a0874dca922c34a643d6b0487306db8172c8d044fdb008f703c19c",
+    "textLength" : 245,
     "query" : {
+      "startIndex" : 123649,
+      "endIndex" : 123894,
       "type" : "select",
       "into" : "ВТ_ВкладчикиУчастники",
       "select" : [ {
@@ -4190,6 +4410,8 @@
       "unions" : [ {
         "unionType" : "union",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -4207,9 +4429,11 @@
     "id" : 56,
     "type" : "temp_query",
     "name" : "ВТ_ДанныеКонтрагентов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "e9f301482e7ef449f8cb688d0f71eab7971d2acdb283d777b36debfbee7981cc",
+    "textLength" : 3909,
     "query" : {
+      "startIndex" : 123983,
+      "endIndex" : 127892,
       "type" : "select",
       "into" : "ВТ_ДанныеКонтрагентов",
       "select" : [ {
@@ -4309,6 +4533,8 @@
       "unions" : [ {
         "unionType" : "union",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -4366,9 +4592,11 @@
     "id" : 57,
     "type" : "temp_query",
     "name" : "ВТ_ФИО_ФЛ",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "241eb39dbd6d208d23236690793a5f1bee47c406cbf448b8bc9e52e285d1f2f4",
+    "textLength" : 414,
     "query" : {
+      "startIndex" : 127981,
+      "endIndex" : 128395,
       "type" : "select",
       "into" : "ВТ_ФИО_ФЛ",
       "select" : [ {
@@ -4398,9 +4626,11 @@
     "id" : 58,
     "type" : "temp_query",
     "name" : "ВТ_ФИО_ИП",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "310eb74057f195138f115bdcc197d4bfd3d41f727854f08d92f3fd0859045a15",
+    "textLength" : 808,
     "query" : {
+      "startIndex" : 128484,
+      "endIndex" : 129292,
       "type" : "select",
       "into" : "ВТ_ФИО_ИП",
       "select" : [ {
@@ -4439,9 +4669,11 @@
     "id" : 59,
     "type" : "temp_query",
     "name" : "ВТ_ПаспортныеДанные_ПоследняяЗапись",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "694cf7abb1aff8203ba0fd8a35e7f541201495f753727a5517dce38911562b05",
+    "textLength" : 568,
     "query" : {
+      "startIndex" : 129381,
+      "endIndex" : 129949,
       "type" : "select",
       "into" : "ВТ_ПаспортныеДанные_ПоследняяЗапись",
       "select" : [ {
@@ -4473,9 +4705,11 @@
     "id" : 60,
     "type" : "temp_query",
     "name" : "ВТ_ПаспортныеДанные_1",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "366e0a4776a8cf515a36a69926dbbd9ed0222769962f350e2c3140988e04531b",
+    "textLength" : 702,
     "query" : {
+      "startIndex" : 130038,
+      "endIndex" : 130740,
       "type" : "select",
       "into" : "ВТ_ПаспортныеДанные_1",
       "select" : [ {
@@ -4511,9 +4745,11 @@
     "id" : 61,
     "type" : "temp_query",
     "name" : "ВТ_ПаспортныеДанные_Cleared",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "124f2bcdd98250c408d0181b352f3a1b2756032e538410914755a0eedfd09824",
+    "textLength" : 4646,
     "query" : {
+      "startIndex" : 130829,
+      "endIndex" : 135475,
       "type" : "select",
       "into" : "ВТ_ПаспортныеДанные_Cleared",
       "select" : [ {
@@ -4539,9 +4775,11 @@
     "id" : 62,
     "type" : "temp_query",
     "name" : "ВТ_ПаспортныеДанные",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "567955e1972732608c160f0ff4313dacb376e01e81203988858d0a9599fffe2a",
+    "textLength" : 429,
     "query" : {
+      "startIndex" : 135564,
+      "endIndex" : 135993,
       "type" : "select",
       "into" : "ВТ_ПаспортныеДанные",
       "select" : [ {
@@ -4563,9 +4801,11 @@
     "id" : 63,
     "type" : "temp_query",
     "name" : "ВТ_Данные_к",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "cae6a8973b9f7109c576e108967c2aa54a4333164698b74f2fba46ae122190b3",
+    "textLength" : 2111,
     "query" : {
+      "startIndex" : 136083,
+      "endIndex" : 138194,
       "type" : "select",
       "into" : "ВТ_Данные_к",
       "select" : [ {
@@ -4699,9 +4939,11 @@
     "id" : 64,
     "type" : "temp_query",
     "name" : "ВТ_Идентификаторы264",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "718fef34b1090af9b3b2aa721fe2ac54ed23e6d922ba77ac861c470d9e8070cf",
+    "textLength" : 7021,
     "query" : {
+      "startIndex" : 138284,
+      "endIndex" : 145305,
       "type" : "select",
       "into" : "ВТ_Идентификаторы264",
       "select" : [ {
@@ -4761,6 +5003,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -4812,9 +5056,11 @@
     "id" : 65,
     "type" : "temp_query",
     "name" : "ВТ_ИдентификаторыКонтрагентов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "d1bc3ecd9c7fe2182f2a1f8f4e48df4bf6b77dc8d92962b8ef0dbdef492a3bdf",
+    "textLength" : 1227,
     "query" : {
+      "startIndex" : 145394,
+      "endIndex" : 146621,
       "type" : "select",
       "into" : "ВТ_ИдентификаторыКонтрагентов",
       "select" : [ {
@@ -4873,9 +5119,11 @@
     "id" : 66,
     "type" : "temp_query",
     "name" : "ВТ_ФизическиеЛица_Свойства",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "ea031fa011b89fab7aaf7539d781518e9b01ed82d804b1d597deb4721397e2f2",
+    "textLength" : 1021,
     "query" : {
+      "startIndex" : 146710,
+      "endIndex" : 147731,
       "type" : "select",
       "into" : "ВТ_ФизическиеЛица_Свойства",
       "select" : [ {
@@ -4934,9 +5182,11 @@
     "id" : 67,
     "type" : "temp_query",
     "name" : "ВТ_ФизическиеЛица_ДляПаспортов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "109190f7b65439677f2fe1295695e0241ea75915fd59cfba314aeefd353f4090",
+    "textLength" : 361,
     "query" : {
+      "startIndex" : 147820,
+      "endIndex" : 148181,
       "type" : "select",
       "into" : "ВТ_ФизическиеЛица_ДляПаспортов",
       "select" : [ {
@@ -4956,9 +5206,11 @@
     "id" : 68,
     "type" : "temp_query",
     "name" : "ВТ_ГражданствоФизическихЛиц",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "634cd2c825ff8cec608c48b044882fa8409d7fba4ce099eb360c36898fdf3103",
+    "textLength" : 590,
     "query" : {
+      "startIndex" : 148387,
+      "endIndex" : 148977,
       "type" : "select",
       "into" : "ВТ_ГражданствоФизическихЛиц",
       "select" : [ {
@@ -4986,9 +5238,11 @@
     "id" : 69,
     "type" : "temp_query",
     "name" : "ВТ_ИдентификаторыКонтрагентов_Старые",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "7decbfa040f55bae4a30fc5539e55535b530e024bbe885b0f080b2033c9e3dd3",
+    "textLength" : 2446,
     "query" : {
+      "startIndex" : 149066,
+      "endIndex" : 151512,
       "type" : "select",
       "into" : "ВТ_ИдентификаторыКонтрагентов_Старые",
       "select" : [ {
@@ -5025,6 +5279,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5084,9 +5340,11 @@
     "id" : 70,
     "type" : "temp_query",
     "name" : "ВТ_Корректировки",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "11445785decc7be7b2df7f154ef87b830159bc5254f78aa6ad13de67026223e5",
+    "textLength" : 2516,
     "query" : {
+      "startIndex" : 151601,
+      "endIndex" : 154117,
       "type" : "select",
       "into" : "ВТ_Корректировки",
       "select" : [ {
@@ -5138,9 +5396,11 @@
     "id" : 71,
     "type" : "temp_query",
     "name" : "ВТ_Суммы_ПР",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "181c797662208185e3f088cd55bfacadccffa4468793a0eb7dd6010481a7161c",
+    "textLength" : 7321,
     "query" : {
+      "startIndex" : 154206,
+      "endIndex" : 161527,
       "type" : "select",
       "into" : "ВТ_Суммы_ПР",
       "select" : [ {
@@ -5192,6 +5452,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5233,6 +5495,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5274,6 +5538,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5315,6 +5581,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5356,6 +5624,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "column",
@@ -5397,6 +5667,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5439,6 +5711,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5490,6 +5764,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5541,6 +5817,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5592,6 +5870,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -5647,9 +5927,11 @@
     "id" : 72,
     "type" : "temp_query",
     "name" : "ВТ_Суммы_ПР_дляВС",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "616ccdd6c1cd9594e9998cf66e3e905ad58f200003bec2b7fd15145f3886f871",
+    "textLength" : 2812,
     "query" : {
+      "startIndex" : 161534,
+      "endIndex" : 164346,
       "type" : "select",
       "into" : "ВТ_Суммы_ПР_дляВС",
       "select" : [ {
@@ -5732,9 +6014,11 @@
     "id" : 73,
     "type" : "temp_query",
     "name" : "ВТ_СуммыКоэффициентыВС_предв",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "a8f34a241c04ebba0fdeffcceb7335229033a785bed355269ac9f045ce487ecd",
+    "textLength" : 13186,
     "query" : {
+      "startIndex" : 164355,
+      "endIndex" : 177541,
       "type" : "select",
       "into" : "ВТ_СуммыКоэффициентыВС_предв",
       "select" : [ {
@@ -5817,6 +6101,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -5882,6 +6168,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -5947,6 +6235,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -6012,6 +6302,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -6061,6 +6353,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -6110,6 +6404,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -6162,9 +6458,11 @@
     "id" : 74,
     "type" : "temp_query",
     "name" : "ВТ_СуммыКоэффициентыВС",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "10392e8d9f4bdabde82a5c7b2bba9cb75518ad824fbe8c4b737b572c2796f7a0",
+    "textLength" : 1831,
     "query" : {
+      "startIndex" : 177553,
+      "endIndex" : 179384,
       "type" : "select",
       "into" : "ВТ_СуммыКоэффициентыВС",
       "select" : [ {
@@ -6235,9 +6533,11 @@
     "id" : 75,
     "type" : "temp_query",
     "name" : "ВТ_РасчетнаяДатаВС",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "80b74d0e9cbc587eec7fb03d770d3f7e41bc2f29cc22d07be878c2a72f8c7331",
+    "textLength" : 2217,
     "query" : {
+      "startIndex" : 179393,
+      "endIndex" : 181610,
       "type" : "select",
       "into" : "ВТ_РасчетнаяДатаВС",
       "select" : [ {
@@ -6293,9 +6593,11 @@
     "id" : 76,
     "type" : "temp_query",
     "name" : "ВТ_Сумма_ПР_дляПП",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "e5bb591311a12a6aeaa76fe20df9a18eab7cb60a752e113f9d700d955ef0236c",
+    "textLength" : 6831,
     "query" : {
+      "startIndex" : 181620,
+      "endIndex" : 188451,
       "type" : "select",
       "into" : "ВТ_Сумма_ПР_дляПП",
       "select" : [ {
@@ -6354,6 +6656,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -6419,6 +6723,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -6484,6 +6790,8 @@
           "joinType" : "left",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -6553,9 +6861,11 @@
     "id" : 77,
     "type" : "temp_query",
     "name" : "ВТ_РасчетныеСуммыПП_пред",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "c7e924a1f4dd1103b557931c51f022735b3eab759f409a4247fdcc788f4683cf",
+    "textLength" : 336,
     "query" : {
+      "startIndex" : 188460,
+      "endIndex" : 188796,
       "type" : "select",
       "into" : "ВТ_РасчетныеСуммыПП_пред",
       "select" : [ {
@@ -6582,9 +6892,11 @@
     "id" : 78,
     "type" : "temp_query",
     "name" : "ВТ_ОстаткиНаследников",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "6807754267e690ed0979978600af5077a593d833356ebad77b626b5baccf22a1",
+    "textLength" : 1627,
     "query" : {
+      "startIndex" : 188886,
+      "endIndex" : 190513,
       "type" : "select",
       "into" : "ВТ_ОстаткиНаследников",
       "select" : [ {
@@ -6616,9 +6928,11 @@
     "id" : 79,
     "type" : "temp_query",
     "name" : "ВТ_РасчетныеСуммыПП",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "deafb6e140c5e532a57b12da6161d12a5d347b12a93e8597f06f48db7410ded2",
+    "textLength" : 1016,
     "query" : {
+      "startIndex" : 190520,
+      "endIndex" : 191536,
       "type" : "select",
       "into" : "ВТ_РасчетныеСуммыПП",
       "select" : [ {
@@ -6665,9 +6979,11 @@
     "id" : 80,
     "type" : "temp_query",
     "name" : "ВТ_Суммы_ПР_С_Обязательствами",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "5ec7ddbe17830f787654b65410b4dd49b38cddf1c1dcafc71abf7c99a2697c5d",
+    "textLength" : 3572,
     "query" : {
+      "startIndex" : 191639,
+      "endIndex" : 195211,
       "type" : "select",
       "into" : "ВТ_Суммы_ПР_С_Обязательствами",
       "select" : [ {
@@ -6715,6 +7031,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -6785,6 +7103,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -6827,9 +7147,11 @@
     "id" : 81,
     "type" : "temp_query",
     "name" : "ВТ_Суммы",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "2befe454ae9061c55f9ad3b77c40e2d630125d41d4e34f4a2d602665ac491538",
+    "textLength" : 666,
     "query" : {
+      "startIndex" : 195300,
+      "endIndex" : 195966,
       "type" : "select",
       "into" : "ВТ_Суммы",
       "select" : [ {
@@ -6880,9 +7202,11 @@
     "id" : 82,
     "type" : "temp_query",
     "name" : "ВТ_НачисленияПенсийПоСчетам",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "af3069c90690f4ec77d759b0b46fec88518cc72d2473951a9222bc1cfaa50349",
+    "textLength" : 1922,
     "query" : {
+      "startIndex" : 196055,
+      "endIndex" : 197977,
       "type" : "select",
       "into" : "ВТ_НачисленияПенсийПоСчетам",
       "select" : [ {
@@ -6904,6 +7228,8 @@
       } ],
       "from" : [ {
         "subquery" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -6939,6 +7265,8 @@
           "unions" : [ {
             "unionType" : "union_all",
             "query" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -6981,9 +7309,11 @@
     "id" : 83,
     "type" : "temp_query",
     "name" : "ВТ_РегистраторыНачисленийСолидарныхСчетов",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "3c0bcde51a6ef279a0e9168562d2f010004e194964b06156c62c1e2b695df405",
+    "textLength" : 569,
     "query" : {
+      "startIndex" : 198066,
+      "endIndex" : 198635,
       "type" : "select",
       "into" : "ВТ_РегистраторыНачисленийСолидарныхСчетов",
       "select" : [ {
@@ -7019,9 +7349,11 @@
     "id" : 84,
     "type" : "temp_query",
     "name" : "ВТ_НачисленияСолидарныхСчетовКРаспределению",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "4e0b49b783d2cc962dc2fef6e5132779f460eb723986ddf53c10b7adeded93de",
+    "textLength" : 1023,
     "query" : {
+      "startIndex" : 198724,
+      "endIndex" : 199747,
       "type" : "select",
       "into" : "ВТ_НачисленияСолидарныхСчетовКРаспределению",
       "select" : [ {
@@ -7049,9 +7381,11 @@
     "id" : 85,
     "type" : "temp_query",
     "name" : "ВТ_ДвиженияПоРегистраторам",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "326c8ed56a8e059eb27e2c82864aba75cafd6bcd59f33b05582eb19463f75a20",
+    "textLength" : 3453,
     "query" : {
+      "startIndex" : 199837,
+      "endIndex" : 203290,
       "type" : "select",
       "into" : "ВТ_ДвиженияПоРегистраторам",
       "select" : [ {
@@ -7094,9 +7428,11 @@
     "id" : 86,
     "type" : "temp_query",
     "name" : "ВТ_ДвиженияПоДокументам",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "a67125952e4f279ac8fac1b72d5bfcd74a69c8580c20bdd28cd3f45cd9c15fab",
+    "textLength" : 745,
     "query" : {
+      "startIndex" : 203379,
+      "endIndex" : 204124,
       "type" : "select",
       "into" : "ВТ_ДвиженияПоДокументам",
       "select" : [ {
@@ -7140,9 +7476,11 @@
     "id" : 87,
     "type" : "temp_query",
     "name" : "ВТ_ПеремещенияВСтраховойРезерв",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "09473c353a1d1da08944ffdc25ddc696f3d2d910699117e738ab54d0d5d4b370",
+    "textLength" : 952,
     "query" : {
+      "startIndex" : 204213,
+      "endIndex" : 205165,
       "type" : "select",
       "into" : "ВТ_ПеремещенияВСтраховойРезерв",
       "select" : [ {
@@ -7178,9 +7516,11 @@
     "id" : 88,
     "type" : "temp_query",
     "name" : "ВТ_ВозвратыПенсий",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "f90935423725d91ee6590b0543971847cefce53095981ff3c600bbc270438e81",
+    "textLength" : 767,
     "query" : {
+      "startIndex" : 205254,
+      "endIndex" : 206021,
       "type" : "select",
       "into" : "ВТ_ВозвратыПенсий",
       "select" : [ {
@@ -7212,9 +7552,11 @@
     "id" : 89,
     "type" : "temp_query",
     "name" : "ВТ_ПереводыИзРегистров_Резервы",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "6b50d84c4ac8c861cf4c3b2b855eb05ebdcf0b95378732d71a97a9e1bbbb7dea",
+    "textLength" : 2111,
     "query" : {
+      "startIndex" : 206110,
+      "endIndex" : 208221,
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_Резервы",
       "select" : [ {
@@ -7264,6 +7606,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7316,9 +7660,11 @@
     "id" : 90,
     "type" : "temp_query",
     "name" : "ВТ_ПереводыИзРегистров_Регистры",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "11199688dc1358781227c1b2a1ded47402e7573b12df316dec83f312d3470163",
+    "textLength" : 935,
     "query" : {
+      "startIndex" : 208310,
+      "endIndex" : 209245,
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_Регистры",
       "select" : [ {
@@ -7350,6 +7696,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7376,6 +7724,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7405,9 +7755,11 @@
     "id" : 91,
     "type" : "temp_query",
     "name" : "ВТ_Переводы",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "2191e7de1554604e1e9b3c0b88d3e8a9225573e7d2bf5225ff5ed99a15b510ff",
+    "textLength" : 378,
     "query" : {
+      "startIndex" : 209334,
+      "endIndex" : 209712,
       "type" : "select",
       "into" : "ВТ_Переводы",
       "select" : [ {
@@ -7434,9 +7786,11 @@
     "id" : 92,
     "type" : "temp_query",
     "name" : "ВТ_ПереводыПР",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "28b51e4b77efcbe2f76d96882886d71441cd37f0220340d624d2757b34959f0a",
+    "textLength" : 3777,
     "query" : {
+      "startIndex" : 209802,
+      "endIndex" : 213579,
       "type" : "select",
       "into" : "ВТ_ПереводыПР",
       "select" : [ {
@@ -7465,6 +7819,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7489,6 +7845,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7505,6 +7863,8 @@
           } ],
           "from" : [ {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -7536,6 +7896,8 @@
               "unions" : [ {
                 "unionType" : "union_all",
                 "query" : {
+                  "startIndex" : 0,
+                  "endIndex" : 0,
                   "type" : "select",
                   "select" : [ {
                     "fieldType" : "expression",
@@ -7571,6 +7933,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7594,6 +7958,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7617,6 +7983,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7644,9 +8012,11 @@
     "id" : 93,
     "type" : "temp_query",
     "name" : "ВТ_Переводы_Устарело",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "52b33ac9e607e77baf83271729ad0f2eaaafa15dc7503be4a26cc9cbe0cdcc3f",
+    "textLength" : 257,
     "query" : {
+      "startIndex" : 213668,
+      "endIndex" : 213925,
       "type" : "select",
       "into" : "ВТ_Переводы_Устарело",
       "select" : [ {
@@ -7670,9 +8040,11 @@
     "id" : 94,
     "type" : "temp_query",
     "name" : "ВТ_СторнированныеСуммы",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "47b216858b73fbcf069780ba4b1aef713dadddef6a7052e58250604716f96ce4",
+    "textLength" : 1602,
     "query" : {
+      "startIndex" : 214014,
+      "endIndex" : 215616,
       "type" : "select",
       "into" : "ВТ_СторнированныеСуммы",
       "select" : [ {
@@ -7709,6 +8081,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7744,9 +8118,11 @@
     "id" : 95,
     "type" : "temp_query",
     "name" : "ВТ_ВыплатыПР",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "f6c7792914cb2fbe68273fa77342be569a63918b7972a35ec132a3586bed574a",
+    "textLength" : 4191,
     "query" : {
+      "startIndex" : 215705,
+      "endIndex" : 219896,
       "type" : "select",
       "into" : "ВТ_ВыплатыПР",
       "select" : [ {
@@ -7778,6 +8154,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7804,6 +8182,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7830,6 +8210,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7856,6 +8238,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -7886,9 +8270,11 @@
     "id" : 96,
     "type" : "temp_query",
     "name" : "ВТ_Выплаты",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "4aa51af3515591b145ccdf06666e5778b3fec93676cb04f9c4fd987efe50d945",
+    "textLength" : 459,
     "query" : {
+      "startIndex" : 219985,
+      "endIndex" : 220444,
       "type" : "select",
       "into" : "ВТ_Выплаты",
       "select" : [ {
@@ -7924,9 +8310,11 @@
     "id" : 97,
     "type" : "temp_query",
     "name" : "ВТ_МГД_ПР",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "b6a94191a225975bfe041ef11c4c4e849e7fa6a2b7c628e222c15814a225fac7",
+    "textLength" : 636,
     "query" : {
+      "startIndex" : 220533,
+      "endIndex" : 221169,
       "type" : "select",
       "into" : "ВТ_МГД_ПР",
       "select" : [ {
@@ -7953,9 +8341,11 @@
     "id" : 98,
     "type" : "temp_query",
     "name" : "ВТ_МГД",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "b5b4dd8f0c3e80c79e5050839c6bbbbce6a08dd9f18a091f751cdb72f59a96af",
+    "textLength" : 1379,
     "query" : {
+      "startIndex" : 221258,
+      "endIndex" : 222637,
       "type" : "select",
       "into" : "ВТ_МГД",
       "select" : [ {
@@ -7993,9 +8383,11 @@
     "id" : 99,
     "type" : "temp_query",
     "name" : "ВТ_Умершие",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "98f40d7102b0d72ddca0231c9bb86f5470d7a4aae35e3d56c9a5e2ad7717e55c",
+    "textLength" : 813,
     "query" : {
+      "startIndex" : 222726,
+      "endIndex" : 223539,
       "type" : "select",
       "into" : "ВТ_Умершие",
       "select" : [ {
@@ -8028,9 +8420,11 @@
     "id" : 100,
     "type" : "temp_query",
     "name" : "ВТ_ПенсионныеСчета_НачалоВыплат",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "fda08871790947107d1cea13de1cabfa036e91c186d992843ed5e4dcddca9548",
+    "textLength" : 893,
     "query" : {
+      "startIndex" : 223628,
+      "endIndex" : 224521,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета_НачалоВыплат",
       "select" : [ {
@@ -8058,9 +8452,11 @@
     "id" : 101,
     "type" : "temp_query",
     "name" : "ВТ_ПериодичностьВыплат",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "eb8f56306a757bd6984160ceaf3c564fc08beea0f7636bf6b620d5c7caa17dea",
+    "textLength" : 1170,
     "query" : {
+      "startIndex" : 224610,
+      "endIndex" : 225780,
       "type" : "select",
       "into" : "ВТ_ПериодичностьВыплат",
       "select" : [ {
@@ -8087,9 +8483,11 @@
     "id" : 102,
     "type" : "temp_query",
     "name" : "ВТ_Срочники",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "e4d3040275804bac88ca76fb4a46fc422bb7a374fe6b8244e9ab4e6a6d773b0c",
+    "textLength" : 828,
     "query" : {
+      "startIndex" : 225869,
+      "endIndex" : 226697,
       "type" : "select",
       "into" : "ВТ_Срочники",
       "select" : [ {
@@ -8125,9 +8523,11 @@
     "id" : 103,
     "type" : "temp_query",
     "name" : "ВТ_ВыплатныеСчета",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "7c8218f13a0e8950a750e681acc5a1dae1d18d2de224c504d1173039ba802262",
+    "textLength" : 435,
     "query" : {
+      "startIndex" : 226786,
+      "endIndex" : 227221,
       "type" : "select",
       "into" : "ВТ_ВыплатныеСчета",
       "select" : [ {
@@ -8147,9 +8547,11 @@
     "id" : 104,
     "type" : "temp_query",
     "name" : "ВТ_ДатыОкончанияСрочныхВыплат",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "ded60e612d7d7f4ef02222c5cac2ae8468c9446a3326a4da020e7db012886d55",
+    "textLength" : 397,
     "query" : {
+      "startIndex" : 227310,
+      "endIndex" : 227707,
       "type" : "select",
       "into" : "ВТ_ДатыОкончанияСрочныхВыплат",
       "select" : [ {
@@ -8171,9 +8573,11 @@
     "id" : 105,
     "type" : "temp_query",
     "name" : "ВТ_КоличествоВыплат",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "afcc49d27b5f45266d63d66e2b7b247acf36936c3f7b55a0661aca2df21603f1",
+    "textLength" : 467,
     "query" : {
+      "startIndex" : 227796,
+      "endIndex" : 228263,
       "type" : "select",
       "into" : "ВТ_КоличествоВыплат",
       "select" : [ {
@@ -8200,9 +8604,11 @@
     "id" : 106,
     "type" : "temp_query",
     "name" : "ВТ_РасходВыплат",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "a325bee613e4392336ef9d5e67fb3b58fa3f4001b1dac37f5baa038cad440f65",
+    "textLength" : 438,
     "query" : {
+      "startIndex" : 228352,
+      "endIndex" : 228790,
       "type" : "select",
       "into" : "ВТ_РасходВыплат",
       "select" : [ {
@@ -8225,9 +8631,11 @@
     "id" : 107,
     "type" : "temp_query",
     "name" : "ВТ_ОстаткиВыплат",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "859066a0667f6d05edb547c931e7a3e4ad72e2fc25dad041f737c7cc2d468365",
+    "textLength" : 402,
     "query" : {
+      "startIndex" : 228879,
+      "endIndex" : 229281,
       "type" : "select",
       "into" : "ВТ_ОстаткиВыплат",
       "select" : [ {
@@ -8258,9 +8666,11 @@
     "id" : 108,
     "type" : "temp_query",
     "name" : "ВТ_ПоследниеВыплаты",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "13b58b3b841637cf537d22823116d2223873def066af1a7e821a208b4f4c6a7c",
+    "textLength" : 507,
     "query" : {
+      "startIndex" : 229370,
+      "endIndex" : 229877,
       "type" : "select",
       "into" : "ВТ_ПоследниеВыплаты",
       "select" : [ {
@@ -8293,9 +8703,11 @@
     "id" : 109,
     "type" : "temp_query",
     "name" : "ВТ_ПоследниеВыплатыПоРегиструВыплат",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "20dc2cb3eedc091abdefcc6eac33d3c7c847db1635a1cb15929fa31dd12b7d4b",
+    "textLength" : 2606,
     "query" : {
+      "startIndex" : 229966,
+      "endIndex" : 232572,
       "type" : "select",
       "into" : "ВТ_ПоследниеВыплатыПоРегиструВыплат",
       "select" : [ {
@@ -8326,6 +8738,8 @@
           "joinType" : "inner",
           "source" : {
             "subquery" : {
+              "startIndex" : 0,
+              "endIndex" : 0,
               "type" : "select",
               "select" : [ {
                 "fieldType" : "expression",
@@ -8347,6 +8761,8 @@
                   "joinType" : "inner",
                   "source" : {
                     "subquery" : {
+                      "startIndex" : 0,
+                      "endIndex" : 0,
                       "type" : "select",
                       "select" : [ {
                         "fieldType" : "expression",
@@ -8395,9 +8811,11 @@
     "id" : 110,
     "type" : "temp_query",
     "name" : "ВТ_РазмерПенсийФикс",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "2ff3107c7d759d3145954462fad699bdd16555b1992d11837cec2e8b9b1f8822",
+    "textLength" : 417,
     "query" : {
+      "startIndex" : 232661,
+      "endIndex" : 233078,
       "type" : "select",
       "into" : "ВТ_РазмерПенсийФикс",
       "select" : [ {
@@ -8420,9 +8838,11 @@
     "id" : 111,
     "type" : "temp_query",
     "name" : "ВТ_РасчетныеСуммыПенсий",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "a4dda2933ed442a98a955a78367d5cb243c0bc2e35b4cb44bc6855f3f756bbbd",
+    "textLength" : 532,
     "query" : {
+      "startIndex" : 233167,
+      "endIndex" : 233699,
       "type" : "select",
       "into" : "ВТ_РасчетныеСуммыПенсий",
       "select" : [ {
@@ -8462,9 +8882,11 @@
     "id" : 112,
     "type" : "temp_query",
     "name" : "ВТ_РазмерПенсий",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "83505a618792c11410f1e50d9d7f3a31053cd7979303ee010a80a13eb350458c",
+    "textLength" : 1030,
     "query" : {
+      "startIndex" : 233788,
+      "endIndex" : 234818,
       "type" : "select",
       "into" : "ВТ_РазмерПенсий",
       "select" : [ {
@@ -8519,9 +8941,11 @@
     "id" : 113,
     "type" : "temp_query",
     "name" : "ВТ_ДополнительноВыкупнаяВкдачикуНетСПТ",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "ce7cf15d526b04a42bf953306ff11e3031ec3d362efe38801d2c8b12f3778057",
+    "textLength" : 1290,
     "query" : {
+      "startIndex" : 236367,
+      "endIndex" : 237657,
       "type" : "select",
       "into" : "ВТ_ДополнительноВыкупнаяВкдачикуНетСПТ",
       "select" : [ {
@@ -8568,9 +8992,11 @@
     "id" : 114,
     "type" : "temp_query",
     "name" : "ВТ_РезультатПредв",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "82b588732d53ccdeb95f92e883f881d73deb018b034bbdad553eb9553961b8c8",
+    "textLength" : 52760,
     "query" : {
+      "startIndex" : 237764,
+      "endIndex" : 290524,
       "type" : "select",
       "into" : "ВТ_РезультатПредв",
       "select" : [ {
@@ -9079,6 +9505,8 @@
       "unions" : [ {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -9429,6 +9857,8 @@
       }, {
         "unionType" : "union_all",
         "query" : {
+          "startIndex" : 0,
+          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -9949,9 +10379,11 @@
     "id" : 115,
     "type" : "temp_query",
     "name" : "ВТ_258НПО",
-    "textHash" : "5a387e0b7366e40b803e2d3027bbd507773fd6a497a7194eb3d82470d788890a",
-    "textLength" : 295542,
+    "textHash" : "8c17e95b64b307bac2cf7c4254465f00271fe6d78b999966a77358b235914b01",
+    "textLength" : 4918,
     "query" : {
+      "startIndex" : 290615,
+      "endIndex" : 295533,
       "type" : "select",
       "into" : "ВТ_258НПО",
       "select" : [ {

@@ -8,6 +8,8 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QueryAst {
+  private int startIndex;
+  private int endIndex;
   private String type;
   private String into;
   private List<SelectField> select;

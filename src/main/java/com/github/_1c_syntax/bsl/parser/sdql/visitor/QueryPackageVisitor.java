@@ -29,16 +29,21 @@ public class QueryPackageVisitor {
   }
 
   private QueryAst visitQueries(SDBLParser.QueriesContext ctx) {
+    QueryAst ast;
     if (ctx.selectQuery() != null) {
-      return visitSelectQuery(ctx.selectQuery());
+      ast = visitSelectQuery(ctx.selectQuery());
     } else if (ctx.dropTableQuery() != null) {
-      QueryAst ast = new QueryAst();
+      ast = new QueryAst();
       ast.setType("drop");
       ast.setInto(textOf(ctx.dropTableQuery().temporaryTableName));
-      return ast;
+    } else {
+      ast = new QueryAst();
+      ast.setType("unknown");
     }
-    QueryAst ast = new QueryAst();
-    ast.setType("unknown");
+    if (ctx.getStart() != null && ctx.getStop() != null) {
+      ast.setStartIndex(ctx.getStart().getStartIndex());
+      ast.setEndIndex(ctx.getStop().getStopIndex() + 1);
+    }
     return ast;
   }
 

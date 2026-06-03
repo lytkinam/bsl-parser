@@ -21,11 +21,24 @@ class SdqlQueryPackageAnalyzerTest {
         File output = tempDir.resolve("out").toFile();
         SdqlCli.main(new String[]{"examples/example.sql", output.getAbsolutePath()});
 
+        // model.json without text
         QueryModel model = ModelJsonMapper.read(
             output.toPath().resolve("model.json"));
         assertThat(model.getNodes()).hasSize(5);
         assertThat(model.getEdges()).hasSize(2);
+
+        // nodes.json with full text
+        assertThat(output.toPath().resolve("nodes.json")).exists();
+        String nodesJson = Files.readString(output.toPath().resolve("nodes.json"));
+        assertThat(nodesJson).contains("ВТ_Сотрудники");
+        assertThat(nodesJson).contains("ВЫБРАТЬ");
+
+        // query texts exported from nodes.json
         assertThat(output.toPath().resolve("query_texts")).exists();
+        assertThat(output.toPath().resolve("query_texts/node_0.sql")).exists();
+        assertThat(output.toPath().resolve("query_texts/node_1.sql")).exists();
+
+        // fields and lineage
         assertThat(output.toPath().resolve("fields_node")).exists();
         assertThat(output.toPath().resolve("lineage")).exists();
     }
@@ -40,8 +53,18 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(model.getNodes()).hasSizeGreaterThan(100);
         assertThat(model.getEdges()).hasSizeGreaterThan(100);
 
-        // Check field lineage for ВидОбязательств_гр1а
+        // nodes.json contains full texts
+        assertThat(output.toPath().resolve("nodes.json")).exists();
+        String nodesJson = Files.readString(output.toPath().resolve("nodes.json"));
+        assertThat(nodesJson).contains("ВидОбязательств_гр1а");
+
+        // Check field lineage
         String lineageJson = Files.readString(output.toPath().resolve("lineage/field_lineage.json"));
         assertThat(lineageJson).contains("ВидОбязательств_гр1а");
+
+        // Check all query texts exist
+        for (int i = 0; i < model.getNodes().size(); i++) {
+            assertThat(output.toPath().resolve("query_texts/node_" + i + ".sql")).exists();
+        }
     }
 }
