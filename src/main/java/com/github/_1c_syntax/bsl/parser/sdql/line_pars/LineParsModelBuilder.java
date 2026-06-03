@@ -84,6 +84,14 @@ public class LineParsModelBuilder {
         part.setType("union_query");
         part.setUnionType(up.getUnionType());
         part.setQuery(up.getQuery());
+        // Alias from parent's first select field
+        if (parent.getQuery() != null && parent.getQuery().getSelect() != null
+            && !parent.getQuery().getSelect().isEmpty()) {
+          String firstAlias = parent.getQuery().getSelect().get(0).getAlias();
+          if (firstAlias != null) {
+            part.setAlias(firstAlias);
+          }
+        }
         // unionFirst on subsequent union nodes points to the first one
         if (partCount > 1) {
           part.setUnionFirst(parent.getUnionNodesIds().get(0));
@@ -94,9 +102,6 @@ public class LineParsModelBuilder {
         if (up.getQuery() != null) {
           processAst(part, up.getQuery());
         }
-      }
-      if (!parent.getUnionNodesIds().isEmpty()) {
-        parent.setUnionFirst(parent.getUnionNodesIds().get(0));
       }
       // Remove unions from parent query — they are now separate nodes
       ast.setUnions(null);
