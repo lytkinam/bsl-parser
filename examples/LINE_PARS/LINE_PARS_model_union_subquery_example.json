@@ -41,7 +41,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 3,
@@ -56,7 +56,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 4,
@@ -71,7 +71,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 5,
@@ -86,7 +86,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 6,
@@ -101,7 +101,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 7,
@@ -116,7 +116,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 8,
@@ -131,7 +131,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 9,
@@ -146,7 +146,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 10,
@@ -161,7 +161,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 11,
@@ -176,7 +176,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 12,
@@ -191,7 +191,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 13,
@@ -206,7 +206,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 14,
@@ -221,7 +221,7 @@
         "alias" : "ТипРезерва"
       } ]
     },
-    "unionFirst" : 2,
+    "unionFirst" : 1,
     "unionType" : "union_all"
   }, {
     "id" : 15,
@@ -283,7 +283,7 @@
       } ],
       "where" : "уп_ВозвратПенсий.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ уп_ВозвратПенсий.Организация В(&Организация)"
     },
-    "unionFirst" : 17,
+    "unionFirst" : 16,
     "unionType" : "union_all"
   }, {
     "id" : 18,
@@ -304,7 +304,7 @@
       } ],
       "where" : "уп_ВозвратПрочихНачисленийНПО.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ уп_ВозвратПрочихНачисленийНПО.Организация В(&Организация)"
     },
-    "unionFirst" : 17,
+    "unionFirst" : 16,
     "unionType" : "union_all"
   }, {
     "id" : 19,
@@ -325,7 +325,7 @@
       } ],
       "where" : "ДанныеДокумента.Дата МЕЖДУ &НачалоПериода И &КонецПериода\r\n\tИ ДанныеДокумента.Организация В(&Организация)"
     },
-    "unionFirst" : 17,
+    "unionFirst" : 16,
     "unionType" : "union_all"
   }, {
     "id" : 20,
@@ -427,7 +427,7 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   }, {
     "id" : 25,
@@ -447,7 +447,7 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   }, {
     "id" : 26,
@@ -467,7 +467,7 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   }, {
     "id" : 27,
@@ -487,7 +487,7 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   }, {
     "id" : 28,
@@ -507,7 +507,7 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   }, {
     "id" : 29,
@@ -527,7 +527,7 @@
         "joins" : [ ]
       } ]
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   }, {
     "id" : 30,
@@ -548,7 +548,7 @@
       } ],
       "limitations" : "РАЗЛИЧНЫЕ"
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   }, {
     "id" : 31,
@@ -569,7 +569,7 @@
       } ],
       "where" : "уп_СостоянияДоговораСрезПоследних.Состояние В (ЗНАЧЕНИЕ(Перечисление.уп_СостоянияДоговора.Действует))"
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   }, {
     "id" : 32,
@@ -590,7 +590,7 @@
       } ],
       "where" : "СостоянияПС.Состояние В (ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.НакопительныйПериод), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ВыплатнойПериод), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.НачисленияПриостановлены), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ВыплатыПриостановлены), ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ПодготовкаКЗакрытию))"
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   }, {
     "id" : 33,
@@ -611,7 +611,7 @@
       } ],
       "where" : "уп_СостоянияПС.Период МЕЖДУ &НачалоПериода И &КонецПериода\r\n\t\tИ уп_СостоянияПС.НомерСчета.Владелец.Организация В(&Организация)\r\n\t\tИ уп_СостоянияПС.Состояние <> ЗНАЧЕНИЕ(Перечисление.уп_СостоянияПС.ОжиданиеВзносов)"
     },
-    "unionFirst" : 24,
+    "unionFirst" : 23,
     "unionType" : "union"
   } ],
   "edges" : [ ],

@@ -110,9 +110,9 @@ public class LineParsModelBuilder {
       }
       // Set unionFirst on ALL union nodes (including first) pointing to first union node
       if (!unionNodes.isEmpty()) {
-        int firstUnionId = unionNodes.get(0).getId();
+        int parentId = parent.getId();
         for (LineParsNode part : unionNodes) {
-          part.setUnionFirst(firstUnionId);
+          part.setUnionFirst(parentId);
         }
       }
       // Remove unions from parent query — they are now separate nodes
