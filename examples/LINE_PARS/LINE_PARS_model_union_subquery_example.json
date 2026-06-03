@@ -5,8 +5,6 @@
     "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
     "type" : "temp_query",
     "query" : {
-      "startIndex" : 2,
-      "endIndex" : 164,
       "type" : "select",
       "into" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
       "select" : [ {
@@ -23,8 +21,6 @@
     "name" : "ВТ_ТипыРезервов",
     "type" : "temp_query",
     "query" : {
-      "startIndex" : 171,
-      "endIndex" : 1494,
       "type" : "select",
       "into" : "ВТ_ТипыРезервов",
       "select" : [ {
@@ -42,8 +38,6 @@
     "name" : "Часть_1",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -52,15 +46,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 3,
     "sdblId" : 1,
     "name" : "Часть_2",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -69,15 +62,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 4,
     "sdblId" : 1,
     "name" : "Часть_3",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -86,15 +78,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 5,
     "sdblId" : 1,
     "name" : "Часть_4",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -103,15 +94,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 6,
     "sdblId" : 1,
     "name" : "Часть_5",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -120,15 +110,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 7,
     "sdblId" : 1,
     "name" : "Часть_6",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -137,15 +126,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 8,
     "sdblId" : 1,
     "name" : "Часть_7",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -154,15 +142,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 9,
     "sdblId" : 1,
     "name" : "Часть_8",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -171,15 +158,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 10,
     "sdblId" : 1,
     "name" : "Часть_9",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -188,15 +174,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 11,
     "sdblId" : 1,
     "name" : "Часть_10",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -205,15 +190,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 12,
     "sdblId" : 1,
     "name" : "Часть_11",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -222,15 +206,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 13,
     "sdblId" : 1,
     "name" : "Часть_12",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -239,15 +222,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 14,
     "sdblId" : 1,
     "name" : "Часть_13",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -256,15 +238,14 @@
     },
     "upqueryId" : 1,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 15,
     "sdblId" : 2,
     "name" : "ВТ_ВидыПаспортов",
     "type" : "temp_query",
     "query" : {
-      "startIndex" : 1583,
-      "endIndex" : 1816,
       "type" : "select",
       "into" : "ВТ_ВидыПаспортов",
       "select" : [ {
@@ -287,8 +268,6 @@
     "name" : "ВТ_ДокументыСторно",
     "type" : "temp_query",
     "query" : {
-      "startIndex" : 1905,
-      "endIndex" : 2936,
       "type" : "select",
       "into" : "ВТ_ДокументыСторно",
       "select" : [ {
@@ -312,8 +291,6 @@
     "name" : "Часть_1",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -328,15 +305,14 @@
     },
     "upqueryId" : 16,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 18,
     "sdblId" : 3,
     "name" : "Часть_2",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -351,15 +327,14 @@
     },
     "upqueryId" : 16,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 19,
     "sdblId" : 3,
     "name" : "Часть_3",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -374,15 +349,14 @@
     },
     "upqueryId" : 16,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union_all"
   }, {
     "id" : 20,
     "sdblId" : 4,
     "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
     "type" : "temp_query",
     "query" : {
-      "startIndex" : 2943,
-      "endIndex" : 3579,
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
       "select" : [ {
@@ -405,8 +379,6 @@
     "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
     "type" : "temp_query",
     "query" : {
-      "startIndex" : 3685,
-      "endIndex" : 4601,
       "type" : "select",
       "into" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
       "select" : [ {
@@ -429,8 +401,6 @@
     "name" : "ВТ_ПенсионныеСчета_ПР",
     "type" : "temp_query",
     "query" : {
-      "startIndex" : 4708,
-      "endIndex" : 9002,
       "type" : "select",
       "into" : "ВТ_ПенсионныеСчета_ПР",
       "select" : [ {
@@ -440,8 +410,6 @@
       } ],
       "from" : [ {
         "subquery" : {
-          "startIndex" : 0,
-          "endIndex" : 0,
           "type" : "select",
           "select" : [ {
             "fieldType" : "expression",
@@ -468,8 +436,6 @@
     "name" : "Подзапрос",
     "type" : "sub_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -492,8 +458,6 @@
     "name" : "Часть_1",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -507,15 +471,14 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   }, {
     "id" : 25,
     "sdblId" : 6,
     "name" : "Часть_2",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -530,15 +493,14 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   }, {
     "id" : 26,
     "sdblId" : 6,
     "name" : "Часть_3",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -552,15 +514,14 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   }, {
     "id" : 27,
     "sdblId" : 6,
     "name" : "Часть_4",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -575,15 +536,14 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   }, {
     "id" : 28,
     "sdblId" : 6,
     "name" : "Часть_5",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -597,15 +557,14 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   }, {
     "id" : 29,
     "sdblId" : 6,
     "name" : "Часть_6",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -619,15 +578,14 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   }, {
     "id" : 30,
     "sdblId" : 6,
     "name" : "Часть_7",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -642,15 +600,14 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   }, {
     "id" : 31,
     "sdblId" : 6,
     "name" : "Часть_8",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -665,15 +622,14 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   }, {
     "id" : 32,
     "sdblId" : 6,
     "name" : "Часть_9",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -688,15 +644,14 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   }, {
     "id" : 33,
     "sdblId" : 6,
     "name" : "Часть_10",
     "type" : "union_query",
     "query" : {
-      "startIndex" : 0,
-      "endIndex" : 0,
       "type" : "select",
       "select" : [ {
         "fieldType" : "expression",
@@ -711,7 +666,8 @@
     },
     "upqueryId" : 23,
     "subqueryIds" : [ ],
-    "unionNodesIds" : [ ]
+    "unionNodesIds" : [ ],
+    "unionType" : "union"
   } ],
   "edges" : [ ],
   "dropQueries" : [ ]

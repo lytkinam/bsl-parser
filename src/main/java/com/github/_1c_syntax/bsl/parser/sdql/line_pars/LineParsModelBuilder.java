@@ -45,6 +45,14 @@ public class LineParsModelBuilder {
       }
     }
 
+    // Clear startIndex/endIndex from all queries — not needed in LINE_PARS
+    for (LineParsNode n : nodes) {
+      if (n.getQuery() != null) {
+        n.getQuery().setStartIndex(null);
+        n.getQuery().setEndIndex(null);
+      }
+    }
+
     LineParsModel model = new LineParsModel();
     model.setNodes(nodes);
     model.setEdges(new ArrayList<>()); // reserved for next iteration
@@ -74,6 +82,7 @@ public class LineParsModelBuilder {
         part.setSdblId(parent.getSdblId());
         part.setName("Часть_" + partCount);
         part.setType("union_query");
+        part.setUnionType(up.getUnionType());
         part.setQuery(up.getQuery());
         part.setUpqueryId(parent.getId());
         nodes.add(part);

@@ -19,4 +19,5 @@ public class LineParsNode {
   private List<Integer> subqueryIds = new ArrayList<>();
   private List<Integer> unionNodesIds = new ArrayList<>();
   private Integer unionFirst;
+  private String unionType;
 }
