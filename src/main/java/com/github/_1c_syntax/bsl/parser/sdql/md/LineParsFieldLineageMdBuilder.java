@@ -90,6 +90,6 @@ public class LineParsFieldLineageMdBuilder {
 
   private String escapeMd(String s) {
     if (s == null) return "";
-    return s.replace("|", "\\|").replace("\n", "<br>").replace("\r", "");
+    return s.replace("|", "\\|").replace("\n", "  \n").replace("\r", "");
   }
 }
