@@ -48,10 +48,17 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(output.toPath().resolve("fields_node_example")).exists();
         assertThat(output.toPath().resolve("lineage_example")).exists();
 
-        // LINE_PARS model, hierarchy and field lineage (created as sibling to outputDir)
+        // LINE_PARS model and hierarchy (created as sibling to outputDir)
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example.json")).exists();
-        assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_field_lineage_example.json")).exists();
+
+        // field_lineage as sibling to LINE_PARS, per-node per-field files
+        Path fieldLineageDir = tempDir.resolve("field_lineage_example");
+        assertThat(fieldLineageDir).exists();
+        // example.sql has result node id=2 (Результат_3)
+        Path nodeDir = fieldLineageDir.resolve("2_Результат_3");
+        assertThat(nodeDir).exists();
+        assertThat(nodeDir.resolve("FLS_example_2_Результат_3_ИтогоСумма.json")).exists();
     }
 
     @Test
@@ -77,10 +84,14 @@ class SdqlQueryPackageAnalyzerTest {
             assertThat(output.toPath().resolve("query_texts_example_258/node_" + i + ".sql")).exists();
         }
 
-        // LINE_PARS model, hierarchy and field lineage (created as sibling to outputDir)
+        // LINE_PARS model and hierarchy (created as sibling to outputDir)
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example_258.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example_258.json")).exists();
-        assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_field_lineage_example_258.json")).exists();
+
+        // field_lineage as sibling to LINE_PARS, per-node per-field files
+        Path fieldLineageDir258 = tempDir.resolve("field_lineage_example_258");
+        assertThat(fieldLineageDir258).exists();
+        assertThat(fieldLineageDir258).isDirectory();
     }
 
     @Test

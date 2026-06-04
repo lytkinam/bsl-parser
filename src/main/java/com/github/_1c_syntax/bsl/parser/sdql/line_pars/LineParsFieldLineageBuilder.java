@@ -5,15 +5,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github._1c_syntax.bsl.parser.sdql.model.SelectField;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LineParsFieldLineageBuilder {
 
   private static final ObjectMapper MAPPER = new ObjectMapper();
 
-  public void build(Path lineParsDir, String baseName) throws IOException {
+  public void build(Path outputDir, String baseName) throws IOException {
+    Path lineParsDir = outputDir.getParent().resolve("LINE_PARS");
+
     LineParsModel model = MAPPER.readValue(
       lineParsDir.resolve("LINE_PARS_model_" + baseName + ".json").toFile(),
       LineParsModel.class);
@@ -23,25 +27,48 @@ public class LineParsFieldLineageBuilder {
       new TypeReference<List<HierarchyNode>>() {});
 
     LineParsFieldExtractor extractor = new LineParsFieldExtractor(model, hierarchy);
-    List<FieldLineageNode> result = new ArrayList<>();
 
-    for (LineParsNode node : model.getNodes()) {
+    List<LineParsNode> targetNodes = selectTargetNodes(model);
+
+    Path fieldLineageDir = outputDir.getParent().resolve("field_lineage_" + baseName);
+    Files.createDirectories(fieldLineageDir);
+
+    for (LineParsNode node : targetNodes) {
       if (node.getSelect() == null) {
         continue;
       }
+      Path nodeDir = fieldLineageDir.resolve(node.getId() + "_" + node.getName());
+      Files.createDirectories(nodeDir);
+
       for (SelectField sf : node.getSelect()) {
         if (sf.getAlias() == null) {
           continue;
         }
         FieldLineageNode lineage = extractor.extract(node.getId(), sf.getAlias());
-        if (lineage != null) {
-          result.add(lineage);
+        if (lineage == null) {
+          continue;
         }
+        String fileName = "FLS_" + baseName + "_" + node.getId() + "_" + node.getName()
+          + "_" + sf.getAlias() + ".json";
+        MAPPER.writerWithDefaultPrettyPrinter().writeValue(
+          nodeDir.resolve(fileName).toFile(), lineage);
       }
     }
+  }
 
-    MAPPER.writerWithDefaultPrettyPrinter().writeValue(
-      lineParsDir.resolve("LINE_PARS_field_lineage_" + baseName + ".json").toFile(),
-      result);
+  private List<LineParsNode> selectTargetNodes(LineParsModel model) {
+    List<LineParsNode> resultNodes = model.getNodes().stream()
+      .filter(n -> "result".equals(n.getType()))
+      .collect(Collectors.toList());
+
+    if (!resultNodes.isEmpty()) {
+      return resultNodes;
+    }
+
+    return model.getNodes().stream()
+      .filter(n -> "temp_query".equals(n.getType()))
+      .max(Comparator.comparingInt(LineParsNode::getId))
+      .map(List::of)
+      .orElse(List.of());
   }
 }

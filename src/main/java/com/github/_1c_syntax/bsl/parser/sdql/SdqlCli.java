@@ -47,9 +47,9 @@ public class SdqlCli {
         LineParsHierarchyBuilder hierarchyBuilder = new LineParsHierarchyBuilder();
         hierarchyBuilder.build(lineParsDir, baseName);
 
-        // 7. Build LINE_PARS field lineage (all fields)
+        // 7. Build LINE_PARS field lineage (target nodes only)
         LineParsFieldLineageBuilder fieldLineageBuilder = new LineParsFieldLineageBuilder();
-        fieldLineageBuilder.build(lineParsDir, baseName);
+        fieldLineageBuilder.build(outputDir.toPath(), baseName);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
     }
