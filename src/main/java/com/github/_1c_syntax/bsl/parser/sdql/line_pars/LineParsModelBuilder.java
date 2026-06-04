@@ -160,7 +160,7 @@ public class LineParsModelBuilder {
   private void copyQueryFields(LineParsNode node, QueryAst ast) {
     if (ast == null) return;
     node.setInto(ast.getInto());
-    node.setSelect(ast.getSelect());
+    node.setSelect(normalizeSelectFields(ast.getSelect()));
     node.setFrom(ast.getFrom());
     node.setWhere(ast.getWhere());
     node.setGroupBy(ast.getGroupBy());
@@ -173,6 +173,21 @@ public class LineParsModelBuilder {
     node.setAutoorder(ast.getAutoorder());
     node.setOrderBy(ast.getOrderBy());
     node.setTotals(ast.getTotals());
+  }
+
+  private List<SelectField> normalizeSelectFields(List<SelectField> select) {
+    if (select == null) return null;
+    for (SelectField sf : select) {
+      if (sf.getAlias() == null && sf.getText() != null) {
+        sf.setAlias(sanitizeAlias(sf.getText()));
+      }
+    }
+    return select;
+  }
+
+  private String sanitizeAlias(String text) {
+    if (text == null) return "";
+    return text.replaceAll("[^\\p{L}\\p{N}]", "");
   }
 
   private QueryAst copyQueryAst(QueryAst source) {
