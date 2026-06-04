@@ -14,6 +14,7 @@ public class FieldLineageNode {
   private String name;
   private String alias;
   private String text;
+  private String source;
   private String childName;
 
   @JsonProperty("child_fields")

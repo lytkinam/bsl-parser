@@ -118,14 +118,25 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(union0.getId()).isEqualTo(26);
         assertThat(union0.getAlias()).isEqualTo("ПенсионныйСчет");
         assertThat(union0.getText()).isEqualTo("уп_РезервыОстатки.НомерСчета");
-        assertThat(union0.getChildFields()).isEmpty();
+        assertThat(union0.getChildFields()).hasSize(1);
+        FieldLineageNode leaf0 = union0.getChildFields().get(0);
+        assertThat(leaf0.getChildName()).isEqualTo("уп_РезервыОстатки");
+        assertThat(leaf0.getName()).isEqualTo("уп_РезервыОстатки");
+        assertThat(leaf0.getSource()).contains("РегистрНакопления.уп_Резервы.Остатки");
+        assertThat(leaf0.getAlias()).isEqualTo("НомерСчета");
+        assertThat(leaf0.getText()).isEqualTo("уп_РезервыОстатки.НомерСчета");
+        assertThat(leaf0.getChildFields()).isEmpty();
 
         // Check second union leaf
         FieldLineageNode union1 = child.getChildFields().get(1);
         assertThat(union1.getChildName()).isEqualTo("union_1");
         assertThat(union1.getId()).isEqualTo(27);
         assertThat(union1.getText()).isEqualTo("уп_РезервыОбороты.НомерСчета");
-        assertThat(union1.getChildFields()).isEmpty();
+        assertThat(union1.getChildFields()).hasSize(1);
+        FieldLineageNode leaf1 = union1.getChildFields().get(0);
+        assertThat(leaf1.getChildName()).isEqualTo("уп_РезервыОбороты");
+        assertThat(leaf1.getSource()).contains("РегистрНакопления.уп_Резервы.Обороты");
+        assertThat(leaf1.getAlias()).isEqualTo("НомерСчета");
 
         // 2. Union part with chain of fields — must NOT produce false child
         FieldLineageNode chainResult = extractor.extract(39, "ПенсионныйСчет");
@@ -142,6 +153,13 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(leafResult).isNotNull();
         assertThat(leafResult.getId()).isEqualTo(42);
         assertThat(leafResult.getText()).isEqualTo("Резервы.НомерСчета");
-        assertThat(leafResult.getChildFields()).isEmpty();
+        assertThat(leafResult.getChildFields()).hasSize(1);
+        FieldLineageNode physLeaf = leafResult.getChildFields().get(0);
+        assertThat(physLeaf.getChildName()).isEqualTo("Резервы");
+        assertThat(physLeaf.getName()).isEqualTo("Резервы");
+        assertThat(physLeaf.getSource()).contains("РегистрНакопления.уп_Резервы.Обороты");
+        assertThat(physLeaf.getAlias()).isEqualTo("НомерСчета");
+        assertThat(physLeaf.getText()).isEqualTo("Резервы.НомерСчета");
+        assertThat(physLeaf.getChildFields()).isEmpty();
     }
 }

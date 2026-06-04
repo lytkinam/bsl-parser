@@ -77,12 +77,23 @@ public class LineParsFieldExtractor {
 
     for (TableFieldRef ref : candidates) {
       HierarchyNode hNode = findHierarchyNode(nodeId, ref.aliasTable);
-      if (hNode != null && hNode.getId() != null) {
+      if (hNode == null) {
+        continue;
+      }
+      if (hNode.getId() != null) {
         FieldLineageNode child = buildNode(hNode.getId(), ref.fieldName);
         if (child != null) {
           child.setChildName(ref.aliasTable);
           result.getChildFields().add(child);
         }
+      } else {
+        FieldLineageNode leaf = new FieldLineageNode();
+        leaf.setChildName(ref.aliasTable);
+        leaf.setName(hNode.getName());
+        leaf.setSource(hNode.getSource());
+        leaf.setAlias(ref.fieldName);
+        leaf.setText(ref.aliasTable + "." + ref.fieldName);
+        result.getChildFields().add(leaf);
       }
     }
 
