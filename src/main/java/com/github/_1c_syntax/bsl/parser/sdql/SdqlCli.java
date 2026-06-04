@@ -8,6 +8,7 @@ import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsHierarchyBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsModelBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.FieldsNodeMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.HierarchyMdBuilder;
+import com.github._1c_syntax.bsl.parser.sdql.md.LineParsFieldLineageMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.LineParsModelMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.LineageMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.SdqlModelMdBuilder;
@@ -62,6 +63,10 @@ public class SdqlCli {
         new LineageMdBuilder().build(outputDir.toPath(), baseName);
         new LineParsModelMdBuilder().build(lineParsDir, baseName);
         new HierarchyMdBuilder().build(lineParsDir, baseName);
+
+        // 9. Generate Markdown for LINE_PARS field lineage
+        java.nio.file.Path fieldLineageDir = outputDir.toPath().getParent().resolve("field_lineage");
+        new LineParsFieldLineageMdBuilder().build(fieldLineageDir, baseName);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
     }
