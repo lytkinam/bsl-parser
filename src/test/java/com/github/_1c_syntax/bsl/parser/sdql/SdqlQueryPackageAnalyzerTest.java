@@ -39,24 +39,12 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(nodesJson).contains("ВТ_Сотрудники");
         assertThat(nodesJson).contains("ВЫБРАТЬ");
 
-        // query texts exported from nodes.json
-        assertThat(output.toPath().resolve("query_texts_example")).exists();
-        assertThat(output.toPath().resolve("query_texts_example/node_0.sql")).exists();
-        assertThat(output.toPath().resolve("query_texts_example/node_1.sql")).exists();
-
-        // fields and lineage
-        assertThat(output.toPath().resolve("fields_node_example")).exists();
-        assertThat(output.toPath().resolve("lineage_example")).exists();
-
         // LINE_PARS model and hierarchy (created as sibling to outputDir)
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example.json")).exists();
 
         // Markdown reports
         assertThat(output.toPath().resolve("sdbl_parse_model_example.md")).exists();
-        assertThat(output.toPath().resolve("fields_node_example/fields_node.md")).exists();
-        assertThat(output.toPath().resolve("fields_node_example/table_alias_map.md")).exists();
-        assertThat(output.toPath().resolve("lineage_example/field_lineage.md")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example.md")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example.md")).exists();
 
@@ -85,24 +73,12 @@ class SdqlQueryPackageAnalyzerTest {
         String nodesJson = Files.readString(output.toPath().resolve("sdbl_parse_nodes_example_258.json"));
         assertThat(nodesJson).contains("ВидОбязательств_гр1а");
 
-        // Check field lineage
-        String lineageJson = Files.readString(output.toPath().resolve("lineage_example_258/field_lineage.json"));
-        assertThat(lineageJson).contains("ВидОбязательств_гр1а");
-
-        // Check all query texts exist
-        for (int i = 0; i < model.getNodes().size(); i++) {
-            assertThat(output.toPath().resolve("query_texts_example_258/node_" + i + ".sql")).exists();
-        }
-
         // LINE_PARS model and hierarchy (created as sibling to outputDir)
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example_258.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example_258.json")).exists();
 
         // Markdown reports
         assertThat(output.toPath().resolve("sdbl_parse_model_example_258.md")).exists();
-        assertThat(output.toPath().resolve("fields_node_example_258/fields_node.md")).exists();
-        assertThat(output.toPath().resolve("fields_node_example_258/table_alias_map.md")).exists();
-        assertThat(output.toPath().resolve("lineage_example_258/field_lineage.md")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example_258.md")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example_258.md")).exists();
 

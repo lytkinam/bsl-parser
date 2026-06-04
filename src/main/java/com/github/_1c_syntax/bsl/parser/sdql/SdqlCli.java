@@ -1,16 +1,11 @@
 package com.github._1c_syntax.bsl.parser.sdql;
 
-import com.github._1c_syntax.bsl.parser.sdql.export.QueryTextExporter;
-import com.github._1c_syntax.bsl.parser.sdql.fields.FieldsNodeBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.lineage.FieldLineageAnalyzer;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsFieldLineageBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsHierarchyBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsModelBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.md.FieldsNodeMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.HierarchyMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.LineParsFieldLineageMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.LineParsModelMdBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.md.LineageMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.SdqlModelMdBuilder;
 
 import java.io.File;
@@ -29,42 +24,28 @@ public class SdqlCli {
 
         String baseName = baseName(input);
 
-        // 1. Primary analysis: nodes.json (full text) + model.json (stripped text)
+        // 1. Primary analysis: model.json (stripped text)
         SdqlQueryPackageAnalyzer analyzer = new SdqlQueryPackageAnalyzer();
         analyzer.analyze(input, outputDir, baseName);
 
-        // 2. Export query texts from primary nodes.json
-        QueryTextExporter textExporter = new QueryTextExporter();
-        textExporter.export(analyzer.getFullNodes(), outputDir.toPath(), baseName);
-
-        // 3. Build fields node from model.json
-        FieldsNodeBuilder fieldsBuilder = new FieldsNodeBuilder();
-        fieldsBuilder.build(analyzer.getModel(), outputDir.toPath(), baseName);
-
-        // 4. Lineage analysis from model.json
-        FieldLineageAnalyzer lineageAnalyzer = new FieldLineageAnalyzer();
-        lineageAnalyzer.analyze(analyzer.getModel(), outputDir.toPath(), baseName);
-
-        // 5. Build LINE_PARS model (subqueries, unions, expanded edges)
+        // 2. Build LINE_PARS model (subqueries, unions, expanded edges)
         LineParsModelBuilder lineParsBuilder = new LineParsModelBuilder();
         java.nio.file.Path lineParsDir = lineParsBuilder.build(outputDir.toPath(), baseName);
 
-        // 6. Build LINE_PARS hierarchy extraction
+        // 3. Build LINE_PARS hierarchy extraction
         LineParsHierarchyBuilder hierarchyBuilder = new LineParsHierarchyBuilder();
         hierarchyBuilder.build(lineParsDir, baseName);
 
-        // 7. Build LINE_PARS field lineage (target nodes only)
+        // 4. Build LINE_PARS field lineage (target nodes only)
         LineParsFieldLineageBuilder fieldLineageBuilder = new LineParsFieldLineageBuilder();
         fieldLineageBuilder.build(outputDir.toPath(), baseName);
 
-        // 8. Generate Markdown reports from JSON artifacts
+        // 5. Generate Markdown reports from JSON artifacts
         new SdqlModelMdBuilder().build(outputDir.toPath(), baseName);
-        new FieldsNodeMdBuilder().build(outputDir.toPath(), baseName);
-        new LineageMdBuilder().build(outputDir.toPath(), baseName);
         new LineParsModelMdBuilder().build(lineParsDir, baseName);
         new HierarchyMdBuilder().build(lineParsDir, baseName);
 
-        // 9. Generate Markdown for LINE_PARS field lineage
+        // 6. Generate Markdown for LINE_PARS field lineage
         java.nio.file.Path fieldLineageDir = outputDir.toPath().getParent().resolve("field_lineage");
         new LineParsFieldLineageMdBuilder().build(fieldLineageDir, baseName);
 
