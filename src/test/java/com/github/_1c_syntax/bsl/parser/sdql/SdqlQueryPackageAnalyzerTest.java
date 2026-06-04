@@ -52,6 +52,14 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example.json")).exists();
 
+        // Markdown reports
+        assertThat(output.toPath().resolve("sdbl_parse_model_example.md")).exists();
+        assertThat(output.toPath().resolve("fields_node_example/fields_node.md")).exists();
+        assertThat(output.toPath().resolve("fields_node_example/table_alias_map.md")).exists();
+        assertThat(output.toPath().resolve("lineage_example/field_lineage.md")).exists();
+        assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example.md")).exists();
+        assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example.md")).exists();
+
         // field_lineage as sibling to LINE_PARS: field_lineage/<baseName>/<nodeId>_<nodeName>/
         Path fieldLineageDir = tempDir.resolve("field_lineage");
         assertThat(fieldLineageDir).exists();
@@ -89,6 +97,14 @@ class SdqlQueryPackageAnalyzerTest {
         // LINE_PARS model and hierarchy (created as sibling to outputDir)
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example_258.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example_258.json")).exists();
+
+        // Markdown reports
+        assertThat(output.toPath().resolve("sdbl_parse_model_example_258.md")).exists();
+        assertThat(output.toPath().resolve("fields_node_example_258/fields_node.md")).exists();
+        assertThat(output.toPath().resolve("fields_node_example_258/table_alias_map.md")).exists();
+        assertThat(output.toPath().resolve("lineage_example_258/field_lineage.md")).exists();
+        assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example_258.md")).exists();
+        assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example_258.md")).exists();
 
         // field_lineage as sibling to LINE_PARS: field_lineage/<baseName>/
         Path fieldLineageDir258 = tempDir.resolve("field_lineage");

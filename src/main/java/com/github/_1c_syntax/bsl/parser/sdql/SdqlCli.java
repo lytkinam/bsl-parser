@@ -6,6 +6,11 @@ import com.github._1c_syntax.bsl.parser.sdql.lineage.FieldLineageAnalyzer;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsFieldLineageBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsHierarchyBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsModelBuilder;
+import com.github._1c_syntax.bsl.parser.sdql.md.FieldsNodeMdBuilder;
+import com.github._1c_syntax.bsl.parser.sdql.md.HierarchyMdBuilder;
+import com.github._1c_syntax.bsl.parser.sdql.md.LineParsModelMdBuilder;
+import com.github._1c_syntax.bsl.parser.sdql.md.LineageMdBuilder;
+import com.github._1c_syntax.bsl.parser.sdql.md.SdqlModelMdBuilder;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -50,6 +55,13 @@ public class SdqlCli {
         // 7. Build LINE_PARS field lineage (target nodes only)
         LineParsFieldLineageBuilder fieldLineageBuilder = new LineParsFieldLineageBuilder();
         fieldLineageBuilder.build(outputDir.toPath(), baseName);
+
+        // 8. Generate Markdown reports from JSON artifacts
+        new SdqlModelMdBuilder().build(outputDir.toPath(), baseName);
+        new FieldsNodeMdBuilder().build(outputDir.toPath(), baseName);
+        new LineageMdBuilder().build(outputDir.toPath(), baseName);
+        new LineParsModelMdBuilder().build(lineParsDir, baseName);
+        new HierarchyMdBuilder().build(lineParsDir, baseName);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
     }
