@@ -1,0 +1,117 @@
+{
+  "nodes" : [ {
+    "id" : 0,
+    "type" : "temp_query",
+    "name" : "ВТ_Сотрудники",
+    "textHash" : "cbaf044fa46ccdf2e61afa1f7e8ceaeaa317871d5febc0993331757be383022b",
+    "textLength" : 244,
+    "query" : {
+      "startIndex" : 71,
+      "endIndex" : 244,
+      "type" : "select",
+      "into" : "ВТ_Сотрудники",
+      "select" : [ {
+        "text" : "Сотрудники.Ссылка",
+        "alias" : "Сотрудник"
+      }, {
+        "text" : "Сотрудники.Наименование"
+      } ],
+      "from" : [ {
+        "table" : "Справочник.Сотрудники",
+        "alias" : "Сотрудники",
+        "joins" : [ ]
+      } ],
+      "where" : "Сотрудники.Уволен = ЛОЖЬ"
+    }
+  }, {
+    "id" : 1,
+    "type" : "temp_query",
+    "name" : "ВТ_Начисления",
+    "textHash" : "fc6dd17e3e62a2fe0949abcafb717ba374f1bf01205d50614507fa47de752d45",
+    "textLength" : 316,
+    "query" : {
+      "startIndex" : 297,
+      "endIndex" : 564,
+      "type" : "select",
+      "into" : "ВТ_Начисления",
+      "select" : [ {
+        "text" : "ВТ_Сотрудники.Сотрудник"
+      }, {
+        "text" : "НачисленияДвижения.Сумма"
+      } ],
+      "from" : [ {
+        "table" : "ВТ_Сотрудники",
+        "alias" : "ВТ_Сотрудники",
+        "joins" : [ {
+          "joinType" : "left",
+          "source" : {
+            "table" : "РегистрНакопления.Начисления",
+            "alias" : "НачисленияДвижения",
+            "joins" : [ ]
+          },
+          "condition" : "ВТ_Сотрудники.Сотрудник = НачисленияДвижения.Сотрудник"
+        } ]
+      } ]
+    }
+  }, {
+    "id" : 2,
+    "type" : "result",
+    "name" : "Результат_3",
+    "textHash" : "e4eed4b77b7fa05748485def0299dcd31bd5bf4e35ecaa5e74fb17736136a2d3",
+    "textLength" : 210,
+    "query" : {
+      "startIndex" : 612,
+      "endIndex" : 778,
+      "type" : "select",
+      "select" : [ {
+        "text" : "ВТ_Начисления.Сотрудник"
+      }, {
+        "text" : "СУММА(ВТ_Начисления.Сумма)",
+        "alias" : "ИтогоСумма"
+      } ],
+      "from" : [ {
+        "table" : "ВТ_Начисления",
+        "alias" : "ВТ_Начисления",
+        "joins" : [ ]
+      } ],
+      "groupBy" : [ "ВТ_Начисления.Сотрудник" ]
+    }
+  }, {
+    "id" : 3,
+    "type" : "drop_query",
+    "name" : "ВТ_Сотрудники",
+    "textHash" : "cab046ccfab302d6eb0a6748b090d69caee75703f2149f91ce2afbd6ebf25338",
+    "textLength" : 35,
+    "query" : {
+      "startIndex" : 793,
+      "endIndex" : 817,
+      "type" : "drop",
+      "into" : "ВТ_Сотрудники"
+    }
+  }, {
+    "id" : 4,
+    "type" : "drop_query",
+    "name" : "ВТ_Начисления",
+    "textHash" : "f4d14ab909764d1ac7a09ab8ddfd9f8e078cc7c60a71719e114d0c9cb6d94b52",
+    "textLength" : 24,
+    "query" : {
+      "startIndex" : 819,
+      "endIndex" : 843,
+      "type" : "drop",
+      "into" : "ВТ_Начисления"
+    }
+  } ],
+  "edges" : [ {
+    "from" : 0,
+    "to" : 1,
+    "fromName" : "ВТ_Сотрудники",
+    "toName" : "ВТ_Начисления"
+  }, {
+    "from" : 1,
+    "to" : 2,
+    "fromName" : "ВТ_Начисления",
+    "toName" : "Результат_3"
+  } ],
+  "sourceHash" : "ae726fb365676eb84e2fc4c6362ac5fe0e51fc07b210492a82e9d9c748068d2d",
+  "sourceLength" : 845
+}

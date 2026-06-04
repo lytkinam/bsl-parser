@@ -1,0 +1,27 @@
+{
+  "0" : [ {
+    "alias" : "Сотрудники",
+    "primary_table" : "Справочник.Сотрудники",
+    "virtual" : false,
+    "join_type" : "ИЗ"
+  } ],
+  "1" : [ {
+    "alias" : "ВТ_Сотрудники",
+    "primary_table" : "ВТ_Сотрудники",
+    "virtual" : true,
+    "join_type" : "ИЗ"
+  }, {
+    "alias" : "НачисленияДвижения",
+    "primary_table" : "РегистрНакопления.Начисления",
+    "virtual" : false,
+    "join_type" : "ЛЕВОЕ_СОЕДИНЕНИЕ"
+  } ],
+  "2" : [ {
+    "alias" : "ВТ_Начисления",
+    "primary_table" : "ВТ_Начисления",
+    "virtual" : true,
+    "join_type" : "ИЗ"
+  } ],
+  "3" : [ ],
+  "4" : [ ]
+}
