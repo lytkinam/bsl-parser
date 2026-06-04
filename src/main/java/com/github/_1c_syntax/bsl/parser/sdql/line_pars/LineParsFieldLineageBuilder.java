@@ -37,9 +37,6 @@ public class LineParsFieldLineageBuilder {
       if (node.getSelect() == null) {
         continue;
       }
-      Path nodeDir = fieldLineageDir.resolve(node.getId() + "_" + node.getName());
-      Files.createDirectories(nodeDir);
-
       for (SelectField sf : node.getSelect()) {
         if (sf.getAlias() == null) {
           continue;
@@ -51,7 +48,7 @@ public class LineParsFieldLineageBuilder {
         String fileName = "FLS_" + baseName + "_" + node.getId() + "_" + node.getName()
           + "_" + sf.getAlias() + ".json";
         MAPPER.writerWithDefaultPrettyPrinter().writeValue(
-          nodeDir.resolve(fileName).toFile(), lineage);
+          fieldLineageDir.resolve(fileName).toFile(), lineage);
       }
     }
   }

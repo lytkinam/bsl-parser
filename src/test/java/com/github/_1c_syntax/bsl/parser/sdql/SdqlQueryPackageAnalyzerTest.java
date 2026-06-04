@@ -52,13 +52,11 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example.json")).exists();
 
-        // field_lineage as sibling to LINE_PARS, per-node per-field files
+        // field_lineage as sibling to LINE_PARS, flat files
         Path fieldLineageDir = tempDir.resolve("field_lineage_example");
         assertThat(fieldLineageDir).exists();
         // example.sql has result node id=2 (Результат_3)
-        Path nodeDir = fieldLineageDir.resolve("2_Результат_3");
-        assertThat(nodeDir).exists();
-        assertThat(nodeDir.resolve("FLS_example_2_Результат_3_ИтогоСумма.json")).exists();
+        assertThat(fieldLineageDir.resolve("FLS_example_2_Результат_3_ИтогоСумма.json")).exists();
     }
 
     @Test
