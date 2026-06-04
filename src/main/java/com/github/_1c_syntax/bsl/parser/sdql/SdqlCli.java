@@ -3,6 +3,7 @@ package com.github._1c_syntax.bsl.parser.sdql;
 import com.github._1c_syntax.bsl.parser.sdql.export.QueryTextExporter;
 import com.github._1c_syntax.bsl.parser.sdql.fields.FieldsNodeBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.lineage.FieldLineageAnalyzer;
+import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsFieldLineageBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsHierarchyBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsModelBuilder;
 
@@ -45,6 +46,10 @@ public class SdqlCli {
         // 6. Build LINE_PARS hierarchy extraction
         LineParsHierarchyBuilder hierarchyBuilder = new LineParsHierarchyBuilder();
         hierarchyBuilder.build(lineParsDir, baseName);
+
+        // 7. Build LINE_PARS field lineage (all fields)
+        LineParsFieldLineageBuilder fieldLineageBuilder = new LineParsFieldLineageBuilder();
+        fieldLineageBuilder.build(lineParsDir, baseName);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
     }

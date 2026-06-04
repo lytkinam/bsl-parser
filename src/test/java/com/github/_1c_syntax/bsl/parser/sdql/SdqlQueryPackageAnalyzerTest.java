@@ -49,9 +49,10 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(output.toPath().resolve("fields_node_example")).exists();
         assertThat(output.toPath().resolve("lineage_example")).exists();
 
-        // LINE_PARS model and hierarchy (created as sibling to outputDir)
+        // LINE_PARS model, hierarchy and field lineage (created as sibling to outputDir)
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example.json")).exists();
+        assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_field_lineage_example.json")).exists();
     }
 
     @Test
@@ -78,9 +79,10 @@ class SdqlQueryPackageAnalyzerTest {
             assertThat(output.toPath().resolve("query_texts_example_258/node_" + i + ".sql")).exists();
         }
 
-        // LINE_PARS model and hierarchy (created as sibling to outputDir)
+        // LINE_PARS model, hierarchy and field lineage (created as sibling to outputDir)
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example_258.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example_258.json")).exists();
+        assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_field_lineage_example_258.json")).exists();
     }
 
     @Test
