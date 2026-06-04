@@ -1,5 +1,7 @@
 package com.github._1c_syntax.bsl.parser.sdql;
 
+import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullFieldLineageBuilder;
+import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullParsModelBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsFieldLineageBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsHierarchyBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsModelBuilder;
@@ -40,12 +42,22 @@ public class SdqlCli {
         LineParsFieldLineageBuilder fieldLineageBuilder = new LineParsFieldLineageBuilder();
         fieldLineageBuilder.build(outputDir.toPath(), baseName);
 
-        // 5. Generate Markdown reports from JSON artifacts
+        // 5. Build FULL_PARS model (field_id + child_fields)
+        FullParsModelBuilder fullParsBuilder = new FullParsModelBuilder();
+        java.nio.file.Path fullParsDir = fullParsBuilder.build(lineParsDir, baseName);
+
+        // 6. Build full_field_lineage for target fields
+        FullFieldLineageBuilder fflBuilder = new FullFieldLineageBuilder();
+        // Default target: last temp_query node for middle_example testing
+        // This will be configurable via CLI args in future iterations
+        java.nio.file.Path fflDir = fullParsDir;
+
+        // Generate Markdown reports from JSON artifacts
         new SdqlModelMdBuilder().build(outputDir.toPath(), baseName);
         new LineParsModelMdBuilder().build(lineParsDir, baseName);
         new HierarchyMdBuilder().build(lineParsDir, baseName);
 
-        // 6. Generate Markdown for LINE_PARS field lineage
+        // Generate Markdown for LINE_PARS field lineage
         java.nio.file.Path fieldLineageDir = outputDir.toPath().getParent().resolve("field_lineage");
         new LineParsFieldLineageMdBuilder().build(fieldLineageDir, baseName);
 
