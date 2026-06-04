@@ -37,8 +37,8 @@
 
 ### Что коммитить
 
-- **Коммитить**: исходный код (`src/`), примеры для `middle_example` и `union_subquery_example`
-- **Не коммитить**: артефакты для `example` и `example_258` (они генерируются только для локальных тестов)
+- **Коммитить**: исходный код (`src/`), примеры для `middle_example`, `example_258` и `union_subquery_example`
+- **Не коммитить**: артефакты для `example` (они генерируются только для локальных тестов)
 
 ### Сообщения коммитов
 
@@ -103,7 +103,7 @@ java -cp "build/classes/java/main:build/resources/main:$(find ~/.gradle/caches -
 | Файл | Назначение | Коммитить артефакты? |
 |------|-----------|---------------------|
 | `examples/example.sql` | Простой тест (5 узлов) | Нет |
-| `examples/example_258.sql` | Сложный тест (>100 узлов) | Нет |
+| `examples/example_258.sql` | Сложный тест (>100 узлов) | **Да** |
 | `examples/middle_example.sql` | **Эталонный пример** (26 узлов) | **Да** |
 | `examples/sdbl/union_subquery_example.sql` | UNION + подзапросы | **Да** |
 
