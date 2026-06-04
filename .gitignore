@@ -76,20 +76,4 @@ gen/
 # Python generated ANTLR files cache
 src/main/antlr/__pycache__/
 
-# SDQL generated artifacts: only middle_example and union_subquery_example are committed
-examples/SDBL_PARS/*example.*
-examples/SDBL_PARS/*example_258.*
-examples/SDBL_PARS/fields_node_example/
-examples/SDBL_PARS/fields_node_example_258/
-examples/SDBL_PARS/lineage_example/
-examples/SDBL_PARS/lineage_example_258/
-examples/SDBL_PARS/query_texts_example/
-examples/SDBL_PARS/query_texts_example_258/
-examples/LINE_PARS/*example.*
-examples/LINE_PARS/*example_258.*
-!examples/SDBL_PARS/*middle_example*
-!examples/SDBL_PARS/*union_subquery_example*
-!examples/LINE_PARS/*middle_example*
-!examples/LINE_PARS/*union_subquery_example*
-examples/field_lineage/*example/
-!examples/field_lineage/*middle_example*
+# All examples/ artifacts are committed to git
