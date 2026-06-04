@@ -101,17 +101,7 @@
       "into" : "ВТ_Начисления"
     }
   } ],
-  "edges" : [ {
-    "from" : 0,
-    "to" : 1,
-    "fromName" : "ВТ_Сотрудники",
-    "toName" : "ВТ_Начисления"
-  }, {
-    "from" : 1,
-    "to" : 2,
-    "fromName" : "ВТ_Начисления",
-    "toName" : "Результат_3"
-  } ],
+  "edges" : null,
   "sourceHash" : "ae726fb365676eb84e2fc4c6362ac5fe0e51fc07b210492a82e9d9c748068d2d",
   "sourceLength" : 845
 }
