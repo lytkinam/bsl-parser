@@ -52,11 +52,13 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example.json")).exists();
 
-        // field_lineage as sibling to LINE_PARS, per-node subdirectories
-        Path fieldLineageDir = tempDir.resolve("field_lineage_example");
+        // field_lineage as sibling to LINE_PARS: field_lineage/<baseName>/<nodeId>_<nodeName>/
+        Path fieldLineageDir = tempDir.resolve("field_lineage");
         assertThat(fieldLineageDir).exists();
+        Path baseDir = fieldLineageDir.resolve("example");
+        assertThat(baseDir).exists();
         // example.sql has result node id=2 (Результат_3)
-        Path nodeDir = fieldLineageDir.resolve("2_Результат_3");
+        Path nodeDir = baseDir.resolve("2_Результат_3");
         assertThat(nodeDir).exists();
         assertThat(nodeDir.resolve("FLS_example_2_Результат_3_ИтогоСумма.json")).exists();
     }
@@ -88,10 +90,10 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_model_example_258.json")).exists();
         assertThat(tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example_258.json")).exists();
 
-        // field_lineage as sibling to LINE_PARS, per-node per-field files
-        Path fieldLineageDir258 = tempDir.resolve("field_lineage_example_258");
+        // field_lineage as sibling to LINE_PARS: field_lineage/<baseName>/
+        Path fieldLineageDir258 = tempDir.resolve("field_lineage");
         assertThat(fieldLineageDir258).exists();
-        assertThat(fieldLineageDir258).isDirectory();
+        assertThat(fieldLineageDir258.resolve("example_258")).isDirectory();
     }
 
     @Test

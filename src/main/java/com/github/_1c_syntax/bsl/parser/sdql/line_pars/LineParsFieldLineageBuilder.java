@@ -30,14 +30,17 @@ public class LineParsFieldLineageBuilder {
 
     List<LineParsNode> targetNodes = selectTargetNodes(model);
 
-    Path fieldLineageDir = outputDir.getParent().resolve("field_lineage_" + baseName);
+    Path fieldLineageDir = outputDir.getParent().resolve("field_lineage");
     Files.createDirectories(fieldLineageDir);
+
+    Path baseDir = fieldLineageDir.resolve(baseName);
+    Files.createDirectories(baseDir);
 
     for (LineParsNode node : targetNodes) {
       if (node.getSelect() == null) {
         continue;
       }
-      Path nodeDir = fieldLineageDir.resolve(node.getId() + "_" + node.getName());
+      Path nodeDir = baseDir.resolve(node.getId() + "_" + node.getName());
       Files.createDirectories(nodeDir);
 
       for (SelectField sf : node.getSelect()) {
