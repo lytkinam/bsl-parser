@@ -56,14 +56,10 @@ public class SdqlQueryPackageAnalyzer {
             modelNodes.add(mn);
         }
 
-        // 4. Resolve edges from AST
-        List<QueryEdge> edges = resolveEdges(modelNodes);
-
-        // 5. Strip text for model.json (temp_query/select)
+        // 4. Strip text for model.json (temp_query/select)
         stripTextsForJson(modelNodes);
         model = new QueryModel();
         model.setNodes(modelNodes);
-        model.setEdges(edges);
         model.setSourceHash(sha256(content));
         model.setSourceLength(content.length());
         ModelJsonMapper.write(model, Path.of(outputDir.getAbsolutePath(), "sdbl_parse_model_" + baseName + ".json"));
@@ -89,53 +85,6 @@ public class SdqlQueryPackageAnalyzer {
         for (QueryNode node : nodes) {
             if ("temp_query".equals(node.getType()) || "select".equals(node.getType())) {
                 node.setText(null);
-            }
-        }
-    }
-
-    private List<QueryEdge> resolveEdges(List<QueryNode> nodes) {
-        Map<String, Integer> tempTables = new HashMap<>();
-        for (QueryNode node : nodes) {
-            if ("temp_query".equals(node.getType()) && node.getName() != null) {
-                tempTables.put(node.getName().toUpperCase(), node.getId());
-            }
-        }
-        List<QueryEdge> edges = new ArrayList<>();
-        for (QueryNode node : nodes) {
-            QueryAst qast = node.getQuery();
-            if (qast == null) continue;
-            Set<String> seen = new HashSet<>();
-            if (qast.getFrom() != null) {
-                for (DataSource ds : qast.getFrom()) {
-                    checkSource(ds, node, tempTables, edges, seen);
-                    if (ds.getJoins() != null) {
-                        for (JoinPart jp : ds.getJoins()) {
-                            checkSource(jp.getSource(), node, tempTables, edges, seen);
-                        }
-                    }
-                }
-            }
-        }
-        return edges;
-    }
-
-    private void checkSource(DataSource ds, QueryNode node, Map<String, Integer> tempTables,
-                             List<QueryEdge> edges, Set<String> seen) {
-        if (ds == null) return;
-        String name = ds.getTable();
-        if (name != null && name.toUpperCase().startsWith("ВТ_")) {
-            Integer fromId = tempTables.get(name.toUpperCase());
-            if (fromId != null) {
-                String key = fromId + "->" + node.getId();
-                if (!seen.contains(key)) {
-                    seen.add(key);
-                    QueryEdge edge = new QueryEdge();
-                    edge.setFrom(fromId);
-                    edge.setTo(node.getId());
-                    edge.setFromName(name);
-                    edge.setToName(node.getName());
-                    edges.add(edge);
-                }
             }
         }
     }

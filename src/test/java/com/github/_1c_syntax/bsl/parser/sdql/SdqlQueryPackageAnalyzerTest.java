@@ -32,7 +32,6 @@ class SdqlQueryPackageAnalyzerTest {
         QueryModel model = ModelJsonMapper.read(
             output.toPath().resolve("sdbl_parse_model_example.json"));
         assertThat(model.getNodes()).hasSize(5);
-        assertThat(model.getEdges()).hasSize(2);
 
         // nodes.json with full text
         assertThat(output.toPath().resolve("sdbl_parse_nodes_example.json")).exists();
@@ -63,7 +62,6 @@ class SdqlQueryPackageAnalyzerTest {
         QueryModel model = ModelJsonMapper.read(
             output.toPath().resolve("sdbl_parse_model_example_258.json"));
         assertThat(model.getNodes()).hasSizeGreaterThan(100);
-        assertThat(model.getEdges()).hasSizeGreaterThan(100);
 
         // nodes.json contains full texts
         assertThat(output.toPath().resolve("sdbl_parse_nodes_example_258.json")).exists();
