@@ -60,20 +60,14 @@ public class LineParsFieldLineageMdBuilder {
   private void appendTreeNode(StringBuilder sb, FieldLineageNode node, String prefix,
                               boolean isLast) {
     String connector = isLast ? "└── " : "├── ";
-    String line = prefix + connector;
+    String linePrefix = prefix + connector;
+    String continuationPrefix = prefix + (isLast ? "    " : "│   ");
 
-    String label = escapeMd(nullSafe(node.getAlias()));
-    if (node.getName() != null && !node.getName().equals(node.getAlias())) {
-      label += " (" + escapeMd(node.getName()) + ")";
-    }
-    if (node.getText() != null) {
-      label += ": " + escapeMd(node.getText());
-    }
-    if (node.getSource() != null) {
-      label += " → `" + escapeMd(node.getSource()) + "`";
-    }
+    String label = buildLabel(node);
+    // Insert linePrefix before first line, continuationPrefix before continuation lines
+    String indentedLabel = indentMultiline(label, linePrefix, continuationPrefix);
 
-    sb.append(line).append(label).append("\n");
+    sb.append(indentedLabel).append("\n");
 
     if (node.getChildFields() != null && !node.getChildFields().isEmpty()) {
       String childPrefix = prefix + (isLast ? "    " : "│   ");
@@ -84,12 +78,43 @@ public class LineParsFieldLineageMdBuilder {
     }
   }
 
+  private String buildLabel(FieldLineageNode node) {
+    StringBuilder label = new StringBuilder();
+    label.append(escapeMd(nullSafe(node.getAlias())));
+    if (node.getName() != null && !node.getName().equals(node.getAlias())) {
+      label.append(" (").append(escapeMd(node.getName())).append(")");
+    }
+    if (node.getText() != null) {
+      label.append(": ").append(escapeMd(node.getText()));
+    }
+    if (node.getSource() != null) {
+      label.append(" → `").append(escapeMd(node.getSource())).append("`");
+    }
+    return label.toString();
+  }
+
+  private String indentMultiline(String text, String firstPrefix, String continuationPrefix) {
+    String[] lines = text.split("\n", -1);
+    if (lines.length <= 1) {
+      return firstPrefix + text;
+    }
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < lines.length; i++) {
+      if (i > 0) {
+        sb.append("\n");
+      }
+      String prefix = (i == 0) ? firstPrefix : continuationPrefix;
+      sb.append(prefix).append(lines[i]);
+    }
+    return sb.toString();
+  }
+
   private String nullSafe(String s) {
     return s != null ? s : "";
   }
 
   private String escapeMd(String s) {
     if (s == null) return "";
-    return s.replace("|", "\\|").replace("\n", "  \n").replace("\r", "");
+    return s.replace("|", "\\|").replace("\r", "").replace("\t", "    ");
   }
 }
