@@ -1,14 +1,13 @@
 {
   "baseName" : "example_4",
   "totalNodes" : 1,
-  "matched" : 0,
-  "mismatched" : 1,
+  "matched" : 1,
+  "mismatched" : 0,
   "nodes" : [ {
     "id" : 0,
     "name" : "Результат_1",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "4be988f49c6322e1a757ec585425d256847095e39c65078da58b5a566bcc8442",
-    "extractedHash" : "f12ad89688dc5b061dbc8ad73a27be4cf3787e6a854ad5d5e66fdc4ab42aab28",
-    "differences" : [ "Extracted: ...ЫЛКА КАК ССЫЛКА ИЗ ( ВЫБРАТЬ ЗЛО.ССЫЛКА ... vs Primary: ...ЫЛКА КАК ССЫЛКА ИЗ (ВЫБРАТЬ ЗЛО.ССЫЛКА К...", "Extracted: ...ЛКА КАК ССЫЛКА ИЗ ( ВЫБРАТЬ ЗЛО.ССЫЛКА К... vs Primary: ...ЛКА КАК ССЫЛКА ИЗ (ВЫБРАТЬ ЗЛО.ССЫЛКА КА...", "Extracted: ...КА КАК ССЫЛКА ИЗ ( ВЫБРАТЬ ЗЛО.ССЫЛКА КА... vs Primary: ...КА КАК ССЫЛКА ИЗ (ВЫБРАТЬ ЗЛО.ССЫЛКА КАК..." ]
+    "extractedHash" : "579b116506fd9c335cfbed9953bb2599521529a3c5625c34e8c7e632864a0cf7"
   } ]
 }

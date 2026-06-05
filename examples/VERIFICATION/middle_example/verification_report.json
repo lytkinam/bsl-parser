@@ -1,322 +1,163 @@
 {
   "baseName" : "middle_example",
-  "totalNodes" : 45,
-  "matched" : 0,
-  "mismatched" : 45,
+  "totalNodes" : 26,
+  "matched" : 26,
+  "mismatched" : 0,
   "nodes" : [ {
     "id" : 0,
     "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "34417d9293bf630bdb7410fbd18e904e6f42b402602564f69311e84f1b5a9d08",
-    "extractedHash" : "ea4867f125a85511814d9282cf27c67da15fd507f7009fe8282c1aa75e440fce",
-    "differences" : [ "Length differs: extracted=116 primary=115" ]
+    "extractedHash" : "ea4867f125a85511814d9282cf27c67da15fd507f7009fe8282c1aa75e440fce"
   }, {
     "id" : 16,
     "name" : "ВТ_ВидыПаспортов",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "bd431d072246386a7952bab6db9fea44c5144a6bf0c678febc11b59f1e1b8c3f",
-    "extractedHash" : "f88da913114f618251d87dd9fb1850bccabe78e56b54e1226a90cb938bfdf7de",
-    "differences" : [ "Length differs: extracted=225 primary=224" ]
+    "extractedHash" : "f88da913114f618251d87dd9fb1850bccabe78e56b54e1226a90cb938bfdf7de"
   }, {
     "id" : 22,
     "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "f8dab9946338607c82cc864dedbebed900f937a1c3b4182740d07bf4742a64ab",
-    "extractedHash" : "50f035596f24ffa4488e1e04dbd45e0ff463b8c84fa1c754a0f85bacdba12f97",
-    "differences" : [ "Length differs: extracted=580 primary=579" ]
+    "extractedHash" : "50f035596f24ffa4488e1e04dbd45e0ff463b8c84fa1c754a0f85bacdba12f97"
   }, {
     "id" : 23,
     "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "7bc83f0480d440e8eb1266567ebcbea84563c180b62fca1def48575f796f04f6",
-    "extractedHash" : "b0117f8dbe5af533f8f2b0baef8198efbee2b4efb065602e7d121deed36ac2dd",
-    "differences" : [ "Length differs: extracted=786 primary=785" ]
+    "extractedHash" : "b0117f8dbe5af533f8f2b0baef8198efbee2b4efb065602e7d121deed36ac2dd"
   }, {
     "id" : 53,
     "name" : "ВТ_ТипыПенсийНачалоПериода",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "3b5d622fcd9319cbc699879c0bffb65f482d32c50bef7d61ebde60a93d8482c6",
-    "extractedHash" : "e54d63dcaf4fcfbc704c33f5b7347ff159be75d0854e44b19551c2fb30c1263e",
-    "differences" : [ "Extracted: ...ОДА, НОМЕРСЧЕТА В (ВТ_ТИПЫПЕНСИЙНАЧАЛОПЕ... vs Primary: ...ОДА, НОМЕРСЧЕТА В (ВЫБРАТЬ ПЕНСИОННЫЙСЧЕ...", "Extracted: ...ДА, НОМЕРСЧЕТА В (ВТ_ТИПЫПЕНСИЙНАЧАЛОПЕР... vs Primary: ...ДА, НОМЕРСЧЕТА В (ВЫБРАТЬ ПЕНСИОННЫЙСЧЕТ...", "Extracted: ...А, НОМЕРСЧЕТА В (ВТ_ТИПЫПЕНСИЙНАЧАЛОПЕРИ... vs Primary: ...А, НОМЕРСЧЕТА В (ВЫБРАТЬ ПЕНСИОННЫЙСЧЕТ ..." ]
+    "extractedHash" : "a46f78c06dcc0c0ef9ff3509e9ef862396830baa009f7fd632d7617f57b75979"
   }, {
     "id" : 1,
     "name" : "ВТ_ТипыРезервов",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "8fdd2f3b85454659096c1380bc8c540bb3bcf37a32d0ad24bc9cf248aa5f3d6b",
-    "extractedHash" : "15fd75bd8071790b47e89a3650e72f605a0cc3707bef84832d43594ffd28a5f9",
-    "differences" : [ "Extracted: ...УП_ТИПЫРЕЗЕРВА.СПС) КАК ТИПРЕЗЕРВА ОБЪЕД... vs Primary: ...УП_ТИПЫРЕЗЕРВА.СПС) ОБЪЕДИНИТЬ ВСЕ ВЫБРА...", "Extracted: ...П_ТИПЫРЕЗЕРВА.СПС) КАК ТИПРЕЗЕРВА ОБЪЕДИ... vs Primary: ...П_ТИПЫРЕЗЕРВА.СПС) ОБЪЕДИНИТЬ ВСЕ ВЫБРАТ...", "Extracted: ..._ТИПЫРЕЗЕРВА.СПС) КАК ТИПРЕЗЕРВА ОБЪЕДИН... vs Primary: ..._ТИПЫРЕЗЕРВА.СПС) ОБЪЕДИНИТЬ ВСЕ ВЫБРАТЬ..." ]
+    "extractedHash" : "15fd75bd8071790b47e89a3650e72f605a0cc3707bef84832d43594ffd28a5f9"
   }, {
     "id" : 17,
     "name" : "ВТ_ДокументыСторно",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "ab4de3d9fbff7f76ab6275600b6be0382d92db3efd0faf9c1a347f0caefd2ec7",
-    "extractedHash" : "a88a9d0304a20ab1c98b6225204ecb34073e72b707a62bb88aa025d95cacb9e4",
-    "differences" : [ "Extracted: ...ОЗВРАТПЕНСИЙ.ССЫЛКА КАК ДОКУМЕНТСТОРНО И... vs Primary: ...ОЗВРАТПЕНСИЙ.ССЫЛКА ИЗ ДОКУМЕНТ.УП_ВОЗВР...", "Extracted: ...ЗВРАТПЕНСИЙ.ССЫЛКА КАК ДОКУМЕНТСТОРНО ИЗ... vs Primary: ...ЗВРАТПЕНСИЙ.ССЫЛКА ИЗ ДОКУМЕНТ.УП_ВОЗВРА...", "Extracted: ...ВРАТПЕНСИЙ.ССЫЛКА КАК ДОКУМЕНТСТОРНО ИЗ ... vs Primary: ...ВРАТПЕНСИЙ.ССЫЛКА ИЗ ДОКУМЕНТ.УП_ВОЗВРАТ..." ]
+    "extractedHash" : "a88a9d0304a20ab1c98b6225204ecb34073e72b707a62bb88aa025d95cacb9e4"
   }, {
     "id" : 55,
     "name" : "ВТ_ВыплатныеНачалоПериода",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "46ab17c893e50da1723dc3a5408e127113f2bd96156e2da06b08e6c36d95a5a1",
-    "extractedHash" : "be5e10ae34a704be4abecba88880bc4b0f06132ec76137845dfd639f0b8d7680",
-    "differences" : [ "Extracted: ...ЫХ(, НОМЕРСЧЕТА В (ВТ_ВЫПЛАТНЫЕНАЧАЛОПЕР... vs Primary: ...ЫХ(, НОМЕРСЧЕТА В (ВЫБРАТЬ ПЕНСИОННЫЙСЧЕ...", "Extracted: ...Х(, НОМЕРСЧЕТА В (ВТ_ВЫПЛАТНЫЕНАЧАЛОПЕРИ... vs Primary: ...Х(, НОМЕРСЧЕТА В (ВЫБРАТЬ ПЕНСИОННЫЙСЧЕТ...", "Extracted: ...(, НОМЕРСЧЕТА В (ВТ_ВЫПЛАТНЫЕНАЧАЛОПЕРИО... vs Primary: ...(, НОМЕРСЧЕТА В (ВЫБРАТЬ ПЕНСИОННЫЙСЧЕТ ..." ]
+    "extractedHash" : "ad0f7746550721100ae1a65b31cf2346899be8ef516e176bd6e21eb3746c8566"
   }, {
     "id" : 24,
     "name" : "ВТ_ПенсионныеСчета_ПР",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "ecc9a36d824ae1e907023d8e94a1b1dbe3f04ffb4a7a7ae101b778e1d1f512c3",
-    "extractedHash" : "4637593ea7f9d4e28b0909e2a3f416e0cc5155c3c185b90c4ec8b523559a3dc2",
-    "differences" : [ "Extracted: ...СИОННЫЕСЧЕТА_ПР ИЗ ( ВЫБРАТЬ УП_РЕЗЕРВЫО... vs Primary: ...СИОННЫЕСЧЕТА_ПР ИЗ (ВЫБРАТЬ УП_РЕЗЕРВЫОС...", "Extracted: ...ИОННЫЕСЧЕТА_ПР ИЗ ( ВЫБРАТЬ УП_РЕЗЕРВЫОС... vs Primary: ...ИОННЫЕСЧЕТА_ПР ИЗ (ВЫБРАТЬ УП_РЕЗЕРВЫОСТ...", "Extracted: ...ОННЫЕСЧЕТА_ПР ИЗ ( ВЫБРАТЬ УП_РЕЗЕРВЫОСТ... vs Primary: ...ОННЫЕСЧЕТА_ПР ИЗ (ВЫБРАТЬ УП_РЕЗЕРВЫОСТА..." ]
-  }, {
-    "id" : 45,
-    "name" : "ВТ_ПенсионныеСчета_UNION_0",
-    "status" : "mismatched",
-    "primaryHash" : "5b66b256769cc2a75b30c5266775f8f45c7db2352581d808d4665b1215430cc2",
-    "extractedHash" : "3ad6b86098130acaaa4b6beef145d1eb92e8c614ffc5fe4d679725c4a6dbb623",
-    "differences" : [ "Extracted: ... КАК ПЕНСИОННЫЙСЧЕТ ИЗ ВТ_ПЕНСИОННЫЕСЧЕТ... vs Primary: ... КАК ПЕНСИОННЫЙСЧЕТ ПОМЕСТИТЬ ВТ_ПЕНСИОН...", "Extracted: ...КАК ПЕНСИОННЫЙСЧЕТ ИЗ ВТ_ПЕНСИОННЫЕСЧЕТА... vs Primary: ...КАК ПЕНСИОННЫЙСЧЕТ ПОМЕСТИТЬ ВТ_ПЕНСИОНН...", "Extracted: ...АК ПЕНСИОННЫЙСЧЕТ ИЗ ВТ_ПЕНСИОННЫЕСЧЕТА_... vs Primary: ...АК ПЕНСИОННЫЙСЧЕТ ПОМЕСТИТЬ ВТ_ПЕНСИОННЫ..." ]
-  }, {
-    "id" : 46,
-    "name" : "ВТ_ПенсионныеСчета_UNION_1",
-    "status" : "mismatched",
-    "primaryHash" : "5b66b256769cc2a75b30c5266775f8f45c7db2352581d808d4665b1215430cc2",
-    "extractedHash" : "8d53fc6ff1c5b6a4c39c961c9faf528a28abd30961a3527e158b2ef51d26cac1",
-    "differences" : [ "Extracted: ...ТА_ПР.ПЕНСИОННЫЙСЧЕТ.ВЛАДЕЛЕЦ.ПЕНСИОННЫЙ... vs Primary: ...ТА_ПР.ПЕНСИОННЫЙСЧЕТ КАК ПЕНСИОННЫЙСЧЕТ ...", "Extracted: ...А_ПР.ПЕНСИОННЫЙСЧЕТ.ВЛАДЕЛЕЦ.ПЕНСИОННЫЙС... vs Primary: ...А_ПР.ПЕНСИОННЫЙСЧЕТ КАК ПЕНСИОННЫЙСЧЕТ П...", "Extracted: ..._ПР.ПЕНСИОННЫЙСЧЕТ.ВЛАДЕЛЕЦ.ПЕНСИОННЫЙСЧ... vs Primary: ..._ПР.ПЕНСИОННЫЙСЧЕТ КАК ПЕНСИОННЫЙСЧЕТ ПО..." ]
+    "extractedHash" : "40c1e99e54ff7b4cd3dcb1da082c16d4f8d72f8813d34cbb692105ecc1c61140"
   }, {
     "id" : 44,
     "name" : "ВТ_ПенсионныеСчета",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "5b66b256769cc2a75b30c5266775f8f45c7db2352581d808d4665b1215430cc2",
-    "extractedHash" : "b6daf667bc7f9bed4121dd6b9b4dacd2bbc97fa69178efb24a8fcec7afbfb1fd",
-    "differences" : [ "Extracted: ...ДАЛЕНИЯ ОБЪЕДИНИТЬ ВСЕ ВЫБРАТЬ РАЗЛИЧНЫЕ... vs Primary: ...ДАЛЕНИЯ ОБЪЕДИНИТЬ ВЫБРАТЬ РАЗЛИЧНЫЕ ВТ_...", "Extracted: ...АЛЕНИЯ ОБЪЕДИНИТЬ ВСЕ ВЫБРАТЬ РАЗЛИЧНЫЕ ... vs Primary: ...АЛЕНИЯ ОБЪЕДИНИТЬ ВЫБРАТЬ РАЗЛИЧНЫЕ ВТ_П...", "Extracted: ...ЛЕНИЯ ОБЪЕДИНИТЬ ВСЕ ВЫБРАТЬ РАЗЛИЧНЫЕ В... vs Primary: ...ЛЕНИЯ ОБЪЕДИНИТЬ ВЫБРАТЬ РАЗЛИЧНЫЕ ВТ_ПЕ..." ]
+    "extractedHash" : "b6daf667bc7f9bed4121dd6b9b4dacd2bbc97fa69178efb24a8fcec7afbfb1fd"
   }, {
     "id" : 49,
     "name" : "ВТ_ВидыПенсионныхСчетов",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "f46562bbd7f1d809587cc1b444ae2def1b2eb6aeee94d010b402b7b795d2f42d",
-    "extractedHash" : "de091885a3655a9e0f91b933dd04893e5c06ba236aa27f284ab02d1ba1d3cd9f",
-    "differences" : [ "Extracted: ...ОДА, НОМЕРСЧЕТА В (ВТ_ВИДЫПЕНСИОННЫХСЧЕТ... vs Primary: ...ОДА, НОМЕРСЧЕТА В (ВЫБРАТЬ ВТ_ПЕНСИОННЫЕ...", "Extracted: ...ДА, НОМЕРСЧЕТА В (ВТ_ВИДЫПЕНСИОННЫХСЧЕТО... vs Primary: ...ДА, НОМЕРСЧЕТА В (ВЫБРАТЬ ВТ_ПЕНСИОННЫЕС...", "Extracted: ...А, НОМЕРСЧЕТА В (ВТ_ВИДЫПЕНСИОННЫХСЧЕТОВ... vs Primary: ...А, НОМЕРСЧЕТА В (ВЫБРАТЬ ВТ_ПЕНСИОННЫЕСЧ..." ]
+    "extractedHash" : "b1a39b10120d1c8ef8af9cfd181609f3de38494a1f96a0fd02a6736a76053f9c"
   }, {
     "id" : 51,
     "name" : "ВТ_ПенсионныеСчетаРПВ",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "3fd0020c572fa42ea35aed155c41e654caa81a428ecfb0a0d7d13d34e5f18441",
-    "extractedHash" : "14ae14659eb6cd611b933b4e103cdec0722b156c448560b2cce775e486130793",
-    "differences" : [ "Extracted: ...А, , НОМЕРСЧЕТА В (ВТ_ПЕНСИОННЫЕСЧЕТАРПВ... vs Primary: ...А, , НОМЕРСЧЕТА В (ВЫБРАТЬ ВТ_ПЕНСИОННЫЕ...", "Extracted: ..., , НОМЕРСЧЕТА В (ВТ_ПЕНСИОННЫЕСЧЕТАРПВ_... vs Primary: ..., , НОМЕРСЧЕТА В (ВЫБРАТЬ ВТ_ПЕНСИОННЫЕС...", "Extracted: ... , НОМЕРСЧЕТА В (ВТ_ПЕНСИОННЫЕСЧЕТАРПВ_V... vs Primary: ... , НОМЕРСЧЕТА В (ВЫБРАТЬ ВТ_ПЕНСИОННЫЕСЧ..." ]
+    "extractedHash" : "aa319a2bbda2b7eb5872a29d91f66d1ba1a6dcb496a1fa9fd75f252c0b9b3061"
   }, {
     "id" : 57,
     "name" : "ВТ_СостояниеНачалоПериода",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "b6ae30df97d3b287945e15bcea1f2cef5ddd3cef6352dde84b9ae062b56abed2",
-    "extractedHash" : "daf0e80427a064c2642d015fac57578f5b40d28b020c4107cf378bc28a5450a7",
-    "differences" : [ "Extracted: ...ОДА, НОМЕРСЧЕТА В (ВТ_ПОДЗАПРОС_1)) КАК ... vs Primary: ...ОДА, НОМЕРСЧЕТА В (ВЫБРАТЬ ПЕНСИОННЫЙСЧЕ...", "Extracted: ...ДА, НОМЕРСЧЕТА В (ВТ_ПОДЗАПРОС_1)) КАК У... vs Primary: ...ДА, НОМЕРСЧЕТА В (ВЫБРАТЬ ПЕНСИОННЫЙСЧЕТ...", "Extracted: ...А, НОМЕРСЧЕТА В (ВТ_ПОДЗАПРОС_1)) КАК УП... vs Primary: ...А, НОМЕРСЧЕТА В (ВЫБРАТЬ ПЕНСИОННЫЙСЧЕТ ..." ]
+    "extractedHash" : "daf0e80427a064c2642d015fac57578f5b40d28b020c4107cf378bc28a5450a7"
   }, {
     "id" : 59,
     "name" : "ВТ_ИзмененияВидаОбязательств_Предв",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "8c45f7f2d5ee5a07b82cb60c114330b26c24b204de0e0d821a7ad47c69aa01a4",
-    "extractedHash" : "fcb488e63b8066abfa2b8b1d26d8b44db438601933f3d6938b8ed512f56a615e",
-    "differences" : [ "Extracted: ...ТА ЛЕВОЕ СОЕДИНЕНИЕ ВТ_ИЗМЕНЕНИЯВИДАОБЯЗ... vs Primary: ...ТА ЛЕВОЕ СОЕДИНЕНИЕ ( ВЫБРАТЬ НОМЕРСЧЕТА...", "Extracted: ...А ЛЕВОЕ СОЕДИНЕНИЕ ВТ_ИЗМЕНЕНИЯВИДАОБЯЗА... vs Primary: ...А ЛЕВОЕ СОЕДИНЕНИЕ ( ВЫБРАТЬ НОМЕРСЧЕТА,...", "Extracted: ... ЛЕВОЕ СОЕДИНЕНИЕ ВТ_ИЗМЕНЕНИЯВИДАОБЯЗАТ... vs Primary: ... ЛЕВОЕ СОЕДИНЕНИЕ ( ВЫБРАТЬ НОМЕРСЧЕТА, ..." ]
+    "extractedHash" : "fcb488e63b8066abfa2b8b1d26d8b44db438601933f3d6938b8ed512f56a615e"
   }, {
     "id" : 47,
     "name" : "ВТ_ПричиныЗакрытия",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "857e6ab6ad86d36f3204aeb31170c5597b796b61ac98602b139ab5affe29d57f",
-    "extractedHash" : "c51eacccd8fb3863efe8349368f7b10defef47788fb6e9ad34992722f1254c39",
-    "differences" : [ "Extracted: ...ОДА, НОМЕРСЧЕТА В (ВТ_ПРИЧИНЫЗАКРЫТИЯ_VT... vs Primary: ...ОДА, НОМЕРСЧЕТА В (ВЫБРАТЬ ВТ_ПЕНСИОННЫЕ...", "Extracted: ...ДА, НОМЕРСЧЕТА В (ВТ_ПРИЧИНЫЗАКРЫТИЯ_VT_... vs Primary: ...ДА, НОМЕРСЧЕТА В (ВЫБРАТЬ ВТ_ПЕНСИОННЫЕС...", "Extracted: ...А, НОМЕРСЧЕТА В (ВТ_ПРИЧИНЫЗАКРЫТИЯ_VT_1... vs Primary: ...А, НОМЕРСЧЕТА В (ВЫБРАТЬ ВТ_ПЕНСИОННЫЕСЧ..." ]
+    "extractedHash" : "1a8a719b6ed6edcac1594d6856d7ea8efca1f9c8dd109f99a0ca247a76067b6d"
   }, {
     "id" : 58,
     "name" : "ВТ_ВидОбязательствНачало",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "a2ff012c7bf69cd4379e660aa31710506172c79dc373e47020ba5f4b935edbf5",
-    "extractedHash" : "893ff72377d368fd1f653de92eb02a9993480daa877f4aecfbb19c4c4aad17f7",
-    "differences" : [ "Length differs: extracted=1301 primary=1300" ]
+    "extractedHash" : "893ff72377d368fd1f653de92eb02a9993480daa877f4aecfbb19c4c4aad17f7"
   }, {
     "id" : 62,
     "name" : "ВТ_ИзмененияВидаОбязательств",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "24da03b56c46360782538c19310b58d67da7d1561d037612240bd317bbba03bc",
-    "extractedHash" : "72e81e0b820ae73742c36b9fda33c26115a23abcb73cd5eb2654c9d6fe6052af",
-    "differences" : [ "Length differs: extracted=506 primary=505" ]
-  }, {
-    "id" : 64,
-    "name" : "ВТ_ВидыОбязательств_UNION_0",
-    "status" : "mismatched",
-    "primaryHash" : "aca69be336e9aad369a6bdd77c92fc252ee0278d02ee4747a9c642b351dc2cc9",
-    "extractedHash" : "f8b5a8ac60b605af758d1685f6a3c25dc283d4b8e900639d053e2da87e56223f",
-    "differences" : [ "Extracted: ...ДЕЛЕНИЯОБЯЗАТЕЛЬСТВ ИЗ ВТ_ВИДОБЯЗАТЕЛЬСТ... vs Primary: ...ДЕЛЕНИЯОБЯЗАТЕЛЬСТВ ПОМЕСТИТЬ ВТ_ВИДЫОБЯ...", "Extracted: ...ЕЛЕНИЯОБЯЗАТЕЛЬСТВ ИЗ ВТ_ВИДОБЯЗАТЕЛЬСТВ... vs Primary: ...ЕЛЕНИЯОБЯЗАТЕЛЬСТВ ПОМЕСТИТЬ ВТ_ВИДЫОБЯЗ...", "Extracted: ...ЛЕНИЯОБЯЗАТЕЛЬСТВ ИЗ ВТ_ВИДОБЯЗАТЕЛЬСТВН... vs Primary: ...ЛЕНИЯОБЯЗАТЕЛЬСТВ ПОМЕСТИТЬ ВТ_ВИДЫОБЯЗА..." ]
-  }, {
-    "id" : 65,
-    "name" : "ВТ_ВидыОбязательств_UNION_1",
-    "status" : "mismatched",
-    "primaryHash" : "aca69be336e9aad369a6bdd77c92fc252ee0278d02ee4747a9c642b351dc2cc9",
-    "extractedHash" : "e260cfba40a123e2ea5c7f32491041d09e73fe6ef9fadea11777c3ee7638ee2f",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ИЗМЕНЕНИЯВИДАОБЯЗАТЕ... vs Primary: ...ВЫБРАТЬ ВТ_ВИДОБЯЗАТЕЛЬСТВНАЧАЛ...", "Extracted: ...ВЫБРАТЬ ВТ_ИЗМЕНЕНИЯВИДАОБЯЗАТЕЛ... vs Primary: ...ВЫБРАТЬ ВТ_ВИДОБЯЗАТЕЛЬСТВНАЧАЛО...", "Extracted: ...ВЫБРАТЬ ВТ_ИЗМЕНЕНИЯВИДАОБЯЗАТЕЛЬ... vs Primary: ...ВЫБРАТЬ ВТ_ВИДОБЯЗАТЕЛЬСТВНАЧАЛО...." ]
+    "extractedHash" : "72e81e0b820ae73742c36b9fda33c26115a23abcb73cd5eb2654c9d6fe6052af"
   }, {
     "id" : 63,
     "name" : "ВТ_ВидыОбязательств",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "aca69be336e9aad369a6bdd77c92fc252ee0278d02ee4747a9c642b351dc2cc9",
-    "extractedHash" : "a9de182dc7a08f2432b9e37795caaf135739d00805f55e49f131b22cc6953e9f",
-    "differences" : [ "Extracted: ...ЛЬСТВ.ПЕНСИОННЫЙСЧЕТ КАК ПЕНСИОННЫЙСЧЕТ,... vs Primary: ...ЛЬСТВ.ПЕНСИОННЫЙСЧЕТ, ВТ_ИЗМЕНЕНИЯВИДАОБ...", "Extracted: ...ЬСТВ.ПЕНСИОННЫЙСЧЕТ КАК ПЕНСИОННЫЙСЧЕТ, ... vs Primary: ...ЬСТВ.ПЕНСИОННЫЙСЧЕТ, ВТ_ИЗМЕНЕНИЯВИДАОБЯ...", "Extracted: ...СТВ.ПЕНСИОННЫЙСЧЕТ КАК ПЕНСИОННЫЙСЧЕТ, В... vs Primary: ...СТВ.ПЕНСИОННЫЙСЧЕТ, ВТ_ИЗМЕНЕНИЯВИДАОБЯЗ..." ]
+    "extractedHash" : "a9de182dc7a08f2432b9e37795caaf135739d00805f55e49f131b22cc6953e9f"
   }, {
     "id" : 66,
     "name" : "ВТ_ВидыОбязательствДвижение",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "1fcb1425f26552960b29d1ed0aab75676dc2ee7679c759b245add01806b33cac",
-    "extractedHash" : "fb8eaf1164596b476c4219e3044e1da81c36ba01e8cf3d3b71ddc51617338c41",
-    "differences" : [ "Length differs: extracted=796 primary=795" ]
+    "extractedHash" : "fb8eaf1164596b476c4219e3044e1da81c36ba01e8cf3d3b71ddc51617338c41"
   }, {
     "id" : 67,
     "name" : "ВТ_СчетаТранзитныеВидыОбязательств",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "951e551e66e82fbddfa38ede99ae30af17e550687ba8beca82cb96a6df84d96a",
-    "extractedHash" : "2dccfbb1b2136ede4617512e3190e16e1e02bcb01f20e84cbe0891542865157c",
-    "differences" : [ "Length differs: extracted=259 primary=258" ]
+    "extractedHash" : "2dccfbb1b2136ede4617512e3190e16e1e02bcb01f20e84cbe0891542865157c"
   }, {
     "id" : 68,
     "name" : "ВТ_СчетаНеТранзитныеВидыОбязательств",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "4fe0b579826b86450a068c0ac94954cbfe9a4a9c6e0c0d3d13b3a1be991469c1",
-    "extractedHash" : "bd05681727af5c15648dd2d49a45bed01dfc7a3edadda16f9001427dcc4fc573",
-    "differences" : [ "Length differs: extracted=443 primary=442" ]
+    "extractedHash" : "bd05681727af5c15648dd2d49a45bed01dfc7a3edadda16f9001427dcc4fc573"
   }, {
     "id" : 70,
     "name" : "ВТ_ТранзитныеВидыНачалоКонец",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "7ac4c26aec2eee75916c2c3f83eb6f931b1f7a89e51f46ebb8db81556b3fbd78",
-    "extractedHash" : "e86ce2460252812d4d184ea3a970355d03ecf693b459a4bfd95a1efed43ab841",
-    "differences" : [ "Length differs: extracted=605 primary=604" ]
+    "extractedHash" : "e86ce2460252812d4d184ea3a970355d03ecf693b459a4bfd95a1efed43ab841"
   }, {
     "id" : 69,
     "name" : "ВТ_НеТранзитныеВидыНачалоКонец",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "f63f2a81ee948d1b9894b1dd3cf2c841ed565574ac62a5a8b7f0cdf4e3c0154f",
-    "extractedHash" : "14616d0714b3318198efe52e5e15172eb4d32323b14133e193b939d3133b0ebe",
-    "differences" : [ "Length differs: extracted=613 primary=612" ]
-  }, {
-    "id" : 72,
-    "name" : "ВТ_СторнированныеСуммыТранзитныеВиды_UNION_0",
-    "status" : "mismatched",
-    "primaryHash" : "8ce7bc7e31ce38dd69aa57e19a41c36310863af6fe9390680ea5bc84b4d3020d",
-    "extractedHash" : "65e6d61a2f1e81a407d09a615aae8e7d1d0e48c0ec855f90cb43c8c752934dfd",
-    "differences" : [ "Extracted: ...ЛАТАПРАВОПРЕЕМНИКАМ ИЗ ВТ_ТРАНЗИТНЫЕВИДЫ... vs Primary: ...ЛАТАПРАВОПРЕЕМНИКАМ ПОМЕСТИТЬ ВТ_СТОРНИР...", "Extracted: ...АТАПРАВОПРЕЕМНИКАМ ИЗ ВТ_ТРАНЗИТНЫЕВИДЫН... vs Primary: ...АТАПРАВОПРЕЕМНИКАМ ПОМЕСТИТЬ ВТ_СТОРНИРО...", "Extracted: ...ТАПРАВОПРЕЕМНИКАМ ИЗ ВТ_ТРАНЗИТНЫЕВИДЫНА... vs Primary: ...ТАПРАВОПРЕЕМНИКАМ ПОМЕСТИТЬ ВТ_СТОРНИРОВ..." ]
-  }, {
-    "id" : 73,
-    "name" : "ВТ_СторнированныеСуммыТранзитныеВиды_UNION_1",
-    "status" : "mismatched",
-    "primaryHash" : "8ce7bc7e31ce38dd69aa57e19a41c36310863af6fe9390680ea5bc84b4d3020d",
-    "extractedHash" : "dd085956d09e536157a0fb59b5a0b8e3e7333da09599df9fc2c40d82da7a4395",
-    "differences" : [ "Extracted: ...НЧАНИЯОБЯЗАТЕЛЬСТВ, 0 КАК ПЕНСИЯ, СУММА(... vs Primary: ...НЧАНИЯОБЯЗАТЕЛЬСТВ, СУММА(УП_НАЧИСЛЕНИЯП...", "Extracted: ...ЧАНИЯОБЯЗАТЕЛЬСТВ, 0 КАК ПЕНСИЯ, СУММА(В... vs Primary: ...ЧАНИЯОБЯЗАТЕЛЬСТВ, СУММА(УП_НАЧИСЛЕНИЯПЕ...", "Extracted: ...АНИЯОБЯЗАТЕЛЬСТВ, 0 КАК ПЕНСИЯ, СУММА(ВЫ... vs Primary: ...АНИЯОБЯЗАТЕЛЬСТВ, СУММА(УП_НАЧИСЛЕНИЯПЕН..." ]
-  }, {
-    "id" : 77,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_0",
-    "status" : "mismatched",
-    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "9cdc8bc7480a61aa8fa1dceea6444895a0685afa3ca4fc519c4119996c7f1630",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 78,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1_UNION_1",
-    "status" : "mismatched",
-    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "9267b15958697999a5aeeef54370006666a9b3b5b53e529689cd59a1aeab3382",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 79,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_1",
-    "status" : "mismatched",
-    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "0cdbd002f7dd4453ec5a43d3b560a62a742a93bf0de6b7e8f0c6d369a146eb5a",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 80,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_2",
-    "status" : "mismatched",
-    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "32079dc913cb4e1392c4e183bae481d281c19fcd70d2e1341805ab2ac084654b",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 81,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_3",
-    "status" : "mismatched",
-    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "2846b124d2835ca455d292e28a836a7e10c39aeb5b20a5aab185040059249837",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 82,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_4",
-    "status" : "mismatched",
-    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "ffd5a16753dc4fd0b5b189a75ce054574bfda1508a5fe141fcad0c55a7e92ae2",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 84,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_0",
-    "status" : "mismatched",
-    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "9cdc8bc7480a61aa8fa1dceea6444895a0685afa3ca4fc519c4119996c7f1630",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 85,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_SUB_1_UNION_1",
-    "status" : "mismatched",
-    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "9267b15958697999a5aeeef54370006666a9b3b5b53e529689cd59a1aeab3382",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 89,
-    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_1",
-    "status" : "mismatched",
-    "primaryHash" : "1b496f8574447839461132d53f20c8a38c2f4436a8da415d855d42b794416f79",
-    "extractedHash" : "0e44915c0cbb7ac2108b9dbd3fa640c504337aa247c20d6d66c1ced62339d89e",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 90,
-    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_2",
-    "status" : "mismatched",
-    "primaryHash" : "1b496f8574447839461132d53f20c8a38c2f4436a8da415d855d42b794416f79",
-    "extractedHash" : "c620cdb568bc2b5fc8a6e6c101fae218fb481549b04661f29ac53fec6b9a10fc",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
-  }, {
-    "id" : 91,
-    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_3",
-    "status" : "mismatched",
-    "primaryHash" : "1b496f8574447839461132d53f20c8a38c2f4436a8da415d855d42b794416f79",
-    "extractedHash" : "614fe5bcce1138d76685603eec1fab8dfdb4a790a1c162eee0a971c418f09352",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧА... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ТРАНЗИТНЫЕВИДЫНАЧАЛ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
+    "extractedHash" : "14616d0714b3318198efe52e5e15172eb4d32323b14133e193b939d3133b0ebe"
   }, {
     "id" : 71,
     "name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "8ce7bc7e31ce38dd69aa57e19a41c36310863af6fe9390680ea5bc84b4d3020d",
-    "extractedHash" : "ab388eb5d3eedebe1713657c26319c01be239a2419693a0d72c7ac39c64d57bd",
-    "differences" : [ "Extracted: ...УП_НАЧИСЛЕНИЯПЕНСИЙ ПО УП_НАЧИСЛЕНИЯПЕНС... vs Primary: ...УП_НАЧИСЛЕНИЯПЕНСИЙ ВНУТРЕННЕЕ СОЕДИНЕНИ...", "Extracted: ...П_НАЧИСЛЕНИЯПЕНСИЙ ПО УП_НАЧИСЛЕНИЯПЕНСИ... vs Primary: ...П_НАЧИСЛЕНИЯПЕНСИЙ ВНУТРЕННЕЕ СОЕДИНЕНИЕ...", "Extracted: ..._НАЧИСЛЕНИЯПЕНСИЙ ПО УП_НАЧИСЛЕНИЯПЕНСИЙ... vs Primary: ..._НАЧИСЛЕНИЯПЕНСИЙ ВНУТРЕННЕЕ СОЕДИНЕНИЕ ..." ]
-  }, {
-    "id" : 75,
-    "name" : "ВТ_ОстаткиТранзитныеВиды_UNION_0",
-    "status" : "mismatched",
-    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "cfa7e78b7c648c682dcbeb7fff569c61c7a5c359b18fb49abebb73653a1e942a",
-    "differences" : [ "Extracted: ... КОНЕЦ КАК ИСХСУММА ИЗ ( ВЫБРАТЬ ВТ_ТРАН... vs Primary: ... КОНЕЦ КАК ИСХСУММА ПОМЕСТИТЬ ВТ_ОСТАТКИ...", "Extracted: ...КОНЕЦ КАК ИСХСУММА ИЗ ( ВЫБРАТЬ ВТ_ТРАНЗ... vs Primary: ...КОНЕЦ КАК ИСХСУММА ПОМЕСТИТЬ ВТ_ОСТАТКИТ...", "Extracted: ...ОНЕЦ КАК ИСХСУММА ИЗ ( ВЫБРАТЬ ВТ_ТРАНЗИ... vs Primary: ...ОНЕЦ КАК ИСХСУММА ПОМЕСТИТЬ ВТ_ОСТАТКИТР..." ]
+    "extractedHash" : "ab388eb5d3eedebe1713657c26319c01be239a2419693a0d72c7ac39c64d57bd"
   }, {
     "id" : 74,
     "name" : "ВТ_ОстаткиТранзитныеВиды",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
-    "extractedHash" : "09ae0b4c759ae6e417f1eb854609b6169c5e5f37d2d62caaf539207e11875153",
-    "differences" : [ "Extracted: ...КОНЧАНИЯОБЯЗАТЕЛЬСТВ ) КАК ПОДЗАПРОС СГР... vs Primary: ...КОНЧАНИЯОБЯЗАТЕЛЬСТВ) КАК ПОДЗАПРОС СГРУ...", "Extracted: ...ОНЧАНИЯОБЯЗАТЕЛЬСТВ ) КАК ПОДЗАПРОС СГРУ... vs Primary: ...ОНЧАНИЯОБЯЗАТЕЛЬСТВ) КАК ПОДЗАПРОС СГРУП...", "Extracted: ...НЧАНИЯОБЯЗАТЕЛЬСТВ ) КАК ПОДЗАПРОС СГРУП... vs Primary: ...НЧАНИЯОБЯЗАТЕЛЬСТВ) КАК ПОДЗАПРОС СГРУПП..." ]
-  }, {
-    "id" : 88,
-    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1_UNION_0",
-    "status" : "mismatched",
-    "primaryHash" : "1b496f8574447839461132d53f20c8a38c2f4436a8da415d855d42b794416f79",
-    "extractedHash" : "aa4afefb51a53932c9728c6e78aad2d0388f8e561fd0e72143503e1ca7c91114",
-    "differences" : [ "Extracted: ...ВЫБРАТЬ ВТ_ОСТАТКИТРАНЗИТНЫЕ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙ...", "Extracted: ...ВЫБРАТЬ ВТ_ОСТАТКИТРАНЗИТНЫЕВ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙС...", "Extracted: ...ВЫБРАТЬ ВТ_ОСТАТКИТРАНЗИТНЫЕВИ... vs Primary: ...ВЫБРАТЬ ПОДЗАПРОС.ПЕНСИОННЫЙСЧ..." ]
+    "extractedHash" : "b761b30cfe9ee6a0d3c5b13aeab94fda511ad095f3161bf5559bb62aec2e6d32"
   }, {
     "id" : 86,
     "name" : "ВТ_Суммы_ПР_ТранзитныеВиды",
-    "status" : "mismatched",
+    "status" : "matched",
     "primaryHash" : "1b496f8574447839461132d53f20c8a38c2f4436a8da415d855d42b794416f79",
-    "extractedHash" : "a01a0c1534248be5d99f7d023f1b36885be01eb2ce9ab09f326c04305789ce1a",
-    "differences" : [ "Extracted: ...КОНЕЦ.ПЕНСИОННЫЙСЧЕТ КАК ПЕНСИОННЫЙСЧЕТ,... vs Primary: ...КОНЕЦ.ПЕНСИОННЫЙСЧЕТ, ВТ_ТРАНЗИТНЫЕВИДЫН...", "Extracted: ...ОНЕЦ.ПЕНСИОННЫЙСЧЕТ КАК ПЕНСИОННЫЙСЧЕТ, ... vs Primary: ...ОНЕЦ.ПЕНСИОННЫЙСЧЕТ, ВТ_ТРАНЗИТНЫЕВИДЫНА...", "Extracted: ...НЕЦ.ПЕНСИОННЫЙСЧЕТ КАК ПЕНСИОННЫЙСЧЕТ, В... vs Primary: ...НЕЦ.ПЕНСИОННЫЙСЧЕТ, ВТ_ТРАНЗИТНЫЕВИДЫНАЧ..." ]
+    "extractedHash" : "8d098d479a83ce06cfaa8d685b37d7f98db60e3f7e7c473cafc93a694d5bca69"
   } ]
 }
