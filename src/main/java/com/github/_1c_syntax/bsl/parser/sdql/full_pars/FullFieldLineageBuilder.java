@@ -2,7 +2,9 @@ package com.github._1c_syntax.bsl.parser.sdql.full_pars;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
 import com.github._1c_syntax.bsl.parser.sdql.model.HavingBlock;
+import com.github._1c_syntax.bsl.parser.sdql.model.JoinPart;
 import com.github._1c_syntax.bsl.parser.sdql.model.WhereBlock;
 
 import java.io.IOException;
@@ -284,7 +286,232 @@ public class FullFieldLineageBuilder {
     }
     result.setJoinFields(cloneJoinConditions(source.getJoinFields()));
 
+    filterUnusedJoins(result);
+
     return result;
+  }
+
+  /**
+   * Filter out unused LEFT JOINs from the node.
+   * A LEFT JOIN is unused if neither its alias nor its table appear in
+   * SELECT / WHERE / GROUP BY / HAVING fields, nor in condition_fields of
+   * subsequent (to the right) used JOINs.
+   *
+   * INNER JOINs are never removed — they filter rows.
+   *
+   * This must run BEFORE buildLineage() collects fullChildFields for recursion,
+   * so that child nodes referenced only by removed JOINs are not added to resultMap.
+   */
+  private void filterUnusedJoins(FullParsNode node) {
+    if (node.getFrom() == null || node.getFrom().isEmpty()) {
+      return;
+    }
+
+    DataSource mainSource = node.getFrom().get(0);
+    List<JoinPart> joins = mainSource.getJoins();
+    if (joins == null || joins.isEmpty()) {
+      return;
+    }
+
+    // 1. Collect initially used sources from main source, select, where, group_by, having
+    Set<String> usedSources = new HashSet<>();
+    addToUsedSources(usedSources, mainSource.getAlias());
+    addToUsedSources(usedSources, mainSource.getTable());
+
+    addFieldSources(usedSources, node.getSelect());
+    addConditionFieldSources(usedSources, node.getWhereFields());
+    addConditionFieldSources(usedSources, node.getGroupByFields());
+    addConditionFieldSources(usedSources, node.getHavingFields());
+
+    // 2. Right-to-left scan: mark used JOINs and expand usedSources from their condition_fields
+    Set<String> keepAliases = new HashSet<>();
+    Set<String> keepTables = new HashSet<>();
+
+    for (int i = joins.size() - 1; i >= 0; i--) {
+      JoinPart join = joins.get(i);
+      DataSource src = join.getSource();
+      if (src == null) {
+        continue;
+      }
+
+      String alias = src.getAlias();
+      String table = src.getTable();
+      String subquery = (src.getSubquery() != null) ? src.getSubquery().toString() : null;
+      boolean isInner = "inner".equalsIgnoreCase(join.getJoinType());
+
+      boolean isUsed = isInner
+        || (alias != null && usedSources.contains(alias))
+        || (table != null && usedSources.contains(table))
+        || (subquery != null && usedSources.contains(subquery));
+
+      if (isUsed) {
+        if (alias != null) keepAliases.add(alias);
+        if (table != null) keepTables.add(table);
+        if (subquery != null) keepTables.add(subquery);
+
+        // Add condition field sources to usedSources
+        FullParsJoinCondition jc = findJoinCondition(node.getJoinFields(), alias, table, subquery);
+        if (jc != null) {
+          addConditionFieldSources(usedSources, jc.getConditionFields());
+        }
+      }
+    }
+
+    // 3. Filter joins
+    List<JoinPart> filteredJoins = new ArrayList<>();
+    for (JoinPart join : joins) {
+      DataSource src = join.getSource();
+      if (src == null) {
+        continue;
+      }
+
+      String alias = src.getAlias();
+      String table = src.getTable();
+      String subquery = (src.getSubquery() != null) ? src.getSubquery().toString() : null;
+      boolean isInner = "inner".equalsIgnoreCase(join.getJoinType());
+
+      boolean keep = isInner
+        || (alias != null && keepAliases.contains(alias))
+        || (table != null && keepTables.contains(table))
+        || (subquery != null && keepTables.contains(subquery));
+
+      if (keep) {
+        // Recursively filter nested joins
+        if (src.getJoins() != null && !src.getJoins().isEmpty()) {
+          filterNestedJoins(src, usedSources);
+        }
+        filteredJoins.add(join);
+      }
+    }
+
+    mainSource.setJoins(filteredJoins);
+
+    // 4. Filter join_fields
+    List<FullParsJoinCondition> filteredJoinFields = new ArrayList<>();
+    for (FullParsJoinCondition jc : node.getJoinFields()) {
+      String srcName = jc.getSource();
+      if (srcName == null) {
+        continue;
+      }
+      boolean keep = false;
+      for (JoinPart join : filteredJoins) {
+        DataSource js = join.getSource();
+        if (js != null) {
+          if (srcName.equals(js.getAlias())) keep = true;
+          if (srcName.equals(js.getTable())) keep = true;
+          if (js.getSubquery() != null && srcName.equals(js.getSubquery().toString())) keep = true;
+        }
+      }
+      if (keep) {
+        filteredJoinFields.add(jc);
+      }
+    }
+
+    node.setJoinFields(filteredJoinFields);
+  }
+
+  private void filterNestedJoins(DataSource source, Set<String> usedSources) {
+    List<JoinPart> joins = source.getJoins();
+    if (joins == null || joins.isEmpty()) {
+      return;
+    }
+
+    Set<String> keepAliases = new HashSet<>();
+    Set<String> keepTables = new HashSet<>();
+
+    for (int i = joins.size() - 1; i >= 0; i--) {
+      JoinPart join = joins.get(i);
+      DataSource src = join.getSource();
+      if (src == null) {
+        continue;
+      }
+
+      String alias = src.getAlias();
+      String table = src.getTable();
+      String subquery = (src.getSubquery() != null) ? src.getSubquery().toString() : null;
+      boolean isInner = "inner".equalsIgnoreCase(join.getJoinType());
+
+      boolean isUsed = isInner
+        || (alias != null && usedSources.contains(alias))
+        || (table != null && usedSources.contains(table))
+        || (subquery != null && usedSources.contains(subquery));
+
+      if (isUsed) {
+        if (alias != null) keepAliases.add(alias);
+        if (table != null) keepTables.add(table);
+        if (subquery != null) keepTables.add(subquery);
+      }
+    }
+
+    List<JoinPart> filteredJoins = new ArrayList<>();
+    for (JoinPart join : joins) {
+      DataSource src = join.getSource();
+      if (src == null) {
+        continue;
+      }
+
+      String alias = src.getAlias();
+      String table = src.getTable();
+      String subquery = (src.getSubquery() != null) ? src.getSubquery().toString() : null;
+      boolean isInner = "inner".equalsIgnoreCase(join.getJoinType());
+
+      boolean keep = isInner
+        || (alias != null && keepAliases.contains(alias))
+        || (table != null && keepTables.contains(table))
+        || (subquery != null && keepTables.contains(subquery));
+
+      if (keep) {
+        if (src.getJoins() != null && !src.getJoins().isEmpty()) {
+          filterNestedJoins(src, usedSources);
+        }
+        filteredJoins.add(join);
+      }
+    }
+
+    source.setJoins(filteredJoins);
+  }
+
+  private void addToUsedSources(Set<String> usedSources, String value) {
+    if (value != null) {
+      usedSources.add(value);
+    }
+  }
+
+  private void addFieldSources(Set<String> usedSources, List<FullParsSelectField> fields) {
+    if (fields == null) return;
+    for (FullParsSelectField sf : fields) {
+      if (sf.getChildFields() != null) {
+        for (FullParsChildField child : sf.getChildFields()) {
+          addToUsedSources(usedSources, child.getNodeName());
+          addToUsedSources(usedSources, child.getSource());
+        }
+      }
+    }
+  }
+
+  private void addConditionFieldSources(Set<String> usedSources, List<FullParsConditionField> fields) {
+    if (fields == null) return;
+    for (FullParsConditionField cf : fields) {
+      if (cf.getChildFields() != null) {
+        for (FullParsChildField child : cf.getChildFields()) {
+          addToUsedSources(usedSources, child.getNodeName());
+          addToUsedSources(usedSources, child.getSource());
+        }
+      }
+    }
+  }
+
+  private FullParsJoinCondition findJoinCondition(List<FullParsJoinCondition> joinFields,
+                                                   String alias, String table, String subquery) {
+    if (joinFields == null) return null;
+    for (FullParsJoinCondition jc : joinFields) {
+      String src = jc.getSource();
+      if (src == null) continue;
+      if (alias != null && src.equals(alias)) return jc;
+      if (table != null && src.equals(table)) return jc;
+      if (subquery != null && src.equals(subquery)) return jc;
+    }
+    return null;
   }
 
   private boolean hasAliasInSelect(FullParsNode node, String alias) {
