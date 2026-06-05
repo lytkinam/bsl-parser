@@ -95,15 +95,30 @@ BRD04 предлагал плоский список `inlineSubqueries` в `Quer
 }
 ```
 
-## 5. Контексты inline-подзапросов
+## 5. Грамматика — изменения не требуются
 
-### 5.1 WHERE — `inPredicate` в `WhereBlock.subqueries`
+ANTLR4-грамматика `SDBLParser.g4` **уже содержит** правила для подзапросов во всех нужных контекстах:
+
+| Контекст | Правило в грамматике | Строка |
+|----------|---------------------|--------|
+| WHERE / HAVING | `inPredicate: ... LPAREN (subquery \| expressionList) RPAREN` | 309 |
+| SELECT | `bracketExpression: (LPAREN subquery RPAREN)` | 212 |
+| Виртуальная таблица | `virtualTableParameter: logicalExpression?` → `inPredicate` → `subquery` | 355 |
+| JOIN-условие | `joinPart: ... BY condition=logicalExpression` → `inPredicate` → `subquery` | 365 |
+
+**Вывод:** изменения в `SDBLParser.g4` **не требуются**. Подзапросы уже разбираются грамматикой. Проблема в том, что текущий `QueryPackageVisitor` **пропускает** эти подзапросы, беря только `textOf(ctx)` — весь текст контекста целиком, включая вложенные подзапросы как неразобранный текст.
+
+**Что нужно доработать:** только `QueryPackageVisitor` — добавить обход дерева `ParserRuleContext` для извлечения `subquery` из `inPredicate` и `bracketExpression`.
+
+## 6. Контексты inline-подзапросов
+
+### 6.1 WHERE — `inPredicate` в `WhereBlock.subqueries`
 Уже разобрано в 04.01. Подзапросы из `inPredicate` внутри `LogicalExpressionContext` WHERE попадают в `WhereBlock.subqueries`.
 
-### 5.2 HAVING — `inPredicate` в `HavingBlock.subqueries`
+### 6.2 HAVING — `inPredicate` в `HavingBlock.subqueries`
 Аналогично WHERE. Подзапросы из `inPredicate` внутри HAVING попадают в `HavingBlock.subqueries`.
 
-### 5.3 Виртуальная таблица — `VirtualTableParameterBlock`
+### 6.3 Виртуальная таблица — `VirtualTableParameterBlock`
 Параметры виртуальной таблицы (`virtualTableParameter: logicalExpression?`) могут содержать `inPredicate` с подзапросом.
 
 **SDBL_PARS:**
@@ -131,7 +146,7 @@ BRD04 предлагал плоский список `inlineSubqueries` в `Quer
 }
 ```
 
-### 5.4 SELECT-выражение — `SelectField.inlineSubquery`
+### 6.4 SELECT-выражение — `SelectField.inlineSubquery`
 Подзапрос внутри `bracketExpression` в SELECT-поле:
 
 **SDBL_PARS:**
@@ -163,7 +178,7 @@ BRD04 предлагал плоский список `inlineSubqueries` в `Quer
 }
 ```
 
-### 5.5 JOIN-условие — `JoinPart.conditionSubqueries`
+### 6.5 JOIN-условие — `JoinPart.conditionSubqueries`
 Подзапросы внутри условия JOIN:
 
 **SDBL_PARS:**
@@ -199,7 +214,7 @@ BRD04 предлагал плоский список `inlineSubqueries` в `Quer
 }
 ```
 
-## 6. Именование подзапросов
+## 7. Именование подзапросов
 
 ### 6.1 SDBL_PARS (временные имена)
 - WHERE: `ВТ_Подзапрос_<N>`
@@ -217,7 +232,7 @@ BRD04 предлагал плоский список `inlineSubqueries` в `Quer
 - SELECT: `<parent>_SELECT_<N>`
 - JOIN: `<parent>_JOIN_<N>`
 
-## 7. Точная замена текста
+## 8. Точная замена текста
 
 Вместо `String.replace()` использовать позиции из ANTLR токенов:
 
@@ -234,7 +249,7 @@ for (SubqueryEntry entry : entries) {
 }
 ```
 
-## 8. Downstream-изменения
+## 9. Downstream-изменения
 
 ### 8.1 SDBL_PARS
 - `QueryAst.where` → `WhereBlock`
@@ -258,7 +273,7 @@ for (SubqueryEntry entry : entries) {
 ### 8.4 FFL / RESTORED_QUERIES
 - Без изменений структуры — только наполнение `child_fields` через subqueryIds
 
-## 9. Тестирование
+## 10. Тестирование
 
 1. `example_4.sql` парсится без ошибок
 2. В `sdbl_parse_model_example_4.json` `where` — объект с `text` и `subqueries`
@@ -266,7 +281,7 @@ for (SubqueryEntry entry : entries) {
 4. В `FULL_PARS_model_example_4.json` `where` — объект с `text`, `subqueryIds`, `fields`
 5. Восстановленный SQL содержит подзапросы в скобках
 
-## 10. Ограничения
+## 11. Ограничения
 
 - **Формат первичен** — выходной JSON определяется примером
 - **Пример первее кода** — `example_4` генерируется до коммита кода

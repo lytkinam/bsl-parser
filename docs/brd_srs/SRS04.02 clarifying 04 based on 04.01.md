@@ -109,6 +109,8 @@ public class JoinPart {
 
 ### 3.1 SDBL_PARS — QueryPackageVisitor
 
+**Важно:** изменения в ANTLR4-грамматике `SDBLParser.g4` **не требуются**. Подзапросы уже разбираются грамматикой в правилах `inPredicate` (строка 309) и `bracketExpression` (строка 212). Требуется только доработка `QueryPackageVisitor` для извлечения этих подзапросов из дерева разбора.
+
 #### FR-3.1.1 WhereBlock
 При обработке `QueryContext.where`:
 1. Обойти дерево `LogicalExpressionContext` рекурсивно
