@@ -118,19 +118,16 @@ public class SqlGenerator {
       sb.append("ПОМЕСТИТЬ ").append(node.getInto()).append("\n");
     }
 
-    // FROM + JOINs (JOINs are output after their associated source)
+    // FROM + JOINs (JOINs are output after their associated source, including nested)
     if (!node.getFrom().isEmpty()) {
       sb.append("ИЗ\n");
       for (int i = 0; i < node.getFrom().size(); i++) {
         DataSource ds = node.getFrom().get(i);
         sb.append("    ").append(formatDataSource(ds, node));
-        // Output JOINs associated with this source
+        // Output JOINs associated with this source (including nested)
         if (ds.getJoins() != null) {
           for (JoinPart jp : ds.getJoins()) {
-            sb.append("\n");
-            sb.append("        ").append(formatJoinType(jp.getJoinType())).append(" ");
-            sb.append(formatJoinSource(jp.getSource(), node)).append(" КАК ").append(jp.getSource().getAlias()).append("\n");
-            sb.append("        ПО ").append(inlineSubqueries(jp.getCondition(), node));
+            sb.append(formatJoinRecursive(jp, node, 2));
           }
         }
         if (i < node.getFrom().size() - 1) {
@@ -216,6 +213,26 @@ public class SqlGenerator {
       alias = source;
     }
     return source + " КАК " + alias;
+  }
+
+  /**
+   * Recursively format a JOIN and its nested JOINs with proper indentation.
+   * @param indentLevel indentation level (2 = 8 spaces for first-level JOIN)
+   */
+  private String formatJoinRecursive(JoinPart jp, RestoredQueryNode parentNode, int indentLevel) {
+    StringBuilder sb = new StringBuilder();
+    String indent = "    ".repeat(indentLevel);
+    sb.append("\n");
+    sb.append(indent).append(formatJoinType(jp.getJoinType())).append(" ");
+    sb.append(formatJoinSource(jp.getSource(), parentNode)).append(" КАК ").append(jp.getSource().getAlias()).append("\n");
+    sb.append(indent).append("ПО ").append(inlineSubqueries(jp.getCondition(), parentNode));
+    // Recursively output nested JOINs
+    if (jp.getSource() != null && jp.getSource().getJoins() != null) {
+      for (JoinPart nestedJp : jp.getSource().getJoins()) {
+        sb.append(formatJoinRecursive(nestedJp, parentNode, indentLevel + 1));
+      }
+    }
+    return sb.toString();
   }
 
   private String formatJoinSource(DataSource src, RestoredQueryNode parentNode) {
