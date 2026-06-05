@@ -17,3 +17,11 @@
 ### Уровень 4: Извлечение inline-подзапросов
 - [BRD04: Извлечение inline-подзапросов из не-FROM контекстов](BRD04%20inline_subqueries.md)
 - [SRS04: inline_subqueries](SRS04%20inline_subqueries.md)
+- [BRD04.01: Парсинг подзапросов в WHERE](BRD04.01%20only%20SDBL%20where%20select.md)
+- [SRS04.01: Спецификация парсинга WHERE](SRS04.01%20only%20SDBL%20where%20select.md)
+- [BRD04.02: Уточнение блоковой структуры where/having](BRD04.02%20clarifying%2004%20based%20on%2004.01.md)
+- [SRS04.02: Уточнение блоковой структуры](SRS04.02%20clarifying%2004%20based%20on%2004.01.md)
+
+### Уровень 4.1: Парсинг подзапросов в WHERE (SDBL)
+- [BRD04.01: Парсинг подзапросов в блоке WHERE](BRD04.01%20only%20SDBL%20where%20select.md)
+- [SRS04.01: Спецификация реализации — парсинг подзапросов в WHERE](SRS04.01%20only%20SDBL%20where%20select.md)
