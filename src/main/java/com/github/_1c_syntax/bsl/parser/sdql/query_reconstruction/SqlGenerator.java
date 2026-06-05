@@ -35,7 +35,7 @@ public class SqlGenerator {
       String[] lines = sql.split("\n");
       StringBuilder sb = new StringBuilder();
       for (String line : lines) {
-        sb.append("        ").append(line).append("\n");
+        sb.append("    ").append(line).append("\n");
       }
       sql = sb.toString().trim();
     }
