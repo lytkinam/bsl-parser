@@ -1,0 +1,14 @@
+{
+  "baseName" : "example_4",
+  "totalNodes" : 1,
+  "matched" : 0,
+  "mismatched" : 1,
+  "nodes" : [ {
+    "id" : 0,
+    "name" : "Результат_1",
+    "status" : "mismatched",
+    "primaryHash" : "4be988f49c6322e1a757ec585425d256847095e39c65078da58b5a566bcc8442",
+    "extractedHash" : "ef9722fa164e0525f31850adca3cbc4bed16350c8738a0c149ab06dc0b430d9a",
+    "differences" : [ "Extracted: ...ЫЛКА КАК ССЫЛКА ИЗ ( ВЫБРАТЬ ЗЛО.ССЫЛКА ... vs Primary: ...ЫЛКА КАК ССЫЛКА ИЗ (ВЫБРАТЬ ЗЛО.ССЫЛКА К...", "Extracted: ...ЛКА КАК ССЫЛКА ИЗ ( ВЫБРАТЬ ЗЛО.ССЫЛКА К... vs Primary: ...ЛКА КАК ССЫЛКА ИЗ (ВЫБРАТЬ ЗЛО.ССЫЛКА КА...", "Extracted: ...КА КАК ССЫЛКА ИЗ ( ВЫБРАТЬ ЗЛО.ССЫЛКА КА... vs Primary: ...КА КАК ССЫЛКА ИЗ (ВЫБРАТЬ ЗЛО.ССЫЛКА КАК..." ]
+  } ]
+}

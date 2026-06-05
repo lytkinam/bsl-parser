@@ -1,58 +1,10 @@
 [ {
   "id" : 0,
-  "name" : "вт_НашиДоговора",
+  "name" : "Результат_1",
   "table_hierarchy" : [ {
-    "name" : "НашиДоговора",
-    "source" : "Справочник.уп_ДоговорыОПС",
-    "type_hierarchy" : "from"
-  } ]
-}, {
-  "id" : 1,
-  "name" : "ЗЛО",
-  "table_hierarchy" : [ {
-    "id" : 2,
-    "name" : "ЗЛО_UNION_0",
-    "type_hierarchy" : "union"
-  }, {
-    "id" : 3,
-    "name" : "ЗЛО_UNION_1",
-    "type_hierarchy" : "union"
-  }, {
-    "id" : 4,
-    "name" : "ЗЛО_UNION_2",
-    "type_hierarchy" : "union"
-  } ]
-}, {
-  "id" : 2,
-  "name" : "ЗЛО_UNION_0",
-  "table_hierarchy" : [ {
-    "name" : "уп_ЗаявлениеЗЛОЕдиновременнойВыплате",
-    "source" : "Документ.уп_ЗаявлениеЗЛОЕдиновременнойВыплате",
-    "type_hierarchy" : "from"
-  } ]
-}, {
-  "id" : 3,
-  "name" : "ЗЛО_UNION_1",
-  "table_hierarchy" : [ {
-    "name" : "уп_ЗаявлениеЗЛОНазначенииНЧТП",
-    "source" : "Документ.уп_ЗаявлениеЗЛОНазначенииНЧТП",
-    "type_hierarchy" : "from"
-  } ]
-}, {
-  "id" : 4,
-  "name" : "ЗЛО_UNION_2",
-  "table_hierarchy" : [ {
-    "name" : "уп_ЗаявлениеЗЛОНазначенииСрочнойВыплаты",
-    "source" : "Документ.уп_ЗаявлениеЗЛОНазначенииСрочнойВыплаты",
-    "type_hierarchy" : "from"
-  } ]
-}, {
-  "id" : 5,
-  "name" : "Результат_3",
-  "table_hierarchy" : [ {
-    "id" : 6,
+    "id" : 1,
     "name" : "ВложенныйЗапрос",
-    "source" : "Результат_3_SUB_1",
+    "source" : "Результат_1_SUB_1",
     "type_hierarchy" : "from"
   }, {
     "name" : "Контрагенты",
@@ -60,16 +12,41 @@
     "type_hierarchy" : "from"
   }, {
     "name" : "уп_СостоянияДоговораОПССрезПоследних",
-    "source" : "РегистрСведений.уп_СостоянияДоговораОПС.СрезПоследних(\r\n\t\t\t&Период,\r\n\t\t\tДоговорОПС В\r\n\t\t\t\t(ВЫБРАТЬ\r\n\t\t\t\t\tНашиДоговора.Ссылка\r\n\t\t\t\tИЗ\r\n\t\t\t\t\tвт_НашиДоговора КАК НашиДоговора))",
+    "source" : "РегистрСведений.уп_СостоянияДоговораОПС.СрезПоследних(\n        &Период,\n        ДоговорОПС В\n            (Результат_1_INLINE_1))",
+    "type_hierarchy" : "from"
+  }, {
+    "id" : 2,
+    "name" : "Результат_1_INLINE_1",
+    "source" : "Результат_1_INLINE_1",
+    "type_hierarchy" : "from"
+  }, {
+    "id" : 3,
+    "name" : "Результат_1_INLINE_2",
+    "source" : "Результат_1_INLINE_2",
     "type_hierarchy" : "from"
   } ]
 }, {
-  "id" : 6,
-  "name" : "Результат_3_SUB_1",
+  "id" : 1,
+  "name" : "Результат_1_SUB_1",
   "table_hierarchy" : [ {
-    "id" : 1,
     "name" : "ЗЛО",
     "source" : "ЗЛО",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 2,
+  "name" : "Результат_1_INLINE_1",
+  "table_hierarchy" : [ {
+    "name" : "вт_НашиДоговора",
+    "source" : "вт_НашиДоговора",
+    "type_hierarchy" : "from"
+  } ]
+}, {
+  "id" : 3,
+  "name" : "Результат_1_INLINE_2",
+  "table_hierarchy" : [ {
+    "name" : "Справочник.Контрагенты",
+    "source" : "Справочник.Контрагенты",
     "type_hierarchy" : "from"
   } ]
 } ]
