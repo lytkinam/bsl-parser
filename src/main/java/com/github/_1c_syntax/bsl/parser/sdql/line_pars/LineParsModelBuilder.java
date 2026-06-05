@@ -156,22 +156,109 @@ public class LineParsModelBuilder {
       }
     }
 
-    // Process inline subqueries (from where, virtualTable, select, joinCondition)
-    if (ast.getInlineSubqueries() != null) {
-      for (InlineSubquery inline : ast.getInlineSubqueries()) {
-        LineParsNode sub = new LineParsNode();
-        sub.setId(idCounter++);
-        sub.setSdblId(parent.getSdblId());
-        sub.setName(inline.getName());
-        sub.setType("sub_query");
-        copyQueryFields(sub, inline.getQuery());
-        sub.setUpqueryId(parent.getId());
-        nodes.add(sub);
-        parent.getSubqueryIds().add(sub.getId());
+    // Process inline subqueries from WhereBlock
+    if (ast.getWhere() != null && ast.getWhere().getSubqueries() != null) {
+      int counter = 1;
+      List<Integer> whereSubIds = new ArrayList<>();
+      for (WhereSubquery ws : ast.getWhere().getSubqueries()) {
+        LineParsNode sub = createInlineSubNode(parent, ws.getQuery(), parent.getName() + "_WHERE_" + counter++);
+        whereSubIds.add(sub.getId());
+      }
+      // Replace temp names with sub node names in where text
+      WhereBlock wb = new WhereBlock();
+      wb.setText(replaceTempNames(ast.getWhere().getText(), ast.getWhere().getSubqueries(), parent.getName(), "WHERE"));
+      wb.setSubqueryIds(whereSubIds);
+      parent.setWhere(wb);
+      parent.getSubqueryIds().addAll(whereSubIds);
+    }
 
-        processAst(sub, inline.getQuery());
+    // Process inline subqueries from HavingBlock
+    if (ast.getHaving() != null && ast.getHaving().getSubqueries() != null) {
+      int counter = 1;
+      List<Integer> havingSubIds = new ArrayList<>();
+      for (WhereSubquery ws : ast.getHaving().getSubqueries()) {
+        LineParsNode sub = createInlineSubNode(parent, ws.getQuery(), parent.getName() + "_HAVING_" + counter++);
+        havingSubIds.add(sub.getId());
+      }
+      HavingBlock hb = new HavingBlock();
+      hb.setText(replaceTempNames(ast.getHaving().getText(), ast.getHaving().getSubqueries(), parent.getName(), "HAVING"));
+      hb.setSubqueryIds(havingSubIds);
+      parent.setHaving(hb);
+      parent.getSubqueryIds().addAll(havingSubIds);
+    }
+
+    // Process inline subqueries from VirtualTableBlock
+    if (ast.getFrom() != null) {
+      for (DataSource ds : ast.getFrom()) {
+        if (ds.getVirtualTable() != null && ds.getVirtualTable().getSubqueries() != null) {
+          int counter = 1;
+          List<Integer> vtSubIds = new ArrayList<>();
+          for (WhereSubquery ws : ds.getVirtualTable().getSubqueries()) {
+            LineParsNode sub = createInlineSubNode(parent, ws.getQuery(), parent.getName() + "_VT_" + counter++);
+            vtSubIds.add(sub.getId());
+          }
+          VirtualTableBlock vt = new VirtualTableBlock();
+          vt.setText(replaceTempNames(ds.getVirtualTable().getText(), ds.getVirtualTable().getSubqueries(), parent.getName(), "VT"));
+          vt.setSubqueryIds(vtSubIds);
+          ds.setVirtualTable(vt);
+          parent.getSubqueryIds().addAll(vtSubIds);
+        }
+        if (ds.getJoins() != null) {
+          for (JoinPart jp : ds.getJoins()) {
+            if (jp.getConditionSubqueries() != null) {
+              int counter = 1;
+              List<Integer> joinSubIds = new ArrayList<>();
+              for (WhereSubquery ws : jp.getConditionSubqueries()) {
+                LineParsNode sub = createInlineSubNode(parent, ws.getQuery(), parent.getName() + "_JOIN_" + counter++);
+                joinSubIds.add(sub.getId());
+              }
+              String replacedCond = replaceTempNames(jp.getCondition(), jp.getConditionSubqueries(), parent.getName(), "JOIN");
+              jp.setCondition(replacedCond);
+              jp.setConditionSubqueryIds(joinSubIds);
+              jp.setConditionSubqueries(null);
+              parent.getSubqueryIds().addAll(joinSubIds);
+            }
+          }
+        }
       }
     }
+
+    // Process inline subqueries from SelectField
+    if (ast.getSelect() != null) {
+      int counter = 1;
+      for (SelectField sf : ast.getSelect()) {
+        if (sf.getInlineSubquery() != null) {
+          LineParsNode sub = createInlineSubNode(parent, sf.getInlineSubquery().getQuery(), parent.getName() + "_SELECT_" + counter++);
+          sf.setInlineSubqueryId(sub.getId());
+          sf.setInlineSubquery(null);
+          parent.getSubqueryIds().add(sub.getId());
+        }
+      }
+    }
+  }
+
+  private LineParsNode createInlineSubNode(LineParsNode parent, QueryAst query, String name) {
+    LineParsNode sub = new LineParsNode();
+    sub.setId(idCounter++);
+    sub.setSdblId(parent.getSdblId());
+    sub.setName(name);
+    sub.setType("sub_query");
+    copyQueryFields(sub, query);
+    sub.setUpqueryId(parent.getId());
+    nodes.add(sub);
+    processAst(sub, query);
+    return sub;
+  }
+
+  private String replaceTempNames(String text, List<WhereSubquery> subqueries, String parentName, String context) {
+    if (text == null || subqueries == null) return text;
+    String result = text;
+    for (int i = 0; i < subqueries.size(); i++) {
+      String tempName = subqueries.get(i).getName();
+      String subName = parentName + "_" + context + "_" + (i + 1);
+      result = result.replace(tempName, subName);
+    }
+    return result;
   }
 
   private void copyQueryFields(LineParsNode node, QueryAst ast) {
@@ -179,10 +266,18 @@ public class LineParsModelBuilder {
     node.setInto(ast.getInto());
     node.setSelect(normalizeSelectFields(ast.getSelect()));
     node.setFrom(ast.getFrom());
-    node.setWhere(ast.getWhere());
+    if (ast.getWhere() != null) {
+      WhereBlock wb = new WhereBlock();
+      wb.setText(ast.getWhere().getText());
+      node.setWhere(wb);
+    }
     node.setGroupBy(ast.getGroupBy());
     node.setGroupByGroupingSets(ast.getGroupByGroupingSets());
-    node.setHaving(ast.getHaving());
+    if (ast.getHaving() != null) {
+      HavingBlock hb = new HavingBlock();
+      hb.setText(ast.getHaving().getText());
+      node.setHaving(hb);
+    }
     node.setForUpdate(ast.getForUpdate());
     node.setIndexBy(ast.getIndexBy());
     node.setIndexBySets(ast.getIndexBySets());

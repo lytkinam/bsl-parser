@@ -113,8 +113,8 @@ public class SdqlModelMdBuilder {
     }
 
     // WHERE
-    if (ast.getWhere() != null) {
-      sb.append("### WHERE\n\n```sql\n").append(ast.getWhere()).append("\n```\n\n");
+    if (ast.getWhere() != null && ast.getWhere().getText() != null) {
+      sb.append("### WHERE\n\n```sql\n").append(ast.getWhere().getText()).append("\n```\n\n");
     }
 
     // GROUP BY
@@ -127,8 +127,8 @@ public class SdqlModelMdBuilder {
     }
 
     // HAVING
-    if (ast.getHaving() != null) {
-      sb.append("### HAVING\n\n```sql\n").append(ast.getHaving()).append("\n```\n\n");
+    if (ast.getHaving() != null && ast.getHaving().getText() != null) {
+      sb.append("### HAVING\n\n```sql\n").append(ast.getHaving().getText()).append("\n```\n\n");
     }
 
     // ORDER BY
@@ -152,7 +152,7 @@ public class SdqlModelMdBuilder {
 
   private void appendDataSourceRow(StringBuilder sb, DataSource ds, String joinType) {
     String table = ds.getTable() != null ? ds.getTable()
-      : ds.getVirtualTable() != null ? ds.getVirtualTable()
+      : ds.getVirtualTable() != null ? ds.getVirtualTable().getText()
       : ds.getParameterTable() != null ? ds.getParameterTable()
       : ds.getExternalDataSource() != null ? ds.getExternalDataSource()
       : ds.getSubquery() != null ? "(подзапрос)"

@@ -165,7 +165,7 @@ public class SqlGenerator {
     if (ds.getTable() != null) {
       source = ds.getTable();
     } else if (ds.getVirtualTable() != null) {
-      source = inlineSubqueries(ds.getVirtualTable(), parentNode);
+      source = inlineSubqueries(ds.getVirtualTable().getText(), parentNode);
     } else if (ds.getSubquery() != null) {
       // Inline subquery: generate SQL from the inline subquery node
       String subqueryName = (String) ds.getSubquery();

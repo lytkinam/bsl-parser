@@ -58,9 +58,9 @@ public class QueryNodeBuilder {
       }
     }
 
-    // WHERE — primary field (string), not where_fields
-    if (fflNode.getWhere() != null && !fflNode.getWhere().isEmpty()) {
-      result.getWhereConditions().add(fflNode.getWhere());
+    // WHERE — from WhereBlock
+    if (fflNode.getWhere() != null && fflNode.getWhere().getText() != null) {
+      result.getWhereConditions().add(fflNode.getWhere().getText());
     }
 
     // GROUP BY — primary field (array of strings), not group_by_fields
@@ -68,9 +68,9 @@ public class QueryNodeBuilder {
       result.getGroupByFields().addAll(fflNode.getGroupBy());
     }
 
-    // HAVING — primary field (string), not having_fields
-    if (fflNode.getHaving() != null && !fflNode.getHaving().isEmpty()) {
-      result.getHavingConditions().add(fflNode.getHaving());
+    // HAVING — from HavingBlock
+    if (fflNode.getHaving() != null && fflNode.getHaving().getText() != null) {
+      result.getHavingConditions().add(fflNode.getHaving().getText());
     }
 
     // UNION parts — from FFL, not FULL_PARS
@@ -97,7 +97,10 @@ public class QueryNodeBuilder {
         if (subNode == null) {
           subNode = fullParsById.get(subId);
         }
-        if (subNode != null && subNode.getName() != null && subNode.getName().contains("_INLINE_")) {
+        if (subNode != null && subNode.getName() != null
+            && (subNode.getName().contains("_WHERE_") || subNode.getName().contains("_HAVING_")
+                || subNode.getName().contains("_VT_") || subNode.getName().contains("_SELECT_")
+                || subNode.getName().contains("_JOIN_"))) {
           if (!result.getInlineSubqueries().containsKey(subNode.getName())) {
             RestoredQueryNode inlineSub = build(subNode);
             result.getInlineSubqueries().put(subNode.getName(), inlineSub);
@@ -149,7 +152,7 @@ public class QueryNodeBuilder {
         if (src.getTable() != null) {
           sourceTable = src.getTable();
         } else if (src.getVirtualTable() != null) {
-          sourceTable = src.getVirtualTable();
+          sourceTable = src.getVirtualTable().getText();
         } else if (src.getSubquery() != null) {
           sourceTable = (String) src.getSubquery();
         } else if (src.getExternalDataSource() != null) {

@@ -9,7 +9,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DataSource {
   private String table;
-  private String virtualTable;
+  private VirtualTableBlock virtualTable;
   private String parameterTable;
   private String externalDataSource;
   @com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = SubqueryDeserializer.class)

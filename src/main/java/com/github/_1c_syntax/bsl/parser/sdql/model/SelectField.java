@@ -11,4 +11,6 @@ public class SelectField {
   private String fieldType;
   private String text;
   private String alias;
+  private WhereSubquery inlineSubquery;
+  private Integer inlineSubqueryId;
 }

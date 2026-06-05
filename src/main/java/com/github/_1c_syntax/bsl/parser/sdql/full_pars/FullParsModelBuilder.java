@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.HierarchyNode;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsModel;
 import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsNode;
-import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
-import com.github._1c_syntax.bsl.parser.sdql.model.JoinPart;
-import com.github._1c_syntax.bsl.parser.sdql.model.SelectField;
+import com.github._1c_syntax.bsl.parser.sdql.model.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,7 +20,7 @@ public class FullParsModelBuilder {
   private static final ObjectMapper MAPPER = new ObjectMapper();
   private static final Pattern FIELD_REF_PATTERN = Pattern.compile("(?U)([\\w]+)\\.([\\w]+)");
   private static final Pattern THREE_PART_PATTERN = Pattern.compile("(?U)([\\w]+)\\.([\\w]+)\\.([\\w]+)");
-  private static final Pattern INLINE_SUB_PATTERN = Pattern.compile("(?U)[А-Яа-яA-Za-z_][А-Яа-яA-Za-z0-9_]*_INLINE_\\d+");
+  private static final Pattern INLINE_SUB_PATTERN = Pattern.compile("(?U)[А-Яа-яA-Za-z_][А-Яа-яA-Za-z0-9_]*_(WHERE|HAVING|VT|SELECT|JOIN)_\\d+");
 
   private Map<Integer, LineParsNode> nodeById;
   private Map<String, LineParsNode> nodeByName;
@@ -82,9 +80,27 @@ public class FullParsModelBuilder {
     fpNode.setType(lpNode.getType());
     fpNode.setInto(lpNode.getInto());
     fpNode.setFrom(lpNode.getFrom());
-    fpNode.setWhere(lpNode.getWhere());
+    // WhereBlock
+    if (lpNode.getWhere() != null) {
+      WhereBlock wb = new WhereBlock();
+      wb.setText(lpNode.getWhere().getText());
+      wb.setSubqueryIds(lpNode.getWhere().getSubqueryIds());
+      if (lpNode.getWhere().getText() != null) {
+        wb.setFields(extractConditionFields(lpNode.getId(), lpNode.getWhere().getText()));
+      }
+      fpNode.setWhere(wb);
+    }
     fpNode.setGroupBy(lpNode.getGroupBy());
-    fpNode.setHaving(lpNode.getHaving());
+    // HavingBlock
+    if (lpNode.getHaving() != null) {
+      HavingBlock hb = new HavingBlock();
+      hb.setText(lpNode.getHaving().getText());
+      hb.setSubqueryIds(lpNode.getHaving().getSubqueryIds());
+      if (lpNode.getHaving().getText() != null) {
+        hb.setFields(extractConditionFields(lpNode.getId(), lpNode.getHaving().getText()));
+      }
+      fpNode.setHaving(hb);
+    }
     fpNode.setForUpdate(lpNode.getForUpdate());
     fpNode.setIndexBy(lpNode.getIndexBy());
     fpNode.setIndexBySets(lpNode.getIndexBySets());
@@ -114,11 +130,6 @@ public class FullParsModelBuilder {
       fpNode.setSelect(selectFields);
     }
 
-    // where_fields
-    if (lpNode.getWhere() != null) {
-      fpNode.getWhereFields().addAll(extractConditionFields(lpNode.getId(), lpNode.getWhere()));
-    }
-
     // group_by_fields
     if (lpNode.getGroupBy() != null) {
       for (String expr : lpNode.getGroupBy()) {
@@ -127,11 +138,6 @@ public class FullParsModelBuilder {
         cf.setChildFields(extractChildFields(lpNode.getId(), expr));
         fpNode.getGroupByFields().add(cf);
       }
-    }
-
-    // having_fields
-    if (lpNode.getHaving() != null) {
-      fpNode.getHavingFields().addAll(extractConditionFields(lpNode.getId(), lpNode.getHaving()));
     }
 
     // join_conditions
@@ -153,7 +159,7 @@ public class FullParsModelBuilder {
         if (src != null) {
           jc.setSource(src.getAlias() != null ? src.getAlias() :
             src.getTable() != null ? src.getTable() :
-              src.getVirtualTable() != null ? src.getVirtualTable() :
+              src.getVirtualTable() != null ? src.getVirtualTable().getText() :
                 src.getParameterTable() != null ? src.getParameterTable() :
                   src.getExternalDataSource() != null ? src.getExternalDataSource() : null);
         }

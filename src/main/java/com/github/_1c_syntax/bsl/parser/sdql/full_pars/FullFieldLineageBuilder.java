@@ -2,6 +2,8 @@ package com.github._1c_syntax.bsl.parser.sdql.full_pars;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github._1c_syntax.bsl.parser.sdql.model.HavingBlock;
+import com.github._1c_syntax.bsl.parser.sdql.model.WhereBlock;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -217,9 +219,19 @@ public class FullFieldLineageBuilder {
     result.setType(source.getType());
     result.setInto(source.getInto());
     result.setFrom(source.getFrom());
-    result.setWhere(source.getWhere());
+    if (source.getWhere() != null) {
+      WhereBlock wb = new WhereBlock();
+      wb.setText(source.getWhere().getText());
+      wb.setSubqueryIds(source.getWhere().getSubqueryIds());
+      result.setWhere(wb);
+    }
     result.setGroupBy(source.getGroupBy());
-    result.setHaving(source.getHaving());
+    if (source.getHaving() != null) {
+      HavingBlock hb = new HavingBlock();
+      hb.setText(source.getHaving().getText());
+      hb.setSubqueryIds(source.getHaving().getSubqueryIds());
+      result.setHaving(hb);
+    }
     result.setForUpdate(source.getForUpdate());
     result.setIndexBy(source.getIndexBy());
     result.setIndexBySets(source.getIndexBySets());
@@ -262,9 +274,13 @@ public class FullFieldLineageBuilder {
     result.setSelect(selectFields);
 
     // Copy all where_fields, group_by_fields, having_fields, join_conditions
-    result.setWhereFields(cloneConditionFields(source.getWhereFields()));
+    if (source.getWhere() != null && source.getWhere().getFields() != null) {
+      result.setWhereFields(cloneConditionFields(source.getWhere().getFields()));
+    }
     result.setGroupByFields(cloneConditionFields(source.getGroupByFields()));
-    result.setHavingFields(cloneConditionFields(source.getHavingFields()));
+    if (source.getHaving() != null && source.getHaving().getFields() != null) {
+      result.setHavingFields(cloneConditionFields(source.getHaving().getFields()));
+    }
     result.setJoinFields(cloneJoinConditions(source.getJoinFields()));
 
     return result;

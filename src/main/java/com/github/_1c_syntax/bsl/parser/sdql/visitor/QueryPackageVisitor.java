@@ -6,20 +6,15 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class QueryPackageVisitor {
 
   private final String originalText;
   private final List<String> queryNames;
   private int mainQueryIndex = 0;
-  private int inlineCounter = 0;
+  private int vtCounter = 0;
   private String currentQueryName = "";
-  private List<InlineSubquery> currentInlineSubqueries = new ArrayList<>();
 
   public QueryPackageVisitor(String originalText) {
     this(originalText, List.of());
@@ -47,10 +42,6 @@ public class QueryPackageVisitor {
     QueryAst ast;
     if (ctx.selectQuery() != null) {
       ast = visitSelectQuery(ctx.selectQuery());
-      // Attach inline subqueries collected from the main query
-      if (!currentInlineSubqueries.isEmpty() && ast.getInlineSubqueries() == null) {
-        ast.setInlineSubqueries(currentInlineSubqueries);
-      }
     } else if (ctx.dropTableQuery() != null) {
       ast = new QueryAst();
       ast.setType("drop");
@@ -111,11 +102,9 @@ public class QueryPackageVisitor {
 
   private QueryAst visitQuery(SDBLParser.QueryContext ctx, boolean isMainQuery) {
     String savedQueryName = currentQueryName;
-    List<InlineSubquery> savedInlineSubqueries = currentInlineSubqueries;
-    int savedInlineCounter = inlineCounter;
+    int savedVtCounter = vtCounter;
 
-    currentInlineSubqueries = new ArrayList<>();
-    inlineCounter = 0;
+    vtCounter = 0;
 
     QueryAst ast = new QueryAst();
     ast.setType("select");
@@ -124,7 +113,6 @@ public class QueryPackageVisitor {
       ast.setInto(textOf(ctx.temporaryTableName));
       currentQueryName = textOf(ctx.temporaryTableName);
     } else if (isMainQuery) {
-      // Use name from NodeSplitter if available
       if (mainQueryIndex < queryNames.size()) {
         currentQueryName = queryNames.get(mainQueryIndex);
       } else {
@@ -132,13 +120,11 @@ public class QueryPackageVisitor {
       }
       mainQueryIndex++;
     } else {
-      // Subquery: use parent name + _SUB (will be overridden by caller if needed)
       currentQueryName = currentQueryName + "_SUB";
     }
-    // inline subquery extraction happens during visitDataSources/where processing
     if (ctx.from != null) ast.setFrom(visitDataSources(ctx.from));
     if (ctx.where != null) {
-      ast.setWhere(processLogicalExpression(ctx.where));
+      ast.setWhere(processWhere(ctx.where));
     }
     if (ctx.groupBy != null && !ctx.groupBy.isEmpty()) {
       List<String> gb = new ArrayList<>();
@@ -155,7 +141,7 @@ public class QueryPackageVisitor {
       }
       ast.setGroupByGroupingSets(sets);
     }
-    if (ctx.having != null) ast.setHaving(textOf(ctx.having));
+    if (ctx.having != null) ast.setHaving(processHaving(ctx.having));
     if (ctx.forUpdate != null) ast.setForUpdate(textOf(ctx.forUpdate));
     if (ctx.indexes != null && !ctx.indexes.isEmpty()) {
       List<String> idx = new ArrayList<>();
@@ -169,114 +155,125 @@ public class QueryPackageVisitor {
     }
     if (ctx.limitations() != null) ast.setLimitations(textOf(ctx.limitations()));
 
-    if (!currentInlineSubqueries.isEmpty()) {
-      ast.setInlineSubqueries(currentInlineSubqueries);
-    }
-
-    // Restore state for parent query context
     currentQueryName = savedQueryName;
-    // Merge inline subqueries back to parent if this is a subquery
     if (!isMainQuery) {
-      currentInlineSubqueries = savedInlineSubqueries;
-      inlineCounter = savedInlineCounter;
+      vtCounter = savedVtCounter;
     }
-    // end of query processing
-
     return ast;
   }
 
-  // ── Inline subquery extraction ──────────────────────────────────────────
+  // ── Where / Having blocks ───────────────────────────────────────────────
 
-  private String processLogicalExpression(SDBLParser.LogicalExpressionContext ctx) {
-    return processLogicalExpression(ctx, "where");
+  private WhereBlock processWhere(SDBLParser.LogicalExpressionContext ctx) {
+    return buildWhereBlock(ctx);
   }
 
-  private String processLogicalExpression(SDBLParser.LogicalExpressionContext ctx, String context) {
-    String text = textOf(ctx);
-    Map<String, InlineSubquery> replacements = new HashMap<>();
-    collectInlineSubqueries(ctx, replacements, context);
-    return applyReplacements(text, replacements);
+  private HavingBlock processHaving(SDBLParser.LogicalExpressionContext ctx) {
+    WhereBlock wb = buildWhereBlock(ctx);
+    HavingBlock hb = new HavingBlock();
+    hb.setText(wb.getText());
+    hb.setSubqueries(wb.getSubqueries());
+    return hb;
   }
 
-  private void collectInlineSubqueries(SDBLParser.LogicalExpressionContext ctx,
-                                        Map<String, InlineSubquery> replacements) {
-    collectInlineSubqueries(ctx, replacements, "where");
+  private WhereBlock buildWhereBlock(SDBLParser.LogicalExpressionContext ctx) {
+    List<SubqueryEntry> entries = collectSubqueries(ctx);
+    WhereBlock block = new WhereBlock();
+    if (entries.isEmpty()) {
+      block.setText(textOf(ctx));
+      return block;
+    }
+    String replacedText = replaceSubqueriesByPosition(ctx, entries);
+    block.setText(replacedText);
+    List<WhereSubquery> subqueries = new ArrayList<>();
+    for (SubqueryEntry entry : entries) {
+      WhereSubquery ws = new WhereSubquery();
+      ws.setName(entry.alias);
+      String savedName = currentQueryName;
+      ws.setQuery(visitSubquery(entry.subqueryCtx));
+      currentQueryName = savedName;
+      subqueries.add(ws);
+    }
+    block.setSubqueries(subqueries);
+    return block;
   }
 
-  private void collectInlineSubqueries(SDBLParser.LogicalExpressionContext ctx,
-                                        Map<String, InlineSubquery> replacements,
-                                        String context) {
+  // ── Subquery collection and replacement ─────────────────────────────────
+
+  private static class SubqueryEntry {
+    SDBLParser.SubqueryContext subqueryCtx;
+    String alias;
+  }
+
+  private List<SubqueryEntry> collectSubqueries(SDBLParser.LogicalExpressionContext ctx) {
+    List<SubqueryEntry> result = new ArrayList<>();
+    collectSubqueriesFromLogical(ctx, result);
+    return result;
+  }
+
+  private void collectSubqueriesFromLogical(SDBLParser.LogicalExpressionContext ctx,
+                                             List<SubqueryEntry> result) {
     for (SDBLParser.PredicateContext pred : ctx.condidions) {
-      collectInlineSubqueriesFromPredicate(pred, replacements, context);
+      collectSubqueriesFromPredicate(pred, result);
     }
-  }
-
-  private void collectInlineSubqueriesFromPredicate(SDBLParser.PredicateContext ctx,
-                                                     Map<String, InlineSubquery> replacements) {
-    collectInlineSubqueriesFromPredicate(ctx, replacements, "where");
-  }
-
-  private void collectInlineSubqueriesFromPredicate(SDBLParser.PredicateContext ctx,
-                                                     Map<String, InlineSubquery> replacements,
-                                                     String context) {
-    if (ctx.inPredicate() != null) {
-      SDBLParser.InPredicateContext ip = ctx.inPredicate();
-      if (ip.subquery() != null) {
-        InlineSubquery sub = extractInlineSubquery(ip.subquery(), context);
-        replacements.put(textOf(ip.subquery()), sub);
-      }
-    }
-    if (ctx.booleanPredicate != null) {
-      collectInlineSubqueriesFromExpression(ctx.booleanPredicate, replacements);
-    }
-    // Handle nested logical expressions in parentheses
     for (int i = 0; i < ctx.getChildCount(); i++) {
       ParseTree child = ctx.getChild(i);
       if (child instanceof SDBLParser.LogicalExpressionContext) {
-        collectInlineSubqueries((SDBLParser.LogicalExpressionContext) child, replacements, context);
+        collectSubqueriesFromLogical((SDBLParser.LogicalExpressionContext) child, result);
       }
     }
   }
 
-  private void collectInlineSubqueriesFromExpression(SDBLParser.ExpressionContext ctx,
-                                                      Map<String, InlineSubquery> replacements) {
+  private void collectSubqueriesFromPredicate(SDBLParser.PredicateContext ctx,
+                                               List<SubqueryEntry> result) {
+    if (ctx.inPredicate() != null) {
+      SDBLParser.InPredicateContext ip = ctx.inPredicate();
+      if (ip.subquery() != null) {
+        SubqueryEntry entry = new SubqueryEntry();
+        entry.subqueryCtx = ip.subquery();
+        result.add(entry);
+      }
+    }
+    if (ctx.booleanPredicate != null) {
+      collectSubqueriesFromExpression(ctx.booleanPredicate, result);
+    }
+  }
+
+  private void collectSubqueriesFromExpression(SDBLParser.ExpressionContext ctx,
+                                                List<SubqueryEntry> result) {
     if (ctx == null) return;
     if (ctx.bracketExpression() != null) {
       SDBLParser.BracketExpressionContext be = ctx.bracketExpression();
       if (be.subquery() != null) {
-        InlineSubquery sub = extractInlineSubquery(be.subquery(), "select");
-        replacements.put(textOf(be.subquery()), sub);
+        SubqueryEntry entry = new SubqueryEntry();
+        entry.subqueryCtx = be.subquery();
+        result.add(entry);
       }
     }
     for (int i = 0; i < ctx.getChildCount(); i++) {
       ParseTree child = ctx.getChild(i);
       if (child instanceof SDBLParser.ExpressionContext) {
-        collectInlineSubqueriesFromExpression((SDBLParser.ExpressionContext) child, replacements);
+        collectSubqueriesFromExpression((SDBLParser.ExpressionContext) child, result);
       }
     }
   }
 
-  private InlineSubquery extractInlineSubquery(SDBLParser.SubqueryContext ctx, String context) {
-    inlineCounter++;
-    String name = (currentQueryName.isEmpty() ? "Результат" : currentQueryName)
-      + "_INLINE_" + inlineCounter;
-    // inline subquery extracted
-    InlineSubquery sub = new InlineSubquery();
-    sub.setContext(context);
-    sub.setName(name);
-    String savedName = currentQueryName;
-    sub.setQuery(visitSubquery(ctx));
-    currentQueryName = savedName;
-    currentInlineSubqueries.add(sub);
-    return sub;
-  }
-
-  private String applyReplacements(String text, Map<String, InlineSubquery> replacements) {
-    String result = text;
-    for (Map.Entry<String, InlineSubquery> entry : replacements.entrySet()) {
-      result = result.replace(entry.getKey(), entry.getValue().getName());
+  private String replaceSubqueriesByPosition(ParserRuleContext parentCtx,
+                                              List<SubqueryEntry> entries) {
+    String fullText = textOf(parentCtx);
+    StringBuilder sb = new StringBuilder(fullText);
+    int offset = 0;
+    for (SubqueryEntry entry : entries) {
+      vtCounter++;
+      String alias = "ВТ_Подзапрос_" + vtCounter;
+      entry.alias = alias;
+      String subText = textOf(entry.subqueryCtx);
+      int start = entry.subqueryCtx.getStart().getStartIndex() - parentCtx.getStart().getStartIndex();
+      int end = entry.subqueryCtx.getStop().getStopIndex() - parentCtx.getStart().getStartIndex() + 1;
+      sb.replace(start + offset, end + offset, alias);
+      offset += alias.length() - subText.length();
     }
-    return result;
+    return sb.toString();
   }
 
   // ── Selected fields with inline subqueries ──────────────────────────────
@@ -299,7 +296,7 @@ public class QueryPackageVisitor {
       sf.setText(textOf(ctx.asteriskField()));
     } else if (ctx.expressionField() != null) {
       sf.setFieldType("expression");
-      sf.setText(processExpressionField(ctx.expressionField()));
+      sf.setText(processExpressionField(ctx.expressionField(), sf));
     } else if (ctx.columnField() != null) {
       sf.setFieldType("column");
       sf.setText(textOf(ctx.columnField()));
@@ -316,18 +313,31 @@ public class QueryPackageVisitor {
     return sf;
   }
 
-  private String processExpressionField(SDBLParser.ExpressionFieldContext ctx) {
-    String text = textOf(ctx);
-    Map<String, InlineSubquery> replacements = new HashMap<>();
+  private String processExpressionField(SDBLParser.ExpressionFieldContext ctx, SelectField sf) {
     if (ctx.expression() != null) {
-      collectInlineSubqueriesFromExpression(ctx.expression(), replacements);
+      List<SubqueryEntry> entries = new ArrayList<>();
+      collectSubqueriesFromExpression(ctx.expression(), entries);
+      if (!entries.isEmpty()) {
+        String replaced = replaceSubqueriesByPosition(ctx, entries);
+        WhereSubquery ws = new WhereSubquery();
+        ws.setName(entries.get(0).alias);
+        String savedName = currentQueryName;
+        ws.setQuery(visitSubquery(entries.get(0).subqueryCtx));
+        currentQueryName = savedName;
+        sf.setInlineSubquery(ws);
+        return replaced;
+      }
     } else if (ctx.logicalExpression() != null) {
-      collectInlineSubqueries(ctx.logicalExpression(), replacements);
+      WhereBlock wb = buildWhereBlock(ctx.logicalExpression());
+      if (wb.getSubqueries() != null && !wb.getSubqueries().isEmpty()) {
+        sf.setInlineSubquery(wb.getSubqueries().get(0));
+        return wb.getText();
+      }
     }
-    return applyReplacements(text, replacements);
+    return textOf(ctx);
   }
 
-  // ── Data sources with inline subqueries in virtualTable and join conditions ──
+  // ── Data sources ────────────────────────────────────────────────────────
 
   private List<DataSource> visitDataSources(SDBLParser.DataSourcesContext ctx) {
     List<DataSource> list = new ArrayList<>();
@@ -362,15 +372,31 @@ public class QueryPackageVisitor {
     return ds;
   }
 
-  private String processVirtualTable(SDBLParser.VirtualTableContext ctx) {
-    String text = textOf(ctx);
-    Map<String, InlineSubquery> replacements = new HashMap<>();
+  private VirtualTableBlock processVirtualTable(SDBLParser.VirtualTableContext ctx) {
+    List<SubqueryEntry> entries = new ArrayList<>();
     for (SDBLParser.VirtualTableParameterContext param : ctx.virtualTableParameters) {
       if (param.logicalExpression() != null) {
-        collectInlineSubqueries(param.logicalExpression(), replacements, "virtualTable");
+        collectSubqueriesFromLogical(param.logicalExpression(), entries);
       }
     }
-    return applyReplacements(text, replacements);
+    VirtualTableBlock block = new VirtualTableBlock();
+    if (entries.isEmpty()) {
+      block.setText(textOf(ctx));
+      return block;
+    }
+    String replacedText = replaceSubqueriesByPosition(ctx, entries);
+    block.setText(replacedText);
+    List<WhereSubquery> subqueries = new ArrayList<>();
+    for (SubqueryEntry entry : entries) {
+      WhereSubquery ws = new WhereSubquery();
+      ws.setName(entry.alias);
+      String savedName = currentQueryName;
+      ws.setQuery(visitSubquery(entry.subqueryCtx));
+      currentQueryName = savedName;
+      subqueries.add(ws);
+    }
+    block.setSubqueries(subqueries);
+    return block;
   }
 
   private JoinPart visitJoinPart(SDBLParser.JoinPartContext ctx) {
@@ -381,7 +407,9 @@ public class QueryPackageVisitor {
     else jp.setJoinType("inner");
     jp.setSource(visitDataSource(ctx.source));
     if (ctx.condition != null) {
-      jp.setCondition(processLogicalExpression(ctx.condition, "joinCondition"));
+      WhereBlock wb = buildWhereBlock(ctx.condition);
+      jp.setCondition(wb.getText());
+      jp.setConditionSubqueries(wb.getSubqueries());
     }
     return jp;
   }

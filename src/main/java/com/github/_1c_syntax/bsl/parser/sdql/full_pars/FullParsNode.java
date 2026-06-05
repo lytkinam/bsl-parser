@@ -3,6 +3,8 @@ package com.github._1c_syntax.bsl.parser.sdql.full_pars;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
+import com.github._1c_syntax.bsl.parser.sdql.model.HavingBlock;
+import com.github._1c_syntax.bsl.parser.sdql.model.WhereBlock;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ public class FullParsNode {
 
   private List<FullParsSelectField> select;
   private List<DataSource> from;
-  private String where;
+  private WhereBlock where;
 
   @JsonProperty("where_fields")
   private List<FullParsConditionField> whereFields = new ArrayList<>();
@@ -33,7 +35,7 @@ public class FullParsNode {
   @JsonProperty("group_by_fields")
   private List<FullParsConditionField> groupByFields = new ArrayList<>();
 
-  private String having;
+  private HavingBlock having;
 
   @JsonProperty("having_fields")
   private List<FullParsConditionField> havingFields = new ArrayList<>();

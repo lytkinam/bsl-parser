@@ -256,30 +256,28 @@ class SdqlQueryPackageAnalyzerTest {
         File output = tempDir.resolve("out_inline").toFile();
         SdqlCli.main(new String[]{"examples/example_4.sql", output.getAbsolutePath()});
 
-        // SRS04 FR-3.7.1: SDBL_PARS model contains inlineSubqueries
+        // SRS04.02 FR-3.1: SDBL_PARS model contains WhereBlock with subqueries
         QueryModel model = ModelJsonMapper.read(
             output.toPath().resolve("sdbl_parse_model_example_4.json"));
         assertThat(model.getNodes()).hasSize(1);
         var query = model.getNodes().get(0).getQuery();
-        assertThat(query.getInlineSubqueries()).hasSize(2);
 
-        // FR-3.7.1: inline subqueries have correct context and name
-        var inline1 = query.getInlineSubqueries().get(0);
-        assertThat(inline1.getContext()).isEqualTo("virtualTable");
-        assertThat(inline1.getName()).isEqualTo("Результат_1_INLINE_1");
-        assertThat(inline1.getQuery()).isNotNull();
-        assertThat(inline1.getQuery().getFrom().get(0).getTable()).isEqualTo("вт_НашиДоговора");
+        // FR-3.1.1: WhereBlock with subqueries
+        assertThat(query.getWhere()).isNotNull();
+        assertThat(query.getWhere().getText()).contains("ВТ_Подзапрос_2");
+        assertThat(query.getWhere().getSubqueries()).hasSize(1);
+        assertThat(query.getWhere().getSubqueries().get(0).getName()).isEqualTo("ВТ_Подзапрос_2");
+        assertThat(query.getWhere().getSubqueries().get(0).getQuery().getFrom().get(0).getTable())
+            .isEqualTo("Справочник.Контрагенты");
 
-        var inline2 = query.getInlineSubqueries().get(1);
-        assertThat(inline2.getContext()).isEqualTo("where");
-        assertThat(inline2.getName()).isEqualTo("Результат_1_INLINE_2");
-        assertThat(inline2.getQuery()).isNotNull();
-        assertThat(inline2.getQuery().getFrom().get(0).getTable()).isEqualTo("Справочник.Контрагенты");
-
-        // FR-3.7.2: Original query text replaced with inline references
-        assertThat(query.getFrom().get(1).getVirtualTable()).contains("Результат_1_INLINE_1");
-        assertThat(query.getWhere()).contains("Результат_1_INLINE_2");
-        assertThat(query.getWhere()).doesNotContain("ВЫБРАТЬ");
+        // FR-3.1.3: VirtualTableBlock with subqueries
+        assertThat(query.getFrom().get(1).getVirtualTable()).isNotNull();
+        assertThat(query.getFrom().get(1).getVirtualTable().getText()).contains("ВТ_Подзапрос_1");
+        assertThat(query.getFrom().get(1).getVirtualTable().getSubqueries()).hasSize(1);
+        assertThat(query.getFrom().get(1).getVirtualTable().getSubqueries().get(0).getName())
+            .isEqualTo("ВТ_Подзапрос_1");
+        assertThat(query.getFrom().get(1).getVirtualTable().getSubqueries().get(0).getQuery().getFrom().get(0).getTable())
+            .isEqualTo("вт_НашиДоговора");
 
         // FR-3.7.3: LINE_PARS contains sub_query nodes for inline subqueries
         Path lineParsModelPath = tempDir.resolve("LINE_PARS/LINE_PARS_model_example_4.json");
@@ -287,7 +285,7 @@ class SdqlQueryPackageAnalyzerTest {
         ObjectMapper mapper = new ObjectMapper();
         LineParsModel lineParsModel = mapper.readValue(lineParsModelPath.toFile(), LineParsModel.class);
         var inlineNodes = lineParsModel.getNodes().stream()
-            .filter(n -> n.getName() != null && n.getName().contains("_INLINE_"))
+            .filter(n -> n.getName() != null && (n.getName().contains("_WHERE_") || n.getName().contains("_VT_")))
             .toList();
         assertThat(inlineNodes).hasSize(2);
         assertThat(inlineNodes.get(0).getType()).isEqualTo("sub_query");
@@ -303,7 +301,7 @@ class SdqlQueryPackageAnalyzerTest {
             .findFirst().orElse(null);
         assertThat(rootNode).isNotNull();
         var inlineHierarchy = rootNode.getTableHierarchy().stream()
-            .filter(n -> n.getName() != null && n.getName().contains("_INLINE_"))
+            .filter(n -> n.getName() != null && (n.getName().contains("_WHERE_") || n.getName().contains("_VT_")))
             .toList();
         assertThat(inlineHierarchy).hasSize(2);
         assertThat(inlineHierarchy.get(0).getTypeHierarchy()).isEqualTo("from");

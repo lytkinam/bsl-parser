@@ -53,9 +53,9 @@ public class QueryBuilder {
       }
     }
 
-    // WHERE — primary field (string)
-    if (fpNode.getWhere() != null && !fpNode.getWhere().isEmpty()) {
-      result.getWhereConditions().add(fpNode.getWhere());
+    // WHERE — from WhereBlock
+    if (fpNode.getWhere() != null && fpNode.getWhere().getText() != null) {
+      result.getWhereConditions().add(fpNode.getWhere().getText());
     }
 
     // GROUP BY — primary field (array of strings)
@@ -63,9 +63,9 @@ public class QueryBuilder {
       result.getGroupByFields().addAll(fpNode.getGroupBy());
     }
 
-    // HAVING — primary field (string)
-    if (fpNode.getHaving() != null && !fpNode.getHaving().isEmpty()) {
-      result.getHavingConditions().add(fpNode.getHaving());
+    // HAVING — from HavingBlock
+    if (fpNode.getHaving() != null && fpNode.getHaving().getText() != null) {
+      result.getHavingConditions().add(fpNode.getHaving().getText());
     }
 
     // UNION parts
@@ -120,7 +120,7 @@ public class QueryBuilder {
         if (src.getTable() != null) {
           sourceTable = src.getTable();
         } else if (src.getVirtualTable() != null) {
-          sourceTable = src.getVirtualTable();
+          sourceTable = src.getVirtualTable().getText();
         } else if (src.getSubquery() != null) {
           sourceTable = (String) src.getSubquery();
         } else if (src.getExternalDataSource() != null) {

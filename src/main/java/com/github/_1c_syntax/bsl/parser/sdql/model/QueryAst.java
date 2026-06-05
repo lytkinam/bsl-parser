@@ -14,10 +14,10 @@ public class QueryAst {
   private String into;
   private List<SelectField> select;
   private List<DataSource> from;
-  private String where;
+  private WhereBlock where;
   private List<String> groupBy;
   private List<List<String>> groupByGroupingSets;
-  private String having;
+  private HavingBlock having;
   private String forUpdate;
   private List<String> indexBy;
   private List<String> indexBySets;
@@ -26,5 +26,4 @@ public class QueryAst {
   private Boolean autoorder;
   private List<String> orderBy;
   private TotalBy totals;
-  private List<InlineSubquery> inlineSubqueries;
 }

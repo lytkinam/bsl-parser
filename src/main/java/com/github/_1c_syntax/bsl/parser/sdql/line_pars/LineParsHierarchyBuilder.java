@@ -100,9 +100,10 @@ public class LineParsHierarchyBuilder {
       }
     } else if (ds.getVirtualTable() != null) {
       child = new HierarchyNode();
-      child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getVirtualTable());
+      String vtText = ds.getVirtualTable().getText();
+      child.setName(ds.getAlias() != null ? ds.getAlias() : vtText);
       child.setTypeHierarchy("from");
-      child.setSource(ds.getVirtualTable());
+      child.setSource(vtText);
     } else if (ds.getParameterTable() != null) {
       child = new HierarchyNode();
       child.setName(ds.getAlias() != null ? ds.getAlias() : ds.getParameterTable());

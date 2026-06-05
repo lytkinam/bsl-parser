@@ -2,8 +2,10 @@ package com.github._1c_syntax.bsl.parser.sdql.line_pars;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
+import com.github._1c_syntax.bsl.parser.sdql.model.HavingBlock;
 import com.github._1c_syntax.bsl.parser.sdql.model.SelectField;
 import com.github._1c_syntax.bsl.parser.sdql.model.TotalBy;
+import com.github._1c_syntax.bsl.parser.sdql.model.WhereBlock;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -19,10 +21,10 @@ public class LineParsNode {
   private String into;
   private List<SelectField> select;
   private List<DataSource> from;
-  private String where;
+  private WhereBlock where;
   private List<String> groupBy;
   private List<List<String>> groupByGroupingSets;
-  private String having;
+  private HavingBlock having;
   private String forUpdate;
   private List<String> indexBy;
   private List<String> indexBySets;
