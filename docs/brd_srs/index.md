@@ -13,3 +13,7 @@
 ### Уровень 3: Извлечение и сверка запросов
 - [BRD03: Извлечение запроса из FULL_PARS и сверка](BRD03%20query_extraction_and_verification.md)
 - [SRS03: query_extraction_and_verification](SRS03%20query_extraction_and_verification.md)
+
+### Уровень 4: Извлечение inline-подзапросов
+- [BRD04: Извлечение inline-подзапросов из не-FROM контекстов](BRD04%20inline_subqueries.md)
+- [SRS04: inline_subqueries](SRS04%20inline_subqueries.md)
