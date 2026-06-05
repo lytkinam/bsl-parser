@@ -46,11 +46,9 @@ public class SdqlCli {
         FullParsModelBuilder fullParsBuilder = new FullParsModelBuilder();
         java.nio.file.Path fullParsDir = fullParsBuilder.build(lineParsDir, baseName);
 
-        // 6. Build full_field_lineage for target fields
+        // 6. Build full_field_lineage for all fields of target nodes (result or last temp_query)
         FullFieldLineageBuilder fflBuilder = new FullFieldLineageBuilder();
-        // Default target: last temp_query node for middle_example testing
-        // This will be configurable via CLI args in future iterations
-        java.nio.file.Path fflDir = fullParsDir;
+        fflBuilder.build(fullParsDir, baseName);
 
         // Generate Markdown reports from JSON artifacts
         new SdqlModelMdBuilder().build(outputDir.toPath(), baseName);

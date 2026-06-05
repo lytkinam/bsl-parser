@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Comparator;
 
 public class FullFieldLineageBuilder {
 
@@ -16,7 +17,41 @@ public class FullFieldLineageBuilder {
   private Map<Integer, FullParsNode> nodeById;
   private int nextFieldId = 100000; // for synthetic fields added from group_by
 
+  /**
+   * Build full_field_lineage for explicitly specified target fields.
+   */
   public void build(Path fullParsDir, String baseName, List<TargetField> targets) throws IOException {
+    FullParsModel fullParsModel = loadModel(fullParsDir, baseName);
+
+    for (TargetField target : targets) {
+      buildSingleTarget(fullParsDir, baseName, target);
+    }
+  }
+
+  /**
+   * Build full_field_lineage for all fields of target nodes (result or last temp_query),
+   * analogous to LineParsFieldLineageBuilder.
+   */
+  public void build(Path fullParsDir, String baseName) throws IOException {
+    FullParsModel fullParsModel = loadModel(fullParsDir, baseName);
+
+    List<FullParsNode> targetNodes = selectTargetNodes(fullParsModel);
+
+    for (FullParsNode node : targetNodes) {
+      if (node.getSelect() == null) {
+        continue;
+      }
+      for (FullParsSelectField sf : node.getSelect()) {
+        if (sf.getAlias() == null) {
+          continue;
+        }
+        TargetField target = new TargetField(node.getId(), node.getName(), List.of(sf.getAlias()));
+        buildSingleTarget(fullParsDir, baseName, target);
+      }
+    }
+  }
+
+  private FullParsModel loadModel(Path fullParsDir, String baseName) throws IOException {
     FullParsModel fullParsModel = MAPPER.readValue(
       fullParsDir.resolve("FULL_PARS_model_" + baseName + ".json").toFile(),
       FullParsModel.class);
@@ -37,22 +72,43 @@ public class FullFieldLineageBuilder {
     }
     this.nextFieldId = maxFieldId + 1;
 
-    for (TargetField target : targets) {
-      LinkedHashMap<Integer, FullParsNode> resultMap = new LinkedHashMap<>();
-      buildLineage(target.getNodeId(), new ArrayList<>(target.getAliases()), resultMap);
+    return fullParsModel;
+  }
 
-      List<FullParsNode> resultList = new ArrayList<>(resultMap.values());
+  private void buildSingleTarget(Path fullParsDir, String baseName, TargetField target) throws IOException {
+    LinkedHashMap<Integer, FullParsNode> resultMap = new LinkedHashMap<>();
+    buildLineage(target.getNodeId(), new ArrayList<>(target.getAliases()), resultMap);
 
-      Path lineageDir = fullParsDir.getParent().resolve("full_field_lineage")
-        .resolve(baseName)
-        .resolve(target.getNodeId() + "_" + target.getNodeName());
-      Files.createDirectories(lineageDir);
-
-      String fileName = "FFL_" + baseName + "_" + target.getNodeId() + "_" + target.getNodeName()
-        + "_" + String.join("_", target.getAliases()) + ".json";
-      MAPPER.writerWithDefaultPrettyPrinter().writeValue(
-        lineageDir.resolve(fileName).toFile(), resultList);
+    List<FullParsNode> resultList = new ArrayList<>(resultMap.values());
+    if (resultList.isEmpty()) {
+      return;
     }
+
+    Path lineageDir = fullParsDir.getParent().resolve("full_field_lineage")
+      .resolve(baseName)
+      .resolve(target.getNodeId() + "_" + target.getNodeName());
+    Files.createDirectories(lineageDir);
+
+    String fileName = "FFL_" + baseName + "_" + target.getNodeId() + "_" + target.getNodeName()
+      + "_" + String.join("_", target.getAliases()) + ".json";
+    MAPPER.writerWithDefaultPrettyPrinter().writeValue(
+      lineageDir.resolve(fileName).toFile(), resultList);
+  }
+
+  private List<FullParsNode> selectTargetNodes(FullParsModel model) {
+    List<FullParsNode> resultNodes = model.getNodes().stream()
+      .filter(n -> "result".equals(n.getType()))
+      .collect(Collectors.toList());
+
+    if (!resultNodes.isEmpty()) {
+      return resultNodes;
+    }
+
+    return model.getNodes().stream()
+      .filter(n -> "temp_query".equals(n.getType()))
+      .max(Comparator.comparingInt(FullParsNode::getId))
+      .map(List::of)
+      .orElse(List.of());
   }
 
   private void buildLineage(int nodeId, List<String> aliases,
