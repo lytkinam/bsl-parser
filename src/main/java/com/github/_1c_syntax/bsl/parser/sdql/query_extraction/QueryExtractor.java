@@ -50,9 +50,13 @@ public class QueryExtractor {
       FullParsNode fpNode = fullParsById.get(nodeId);
       if (fpNode == null) continue;
 
-      // Skip sub_query — they are inlined, but we still verify them separately
       // Skip drop queries
       if ("drop_query".equals(fpNode.getType())) {
+        continue;
+      }
+
+      // Skip union_query nodes — they are parts of a UNION parent and don't have separate primary texts
+      if ("union_query".equals(fpNode.getType())) {
         continue;
       }
 

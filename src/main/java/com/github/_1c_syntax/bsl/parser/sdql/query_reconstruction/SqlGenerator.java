@@ -1,8 +1,10 @@
 package com.github._1c_syntax.bsl.parser.sdql.query_reconstruction;
 
 import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
+import com.github._1c_syntax.bsl.parser.sdql.model.JoinPart;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +22,7 @@ public class SqlGenerator {
 
   /**
    * Generate SQL for inline use (inside parent FROM clause).
-   * No INTO, no trailing semicolon.
+   * No INTO, no trailing semicolon. Preserves multi-line format with indentation.
    */
   public String generateInline(RestoredQueryNode node) {
     String sql = generate(node);
@@ -28,7 +30,28 @@ public class SqlGenerator {
     if (sql.endsWith(";")) {
       sql = sql.substring(0, sql.length() - 1);
     }
+    // For sub_query nodes, indent each line for inline use inside parent FROM
+    if (isSubQuery(node)) {
+      String[] lines = sql.split("\n");
+      StringBuilder sb = new StringBuilder();
+      for (String line : lines) {
+        sb.append("        ").append(line).append("\n");
+      }
+      sql = sb.toString().trim();
+    }
     return sql;
+  }
+
+  /**
+   * Generate compact single-line SQL for inline use in WHERE/VT conditions.
+   * No INTO, no trailing semicolon, no newlines.
+   */
+  public String generateCompactInline(RestoredQueryNode node) {
+    String sql = generateInline(node);
+    // Collapse to single line
+    sql = sql.replace("\n", " ");
+    sql = sql.replaceAll("\\s+", " ");
+    return sql.trim();
   }
 
   private String generateUnion(RestoredQueryNode node) {
@@ -74,10 +97,7 @@ public class SqlGenerator {
   private String generateSingleQuery(RestoredQueryNode node) {
     StringBuilder sb = new StringBuilder();
 
-    // SELECT — indent for subqueries
-    if (isSubQuery(node)) {
-      sb.append("    ");
-    }
+    // SELECT
     sb.append("ВЫБРАТЬ");
     if (node.getLimitations() != null) {
       sb.append(" ").append(node.getLimitations());
@@ -98,28 +118,30 @@ public class SqlGenerator {
       sb.append("ПОМЕСТИТЬ ").append(node.getInto()).append("\n");
     }
 
-    // FROM
+    // FROM + JOINs (JOINs are output after their associated source)
     if (!node.getFrom().isEmpty()) {
       sb.append("ИЗ\n");
-      List<String> fromLines = new ArrayList<>();
-      for (DataSource ds : node.getFrom()) {
-        fromLines.add(formatDataSource(ds, node));
-      }
-      for (int i = 0; i < fromLines.size(); i++) {
-        sb.append("    ").append(fromLines.get(i));
-        if (i < fromLines.size() - 1) {
+      for (int i = 0; i < node.getFrom().size(); i++) {
+        DataSource ds = node.getFrom().get(i);
+        sb.append("    ").append(formatDataSource(ds, node));
+        // Output JOINs associated with this source
+        if (ds.getJoins() != null) {
+          for (JoinPart jp : ds.getJoins()) {
+            sb.append("\n");
+            sb.append("        ").append(formatJoinType(jp.getJoinType())).append(" ");
+            sb.append(formatJoinSource(jp.getSource(), node)).append(" КАК ").append(jp.getSource().getAlias()).append("\n");
+            sb.append("        ПО ").append(inlineSubqueries(jp.getCondition(), node));
+          }
+        }
+        if (i < node.getFrom().size() - 1) {
           sb.append(",");
         }
         sb.append("\n");
       }
     }
 
-    // JOINs
-    for (RestoredJoin join : node.getJoins()) {
-      sb.append(formatJoinType(join.getJoinType())).append(" ");
-      sb.append(inlineSubqueries(join.getSourceTable(), node)).append(" КАК ").append(join.getAlias()).append("\n");
-      sb.append("ПО ").append(inlineSubqueries(join.getCondition(), node)).append("\n");
-    }
+    // Note: RestoredQueryNode.joins is used by QueryReconstructor (BRD02),
+    // but for extraction we use DataSource.joins directly above.
 
     // WHERE
     if (!node.getWhereConditions().isEmpty()) {
@@ -172,7 +194,7 @@ public class SqlGenerator {
       RestoredQueryNode inlineSub = parentNode.getInlineSubqueries().get(subqueryName);
       if (inlineSub != null) {
         String subSql = generateInline(inlineSub);
-        source = "(\n" + indent(subSql) + "\n    )";
+        source = "(" + subSql + ")";
       } else {
         source = subqueryName;
       }
@@ -184,42 +206,87 @@ public class SqlGenerator {
       source = "?";
     }
 
-    String alias = ds.getAlias() != null ? ds.getAlias() : source;
+    String alias;
+    if (ds.getAlias() != null) {
+      alias = ds.getAlias();
+    } else if (source.contains(".")) {
+      // For tables like "Справочник.Контрагенты", use "Контрагенты" as alias
+      alias = source.substring(source.lastIndexOf('.') + 1);
+    } else {
+      alias = source;
+    }
     return source + " КАК " + alias;
+  }
+
+  private String formatJoinSource(DataSource src, RestoredQueryNode parentNode) {
+    if (src.getTable() != null) {
+      return src.getTable();
+    } else if (src.getVirtualTable() != null) {
+      return inlineSubqueries(src.getVirtualTable().getText(), parentNode);
+    } else if (src.getSubquery() != null) {
+      String subqueryName = (String) src.getSubquery();
+      RestoredQueryNode inlineSub = parentNode.getInlineSubqueries().get(subqueryName);
+      if (inlineSub != null) {
+        String subSql = generateInline(inlineSub);
+        return "(" + subSql + ")";
+      }
+      return subqueryName;
+    } else if (src.getExternalDataSource() != null) {
+      return src.getExternalDataSource();
+    } else if (src.getParameterTable() != null) {
+      return src.getParameterTable();
+    }
+    return "?";
   }
 
   /**
    * Replace inline subquery names with their SQL in the given text.
+   * Uses compact format for WHERE/VT subqueries, multi-line for FROM subqueries.
    */
   private String inlineSubqueries(String text, RestoredQueryNode node) {
-    if (text == null || node.getInlineSubqueries().isEmpty()) {
+    if (text == null) {
       return text;
     }
+
     String result = text;
+
+    // FROM subqueries — multi-line with indentation
     for (Map.Entry<String, RestoredQueryNode> entry : node.getInlineSubqueries().entrySet()) {
       String name = entry.getKey();
       if (result.contains(name)) {
         String subSql = generateInline(entry.getValue());
-        result = result.replace(name, "(\n" + indent(subSql) + "\n    )");
+        result = result.replace(name, "(" + subSql + ")");
       }
     }
-    return result;
-  }
 
-  private String indent(String sql) {
-    String[] lines = sql.split("\n");
-    StringBuilder sb = new StringBuilder();
-    for (String line : lines) {
-      sb.append("        ").append(line).append("\n");
+    // WHERE/HAVING subqueries — compact single-line
+    // Note: text already contains parentheses around the subquery name, e.g. (Результат_1_WHERE_1)
+    for (Map.Entry<String, RestoredQueryNode> entry : node.getWhereSubqueries().entrySet()) {
+      String name = entry.getKey();
+      if (result.contains(name)) {
+        String subSql = generateCompactInline(entry.getValue());
+        result = result.replace(name, subSql);
+      }
     }
-    return sb.toString().trim();
+
+    // VT subqueries — compact single-line
+    // Note: text already contains parentheses around the subquery name, e.g. (Результат_1_VT_1)
+    for (Map.Entry<String, RestoredQueryNode> entry : node.getVtSubqueries().entrySet()) {
+      String name = entry.getKey();
+      if (result.contains(name)) {
+        String subSql = generateCompactInline(entry.getValue());
+        result = result.replace(name, subSql);
+      }
+    }
+
+    return result;
   }
 
   private String formatJoinType(String joinType) {
     if (joinType == null) return "ЛЕВОЕ СОЕДИНЕНИЕ";
     return switch (joinType) {
       case "right" -> "ПРАВОЕ СОЕДИНЕНИЕ";
-      case "full" -> "ПОЛНОЕ СОЕДИНЕНИЕ";
+      case "full" -> "ПОЛНОЕ СОЕДИНИНИЕ";
       case "inner" -> "ВНУТРЕННЕЕ СОЕДИНЕНИЕ";
       default -> "ЛЕВОЕ СОЕДИНЕНИЕ";
     };

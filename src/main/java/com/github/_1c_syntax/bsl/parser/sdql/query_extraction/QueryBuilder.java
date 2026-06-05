@@ -56,6 +56,16 @@ public class QueryBuilder {
     // WHERE — from WhereBlock
     if (fpNode.getWhere() != null && fpNode.getWhere().getText() != null) {
       result.getWhereConditions().add(fpNode.getWhere().getText());
+      // Build whereSubqueries from WhereBlock.subqueryIds
+      if (fpNode.getWhere().getSubqueryIds() != null) {
+        for (int subId : fpNode.getWhere().getSubqueryIds()) {
+          FullParsNode subNode = fullParsById.get(subId);
+          if (subNode != null) {
+            RestoredQueryNode inlineSub = build(subNode);
+            result.getWhereSubqueries().put(subNode.getName(), inlineSub);
+          }
+        }
+      }
     }
 
     // GROUP BY — primary field (array of strings)
@@ -66,6 +76,31 @@ public class QueryBuilder {
     // HAVING — from HavingBlock
     if (fpNode.getHaving() != null && fpNode.getHaving().getText() != null) {
       result.getHavingConditions().add(fpNode.getHaving().getText());
+      // Build havingSubqueries from HavingBlock.subqueryIds
+      if (fpNode.getHaving().getSubqueryIds() != null) {
+        for (int subId : fpNode.getHaving().getSubqueryIds()) {
+          FullParsNode subNode = fullParsById.get(subId);
+          if (subNode != null) {
+            RestoredQueryNode inlineSub = build(subNode);
+            result.getWhereSubqueries().put(subNode.getName(), inlineSub);
+          }
+        }
+      }
+    }
+
+    // VT subqueries from DataSource.virtualTable.subqueryIds
+    if (fpNode.getFrom() != null) {
+      for (DataSource ds : fpNode.getFrom()) {
+        if (ds.getVirtualTable() != null && ds.getVirtualTable().getSubqueryIds() != null) {
+          for (int subId : ds.getVirtualTable().getSubqueryIds()) {
+            FullParsNode subNode = fullParsById.get(subId);
+            if (subNode != null) {
+              RestoredQueryNode inlineSub = build(subNode);
+              result.getVtSubqueries().put(subNode.getName(), inlineSub);
+            }
+          }
+        }
+      }
     }
 
     // UNION parts

@@ -26,4 +26,8 @@ public class RestoredQueryNode {
   private List<RestoredQueryNode> unionParts = new ArrayList<>();
   /** Inline subqueries by name (from from[].subquery) */
   private Map<String, RestoredQueryNode> inlineSubqueries = new HashMap<>();
+  /** Inline subqueries referenced in WHERE conditions */
+  private Map<String, RestoredQueryNode> whereSubqueries = new HashMap<>();
+  /** Inline subqueries referenced in virtual table parameters */
+  private Map<String, RestoredQueryNode> vtSubqueries = new HashMap<>();
 }
