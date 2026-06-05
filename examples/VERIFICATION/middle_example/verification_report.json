@@ -1,8 +1,8 @@
 {
   "baseName" : "middle_example",
   "totalNodes" : 26,
-  "matched" : 26,
-  "mismatched" : 0,
+  "matched" : 25,
+  "mismatched" : 1,
   "nodes" : [ {
     "id" : 0,
     "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
@@ -80,7 +80,7 @@
     "name" : "ВТ_СостояниеНачалоПериода",
     "status" : "matched",
     "primaryHash" : "b6ae30df97d3b287945e15bcea1f2cef5ddd3cef6352dde84b9ae062b56abed2",
-    "extractedHash" : "daf0e80427a064c2642d015fac57578f5b40d28b020c4107cf378bc28a5450a7"
+    "extractedHash" : "0e397ae641ee831c38417c28278b4ba7cf30677d3f8b93723d32ecb60ff331f4"
   }, {
     "id" : 59,
     "name" : "ВТ_ИзмененияВидаОбязательств_Предв",
@@ -144,9 +144,10 @@
   }, {
     "id" : 71,
     "name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "8ce7bc7e31ce38dd69aa57e19a41c36310863af6fe9390680ea5bc84b4d3020d",
-    "extractedHash" : "ab388eb5d3eedebe1713657c26319c01be239a2419693a0d72c7ac39c64d57bd"
+    "extractedHash" : "297dd663e9265a2be229c0fe290a78c4f2d2024cc3fc80aeaf7f5e11a6ea897c",
+    "differences" : [ "FROM[0] join count differs: extracted=2 primary=1", "TEXT: Extracted: ...УП_НАЧИСЛЕНИЯПЕНСИЙ ПО УП_НАЧИСЛЕНИЯПЕНС... vs Primary: ...УП_НАЧИСЛЕНИЯПЕНСИЙ ВНУТРЕННЕЕ СОЕДИНЕНИ...", "TEXT: Extracted: ...П_НАЧИСЛЕНИЯПЕНСИЙ ПО УП_НАЧИСЛЕНИЯПЕНСИ... vs Primary: ...П_НАЧИСЛЕНИЯПЕНСИЙ ВНУТРЕННЕЕ СОЕДИНЕНИЕ..." ]
   }, {
     "id" : 74,
     "name" : "ВТ_ОстаткиТранзитныеВиды",
