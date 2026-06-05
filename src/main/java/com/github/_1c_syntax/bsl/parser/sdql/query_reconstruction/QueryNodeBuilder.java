@@ -97,14 +97,23 @@ public class QueryNodeBuilder {
         if (subNode == null) {
           subNode = fullParsById.get(subId);
         }
-        if (subNode != null && subNode.getName() != null
-            && (subNode.getName().contains("_WHERE_") || subNode.getName().contains("_HAVING_")
-                || subNode.getName().contains("_VT_") || subNode.getName().contains("_SELECT_")
-                || subNode.getName().contains("_JOIN_"))) {
-          if (!result.getInlineSubqueries().containsKey(subNode.getName())) {
-            RestoredQueryNode inlineSub = build(subNode);
-            result.getInlineSubqueries().put(subNode.getName(), inlineSub);
-          }
+        if (subNode == null || subNode.getName() == null) {
+          continue;
+        }
+        String subName = subNode.getName();
+        // Skip FROM subqueries — they are already handled above via from[].subquery
+        if (result.getInlineSubqueries().containsKey(subName)) {
+          continue;
+        }
+        RestoredQueryNode inlineSub = build(subNode);
+        if (subName.contains("_WHERE_") || subName.contains("_HAVING_")) {
+          result.getWhereSubqueries().put(subName, inlineSub);
+        } else if (subName.contains("_VT_")) {
+          result.getVtSubqueries().put(subName, inlineSub);
+        } else if (subName.contains("_SELECT_") || subName.contains("_JOIN_")) {
+          // SELECT/JOIN subqueries: text already contains parentheses around the name
+          // Store in a dedicated map to avoid double parentheses
+          result.getWhereSubqueries().put(subName, inlineSub);
         }
       }
     }
