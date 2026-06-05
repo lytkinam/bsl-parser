@@ -4,6 +4,9 @@ import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullParsNode;
 import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullParsSelectField;
 import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
 import com.github._1c_syntax.bsl.parser.sdql.model.JoinPart;
+import com.github._1c_syntax.bsl.parser.sdql.model.QueryAst;
+import com.github._1c_syntax.bsl.parser.sdql.model.SelectField;
+import com.github._1c_syntax.bsl.parser.sdql.model.WhereSubquery;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -118,6 +121,9 @@ public class QueryNodeBuilder {
       }
     }
 
+    // VT inline subqueries embedded in virtualTable.subqueries (e.g. ВТ_Подзапрос_1)
+    extractVtSubqueriesFromDataSources(fflNode.getFrom(), result);
+
     return result;
   }
 
@@ -146,6 +152,90 @@ public class QueryNodeBuilder {
     String text = sf.getText() != null ? sf.getText() : "";
     String alias = sf.getAlias() != null ? sf.getAlias() : "";
     return text + " КАК " + alias;
+  }
+
+  /**
+   * Extract VT inline subqueries from virtualTable.subqueries (embedded QueryAst).
+   * These are NOT referenced via subquery_ids but embedded directly in the DataSource.
+   */
+  private void extractVtSubqueriesFromDataSources(List<DataSource> sources, RestoredQueryNode result) {
+    if (sources == null) return;
+    for (DataSource ds : sources) {
+      if (ds.getVirtualTable() != null && ds.getVirtualTable().getSubqueries() != null) {
+        for (WhereSubquery ws : ds.getVirtualTable().getSubqueries()) {
+          if (ws.getName() != null && ws.getQuery() != null) {
+            RestoredQueryNode inlineSub = buildFromQueryAst(ws.getQuery(), ws.getName());
+            result.getVtSubqueries().put(ws.getName(), inlineSub);
+          }
+        }
+      }
+      // Also check joins
+      if (ds.getJoins() != null) {
+        for (JoinPart jp : ds.getJoins()) {
+          if (jp.getSource() != null && jp.getSource().getVirtualTable() != null
+              && jp.getSource().getVirtualTable().getSubqueries() != null) {
+            for (WhereSubquery ws : jp.getSource().getVirtualTable().getSubqueries()) {
+              if (ws.getName() != null && ws.getQuery() != null) {
+                RestoredQueryNode inlineSub = buildFromQueryAst(ws.getQuery(), ws.getName());
+                result.getVtSubqueries().put(ws.getName(), inlineSub);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Build RestoredQueryNode from embedded QueryAst (used for virtualTable.subqueries).
+   */
+  private RestoredQueryNode buildFromQueryAst(QueryAst ast, String name) {
+    RestoredQueryNode result = new RestoredQueryNode();
+    result.setName(name);
+    result.setType(ast.getType() != null ? ast.getType() : "sub_query");
+    result.setInto(ast.getInto());
+    result.setLimitations(ast.getLimitations());
+    if (ast.getOrderBy() != null) {
+      result.setOrderByFields(new ArrayList<>(ast.getOrderBy()));
+    }
+
+    // SELECT expressions
+    if (ast.getSelect() != null) {
+      for (SelectField sf : ast.getSelect()) {
+        String text = sf.getText() != null ? sf.getText() : "";
+        String alias = sf.getAlias() != null ? sf.getAlias() : "";
+        if (alias.isEmpty()) {
+          result.getSelectExpressions().add(text);
+        } else {
+          result.getSelectExpressions().add(text + " КАК " + alias);
+        }
+      }
+    }
+
+    // FROM + nested VT subqueries
+    if (ast.getFrom() != null) {
+      for (DataSource ds : ast.getFrom()) {
+        result.getFrom().add(ds);
+      }
+      extractVtSubqueriesFromDataSources(ast.getFrom(), result);
+    }
+
+    // WHERE
+    if (ast.getWhere() != null && ast.getWhere().getText() != null) {
+      result.getWhereConditions().add(ast.getWhere().getText());
+    }
+
+    // GROUP BY
+    if (ast.getGroupBy() != null) {
+      result.getGroupByFields().addAll(ast.getGroupBy());
+    }
+
+    // HAVING
+    if (ast.getHaving() != null && ast.getHaving().getText() != null) {
+      result.getHavingConditions().add(ast.getHaving().getText());
+    }
+
+    return result;
   }
 
   private void extractJoins(DataSource ds, RestoredQueryNode result) {
