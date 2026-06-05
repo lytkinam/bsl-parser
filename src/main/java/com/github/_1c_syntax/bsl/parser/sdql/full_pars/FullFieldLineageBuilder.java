@@ -164,7 +164,7 @@ public class FullFieldLineageBuilder {
         }
       }
     }
-    for (FullParsJoinCondition jc : result.getJoinConditions()) {
+    for (FullParsJoinCondition jc : result.getJoinFields()) {
       for (FullParsConditionField cf : jc.getConditionFields()) {
         if (cf.getChildFields() != null) {
           for (FullParsChildField child : cf.getChildFields()) {
@@ -265,7 +265,7 @@ public class FullFieldLineageBuilder {
     result.setWhereFields(cloneConditionFields(source.getWhereFields()));
     result.setGroupByFields(cloneConditionFields(source.getGroupByFields()));
     result.setHavingFields(cloneConditionFields(source.getHavingFields()));
-    result.setJoinConditions(cloneJoinConditions(source.getJoinConditions()));
+    result.setJoinFields(cloneJoinConditions(source.getJoinFields()));
 
     return result;
   }

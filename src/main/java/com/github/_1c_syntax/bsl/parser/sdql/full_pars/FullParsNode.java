@@ -52,8 +52,8 @@ public class FullParsNode {
   @JsonProperty("order_by")
   private List<String> orderBy;
 
-  @JsonProperty("joins")
-  private List<FullParsJoinCondition> joinConditions = new ArrayList<>();
+  @JsonProperty("join_fields")
+  private List<FullParsJoinCondition> joinFields = new ArrayList<>();
 
   @JsonProperty("upquery_id")
   private Integer upqueryId;

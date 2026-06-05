@@ -160,7 +160,7 @@ public class FullParsModelBuilder {
         if (jp.getCondition() != null) {
           jc.getConditionFields().addAll(extractConditionFields(nodeId, jp.getCondition()));
         }
-        fpNode.getJoinConditions().add(jc);
+        fpNode.getJoinFields().add(jc);
       }
     }
   }
