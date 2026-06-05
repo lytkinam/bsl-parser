@@ -254,7 +254,8 @@ public class FullFieldLineageBuilder {
     }
 
     // Add group_by fields that are not in select
-    if (source.getGroupByFields() != null) {
+    // Skip for UNION parts — adding group_by fields would break field count consistency
+    if (source.getGroupByFields() != null && source.getUnionGroupId() == null) {
       for (FullParsConditionField gbf : source.getGroupByFields()) {
         if (gbf.getChildFields() != null && !gbf.getChildFields().isEmpty()) {
           for (FullParsChildField child : gbf.getChildFields()) {
