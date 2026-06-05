@@ -102,8 +102,16 @@ public class AstVerifier {
       }
       String eAlias = ef.getAlias() != null ? ef.getAlias() : "";
       String pAlias = pf.getAlias() != null ? pf.getAlias() : "";
+      // If primary has no alias but extracted has auto-generated alias from text — not a real difference
+      // This happens when original SQL omits КАК (e.g. "Таблица.Поле" without alias)
       if (!eAlias.equals(pAlias)) {
-        diffs.add("SELECT[" + i + "] alias differs: extracted='" + eAlias + "' primary='" + pAlias + "'");
+        // Use original text (not normalized) for alias extraction to preserve case
+        String eTextOrig = ef.getText() != null ? ef.getText() : "";
+        if (pAlias.isEmpty() && eAlias.equals(extractAliasFromText(eTextOrig))) {
+          // Extracted alias is auto-generated from field text, primary has no alias — OK
+        } else {
+          diffs.add("SELECT[" + i + "] alias differs: extracted='" + eAlias + "' primary='" + pAlias + "'");
+        }
       }
     }
   }
@@ -251,6 +259,31 @@ public class AstVerifier {
   private String normalizeFieldText(String text) {
     if (text == null) return "";
     return text.replaceAll("\\s+", " ").trim().toUpperCase();
+  }
+
+  /**
+   * Extract auto-generated alias from field text (e.g. "Таблица.Поле" → "ТаблицаПоле").
+   * This matches the behavior of FullParsModelBuilder when КАК is omitted.
+   */
+  private String extractAliasFromText(String text) {
+    if (text == null) return "";
+    // Remove parentheses and function calls, keep only the last identifier part
+    String result = text;
+    // Remove SUM( ... ) etc.
+    if (result.contains("(")) {
+      int lastParen = result.lastIndexOf(')');
+      if (lastParen > 0) {
+        result = result.substring(0, lastParen + 1);
+      }
+    }
+    // For dotted names like "Таблица.Поле", alias is typically "ТаблицаПоле"
+    // FullParsModelBuilder also removes underscores from VT names (ВТ_Имя → ВТИмя)
+    result = result.replace(".", "");
+    result = result.replace("(", "");
+    result = result.replace(")", "");
+    result = result.replace(" ", "");
+    result = result.replace("_", "");
+    return result;
   }
 
   /**
