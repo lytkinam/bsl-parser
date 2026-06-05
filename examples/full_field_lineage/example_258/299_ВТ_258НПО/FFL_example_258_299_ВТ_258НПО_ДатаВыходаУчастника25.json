@@ -362,6 +362,17 @@
   } ],
   "subquery_ids" : [ 122 ]
 }, {
+  "id" : 122,
+  "name" : "ВТ_СостоянияПенсионныхСчетов_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ПенсионныеСчета",
+    "alias" : "ВТ_ПенсионныеСчета",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 41,
+  "upquery_id" : 121
+}, {
   "id" : 120,
   "name" : "ВТ_ПенсионныеСчета_Свойства",
   "type" : "temp_query",
@@ -505,6 +516,16 @@
   "index_by" : [ "ПенсионныйСчет" ],
   "subquery_ids" : [ 48 ]
 }, {
+  "id" : 48,
+  "name" : "ВТ_ПричиныЗакрытия_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ПенсионныеСчета",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 8,
+  "upquery_id" : 47
+}, {
   "id" : 44,
   "name" : "ВТ_ПенсионныеСчета",
   "type" : "temp_query",
@@ -634,6 +655,17 @@
   "union_group_id" : 25,
   "union_type" : "union_all"
 }, {
+  "id" : 27,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_0_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ТипыРезервов",
+    "alias" : "ВТ_ТипыРезервов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 6,
+  "upquery_id" : 26
+}, {
   "id" : 28,
   "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_1",
   "type" : "union_query",
@@ -659,6 +691,17 @@
   "subquery_ids" : [ 29 ],
   "union_group_id" : 25,
   "union_type" : "union"
+}, {
+  "id" : 29,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_1_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ТипыРезервов",
+    "alias" : "ВТ_ТипыРезервов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 6,
+  "upquery_id" : 28
 }, {
   "id" : 30,
   "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_2",
@@ -686,6 +729,17 @@
   "union_group_id" : 25,
   "union_type" : "union"
 }, {
+  "id" : 31,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_2_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ТипыРезервов",
+    "alias" : "ВТ_ТипыРезервов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 6,
+  "upquery_id" : 30
+}, {
   "id" : 32,
   "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_3",
   "type" : "union_query",
@@ -711,6 +765,17 @@
   "subquery_ids" : [ 33 ],
   "union_group_id" : 25,
   "union_type" : "union"
+}, {
+  "id" : 33,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_3_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ТипыРезервов",
+    "alias" : "ВТ_ТипыРезервов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 6,
+  "upquery_id" : 32
 }, {
   "id" : 34,
   "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_4",
@@ -738,6 +803,17 @@
   "union_group_id" : 25,
   "union_type" : "union"
 }, {
+  "id" : 35,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_4_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ТипыРезервов",
+    "alias" : "ВТ_ТипыРезервов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 6,
+  "upquery_id" : 34
+}, {
   "id" : 36,
   "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_5",
   "type" : "union_query",
@@ -763,6 +839,17 @@
   "subquery_ids" : [ 37 ],
   "union_group_id" : 25,
   "union_type" : "union"
+}, {
+  "id" : 37,
+  "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_5_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ТипыРезервов",
+    "alias" : "ВТ_ТипыРезервов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 6,
+  "upquery_id" : 36
 }, {
   "id" : 38,
   "name" : "ВТ_ПенсионныеСчета_ПР_SUB_1_UNION_6",
@@ -1075,6 +1162,17 @@
   "index_by" : [ "ПенсионныйСчет" ],
   "subquery_ids" : [ 282 ]
 }, {
+  "id" : 282,
+  "name" : "ВТ_КоличествоВыплат_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_Срочники",
+    "alias" : "ВТ_Срочники",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 105,
+  "upquery_id" : 281
+}, {
   "id" : 283,
   "name" : "ВТ_РасходВыплат",
   "type" : "temp_query",
@@ -1109,6 +1207,17 @@
   "sdbl_id" : 106,
   "index_by" : [ "ПенсионныйСчет" ],
   "subquery_ids" : [ 284 ]
+}, {
+  "id" : 284,
+  "name" : "ВТ_РасходВыплат_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_Срочники",
+    "alias" : "ВТ_Срочники",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 106,
+  "upquery_id" : 283
 }, {
   "id" : 286,
   "name" : "ВТ_ПоследниеВыплаты",
@@ -1789,6 +1898,16 @@
   "sdbl_id" : 11,
   "subquery_ids" : [ 54 ]
 }, {
+  "id" : 54,
+  "name" : "ВТ_ТипыПенсийНачалоПериода_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ПенсионныеСчета",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 11,
+  "upquery_id" : 53
+}, {
   "id" : 55,
   "name" : "ВТ_ВыплатныеНачалоПериода",
   "type" : "temp_query",
@@ -1874,6 +1993,16 @@
     } ]
   } ],
   "subquery_ids" : [ 56 ]
+}, {
+  "id" : 56,
+  "name" : "ВТ_ВыплатныеНачалоПериода_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ПенсионныеСчета",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 12,
+  "upquery_id" : 55
 }, {
   "id" : 65,
   "name" : "ВТ_ВидыОбязательств_UNION_1",
@@ -2460,6 +2589,16 @@
   "sdbl_id" : 47,
   "index_by" : [ "ПенсионныйДоговор" ],
   "subquery_ids" : [ 129 ]
+}, {
+  "id" : 129,
+  "name" : "ВТ_ПараметрыПенсионныхДоговоров_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ПенсионныеДоговоры",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 47,
+  "upquery_id" : 128
 }, {
   "id" : 165,
   "name" : "ВТ_ИдентификаторыКонтрагентов_Старые",
@@ -3315,6 +3454,26 @@
   } ],
   "subquery_ids" : [ 151 ]
 }, {
+  "id" : 151,
+  "name" : "ВТ_ПаспортныеДанные_ПоследняяЗапись_WHERE_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ВидыПаспортов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 59,
+  "upquery_id" : 150
+}, {
+  "id" : 153,
+  "name" : "ВТ_ПаспортныеДанные_1_WHERE_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ВидыПаспортов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 60,
+  "upquery_id" : 152
+}, {
   "id" : 147,
   "name" : "ВТ_ФИО_ФЛ",
   "type" : "temp_query",
@@ -3339,6 +3498,17 @@
   } ],
   "sdbl_id" : 57,
   "subquery_ids" : [ 148 ]
+}, {
+  "id" : 148,
+  "name" : "ВТ_ФИО_ФЛ_VT_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ДанныеКонтрагентов",
+    "alias" : "ВТ_ДанныеКонтрагентов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 57,
+  "upquery_id" : 147
 }, {
   "id" : 149,
   "name" : "ВТ_ФИО_ИП",
@@ -6892,6 +7062,17 @@
     } ]
   } ],
   "subquery_ids" : [ 100 ]
+}, {
+  "id" : 100,
+  "name" : "ВТ_ПеремещенияВСтраховойРезервТранзитныеВиды_WHERE_1",
+  "type" : "sub_query",
+  "from" : [ {
+    "table" : "ВТ_ТипыРезервов",
+    "alias" : "ВТ_ТипыРезервов",
+    "joins" : [ ]
+  } ],
+  "sdbl_id" : 28,
+  "upquery_id" : 99
 }, {
   "id" : 118,
   "name" : "ВТ_ПенсионныеСчета_Свойства_ТранзитныеОбязательства",
