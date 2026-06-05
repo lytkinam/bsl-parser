@@ -166,12 +166,17 @@ public class QueryReconstructor {
       return false;
     }
     // sub_query is inlined, not a separate query
+    // But sub_query with union_nodes_ids generates UNION — not a leaf
     if ("sub_query".equals(node.getType())) {
-      return true;
+      return node.getUnionNodesIds() == null || node.getUnionNodesIds().isEmpty();
     }
     // Virtual union parents (with union_nodes_ids) are not leaves — they generate UNION
     if ("union_query".equals(node.getType()) && node.getUnionNodesIds() != null && !node.getUnionNodesIds().isEmpty()) {
       return false;
+    }
+    // Union parts (union_query with union_group_id set) are parts of a UNION — not separate queries
+    if ("union_query".equals(node.getType()) && node.getUnionGroupId() != null) {
+      return true;
     }
     // select nodes also produce queries
     if ("select".equals(node.getType())) {
