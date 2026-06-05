@@ -1,0 +1,19 @@
+{
+  "baseName" : "example_3",
+  "totalNodes" : 2,
+  "matched" : 2,
+  "mismatched" : 0,
+  "nodes" : [ {
+    "id" : 0,
+    "name" : "ЗЛО",
+    "status" : "matched",
+    "primaryHash" : "b3377817ea1c8e49c2c13460a5645d513c2a5b941d95faf25f28a0076ec4e9a2",
+    "extractedHash" : "1619b8485c9551a497506aeb7ca376b571558edff506e0576681e4bef73c0394"
+  }, {
+    "id" : 4,
+    "name" : "Результат_2",
+    "status" : "matched",
+    "primaryHash" : "63f80406b79ad66b2852f608cb65a6a0b5f4694f92c178a17dbc75c25c521645",
+    "extractedHash" : "e1bb95d58bf339bead6982db0f00987a55c03630fc5056c62b4836f567b68605"
+  } ]
+}

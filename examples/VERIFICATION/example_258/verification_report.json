@@ -1,0 +1,703 @@
+{
+  "baseName" : "example_258",
+  "totalNodes" : 116,
+  "matched" : 116,
+  "mismatched" : 0,
+  "nodes" : [ {
+    "id" : 0,
+    "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
+    "status" : "matched",
+    "primaryHash" : "34417d9293bf630bdb7410fbd18e904e6f42b402602564f69311e84f1b5a9d08",
+    "extractedHash" : "ea4867f125a85511814d9282cf27c67da15fd507f7009fe8282c1aa75e440fce"
+  }, {
+    "id" : 16,
+    "name" : "ВТ_ВидыПаспортов",
+    "status" : "matched",
+    "primaryHash" : "bd431d072246386a7952bab6db9fea44c5144a6bf0c678febc11b59f1e1b8c3f",
+    "extractedHash" : "f88da913114f618251d87dd9fb1850bccabe78e56b54e1226a90cb938bfdf7de"
+  }, {
+    "id" : 22,
+    "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений",
+    "status" : "matched",
+    "primaryHash" : "f8dab9946338607c82cc864dedbebed900f937a1c3b4182740d07bf4742a64ab",
+    "extractedHash" : "50f035596f24ffa4488e1e04dbd45e0ff463b8c84fa1c754a0f85bacdba12f97"
+  }, {
+    "id" : 23,
+    "name" : "ВТ_ПереводыИзРегистров_ВидыДвижений_ВРезервы",
+    "status" : "matched",
+    "primaryHash" : "7bc83f0480d440e8eb1266567ebcbea84563c180b62fca1def48575f796f04f6",
+    "extractedHash" : "b0117f8dbe5af533f8f2b0baef8198efbee2b4efb065602e7d121deed36ac2dd"
+  }, {
+    "id" : 53,
+    "name" : "ВТ_ТипыПенсийНачалоПериода",
+    "status" : "matched",
+    "primaryHash" : "3b5d622fcd9319cbc699879c0bffb65f482d32c50bef7d61ebde60a93d8482c6",
+    "extractedHash" : "a46f78c06dcc0c0ef9ff3509e9ef862396830baa009f7fd632d7617f57b75979"
+  }, {
+    "id" : 98,
+    "name" : "ВТ_ВыплатыТранзитныеВиды",
+    "status" : "matched",
+    "primaryHash" : "4129b46fc304986fa4da0d21b5a930f5a93903525a014ad839254c7e4513d7c9",
+    "extractedHash" : "619da57bcb90d4d48bb955d391fb08483e4d39a67dafd2562d22eb09b4aa2fd5"
+  }, {
+    "id" : 208,
+    "name" : "ВТ_ОстаткиНаследников",
+    "status" : "matched",
+    "primaryHash" : "9be6cdedc083a72d396faa4f8537d71b61dc5f4b0e2c09c4fde243aef595420a",
+    "extractedHash" : "d649df92dd969d1d7cc0aa0d8c485555ae21b42b1f004544e06c0be6807e0886"
+  }, {
+    "id" : 1,
+    "name" : "ВТ_ТипыРезервов",
+    "status" : "matched",
+    "primaryHash" : "8fdd2f3b85454659096c1380bc8c540bb3bcf37a32d0ad24bc9cf248aa5f3d6b",
+    "extractedHash" : "15fd75bd8071790b47e89a3650e72f605a0cc3707bef84832d43594ffd28a5f9"
+  }, {
+    "id" : 17,
+    "name" : "ВТ_ДокументыСторно",
+    "status" : "matched",
+    "primaryHash" : "ab4de3d9fbff7f76ab6275600b6be0382d92db3efd0faf9c1a347f0caefd2ec7",
+    "extractedHash" : "a88a9d0304a20ab1c98b6225204ecb34073e72b707a62bb88aa025d95cacb9e4"
+  }, {
+    "id" : 55,
+    "name" : "ВТ_ВыплатныеНачалоПериода",
+    "status" : "matched",
+    "primaryHash" : "46ab17c893e50da1723dc3a5408e127113f2bd96156e2da06b08e6c36d95a5a1",
+    "extractedHash" : "ad0f7746550721100ae1a65b31cf2346899be8ef516e176bd6e21eb3746c8566"
+  }, {
+    "id" : 24,
+    "name" : "ВТ_ПенсионныеСчета_ПР",
+    "status" : "matched",
+    "primaryHash" : "ecc9a36d824ae1e907023d8e94a1b1dbe3f04ffb4a7a7ae101b778e1d1f512c3",
+    "extractedHash" : "40c1e99e54ff7b4cd3dcb1da082c16d4f8d72f8813d34cbb692105ecc1c61140"
+  }, {
+    "id" : 44,
+    "name" : "ВТ_ПенсионныеСчета",
+    "status" : "matched",
+    "primaryHash" : "5b66b256769cc2a75b30c5266775f8f45c7db2352581d808d4665b1215430cc2",
+    "extractedHash" : "b6daf667bc7f9bed4121dd6b9b4dacd2bbc97fa69178efb24a8fcec7afbfb1fd"
+  }, {
+    "id" : 273,
+    "name" : "ВТ_ПенсионныеСчета_НачалоВыплат",
+    "status" : "matched",
+    "primaryHash" : "de7164232f5e47d028cfb89826998c0b105bb1b7388056d8349512c6ac0ab333",
+    "extractedHash" : "f7de18040e0d513f7b4d564d0e1443c360ceba0004c886e524dc420ae1f67174"
+  }, {
+    "id" : 275,
+    "name" : "ВТ_ПериодичностьВыплат",
+    "status" : "matched",
+    "primaryHash" : "f2f17e84aab8213981dece4b6cf21f39ffb337825de467d83b7fe10fb99aaba1",
+    "extractedHash" : "f50fae831c4c2855dfc1e660ad5f563f42d42ad0a2a161e20015430ece9e3710"
+  }, {
+    "id" : 286,
+    "name" : "ВТ_ПоследниеВыплаты",
+    "status" : "matched",
+    "primaryHash" : "184d6896fda876346f78b8c01622d1ba8e67fd720bfe46a560695dd0bed93f49",
+    "extractedHash" : "4f6737e90032abce629d3f0a0fe93c660ffadbac3f5b7251f79fe615ca67dcb6"
+  }, {
+    "id" : 287,
+    "name" : "ВТ_ПоследниеВыплатыПоРегиструВыплат",
+    "status" : "matched",
+    "primaryHash" : "e8799d2146495a8fc54ecf8b96aac6084456225296793eece9116f03c0ae7638",
+    "extractedHash" : "7eab0180f9699fd07926ada78e2416f9a0188f31b4d44c0d2774a612c38d3521"
+  }, {
+    "id" : 227,
+    "name" : "ВТ_ПеремещенияВСтраховойРезерв",
+    "status" : "matched",
+    "primaryHash" : "e90fc166788ad2ff6edd4d1b5897beb7412630248eced40e22b7e86f5c863f66",
+    "extractedHash" : "7686f01041f34d06591c4533b876c69127ac07cbcbb43735d62e854b01d02e91"
+  }, {
+    "id" : 229,
+    "name" : "ВТ_ВозвратыПенсий",
+    "status" : "matched",
+    "primaryHash" : "f7171fb72b292289f7763cce91c217d771baee857f3ebd87a6a65cb3d08f778d",
+    "extractedHash" : "bada4d17799ecb5c238afad412cd26946c9c7a40ff67cba8924fdf596e541015"
+  }, {
+    "id" : 168,
+    "name" : "ВТ_Корректировки",
+    "status" : "matched",
+    "primaryHash" : "b29becda135229248b73ffb6c1bc5eb191dd0dbb949f2b52ed4e32aa40e16b2f",
+    "extractedHash" : "c8711965be64c295e2c2957ff222b54e55293c460f2ff78c7f7a69f7152e3865"
+  }, {
+    "id" : 47,
+    "name" : "ВТ_ПричиныЗакрытия",
+    "status" : "matched",
+    "primaryHash" : "857e6ab6ad86d36f3204aeb31170c5597b796b61ac98602b139ab5affe29d57f",
+    "extractedHash" : "1a8a719b6ed6edcac1594d6856d7ea8efca1f9c8dd109f99a0ca247a76067b6d"
+  }, {
+    "id" : 49,
+    "name" : "ВТ_ВидыПенсионныхСчетов",
+    "status" : "matched",
+    "primaryHash" : "f46562bbd7f1d809587cc1b444ae2def1b2eb6aeee94d010b402b7b795d2f42d",
+    "extractedHash" : "b1a39b10120d1c8ef8af9cfd181609f3de38494a1f96a0fd02a6736a76053f9c"
+  }, {
+    "id" : 51,
+    "name" : "ВТ_ПенсионныеСчетаРПВ",
+    "status" : "matched",
+    "primaryHash" : "3fd0020c572fa42ea35aed155c41e654caa81a428ecfb0a0d7d13d34e5f18441",
+    "extractedHash" : "aa319a2bbda2b7eb5872a29d91f66d1ba1a6dcb496a1fa9fd75f252c0b9b3061"
+  }, {
+    "id" : 119,
+    "name" : "ВТ_ПенсионныеСчетаСПТ",
+    "status" : "matched",
+    "primaryHash" : "a29c77776852275f887151e924c824fc2e9d7e98a8253ae39bda2a8925d9dce8",
+    "extractedHash" : "47d4d9840076f295b3c11ead9b148ecbfde87e5083c2a36958804bcc4911f27c"
+  }, {
+    "id" : 57,
+    "name" : "ВТ_СостояниеНачалоПериода",
+    "status" : "matched",
+    "primaryHash" : "b6ae30df97d3b287945e15bcea1f2cef5ddd3cef6352dde84b9ae062b56abed2",
+    "extractedHash" : "daf0e80427a064c2642d015fac57578f5b40d28b020c4107cf378bc28a5450a7"
+  }, {
+    "id" : 121,
+    "name" : "ВТ_СостоянияПенсионныхСчетов",
+    "status" : "matched",
+    "primaryHash" : "0e24066ae3087bedab8ccd83154cd06443aca74b29c6ef54e0353b82430279a2",
+    "extractedHash" : "999dca27229cec31eb9d62e29b6200e85c23202d412dc731694bdde429cf7554"
+  }, {
+    "id" : 59,
+    "name" : "ВТ_ИзмененияВидаОбязательств_Предв",
+    "status" : "matched",
+    "primaryHash" : "8c45f7f2d5ee5a07b82cb60c114330b26c24b204de0e0d821a7ad47c69aa01a4",
+    "extractedHash" : "fcb488e63b8066abfa2b8b1d26d8b44db438601933f3d6938b8ed512f56a615e"
+  }, {
+    "id" : 231,
+    "name" : "ВТ_ПереводыИзРегистров_Резервы",
+    "status" : "matched",
+    "primaryHash" : "34871c7a8b3aa96197f318b39d200710db91668394726672b2ceb2e962162925",
+    "extractedHash" : "798a33efa026aaa276dbf54780be7ed5d02616853143bcf442af9d2cfd6b22bf"
+  }, {
+    "id" : 120,
+    "name" : "ВТ_ПенсионныеСчета_Свойства",
+    "status" : "matched",
+    "primaryHash" : "b0d6abbafbb6b5ee060746315c8a6af93029dfdfe3fd489ab3641387cead6868",
+    "extractedHash" : "744425bb6f56924589ef13ebce565a82f396f9d564bc36e0208518b389a21969"
+  }, {
+    "id" : 58,
+    "name" : "ВТ_ВидОбязательствНачало",
+    "status" : "matched",
+    "primaryHash" : "a2ff012c7bf69cd4379e660aa31710506172c79dc373e47020ba5f4b935edbf5",
+    "extractedHash" : "893ff72377d368fd1f653de92eb02a9993480daa877f4aecfbb19c4c4aad17f7"
+  }, {
+    "id" : 278,
+    "name" : "ВТ_ВыплатныеСчета",
+    "status" : "matched",
+    "primaryHash" : "592c378ae087604d39637a07277d7a9ecfb3c64ce6881c4daf02e7a2aa917f09",
+    "extractedHash" : "f23bb056228bfa74cb22f345548659d10fca6d511527642554447063d11d43b8"
+  }, {
+    "id" : 62,
+    "name" : "ВТ_ИзмененияВидаОбязательств",
+    "status" : "matched",
+    "primaryHash" : "24da03b56c46360782538c19310b58d67da7d1561d037612240bd317bbba03bc",
+    "extractedHash" : "72e81e0b820ae73742c36b9fda33c26115a23abcb73cd5eb2654c9d6fe6052af"
+  }, {
+    "id" : 250,
+    "name" : "ВТ_СторнированныеСуммы",
+    "status" : "matched",
+    "primaryHash" : "b8c9aeafe3ff54765865db5c73d5e5e38c0b115d47e8ed5930c51a9dbaa6768c",
+    "extractedHash" : "6a69f9832c54abd956365329f65e9db5d882ede5692a7aecf18ab5c73fa0687d"
+  }, {
+    "id" : 272,
+    "name" : "ВТ_Умершие",
+    "status" : "matched",
+    "primaryHash" : "8ff97ca7b41b7d08bede0a84a01beff28af3630d7d5fba277c739ce0760f663a",
+    "extractedHash" : "1f8bd5c2a8bcdd802eba324cebf43b6a30d339901eacd853370d35f15587c328"
+  }, {
+    "id" : 123,
+    "name" : "ВТ_ПенсионныеСчета_НеИПС",
+    "status" : "matched",
+    "primaryHash" : "6c8eb8a4e691fd891711bbf074cecc2953f0b4632de8e4f237cca903870b82bd",
+    "extractedHash" : "a3586b1ee9d09476f30c09c53eda3ce74d709eb92328fa25c8e3cfb83d5ebd7c"
+  }, {
+    "id" : 124,
+    "name" : "ВТ_СчетаДоговоров_СчетаУчастников",
+    "status" : "matched",
+    "primaryHash" : "425e450fdeb101f3053a11c560aa0ed2cd95bf0d5d97ad57724f05cf2d4f89ec",
+    "extractedHash" : "5d58f08661547cd6f18cecc43e7786a19454f7893e9ae233819cbda67de241df"
+  }, {
+    "id" : 125,
+    "name" : "ВТ_ПенсионныеСчета_Орг_ПС_ТР",
+    "status" : "matched",
+    "primaryHash" : "762f98939585d885ad63db4246c72a234e0755a7974613fcd383a21fbcbf3774",
+    "extractedHash" : "920eeb2bc364f07fbe8715662c321562fd55cb1e912bf570b64e6fea4f24b276"
+  }, {
+    "id" : 126,
+    "name" : "ВТ_ПенсионныеСчета_Орг_Уч_ПС",
+    "status" : "matched",
+    "primaryHash" : "938ccae96b4f872cd264275ab7a73e940064ff8f1f5dfa05c4dc6dca7c4def31",
+    "extractedHash" : "d392d0f6be4ab1907157a947df748778cd49c64e7c984ab3642aa112f5b05507"
+  }, {
+    "id" : 127,
+    "name" : "ВТ_ПенсионныеДоговоры",
+    "status" : "matched",
+    "primaryHash" : "8dfd1bc5312684e6202210894fb7d1ced9ee9ccb275f085e97f5dc97292a075e",
+    "extractedHash" : "0ae7f953ae84193c8ab4deb08c0aea9e92c73cec20ae132f36e4821e2666733f"
+  }, {
+    "id" : 290,
+    "name" : "ВТ_РазмерПенсийФикс",
+    "status" : "matched",
+    "primaryHash" : "01fd41ab270e9fb37960bc92144f78391ca1584528aca7df9825c14b77a25701",
+    "extractedHash" : "3b1567187166bfc3510b7698578a21d9ef4a5d28869e6066d880c2f184b64883"
+  }, {
+    "id" : 138,
+    "name" : "ВТ_ФизическиеЛица",
+    "status" : "matched",
+    "primaryHash" : "56c3f457ade2a77167994afd6aa2e0b2d482f5d53037c07859bdeb91b637b070",
+    "extractedHash" : "741847db4700fb2513de096173603fde7847ac80c2eb4a1bce71f61cc5632b36"
+  }, {
+    "id" : 215,
+    "name" : "ВТ_НачисленияПенсийПоСчетам",
+    "status" : "matched",
+    "primaryHash" : "df89e2bbfca422be2b8d9824dcfbca765ba79b84c129a78ebe278f7b8937d45e",
+    "extractedHash" : "863fcb52d260e5933e86a8e743384db13b36c070a8a6f0be80d23bf4944ea9f2"
+  }, {
+    "id" : 224,
+    "name" : "ВТ_ДвиженияПоРегистраторам",
+    "status" : "matched",
+    "primaryHash" : "cfc09c0db10670626cfbdceffceadda7c6f34051b88c86eef53fdfc03b3925f1",
+    "extractedHash" : "1cd001cd2be1e1a9f59181be2cecd8c481c8ad9e8c77b0d0c9f0f249ec2ff044"
+  }, {
+    "id" : 128,
+    "name" : "ВТ_ПараметрыПенсионныхДоговоров",
+    "status" : "matched",
+    "primaryHash" : "795bf3e5ad7f41484be25afe13064ed3837a92bca0e25d126b71641dadc0c0d7",
+    "extractedHash" : "08980dcde7ac7e3396c19501434245f61d981d8a0c80b565e86868c190aa211e"
+  }, {
+    "id" : 269,
+    "name" : "ВТ_МГД_ПР",
+    "status" : "matched",
+    "primaryHash" : "00b3f51437de054c7ff1db20da352465137d359ed098dfbf98917de42865b5c7",
+    "extractedHash" : "bb1dc8a3f8a963285d0f8b6697ee976bc8a51541585998be0eeb7e11ad6f8d1e"
+  }, {
+    "id" : 63,
+    "name" : "ВТ_ВидыОбязательств",
+    "status" : "matched",
+    "primaryHash" : "aca69be336e9aad369a6bdd77c92fc252ee0278d02ee4747a9c642b351dc2cc9",
+    "extractedHash" : "a9de182dc7a08f2432b9e37795caaf135739d00805f55e49f131b22cc6953e9f"
+  }, {
+    "id" : 161,
+    "name" : "ВТ_ФизическиеЛица_Свойства",
+    "status" : "matched",
+    "primaryHash" : "c78915ba9cd46da6a05f8b5ea504e824690fae2b1a826045a0b4e7a9578c2501",
+    "extractedHash" : "fa92bd02d0282a9cf69497f25978778efcebf696f3e153a98638a6132fd48281"
+  }, {
+    "id" : 220,
+    "name" : "ВТ_РегистраторыНачисленийСолидарныхСчетов",
+    "status" : "matched",
+    "primaryHash" : "258f3a56057b881190f0353f866139e38c7102f6961c429f77f5a8c35e1d6945",
+    "extractedHash" : "f6d790fc6dc1fc2db353c0e345e8e4fce5a45786f5dd97a3455c7f97e854a75e"
+  }, {
+    "id" : 226,
+    "name" : "ВТ_ДвиженияПоДокументам",
+    "status" : "matched",
+    "primaryHash" : "fdd1ff12332a24fda3a8b06dad70a22afd20df322463350eca866a7476019e45",
+    "extractedHash" : "4c37e984adcac957f87d2d31e977c3ed093cb496acdf1531dd6ebc73b59cd8c5"
+  }, {
+    "id" : 170,
+    "name" : "ВТ_Суммы_ПР",
+    "status" : "matched",
+    "primaryHash" : "fc12a84c678b86767c6408976a1bcda450aee5aa4f9914432b78e90989e22e71",
+    "extractedHash" : "68d0be73731251efb80b234dfdfd49c678339d1ed3083eaccb88ca9d4bc12636"
+  }, {
+    "id" : 256,
+    "name" : "ВТ_ВыплатыПР",
+    "status" : "matched",
+    "primaryHash" : "f5b396b67268bd51d0a028bcb3cf9d759921ecec2dfa04e896a2da79586f9953",
+    "extractedHash" : "43871c49f5cd2f478f4c9e5c35bf38ad45b809b51183b4bf3f68f9a91e181476"
+  }, {
+    "id" : 130,
+    "name" : "ВТ_ПенсионныеДоговоры_Свойства",
+    "status" : "matched",
+    "primaryHash" : "f9070f6c058018617ddb712db7fb9a486b3efbb1e02a781c733bd055a29b0557",
+    "extractedHash" : "4dca42039488dda1f3bb0a1849d27dc2c31b2faf9082311000b61148c76e4603"
+  }, {
+    "id" : 271,
+    "name" : "ВТ_МГД",
+    "status" : "matched",
+    "primaryHash" : "0cb9b379407fe8d3e2648b8364ffaf8ceecca190cd987d1e9f504be4250f8f1a",
+    "extractedHash" : "70a8ac9846391f49ed7ff0b717b05e262e4eeda8d619ba483ed57f7808cb7b39"
+  }, {
+    "id" : 66,
+    "name" : "ВТ_ВидыОбязательствДвижение",
+    "status" : "matched",
+    "primaryHash" : "1fcb1425f26552960b29d1ed0aab75676dc2ee7679c759b245add01806b33cac",
+    "extractedHash" : "fb8eaf1164596b476c4219e3044e1da81c36ba01e8cf3d3b71ddc51617338c41"
+  }, {
+    "id" : 162,
+    "name" : "ВТ_ФизическиеЛица_ДляПаспортов",
+    "status" : "matched",
+    "primaryHash" : "85cc0fa9cdc922b914f1e2dbcb94e653b7c3c8b4ee964347f3ab456f98b9d908",
+    "extractedHash" : "0c98816f2087f1ca1023fb63482786344c04c5fbbcae5ac2966a641bfd6b5804"
+  }, {
+    "id" : 221,
+    "name" : "ВТ_НачисленияСолидарныхСчетовКРаспределению",
+    "status" : "matched",
+    "primaryHash" : "2973ca4ef6dee7d43d017683284d9b72e5ec53abefffcc5d1fc0af8e39ea099f",
+    "extractedHash" : "b6b822996343681db9b0f32afb2c507c3d00c37e1d1ccc41555025f5bd148459"
+  }, {
+    "id" : 268,
+    "name" : "ВТ_Выплаты",
+    "status" : "matched",
+    "primaryHash" : "c1b46825322591ab7bf05022a38a741d9faa8c59e6c27e51d906263547473cba",
+    "extractedHash" : "2ebdafe46756c21a37a62a5b09de0b91d8598bfc3523c791e5df15d3672196aa"
+  }, {
+    "id" : 131,
+    "name" : "ВТ_СхемыПенсионныхСчетов",
+    "status" : "matched",
+    "primaryHash" : "8e6df59c8ff49eb29f5da503f31cb1576599b87f7c4e5ae6179e3c63467dd040",
+    "extractedHash" : "670b7aaff8b64b2169faaa8a18102f7f2c130bf077bed5e06b42de1506310f0e"
+  }, {
+    "id" : 137,
+    "name" : "ВТ_Вкладчики",
+    "status" : "matched",
+    "primaryHash" : "4568033abf44ab3a0dd1ede6bc4db7fc2ce598f437c0be41d799ef36976cc87c",
+    "extractedHash" : "5f22367960843160abe1d670f59a966d6c87f40c937cbcd05809d7c2f366533f"
+  }, {
+    "id" : 67,
+    "name" : "ВТ_СчетаТранзитныеВидыОбязательств",
+    "status" : "matched",
+    "primaryHash" : "951e551e66e82fbddfa38ede99ae30af17e550687ba8beca82cb96a6df84d96a",
+    "extractedHash" : "2dccfbb1b2136ede4617512e3190e16e1e02bcb01f20e84cbe0891542865157c"
+  }, {
+    "id" : 163,
+    "name" : "ВТ_ГражданствоФизическихЛиц",
+    "status" : "matched",
+    "primaryHash" : "557c7a06d568923b77adf4f931f651d3f88482629fe98672553c38d60f9bfc47",
+    "extractedHash" : "49731b61934dd9a379038527e116676a543d69a657725e9a7b2cc21f8388e58c"
+  }, {
+    "id" : 133,
+    "name" : "ВТ_ПенсионныеСхемы",
+    "status" : "matched",
+    "primaryHash" : "3365fdbda671f5be3f632698c46c9a915c3eb42079247cde47fefe605708e467",
+    "extractedHash" : "fb1543a5e3963fc6eb8493c3212dca680558773d122979b2cb4382f9985eea35"
+  }, {
+    "id" : 277,
+    "name" : "ВТ_Срочники",
+    "status" : "matched",
+    "primaryHash" : "f04ccb0737a6d7d0ec1073de4fc9270e06d748e89def552afbde22019f5189da",
+    "extractedHash" : "225593e29ce00ccca17e7eb8281d0d241107c0f53885c75daacc68437e5ae3ea"
+  }, {
+    "id" : 68,
+    "name" : "ВТ_СчетаНеТранзитныеВидыОбязательств",
+    "status" : "matched",
+    "primaryHash" : "4fe0b579826b86450a068c0ac94954cbfe9a4a9c6e0c0d3d13b3a1be991469c1",
+    "extractedHash" : "bd05681727af5c15648dd2d49a45bed01dfc7a3edadda16f9001427dcc4fc573"
+  }, {
+    "id" : 70,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец",
+    "status" : "matched",
+    "primaryHash" : "7ac4c26aec2eee75916c2c3f83eb6f931b1f7a89e51f46ebb8db81556b3fbd78",
+    "extractedHash" : "e86ce2460252812d4d184ea3a970355d03ecf693b459a4bfd95a1efed43ab841"
+  }, {
+    "id" : 239,
+    "name" : "ВТ_ПереводыПР",
+    "status" : "matched",
+    "primaryHash" : "79e525e8ef3c9d4c75481e7d3a043b6c61a64c01bad9ccb668601ee9413d484d",
+    "extractedHash" : "030c7125bce3e1917c3a1393c229487ec36ff19d357b3bcfef4cf39db873dc79"
+  }, {
+    "id" : 234,
+    "name" : "ВТ_ПереводыИзРегистров_Регистры",
+    "status" : "matched",
+    "primaryHash" : "392433a37486c123de36e32e799684d297a01539943f7bdc8eb05c2243b0c710",
+    "extractedHash" : "9c66120619bc1bc79449cb3124a7553fc442d198c473d58f50675817bab23cb7"
+  }, {
+    "id" : 134,
+    "name" : "ВТ_Схемы_Свойства",
+    "status" : "matched",
+    "primaryHash" : "c9c6f0bf0980773d4711200cce9b05ea41501147833d49a5b1a8d4e4eb56585d",
+    "extractedHash" : "14297615c1e6aad9d0770567d3745b18811629a64a0c495d4f79043a7ab24b35"
+  }, {
+    "id" : 279,
+    "name" : "ВТ_ДатыОкончанияСрочныхВыплат",
+    "status" : "matched",
+    "primaryHash" : "afb454c1344430c3ef6ff6bd3fff892ad31c2c47c2410be19eeb3c43b8eb7656",
+    "extractedHash" : "dcec8af447e245b5b8f942c1700e46b7b1160559a4f330ebd955145eb0fc6a34"
+  }, {
+    "id" : 281,
+    "name" : "ВТ_КоличествоВыплат",
+    "status" : "matched",
+    "primaryHash" : "ae8b485aece7d27881ef332fe8e6c2102f078b49331c880fd06435f2b685d91a",
+    "extractedHash" : "0bb198e9834ea2f199d0e87399376fd84ad52b05e0f3ecfacf26433c46210a20"
+  }, {
+    "id" : 283,
+    "name" : "ВТ_РасходВыплат",
+    "status" : "matched",
+    "primaryHash" : "a8e067f071eff41f5ed2a6461c24a3ab44f6d8e3273ebd23f4afffdf7e67a53d",
+    "extractedHash" : "da0c131103af8665ccd6ce594cd99876efdae3e9c9625bfd1a8d96ec9843f041"
+  }, {
+    "id" : 141,
+    "name" : "ВТ_ВкладчикиУчастники",
+    "status" : "matched",
+    "primaryHash" : "2303b268cbe9ffd3c39b0c49ecbf2dbf4de2c35bd1352800342d169d95cb9cd6",
+    "extractedHash" : "476137aa017027f61268267a9e57b30c42d08e0a14ec9f0590e8f64a1e0b7654"
+  }, {
+    "id" : 69,
+    "name" : "ВТ_НеТранзитныеВидыНачалоКонец",
+    "status" : "matched",
+    "primaryHash" : "f63f2a81ee948d1b9894b1dd3cf2c841ed565574ac62a5a8b7f0cdf4e3c0154f",
+    "extractedHash" : "14616d0714b3318198efe52e5e15172eb4d32323b14133e193b939d3133b0ebe"
+  }, {
+    "id" : 135,
+    "name" : "ВТ_СхемыПенсионныхСчетов_ТранзитныеОбязательства",
+    "status" : "matched",
+    "primaryHash" : "61514a2c6ed112f5e1f3a59a0a04ca7ce02b559ebfa80a6b3490583f832c22f3",
+    "extractedHash" : "d3cbeaa01e0884ff7e65cbb794e19a20940f05f48e6ed75e941fdc3f017bf896"
+  }, {
+    "id" : 99,
+    "name" : "ВТ_ПеремещенияВСтраховойРезервТранзитныеВиды",
+    "status" : "matched",
+    "primaryHash" : "d8815c2b91b312af5c5625da704465e6389919f0ec3dcefcff54ed5f7b6f2dad",
+    "extractedHash" : "c3f86a41e946b88b6cc2981878f1cb0f1b5166027e4d2ffb5dfef46a808ff7b0"
+  }, {
+    "id" : 110,
+    "name" : "ВТ_ТранзитныеВиды_ГруппыСчетов",
+    "status" : "matched",
+    "primaryHash" : "9cd618c2bd53c69d89dfc91978d787fd0c0121bf0863896ffe3d4aaa1ff13c0d",
+    "extractedHash" : "4e3b338306c67742c5a022a96471d2873844a37dd70c9defc7e9f96af887d4e8"
+  }, {
+    "id" : 112,
+    "name" : "ВТ_ТранзитныеВиды_ТипыДоговоровЕПС",
+    "status" : "matched",
+    "primaryHash" : "eb1887fe1ba69566e6241cbf41d181df69a0f4a74775e55cc34a54f4b13b932c",
+    "extractedHash" : "2e8a1ad7c7530cc5319cd43722d1f2ffc062dac2fefaf95897d8a3ce25cd01b4"
+  }, {
+    "id" : 114,
+    "name" : "ВТ_ТранзитныеВиды_ДатыФиксации",
+    "status" : "matched",
+    "primaryHash" : "706f43d05e347beb42b7060d0e6a6cff1c3d979865143a3191f263fbf1d65b9c",
+    "extractedHash" : "170dab783022115d1d34a03afffde1f01fea7800963f56a41db8f87f6614bc0d"
+  }, {
+    "id" : 116,
+    "name" : "ВТ_ТранзитныеВиды_ПериодыГарантВосполнения",
+    "status" : "matched",
+    "primaryHash" : "b7fc8a036b089de7f007e411889de52a2f6bc65297565b8fe9bf8aa6afabefc1",
+    "extractedHash" : "56ccb03748b3000cd05c2349c50326618e3324fd35b9630024c3d632cf9c4a6d"
+  }, {
+    "id" : 249,
+    "name" : "ВТ_Переводы_Устарело",
+    "status" : "matched",
+    "primaryHash" : "5a3ffd91ce7a5f610952226a7dd922374f1a0a5ce9c36708e97446bc6f75823e",
+    "extractedHash" : "f87e931cb90f4f20d16d0c3a76c74ba203132f4fbee234603a6c4b499076b7ac"
+  }, {
+    "id" : 238,
+    "name" : "ВТ_Переводы",
+    "status" : "matched",
+    "primaryHash" : "e567c7dc1ab66c11d2e64d1a04fc78ed98ab66417c0dd8c845bb38d616ea3380",
+    "extractedHash" : "bd47e4599b3d71bf97cec63e9b8739d9e25ba53e6c5c32618a2699f22778b157"
+  }, {
+    "id" : 193,
+    "name" : "ВТ_Суммы_ПР_дляВС",
+    "status" : "matched",
+    "primaryHash" : "b43218da5db403fe497c8df20c5a23fa8c6b37ecf2d95d4480d749d8f1558ab7",
+    "extractedHash" : "637d96b116bc1dcb9c13bb33ac36d421c91bdc79d39b5ee0e2de9adb5d0c2e25"
+  }, {
+    "id" : 285,
+    "name" : "ВТ_ОстаткиВыплат",
+    "status" : "matched",
+    "primaryHash" : "20a7169aac51f640dd0ca2755fc1dedaa15b17b9ad31d54df651ebd62439b2b5",
+    "extractedHash" : "7634d04d6056212c648990158ece6c9f02997c0a92f9caf808cb4c0f3f675eff"
+  }, {
+    "id" : 71,
+    "name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
+    "status" : "matched",
+    "primaryHash" : "8ce7bc7e31ce38dd69aa57e19a41c36310863af6fe9390680ea5bc84b4d3020d",
+    "extractedHash" : "ab388eb5d3eedebe1713657c26319c01be239a2419693a0d72c7ac39c64d57bd"
+  }, {
+    "id" : 92,
+    "name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
+    "status" : "matched",
+    "primaryHash" : "05a48d92cb298c2fb540271991c52633c543c359dcb36e5dcf37825340fceae1",
+    "extractedHash" : "b80e165537af32eef7ea8ae3c22a577cf5ab50e4c05d0bc7a11edb61c8ef08e9"
+  }, {
+    "id" : 101,
+    "name" : "ВТ_ПереводыИзРегистров_РезервыТранзитныеВиды",
+    "status" : "matched",
+    "primaryHash" : "71166cb5d87c01082eaf92086b077764f8c5ce8d58f0d5adec46e8251cb29ae6",
+    "extractedHash" : "cd95c798a674bc1588313635a516303dd69ad53dbd645e289f2c174a5ecae980"
+  }, {
+    "id" : 118,
+    "name" : "ВТ_ПенсионныеСчета_Свойства_ТранзитныеОбязательства",
+    "status" : "matched",
+    "primaryHash" : "8497015cce1c29c6c01477dd083e297bc28eba10b5320d7deac75ba4e462e28d",
+    "extractedHash" : "8b2632a36cb10910e41c673c22276930959454f04c599494ec3a8cdff9d95908"
+  }, {
+    "id" : 194,
+    "name" : "ВТ_СуммыКоэффициентыВС_предв",
+    "status" : "matched",
+    "primaryHash" : "ced31c1e47534dd6e50b80058333680d72749499c20691c4b951fdac53f95afb",
+    "extractedHash" : "5c936baf9c4fe775647768fc0dbb238e6299aa69a8fd43c646acf875dba2a134"
+  }, {
+    "id" : 203,
+    "name" : "ВТ_Сумма_ПР_дляПП",
+    "status" : "matched",
+    "primaryHash" : "b34521efed348b32804b3f0ab6ff8ed8a248b8c7724cc71fd698b29351a24578",
+    "extractedHash" : "234b7f9c1e0ff563d4ce385d3d693a4a677d7eef07e958a52abc2733bfe90101"
+  }, {
+    "id" : 210,
+    "name" : "ВТ_Суммы_ПР_С_Обязательствами",
+    "status" : "matched",
+    "primaryHash" : "90849afc152c2d1ec2037f11b58d4650a58f21029002692ebc5642ccecfaa6d4",
+    "extractedHash" : "fcfa880b9d6d89b6465e91c2dd56037d2bb4f368f7d205a1793aac5f88331d06"
+  }, {
+    "id" : 144,
+    "name" : "ВТ_ДанныеКонтрагентов",
+    "status" : "matched",
+    "primaryHash" : "ed17ac12579e831660da0b8f94b8846056ababf20fdc446e888e7cd05d67eb41",
+    "extractedHash" : "cc25469aa53d4d1ab052ce93afaf9caedcbfd0720749b972ae970eafe1cfa9d4"
+  }, {
+    "id" : 74,
+    "name" : "ВТ_ОстаткиТранзитныеВиды",
+    "status" : "matched",
+    "primaryHash" : "9bf260b6f25c3e450acd2fa034d4cdb563b6f7a37c0922cdd2ffee809ead4be3",
+    "extractedHash" : "b761b30cfe9ee6a0d3c5b13aeab94fda511ad095f3161bf5559bb62aec2e6d32"
+  }, {
+    "id" : 201,
+    "name" : "ВТ_СуммыКоэффициентыВС",
+    "status" : "matched",
+    "primaryHash" : "cc1888378545cd9bad3186c544f8a4e4f370eebf20601a5d16d6358907993f94",
+    "extractedHash" : "80d7df3ede4192f5ee3839eaabc48de48cc0472f780ed9a95b8c18dd1434ba93"
+  }, {
+    "id" : 207,
+    "name" : "ВТ_РасчетныеСуммыПП_пред",
+    "status" : "matched",
+    "primaryHash" : "23103165c08e5b4cc6703b7161b737dff033b89c6bd3f0c515ae7cd97777c9e8",
+    "extractedHash" : "cdd5f6e43fcaf7116ae96e4f8cb4af03b4537fe95f57199ed94a88e2490b4a14"
+  }, {
+    "id" : 214,
+    "name" : "ВТ_Суммы",
+    "status" : "matched",
+    "primaryHash" : "0a94a16a0de652a27fd411dfe1ee51dcdcb3ecf1198804d9a04b975140f60e6f",
+    "extractedHash" : "0a087c35f621101bd48fc05f23c4541e9a81318540fbf58d54219412a321ddb1"
+  }, {
+    "id" : 147,
+    "name" : "ВТ_ФИО_ФЛ",
+    "status" : "matched",
+    "primaryHash" : "e6eec9b74ccfaa04b05017cb675586113a808e071237eaba620266cfe717f9e5",
+    "extractedHash" : "bd5d8c79b308a96d8acc62048002fd890006cb2225d4eb5810d5d7b8e3e041b0"
+  }, {
+    "id" : 149,
+    "name" : "ВТ_ФИО_ИП",
+    "status" : "matched",
+    "primaryHash" : "08449e1aa4432f76123b05c43112a0331ace4782db7ab0c094d4f00d19974115",
+    "extractedHash" : "563f47e03324b7082887618bafb02a04abe76342818404f33ee36c999cb23646"
+  }, {
+    "id" : 150,
+    "name" : "ВТ_ПаспортныеДанные_ПоследняяЗапись",
+    "status" : "matched",
+    "primaryHash" : "83aba0365da768786c2d5bc799c6cde96cf8f36c0ef22a43557b7efb2866d521",
+    "extractedHash" : "bc93378864f08450c416558f9c9d34b3178c7e82f2def150c01d413df55bb929"
+  }, {
+    "id" : 104,
+    "name" : "ВТ_ПереводыИзРегистров_РегистрыТранзитныеВиды",
+    "status" : "matched",
+    "primaryHash" : "0a8dfa77005b70cd2736f01db3498aff2492f77d6c56c5a001093378e0688880",
+    "extractedHash" : "a246ce9c447deb27c26576114822c7ddbf341ddee56f1f13216469ee347aa84b"
+  }, {
+    "id" : 202,
+    "name" : "ВТ_РасчетнаяДатаВС",
+    "status" : "matched",
+    "primaryHash" : "d4c31da812946935acfa9c1e6f716564548e08656bbb9c13db595b172b06bb9c",
+    "extractedHash" : "dfc4b3e698b88056b5e636fb1bf55124b02b99bcf98da4d622ad20563af6b049"
+  }, {
+    "id" : 209,
+    "name" : "ВТ_РасчетныеСуммыПП",
+    "status" : "matched",
+    "primaryHash" : "aa920060c416ee8072ecebf543a5c9c3c33241b74fe74799852bfd8f19e3efd8",
+    "extractedHash" : "812a577f1c7328db6e0fe477cd7284501e6152af86949b9664835944fe698817"
+  }, {
+    "id" : 292,
+    "name" : "ВТ_РасчетныеСуммыПенсий",
+    "status" : "matched",
+    "primaryHash" : "9a2939b0c1b0e6ee9ce1921f3600ffae5ed40b72f910ef8fabae8a44fecc12b8",
+    "extractedHash" : "2c21f0b3da00204cde0ac2c27bd2b8c90a76e46ebda162181f11d2db7d41ee3b"
+  }, {
+    "id" : 152,
+    "name" : "ВТ_ПаспортныеДанные_1",
+    "status" : "matched",
+    "primaryHash" : "eda6189635de37b4e5865957461c28d5a193038c76a870e303aec7cd063b0764",
+    "extractedHash" : "2d0a35c38927296b6ef278d63e3c3a371750c5735cabbe3175e5bbc0b3699a8c"
+  }, {
+    "id" : 86,
+    "name" : "ВТ_Суммы_ПР_ТранзитныеВиды",
+    "status" : "matched",
+    "primaryHash" : "1b496f8574447839461132d53f20c8a38c2f4436a8da415d855d42b794416f79",
+    "extractedHash" : "8d098d479a83ce06cfaa8d685b37d7f98db60e3f7e7c473cafc93a694d5bca69"
+  }, {
+    "id" : 107,
+    "name" : "ВТ_ПереводыТранзитныеВиды",
+    "status" : "matched",
+    "primaryHash" : "31983bf496a14013127ca2b75c82c056b71bcef0833f5a1811af2ac83de9cf93",
+    "extractedHash" : "abe15f8a6e667808ead1a4fc62bedb5e237aa017a122c6adcf84edad977541ad"
+  }, {
+    "id" : 294,
+    "name" : "ВТ_ОстаткиНаследников",
+    "status" : "matched",
+    "primaryHash" : "4999de924571fc9df89ccc2adea1d6fab9615b6834828eaa38d3e86c100c4f7f",
+    "extractedHash" : "f9da707d8e983d6a4a10c4eb69177890a2a786b389f195d6af04fa6a6cf1342e"
+  }, {
+    "id" : 293,
+    "name" : "ВТ_РазмерПенсий",
+    "status" : "matched",
+    "primaryHash" : "462e1f77a8408cda9ec6f99eb5cbbaf9a4d08efff6efb12b2896b5dd12202d7e",
+    "extractedHash" : "9bc9739b22705674f1946074d875182d35352caee03fc3ca55bd40bfae61d68b"
+  }, {
+    "id" : 154,
+    "name" : "ВТ_ПаспортныеДанные_Cleared",
+    "status" : "matched",
+    "primaryHash" : "8a96632e38b6740f2b71753e8ce7d920b31e540badd9bc3b8f4c79cedcae18fd",
+    "extractedHash" : "aa11331caffc247a760cfe5e4ea2faaf3c9bfcddb98e7741666e3465c54db83d"
+  }, {
+    "id" : 108,
+    "name" : "ВТ_ОстаткиТранзитныеВиды_Предв",
+    "status" : "matched",
+    "primaryHash" : "84750de1f8e4f58751c5164f645393c11c346784f54629554d9161043c2e09b4",
+    "extractedHash" : "ec6bffd5f5f60b0f793f0e311c9339d6dfb0de8233a091a2385f0167c45605cb"
+  }, {
+    "id" : 155,
+    "name" : "ВТ_ПаспортныеДанные",
+    "status" : "matched",
+    "primaryHash" : "c3c13a911cd7541056122781f162aadd6df13c41933e033f5cf0b1de97496c71",
+    "extractedHash" : "edac570d1a6aef9afb396df5f5e199290c60c586453973c66cbcdf4085c18ea1"
+  }, {
+    "id" : 109,
+    "name" : "ВТ_ТранзитныеВидыНачалоКонец_Суммы",
+    "status" : "matched",
+    "primaryHash" : "52e602c5b60e3c2a63aec96122fe1d3a29394a2a81a4371f592da1e9c92bcc0a",
+    "extractedHash" : "3eb403d835b959e577dbf109bcc2d3cf8382e17cd9d9f47eea982699b49f119d"
+  }, {
+    "id" : 156,
+    "name" : "ВТ_Данные_к",
+    "status" : "matched",
+    "primaryHash" : "536f7aab1bd52ff3c9bcf75326e25fe984e5fa39140e329f58df38f6bf938438",
+    "extractedHash" : "f4429692eace9ed39d50d66a9a9212f69f3ddac5d143f3b18a01e96f19075277"
+  }, {
+    "id" : 165,
+    "name" : "ВТ_ИдентификаторыКонтрагентов_Старые",
+    "status" : "matched",
+    "primaryHash" : "7b96ce4d8148e637a7711b908984ed6d7aaf09053df81f00e5ede3d4119199f8",
+    "extractedHash" : "c2843a301012a8df96efac281e2696dffededf985db6f2553a95ea382b0674d9"
+  }, {
+    "id" : 157,
+    "name" : "ВТ_Идентификаторы264",
+    "status" : "matched",
+    "primaryHash" : "ccdd552b9eaccb0db7e51031650ea2dcfe760abd8346969530243f6a1539b3b5",
+    "extractedHash" : "d32bbb42ebfca377d7686ca1f0d6ee7d92f65e9b72fc42cc9a464cd0584fb716"
+  }, {
+    "id" : 160,
+    "name" : "ВТ_ИдентификаторыКонтрагентов",
+    "status" : "matched",
+    "primaryHash" : "df56d75362cb830fab91b816a47ee912e910674ac72fd16b874c0cacfc4bcdea",
+    "extractedHash" : "e72b1a75bab212bdf95a0f021e6313c12a2bb889538644d521f27e10a1cf0c6f"
+  }, {
+    "id" : 295,
+    "name" : "ВТ_РезультатПредв",
+    "status" : "matched",
+    "primaryHash" : "1be69b0c9e9c1631994a230efeb4e75e0d0482fe81b82bb89e95ac93e2fe966a",
+    "extractedHash" : "b1ddc29cb45fae9f532a2f7cfa7ced71106f8907259e63843d4cfb66c4f647c0"
+  }, {
+    "id" : 299,
+    "name" : "ВТ_258НПО",
+    "status" : "matched",
+    "primaryHash" : "641f68081190548f39e9adf03d387d81ba6989e65b916d51e933f4cff1d0ffe4",
+    "extractedHash" : "b4265ad165acceee31fc2af668ac3a5b1f08bba9eac60aa953e8b907e4ace859"
+  } ]
+}

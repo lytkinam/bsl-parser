@@ -213,18 +213,20 @@
       "alias" : "ЗЛО",
       "joins" : [ ]
     } ],
-    "where" : "ЗЛО.Получатель.ЭтоГруппа = &ЭтоГруппа",
-    "sdbl_id" : 1,
-    "where_fields" : [ {
-      "text" : "ЗЛО.Получатель",
-      "child_fields" : [ {
-        "fieldId" : 2,
-        "alias" : "Получатель",
-        "nodeId" : 0,
-        "nodeName" : "ЗЛО",
-        "source" : "ЗЛО"
+    "where" : {
+      "text" : "ЗЛО.Получатель.ЭтоГруппа = &ЭтоГруппа",
+      "fields" : [ {
+        "text" : "ЗЛО.Получатель",
+        "child_fields" : [ {
+          "fieldId" : 2,
+          "alias" : "Получатель",
+          "nodeId" : 0,
+          "nodeName" : "ЗЛО",
+          "source" : "ЗЛО"
+        } ]
       } ]
-    } ],
+    },
+    "sdbl_id" : 1,
     "upquery_id" : 4
   } ]
 }

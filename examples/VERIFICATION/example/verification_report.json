@@ -1,0 +1,25 @@
+{
+  "baseName" : "example",
+  "totalNodes" : 3,
+  "matched" : 3,
+  "mismatched" : 0,
+  "nodes" : [ {
+    "id" : 0,
+    "name" : "ВТ_Сотрудники",
+    "status" : "matched",
+    "primaryHash" : "24d5b2c977c0ee3f5cc42b3f09285b448c58841c4f888d84262443f11c2a9a00",
+    "extractedHash" : "210f20b372839aedfcdb86801e2b304890b7dc7c796ca5ff732e94cceb5895b1"
+  }, {
+    "id" : 1,
+    "name" : "ВТ_Начисления",
+    "status" : "matched",
+    "primaryHash" : "a81bf701ff61051973440c19f39fca369e19c5f36669d0c43303b00a29886f37",
+    "extractedHash" : "3e9fe47ea9f4eac0eb17205c386a40b2e42e7ac1264066d279810dcbd9deeec1"
+  }, {
+    "id" : 2,
+    "name" : "Результат_3",
+    "status" : "matched",
+    "primaryHash" : "52890d991d9254821075439085f3d27d6b56c778d680fe3d3e877ab246f6231e",
+    "extractedHash" : "48ef377ef16094a527ef416da69e467332920727d9ac3f337a3e49230da745c4"
+  } ]
+}
