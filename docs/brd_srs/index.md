@@ -25,3 +25,13 @@
 ### Уровень 4.1: Парсинг подзапросов в WHERE (SDBL)
 - [BRD04.01: Парсинг подзапросов в блоке WHERE](BRD04.01%20only%20SDBL%20where%20select.md)
 - [SRS04.01: Спецификация реализации — парсинг подзапросов в WHERE](SRS04.01%20only%20SDBL%20where%20select.md)
+
+### Уровень 6: MCP-сервер
+- [BRD06: MCP-сервер для SDQL](BRD06_MCP.md)
+- [SRS06.01: Доработка Java-модулей для MCP-интеграции](SRS06_01.md)
+- [SRS06.02: MCP-сервер (реализация)](SRS06_02.md)
+- [INST06: Развёртывание MCP-сервера](INST06_MCP.md)
+
+### Уровень 7: Оптимизация неиспользуемых LEFT JOIN
+- [BRD07: Оптимизация неиспользуемых LEFT JOIN](BRD07%20unused%20left%20join%20optimization.md)
+- [SRS07: Оптимизация неиспользуемых LEFT JOIN](SRS07%20unused%20left%20join%20optimization.md)
