@@ -1,0 +1,28 @@
+{
+  "baseName" : "example_2",
+  "totalNodes" : 3,
+  "matched" : 0,
+  "mismatched" : 3,
+  "nodes" : [ {
+    "id" : 0,
+    "name" : "вт_НашиДоговора",
+    "status" : "mismatched",
+    "primaryHash" : "c502f8d935c31d838d6653f41f54c3a8276c4e1afdc3a0318b227a704c181afe",
+    "extractedHash" : "3e44f1a67b86ed51888488904a3d55db6feb5a389c2aefd2a3a213115859a066",
+    "differences" : [ "Length differs: extracted=111 primary=110" ]
+  }, {
+    "id" : 1,
+    "name" : "ЗЛО",
+    "status" : "mismatched",
+    "primaryHash" : "653d7254c3988e1373755f88cf6a3887714cd3ebbbe5da2b37cece7155c945fd",
+    "extractedHash" : "7f351d1247a5afb94bd5a83f286bbcc27041b442bff412997df7642aee685f78",
+    "differences" : [ "Extracted: ...АЗНАЧЕНИИНЧТП.ССЫЛКА КАК ССЫЛКА, УП_ЗАЯВ... vs Primary: ...АЗНАЧЕНИИНЧТП.ССЫЛКА, УП_ЗАЯВЛЕНИЕЗЛОНАЗ...", "Extracted: ...ЗНАЧЕНИИНЧТП.ССЫЛКА КАК ССЫЛКА, УП_ЗАЯВЛ... vs Primary: ...ЗНАЧЕНИИНЧТП.ССЫЛКА, УП_ЗАЯВЛЕНИЕЗЛОНАЗН...", "Extracted: ...НАЧЕНИИНЧТП.ССЫЛКА КАК ССЫЛКА, УП_ЗАЯВЛЕ... vs Primary: ...НАЧЕНИИНЧТП.ССЫЛКА, УП_ЗАЯВЛЕНИЕЗЛОНАЗНА..." ]
+  }, {
+    "id" : 5,
+    "name" : "Результат_3",
+    "status" : "mismatched",
+    "primaryHash" : "690fdbc962671779fd6b055cdfa19300593eb6cdd2160ae6853d2d5f0417f1da",
+    "extractedHash" : "a9b6c1e7559c0b5c21465e396740f9cd91159c5989edaa0032c64a76b1dd17cd",
+    "differences" : [ "Extracted: ...НТЫ.ИНН КАК ИНН ИЗ ( ВЫБРАТЬ ЗЛО.ССЫЛКА ... vs Primary: ...НТЫ.ИНН КАК ИНН ИЗ (ВЫБРАТЬ ЗЛО.ССЫЛКА К...", "Extracted: ...ТЫ.ИНН КАК ИНН ИЗ ( ВЫБРАТЬ ЗЛО.ССЫЛКА К... vs Primary: ...ТЫ.ИНН КАК ИНН ИЗ (ВЫБРАТЬ ЗЛО.ССЫЛКА КА...", "Extracted: ...Ы.ИНН КАК ИНН ИЗ ( ВЫБРАТЬ ЗЛО.ССЫЛКА КА... vs Primary: ...Ы.ИНН КАК ИНН ИЗ (ВЫБРАТЬ ЗЛО.ССЫЛКА КАК..." ]
+  } ]
+}
