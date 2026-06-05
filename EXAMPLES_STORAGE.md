@@ -12,25 +12,34 @@ examples/
 ├── SDBL_PARS/                     # Артефакты итерации 0
 │   ├── sdbl_parse_model_<basename>.json
 │   ├── sdbl_parse_nodes_<basename>.json
-│   ├── query_texts_<basename>/
-│   │   ├── node_0.sql ... node_N.sql
-│   │   ├── node_0.md  ... node_N.md
-│   │   ├── normalized_queries.sql
-│   │   └── texts_index.json
-│   ├── fields_node_<basename>/
-│   │   ├── fields_node.json
-│   │   └── table_alias_map.json
-│   └── lineage_<basename>/
-│       └── field_lineage.json
-└── LINE_PARS/                     # Артефакты итерации 1+
-    ├── LINE_PARS_model_<basename>.json
-    └── LINE_PARS_hierarchy_<basename>.json
+│   └── sdbl_parse_model_<basename>.md
+├── LINE_PARS/                     # Артефакты итерации 1
+│   ├── LINE_PARS_model_<basename>.json
+│   ├── LINE_PARS_hierarchy_<basename>.json
+│   └── LINE_PARS_hierarchy_<basename>.md
+├── FULL_PARS/                     # Артефакты итерации 2
+│   └── FULL_PARS_model_<basename>.json
+├── field_lineage/                 # LINE_PARS field lineage
+│   └── <basename>/<nodeId>_<nodeName>/
+│       ├── FLS_<field_id>_<alias>.json
+│       └── FLS_<field_id>_<alias>.md
+├── full_field_lineage/            # FULL_PARS field lineage
+│   └── <basename>/<nodeId>_<nodeName>/
+│       ├── FFL_<field_id>_<alias>.json
+│       └── FFL_<field_id>_<alias>.md
+├── RESTORED_QUERIES/              # Восстановленные SQL-запросы
+│   └── <basename>/<nodeId>_<nodeName>/
+│       └── <alias>.sql
+├── EXTRACTED_QUERIES/             # Извлечённые SQL-запросы
+│   └── <basename>/<id>_<name>.sql
+└── VERIFICATION/                  # Отчёты верификации
+    └── <basename>/verification_report.json
 ```
 
 ## Эталонный пример: `middle_example.sql`
 
 - **26 узлов** в SDBL модели
-- Содержит: temp_query, union, subquery, virtual tables, joins
+- Содержит: temp_query, union, subquery, virtual tables, joins, inline subqueries
 - **После любого изменения кода** необходимо:
   1. Запустить CLI на `middle_example.sql`
   2. С `examples/SDBL_PARS/` как outputDir (абсолютный путь)
@@ -42,7 +51,9 @@ examples/
 ```bash
 cd /tmp/bsl-parser
 ./gradlew classes
-java -cp "build/classes/java/main:build/resources/main:$(find ~/.gradle/caches -name 'antlr4-runtime-4.13.1.jar' -o -name 'jackson-databind-2.13.*.jar' -o -name 'jackson-core-*.jar' -o -name 'jackson-annotations-*.jar' -o -name 'lombok-*.jar' | tr '\n' ':')" \
+
+# ВАЖНО: использовать АБСОЛЮТНЫЙ путь для outputDir
+java -cp "build/classes/java/main:build/resources/main:$(find ~/.gradle/caches -name 'antlr4-runtime-4.13.1.jar' -o -name 'jackson-databind-2.17.2.jar' -o -name 'jackson-core-2.17.2.jar' -o -name 'jackson-annotations-2.17.2.jar' -o -name 'lombok-*.jar' | tr '\n' ':')" \
   com.github._1c_syntax.bsl.parser.sdql.SdqlCli \
   examples/middle_example.sql \
   "$(pwd)/examples/SDBL_PARS"
@@ -70,5 +81,5 @@ java -cp "build/classes/java/main:build/resources/main:$(find ~/.gradle/caches -
 
 ## Файлы, которые НЕ коммитятся
 
-- Сгенерированные артефакты для `example` и `example_258` (только `middle_example` и `union_subquery_example`)
+- Сгенерированные артефакты для `example` (они генерируются только для локальных тестов)
 - Временные директории (`out_test/`, `LINE_PARS/` в корне при запуске с относительным путём)
