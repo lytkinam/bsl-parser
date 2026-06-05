@@ -1,8 +1,8 @@
 {
   "baseName" : "example_258",
   "totalNodes" : 116,
-  "matched" : 116,
-  "mismatched" : 0,
+  "matched" : 107,
+  "mismatched" : 9,
   "nodes" : [ {
     "id" : 0,
     "name" : "ВТ_ИСПОЛЬЗОВАТЬДЛЯНПО",
@@ -138,15 +138,16 @@
   }, {
     "id" : 119,
     "name" : "ВТ_ПенсионныеСчетаСПТ",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "a29c77776852275f887151e924c824fc2e9d7e98a8253ae39bda2a8925d9dce8",
-    "extractedHash" : "47d4d9840076f295b3c11ead9b148ecbfde87e5083c2a36958804bcc4911f27c"
+    "extractedHash" : "19834bc78caaa61e4d9aa674077798809a74013033f893937e2804e432ccf509",
+    "differences" : [ "FROM[0] join count differs: extracted=4 primary=3", "TEXT: Extracted: ...ГОВОРАСРЕЗПОСЛЕДНИХ ПО (УП_ПЕНСИОННЫЕСЧЕ... vs Primary: ...ГОВОРАСРЕЗПОСЛЕДНИХ ЛЕВОЕ СОЕДИНЕНИЕ СПР...", "TEXT: Extracted: ...ОВОРАСРЕЗПОСЛЕДНИХ ПО (УП_ПЕНСИОННЫЕСЧЕТ... vs Primary: ...ОВОРАСРЕЗПОСЛЕДНИХ ЛЕВОЕ СОЕДИНЕНИЕ СПРА..." ]
   }, {
     "id" : 57,
     "name" : "ВТ_СостояниеНачалоПериода",
     "status" : "matched",
     "primaryHash" : "b6ae30df97d3b287945e15bcea1f2cef5ddd3cef6352dde84b9ae062b56abed2",
-    "extractedHash" : "daf0e80427a064c2642d015fac57578f5b40d28b020c4107cf378bc28a5450a7"
+    "extractedHash" : "0e397ae641ee831c38417c28278b4ba7cf30677d3f8b93723d32ecb60ff331f4"
   }, {
     "id" : 121,
     "name" : "ВТ_СостоянияПенсионныхСчетов",
@@ -168,9 +169,10 @@
   }, {
     "id" : 120,
     "name" : "ВТ_ПенсионныеСчета_Свойства",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "b0d6abbafbb6b5ee060746315c8a6af93029dfdfe3fd489ab3641387cead6868",
-    "extractedHash" : "744425bb6f56924589ef13ebce565a82f396f9d564bc36e0208518b389a21969"
+    "extractedHash" : "cf6898c4e6e488930a46251e22b1a3c0a84e36eab68ebe977a6fcb7c1e8dcf97",
+    "differences" : [ "FROM[0] join count differs: extracted=13 primary=10", "TEXT: Extracted: ...З ВТ_ПЕНСИОННЫЕСЧЕТА КАК ВТ_ПЕНСИОННЫЕСЧ... vs Primary: ...З ВТ_ПЕНСИОННЫЕСЧЕТА)) КАК УП_ПЕРИОДЫГАР...", "TEXT: Extracted: ... ВТ_ПЕНСИОННЫЕСЧЕТА КАК ВТ_ПЕНСИОННЫЕСЧЕ... vs Primary: ... ВТ_ПЕНСИОННЫЕСЧЕТА)) КАК УП_ПЕРИОДЫГАРА..." ]
   }, {
     "id" : 58,
     "name" : "ВТ_ВидОбязательствНачало",
@@ -306,9 +308,10 @@
   }, {
     "id" : 130,
     "name" : "ВТ_ПенсионныеДоговоры_Свойства",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "f9070f6c058018617ddb712db7fb9a486b3efbb1e02a781c733bd055a29b0557",
-    "extractedHash" : "4dca42039488dda1f3bb0a1849d27dc2c31b2faf9082311000b61148c76e4603"
+    "extractedHash" : "3778fa77bb20290ddd8e6ca611c440a06612111a286a03bfcf8194b1758a8208",
+    "differences" : [ "FROM[0] join count differs: extracted=6 primary=3", "TEXT: Extracted: ...Т_ПЕНСИОННЫЕДОГОВОРЫ КАК ВТ_ПЕНСИОННЫЕДО... vs Primary: ...Т_ПЕНСИОННЫЕДОГОВОРЫ)) КАК ИФРС17_ГРУППЫ...", "TEXT: Extracted: ..._ПЕНСИОННЫЕДОГОВОРЫ КАК ВТ_ПЕНСИОННЫЕДОГ... vs Primary: ..._ПЕНСИОННЫЕДОГОВОРЫ)) КАК ИФРС17_ГРУППЫД..." ]
   }, {
     "id" : 271,
     "name" : "ВТ_МГД",
@@ -372,9 +375,10 @@
   }, {
     "id" : 277,
     "name" : "ВТ_Срочники",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "f04ccb0737a6d7d0ec1073de4fc9270e06d748e89def552afbde22019f5189da",
-    "extractedHash" : "225593e29ce00ccca17e7eb8281d0d241107c0f53885c75daacc68437e5ae3ea"
+    "extractedHash" : "18b7068da03e89163de727789840d494d9fa7cff54f99bc9c2fbb31f816b7dcb",
+    "differences" : [ "FROM[0] join count differs: extracted=2 primary=1", "TEXT: Extracted: ...ЕМЫПЕНСИОННЫХСЧЕТОВ ПО ВТ_СОСТОЯНИЯПЕНСИ... vs Primary: ...ЕМЫПЕНСИОННЫХСЧЕТОВ ВНУТРЕННЕЕ СОЕДИНЕНИ...", "TEXT: Extracted: ...МЫПЕНСИОННЫХСЧЕТОВ ПО ВТ_СОСТОЯНИЯПЕНСИО... vs Primary: ...МЫПЕНСИОННЫХСЧЕТОВ ВНУТРЕННЕЕ СОЕДИНЕНИЕ..." ]
   }, {
     "id" : 68,
     "name" : "ВТ_СчетаНеТранзитныеВидыОбязательств",
@@ -450,9 +454,10 @@
   }, {
     "id" : 110,
     "name" : "ВТ_ТранзитныеВиды_ГруппыСчетов",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "9cd618c2bd53c69d89dfc91978d787fd0c0121bf0863896ffe3d4aaa1ff13c0d",
-    "extractedHash" : "4e3b338306c67742c5a022a96471d2873844a37dd70c9defc7e9f96af887d4e8"
+    "extractedHash" : "af264a8890497811059066ff62d301b181fb91e3b793dc39355f9d64fcef2e00",
+    "differences" : [ "FROM[0] join count differs: extracted=4 primary=2", "TEXT: Extracted: ...УТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ТРАНЗИТНЫЕВИДЫ_ГР... vs Primary: ...УТРЕННЕЕ СОЕДИНЕНИЕ ( ВЫБРАТЬ ВТ_ТРАНЗИТ...", "TEXT: Extracted: ...ТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ТРАНЗИТНЫЕВИДЫ_ГРУ... vs Primary: ...ТРЕННЕЕ СОЕДИНЕНИЕ ( ВЫБРАТЬ ВТ_ТРАНЗИТН..." ]
   }, {
     "id" : 112,
     "name" : "ВТ_ТранзитныеВиды_ТипыДоговоровЕПС",
@@ -498,9 +503,10 @@
   }, {
     "id" : 71,
     "name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "8ce7bc7e31ce38dd69aa57e19a41c36310863af6fe9390680ea5bc84b4d3020d",
-    "extractedHash" : "ab388eb5d3eedebe1713657c26319c01be239a2419693a0d72c7ac39c64d57bd"
+    "extractedHash" : "297dd663e9265a2be229c0fe290a78c4f2d2024cc3fc80aeaf7f5e11a6ea897c",
+    "differences" : [ "FROM[0] join count differs: extracted=2 primary=1", "TEXT: Extracted: ...УП_НАЧИСЛЕНИЯПЕНСИЙ ПО УП_НАЧИСЛЕНИЯПЕНС... vs Primary: ...УП_НАЧИСЛЕНИЯПЕНСИЙ ВНУТРЕННЕЕ СОЕДИНЕНИ...", "TEXT: Extracted: ...П_НАЧИСЛЕНИЯПЕНСИЙ ПО УП_НАЧИСЛЕНИЯПЕНСИ... vs Primary: ...П_НАЧИСЛЕНИЯПЕНСИЙ ВНУТРЕННЕЕ СОЕДИНЕНИЕ..." ]
   }, {
     "id" : 92,
     "name" : "ВТ_СторнированныеСуммыТранзитныеВиды",
@@ -512,7 +518,7 @@
     "name" : "ВТ_ПереводыИзРегистров_РезервыТранзитныеВиды",
     "status" : "matched",
     "primaryHash" : "71166cb5d87c01082eaf92086b077764f8c5ce8d58f0d5adec46e8251cb29ae6",
-    "extractedHash" : "cd95c798a674bc1588313635a516303dd69ad53dbd645e289f2c174a5ecae980"
+    "extractedHash" : "82cb8d00a3d7b3387490fab536f9e1606200a3020a3fa57792cafa71b494aaf8"
   }, {
     "id" : 118,
     "name" : "ВТ_ПенсионныеСчета_Свойства_ТранзитныеОбязательства",
@@ -536,13 +542,14 @@
     "name" : "ВТ_Суммы_ПР_С_Обязательствами",
     "status" : "matched",
     "primaryHash" : "90849afc152c2d1ec2037f11b58d4650a58f21029002692ebc5642ccecfaa6d4",
-    "extractedHash" : "fcfa880b9d6d89b6465e91c2dd56037d2bb4f368f7d205a1793aac5f88331d06"
+    "extractedHash" : "223592b4fb74d36bd179e0a56b265a1ee65c524288895a808eb03b23df174b3d"
   }, {
     "id" : 144,
     "name" : "ВТ_ДанныеКонтрагентов",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "ed17ac12579e831660da0b8f94b8846056ababf20fdc446e888e7cd05d67eb41",
-    "extractedHash" : "cc25469aa53d4d1ab052ce93afaf9caedcbfd0720749b972ae970eafe1cfa9d4"
+    "extractedHash" : "7671340ed35b34e6cfbf6d127fdd83d3dec81fc6024f82e9f36cfd6951b69440",
+    "differences" : [ "FROM[0] join count differs: extracted=3 primary=2", "TEXT: Extracted: ... КАК ФИЗИЧЕСКИЕЛИЦА ПО (КОНТРАГЕНТЫ.УП_Ф... vs Primary: ... КАК ФИЗИЧЕСКИЕЛИЦА ЛЕВОЕ СОЕДИНЕНИЕ РЕГ...", "TEXT: Extracted: ...КАК ФИЗИЧЕСКИЕЛИЦА ПО (КОНТРАГЕНТЫ.УП_ФИ... vs Primary: ...КАК ФИЗИЧЕСКИЕЛИЦА ЛЕВОЕ СОЕДИНЕНИЕ РЕГИ..." ]
   }, {
     "id" : 74,
     "name" : "ВТ_ОстаткиТранзитныеВиды",
@@ -636,9 +643,10 @@
   }, {
     "id" : 293,
     "name" : "ВТ_РазмерПенсий",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "462e1f77a8408cda9ec6f99eb5cbbaf9a4d08efff6efb12b2896b5dd12202d7e",
-    "extractedHash" : "9bc9739b22705674f1946074d875182d35352caee03fc3ca55bd40bfae61d68b"
+    "extractedHash" : "a1b06665950aba167d7e77f8c48dd502ff7d411688420f44186482676551e7e2",
+    "differences" : [ "FROM[0] join count differs: extracted=4 primary=3", "TEXT: Extracted: ...ЕМЫПЕНСИОННЫХСЧЕТОВ ПО ВТ_ВЫПЛАТНЫЕСЧЕТА... vs Primary: ...ЕМЫПЕНСИОННЫХСЧЕТОВ ВНУТРЕННЕЕ СОЕДИНЕНИ...", "TEXT: Extracted: ...МЫПЕНСИОННЫХСЧЕТОВ ПО ВТ_ВЫПЛАТНЫЕСЧЕТА.... vs Primary: ...МЫПЕНСИОННЫХСЧЕТОВ ВНУТРЕННЕЕ СОЕДИНЕНИЕ..." ]
   }, {
     "id" : 154,
     "name" : "ВТ_ПаспортныеДанные_Cleared",
@@ -690,9 +698,10 @@
   }, {
     "id" : 295,
     "name" : "ВТ_РезультатПредв",
-    "status" : "matched",
+    "status" : "mismatched",
     "primaryHash" : "1be69b0c9e9c1631994a230efeb4e75e0d0482fe81b82bb89e95ac93e2fe966a",
-    "extractedHash" : "b1ddc29cb45fae9f532a2f7cfa7ced71106f8907259e63843d4cfb66c4f647c0"
+    "extractedHash" : "fe61fff7f918e547bf658a32e61c57eb4fbd3c29c52a933bc415267856923136",
+    "differences" : [ "FROM[0] join count differs: extracted=28 primary=26", "TEXT: Extracted: ...ЕМЫПЕНСИОННЫХСЧЕТОВ ПО ВТ_ПЕНСИОННЫЕСЧЕТ... vs Primary: ...ЕМЫПЕНСИОННЫХСЧЕТОВ ЛЕВОЕ СОЕДИНЕНИЕ ВТ_...", "TEXT: Extracted: ...МЫПЕНСИОННЫХСЧЕТОВ ПО ВТ_ПЕНСИОННЫЕСЧЕТА... vs Primary: ...МЫПЕНСИОННЫХСЧЕТОВ ЛЕВОЕ СОЕДИНЕНИЕ ВТ_С..." ]
   }, {
     "id" : 299,
     "name" : "ВТ_258НПО",
