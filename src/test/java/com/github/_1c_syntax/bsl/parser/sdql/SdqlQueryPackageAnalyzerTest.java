@@ -130,6 +130,43 @@ class SdqlQueryPackageAnalyzerTest {
     }
 
     @Test
+    void testExtractedQueriesAndVerification() throws Exception {
+        File output = tempDir.resolve("out_extracted").toFile();
+        SdqlCli.main(new String[]{"examples/example_2.sql", output.getAbsolutePath()});
+
+        // EXTRACTED_QUERIES should exist with SQL files
+        Path extractedDir = tempDir.resolve("EXTRACTED_QUERIES").resolve("example_2");
+        assertThat(extractedDir).exists();
+        assertThat(extractedDir.resolve("0_вт_НашиДоговора.sql")).exists();
+        assertThat(extractedDir.resolve("1_ЗЛО.sql")).exists();
+        assertThat(extractedDir.resolve("5_Результат_3.sql")).exists();
+
+        // Extracted SQL should contain basic blocks
+        String zloSql = Files.readString(extractedDir.resolve("1_ЗЛО.sql"));
+        assertThat(zloSql).contains("ВЫБРАТЬ");
+        assertThat(zloSql).contains("ПОМЕСТИТЬ ЗЛО");
+        assertThat(zloSql).contains("ОБЪЕДИНИТЬ ВСЕ");
+        assertThat(zloSql).contains("ИЗ");
+
+        String resultSql = Files.readString(extractedDir.resolve("5_Результат_3.sql"));
+        assertThat(resultSql).contains("ВЫБРАТЬ");
+        assertThat(resultSql).contains("ИЗ");
+        assertThat(resultSql).contains("ГДЕ");
+
+        // VERIFICATION report should exist
+        Path verificationDir = tempDir.resolve("VERIFICATION").resolve("example_2");
+        assertThat(verificationDir).exists();
+        assertThat(verificationDir.resolve("verification_report.json")).exists();
+
+        String reportJson = Files.readString(verificationDir.resolve("verification_report.json"));
+        assertThat(reportJson).contains("\"baseName\" : \"example_2\"");
+        assertThat(reportJson).contains("\"totalNodes\"");
+        assertThat(reportJson).contains("\"matched\"");
+        assertThat(reportJson).contains("\"mismatched\"");
+        assertThat(reportJson).contains("\"nodes\"");
+    }
+
+    @Test
     void testFieldLineageExtraction() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         LineParsModel model = mapper.readValue(

@@ -9,6 +9,7 @@ import com.github._1c_syntax.bsl.parser.sdql.md.HierarchyMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.LineParsFieldLineageMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.LineParsModelMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.SdqlModelMdBuilder;
+import com.github._1c_syntax.bsl.parser.sdql.query_extraction.QueryExtractor;
 import com.github._1c_syntax.bsl.parser.sdql.query_reconstruction.QueryReconstructor;
 
 import java.io.File;
@@ -63,6 +64,10 @@ public class SdqlCli {
         // 7. Build restored queries from FFL + FULL_PARS
         QueryReconstructor reconstructor = new QueryReconstructor();
         reconstructor.build(fullParsDir, baseName);
+
+        // 8. Extract queries from FULL_PARS and verify against primary
+        QueryExtractor extractor = new QueryExtractor();
+        extractor.build(fullParsDir, baseName);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
     }
