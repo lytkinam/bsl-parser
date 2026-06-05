@@ -73,7 +73,10 @@ public class SqlGenerator {
   private String generateSingleQuery(RestoredQueryNode node) {
     StringBuilder sb = new StringBuilder();
 
-    // SELECT
+    // SELECT — indent for subqueries
+    if (isSubQuery(node)) {
+      sb.append("    ");
+    }
     sb.append("ВЫБРАТЬ");
     if (node.getLimitations() != null) {
       sb.append(" ").append(node.getLimitations());

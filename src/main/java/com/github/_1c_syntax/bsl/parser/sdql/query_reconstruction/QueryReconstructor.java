@@ -137,7 +137,17 @@ public class QueryReconstructor {
       }
     }
 
-    return String.join(";\n\n", queries) + ";\n";
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < queries.size(); i++) {
+      sb.append(queries.get(i));
+      if (i < queries.size() - 1) {
+        sb.append(";\n\n");
+        sb.append("////////////////////////////////////////////////////////////////////////////////\n\n");
+      } else {
+        sb.append(";\n");
+      }
+    }
+    return sb.toString();
   }
 
   private boolean isPhysicalLeaf(FullParsNode node, Map<Integer, FullParsNode> fflById) {
