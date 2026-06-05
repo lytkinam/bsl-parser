@@ -56,7 +56,7 @@ public class QueryReconstructor {
       String fileName = fflFile.getFileName().toString();
       String alias = extractAliasFromFileName(fileName, baseName);
 
-      String sql = reconstruct(fflNodes);
+      String sql = reconstruct(fflNodes, fullParsById);
 
       // Output path: RESTORED_QUERIES/<baseName>/<nodeId>_<nodeName>/<alias>.sql
       Path outputDir = fullParsDir.getParent().resolve("RESTORED_QUERIES")
@@ -100,13 +100,19 @@ public class QueryReconstructor {
   }
 
   public String reconstruct(List<FullParsNode> fflNodes) {
+    return reconstruct(fflNodes, null);
+  }
+
+  public String reconstruct(List<FullParsNode> fflNodes, Map<Integer, FullParsNode> fullParsById) {
     TopologicalSorter sorter = new TopologicalSorter();
     List<Integer> order = sorter.sort(fflNodes);
 
     Map<Integer, FullParsNode> fflById = fflNodes.stream()
       .collect(Collectors.toMap(FullParsNode::getId, n -> n));
 
-    QueryNodeBuilder nodeBuilder = new QueryNodeBuilder(fflById);
+    QueryNodeBuilder nodeBuilder = fullParsById != null
+      ? new QueryNodeBuilder(fflById, fullParsById)
+      : new QueryNodeBuilder(fflById);
     SqlGenerator sqlGenerator = new SqlGenerator();
 
     List<String> queries = new ArrayList<>();

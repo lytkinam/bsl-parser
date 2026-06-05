@@ -155,6 +155,23 @@ public class LineParsModelBuilder {
         processDataSource(parent, ds);
       }
     }
+
+    // Process inline subqueries (from where, virtualTable, select, joinCondition)
+    if (ast.getInlineSubqueries() != null) {
+      for (InlineSubquery inline : ast.getInlineSubqueries()) {
+        LineParsNode sub = new LineParsNode();
+        sub.setId(idCounter++);
+        sub.setSdblId(parent.getSdblId());
+        sub.setName(inline.getName());
+        sub.setType("sub_query");
+        copyQueryFields(sub, inline.getQuery());
+        sub.setUpqueryId(parent.getId());
+        nodes.add(sub);
+        parent.getSubqueryIds().add(sub.getId());
+
+        processAst(sub, inline.getQuery());
+      }
+    }
   }
 
   private void copyQueryFields(LineParsNode node, QueryAst ast) {

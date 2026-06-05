@@ -60,7 +60,23 @@ public class LineParsHierarchyBuilder {
       }
     }
 
-    // Subqueries are handled via from[].subquery as regular data sources
+    // 3. Inline subqueries (not in from[], but in subqueryIds)
+    // Add any subqueryIds that are not already represented in tableHierarchy
+    for (int subId : node.getSubqueryIds()) {
+      boolean alreadyPresent = result.getTableHierarchy().stream()
+        .anyMatch(h -> subId == (h.getId() != null ? h.getId() : -1));
+      if (!alreadyPresent) {
+        LineParsNode subNode = nodeById.get(subId);
+        if (subNode != null) {
+          HierarchyNode childNode = new HierarchyNode();
+          childNode.setId(subNode.getId());
+          childNode.setName(subNode.getName());
+          childNode.setTypeHierarchy("from");
+          childNode.setSource(subNode.getName());
+          result.getTableHierarchy().add(childNode);
+        }
+      }
+    }
 
     return result;
   }

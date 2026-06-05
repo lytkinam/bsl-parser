@@ -94,9 +94,14 @@ class SdqlQueryPackageAnalyzerTest {
         SdqlCli.main(new String[]{"examples/middle_example.sql", output.getAbsolutePath()});
 
         // RESTORED_QUERIES should exist with restored SQL files
-        Path restoredDir = tempDir.resolve("RESTORED_QUERIES").resolve("middle_example")
-            .resolve("74_ВТ_Суммы_ПР_ТранзитныеВиды");
-        assertThat(restoredDir).exists();
+        Path middleRestoredDir = tempDir.resolve("RESTORED_QUERIES").resolve("middle_example");
+        assertThat(middleRestoredDir).exists();
+        // Find any node directory (id may change when new features add nodes)
+        Path restoredDir = Files.list(middleRestoredDir)
+            .filter(Files::isDirectory)
+            .findFirst()
+            .orElse(null);
+        assertThat(restoredDir).isNotNull();
 
         Path restoredSql = restoredDir.resolve("Суммы_ПР_ТранзитныеВиды_ЗадолженностьПенсии.sql");
         assertThat(restoredSql).exists();
@@ -213,7 +218,7 @@ class SdqlQueryPackageAnalyzerTest {
         // Check second union leaf
         FieldLineageNode union1 = child.getChildFields().get(1);
         assertThat(union1.getChildName()).isEqualTo("union_1");
-        assertThat(union1.getId()).isEqualTo(27);
+        assertThat(union1.getId()).isEqualTo(28);
         assertThat(union1.getText()).isEqualTo("уп_РезервыОбороты.НомерСчета");
         assertThat(union1.getChildFields()).hasSize(1);
         FieldLineageNode leaf1 = union1.getChildFields().get(0);
@@ -222,9 +227,9 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(leaf1.getAlias()).isEqualTo("НомерСчета");
 
         // 2. Union part with chain of fields — must NOT produce false child
-        FieldLineageNode chainResult = extractor.extract(39, "ПенсионныйСчет");
+        FieldLineageNode chainResult = extractor.extract(46, "ПенсионныйСчет");
         assertThat(chainResult).isNotNull();
-        assertThat(chainResult.getId()).isEqualTo(39);
+        assertThat(chainResult.getId()).isEqualTo(46);
         assertThat(chainResult.getText()).isEqualTo("ВТ_ПенсионныеСчета_ПР.ПенсионныйСчет.Владелец.ПенсионныйСчет");
         // Should have exactly one child (ВТ_ПенсионныеСчета_ПР), not two
         assertThat(chainResult.getChildFields()).hasSize(1);
@@ -232,9 +237,9 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(chainResult.getChildFields().get(0).getId()).isEqualTo(24);
 
         // 3. Physical table leaf
-        FieldLineageNode leafResult = extractor.extract(42, "ПенсионныйСчет");
+        FieldLineageNode leafResult = extractor.extract(51, "ПенсионныйСчет");
         assertThat(leafResult).isNotNull();
-        assertThat(leafResult.getId()).isEqualTo(42);
+        assertThat(leafResult.getId()).isEqualTo(51);
         assertThat(leafResult.getText()).isEqualTo("Резервы.НомерСчета");
         assertThat(leafResult.getChildFields()).hasSize(1);
         FieldLineageNode physLeaf = leafResult.getChildFields().get(0);
@@ -244,5 +249,88 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(physLeaf.getAlias()).isEqualTo("НомерСчета");
         assertThat(physLeaf.getText()).isEqualTo("Резервы.НомерСчета");
         assertThat(physLeaf.getChildFields()).isEmpty();
+    }
+
+    @Test
+    void testInlineSubqueries() throws Exception {
+        File output = tempDir.resolve("out_inline").toFile();
+        SdqlCli.main(new String[]{"examples/example_4.sql", output.getAbsolutePath()});
+
+        // SRS04 FR-3.7.1: SDBL_PARS model contains inlineSubqueries
+        QueryModel model = ModelJsonMapper.read(
+            output.toPath().resolve("sdbl_parse_model_example_4.json"));
+        assertThat(model.getNodes()).hasSize(1);
+        var query = model.getNodes().get(0).getQuery();
+        assertThat(query.getInlineSubqueries()).hasSize(2);
+
+        // FR-3.7.1: inline subqueries have correct context and name
+        var inline1 = query.getInlineSubqueries().get(0);
+        assertThat(inline1.getContext()).isEqualTo("virtualTable");
+        assertThat(inline1.getName()).isEqualTo("Результат_1_INLINE_1");
+        assertThat(inline1.getQuery()).isNotNull();
+        assertThat(inline1.getQuery().getFrom().get(0).getTable()).isEqualTo("вт_НашиДоговора");
+
+        var inline2 = query.getInlineSubqueries().get(1);
+        assertThat(inline2.getContext()).isEqualTo("where");
+        assertThat(inline2.getName()).isEqualTo("Результат_1_INLINE_2");
+        assertThat(inline2.getQuery()).isNotNull();
+        assertThat(inline2.getQuery().getFrom().get(0).getTable()).isEqualTo("Справочник.Контрагенты");
+
+        // FR-3.7.2: Original query text replaced with inline references
+        assertThat(query.getFrom().get(1).getVirtualTable()).contains("Результат_1_INLINE_1");
+        assertThat(query.getWhere()).contains("Результат_1_INLINE_2");
+        assertThat(query.getWhere()).doesNotContain("ВЫБРАТЬ");
+
+        // FR-3.7.3: LINE_PARS contains sub_query nodes for inline subqueries
+        Path lineParsModelPath = tempDir.resolve("LINE_PARS/LINE_PARS_model_example_4.json");
+        assertThat(lineParsModelPath).exists();
+        ObjectMapper mapper = new ObjectMapper();
+        LineParsModel lineParsModel = mapper.readValue(lineParsModelPath.toFile(), LineParsModel.class);
+        var inlineNodes = lineParsModel.getNodes().stream()
+            .filter(n -> n.getName() != null && n.getName().contains("_INLINE_"))
+            .toList();
+        assertThat(inlineNodes).hasSize(2);
+        assertThat(inlineNodes.get(0).getType()).isEqualTo("sub_query");
+        assertThat(inlineNodes.get(1).getType()).isEqualTo("sub_query");
+
+        // FR-3.7.3: Hierarchy contains inline-SUB nodes in table_hierarchy
+        Path hierarchyPath = tempDir.resolve("LINE_PARS/LINE_PARS_hierarchy_example_4.json");
+        assertThat(hierarchyPath).exists();
+        var hierarchy = mapper.readValue(hierarchyPath.toFile(),
+            new TypeReference<List<HierarchyNode>>() {});
+        var rootNode = hierarchy.stream()
+            .filter(n -> "Результат_1".equals(n.getName()))
+            .findFirst().orElse(null);
+        assertThat(rootNode).isNotNull();
+        var inlineHierarchy = rootNode.getTableHierarchy().stream()
+            .filter(n -> n.getName() != null && n.getName().contains("_INLINE_"))
+            .toList();
+        assertThat(inlineHierarchy).hasSize(2);
+        assertThat(inlineHierarchy.get(0).getTypeHierarchy()).isEqualTo("from");
+        assertThat(inlineHierarchy.get(1).getTypeHierarchy()).isEqualTo("from");
+
+        // FR-3.7.3: Restored SQL contains original inline subqueries in parentheses
+        Path restoredDir = tempDir.resolve("RESTORED_QUERIES/example_4");
+        assertThat(restoredDir).exists();
+        Path restoredNodeDir = Files.list(restoredDir)
+            .filter(Files::isDirectory)
+            .findFirst()
+            .orElse(null);
+        assertThat(restoredNodeDir).isNotNull();
+        Path restoredSql = Files.list(restoredNodeDir)
+            .filter(f -> f.toString().endsWith(".sql"))
+            .findFirst()
+            .orElse(null);
+        assertThat(restoredSql).isNotNull();
+        String sql = Files.readString(restoredSql);
+        assertThat(sql).contains("ВЫБРАТЬ");
+        assertThat(sql).contains("ИЗ");
+        // Inline subquery should be restored back to (ВЫБРАТЬ ...)
+        assertThat(sql).contains("(");
+        assertThat(sql).contains("вт_НашиДоговора");
+        assertThat(sql).contains("Справочник.Контрагенты");
+        // Should NOT contain inline references
+        assertThat(sql).doesNotContain("Результат_1_INLINE_1");
+        assertThat(sql).doesNotContain("Результат_1_INLINE_2");
     }
 }

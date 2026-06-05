@@ -4,6 +4,7 @@ import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SqlGenerator {
 
@@ -116,14 +117,18 @@ public class SqlGenerator {
     // JOINs
     for (RestoredJoin join : node.getJoins()) {
       sb.append(formatJoinType(join.getJoinType())).append(" ");
-      sb.append(join.getSourceTable()).append(" КАК ").append(join.getAlias()).append("\n");
-      sb.append("ПО ").append(join.getCondition()).append("\n");
+      sb.append(inlineSubqueries(join.getSourceTable(), node)).append(" КАК ").append(join.getAlias()).append("\n");
+      sb.append("ПО ").append(inlineSubqueries(join.getCondition(), node)).append("\n");
     }
 
     // WHERE
     if (!node.getWhereConditions().isEmpty()) {
       sb.append("ГДЕ\n    ");
-      sb.append(String.join("\n    И ", node.getWhereConditions()));
+      List<String> whereLines = new ArrayList<>();
+      for (String cond : node.getWhereConditions()) {
+        whereLines.add(inlineSubqueries(cond, node));
+      }
+      sb.append(String.join("\n    И ", whereLines));
       sb.append("\n");
     }
 
@@ -137,7 +142,11 @@ public class SqlGenerator {
     // HAVING
     if (!node.getHavingConditions().isEmpty()) {
       sb.append("ИМЕЮЩИЕ\n    ");
-      sb.append(String.join("\n    И ", node.getHavingConditions()));
+      List<String> havingLines = new ArrayList<>();
+      for (String cond : node.getHavingConditions()) {
+        havingLines.add(inlineSubqueries(cond, node));
+      }
+      sb.append(String.join("\n    И ", havingLines));
       sb.append("\n");
     }
 
@@ -156,7 +165,7 @@ public class SqlGenerator {
     if (ds.getTable() != null) {
       source = ds.getTable();
     } else if (ds.getVirtualTable() != null) {
-      source = ds.getVirtualTable();
+      source = inlineSubqueries(ds.getVirtualTable(), parentNode);
     } else if (ds.getSubquery() != null) {
       // Inline subquery: generate SQL from the inline subquery node
       String subqueryName = (String) ds.getSubquery();
@@ -177,6 +186,24 @@ public class SqlGenerator {
 
     String alias = ds.getAlias() != null ? ds.getAlias() : source;
     return source + " КАК " + alias;
+  }
+
+  /**
+   * Replace inline subquery names with their SQL in the given text.
+   */
+  private String inlineSubqueries(String text, RestoredQueryNode node) {
+    if (text == null || node.getInlineSubqueries().isEmpty()) {
+      return text;
+    }
+    String result = text;
+    for (Map.Entry<String, RestoredQueryNode> entry : node.getInlineSubqueries().entrySet()) {
+      String name = entry.getKey();
+      if (result.contains(name)) {
+        String subSql = generateInline(entry.getValue());
+        result = result.replace(name, "(\n" + indent(subSql) + "\n    )");
+      }
+    }
+    return result;
   }
 
   private String indent(String sql) {

@@ -13,9 +13,15 @@ import java.util.Map;
 public class QueryNodeBuilder {
 
   private final Map<Integer, FullParsNode> fflById;
+  private final Map<Integer, FullParsNode> fullParsById;
 
   public QueryNodeBuilder(Map<Integer, FullParsNode> fflById) {
+    this(fflById, fflById);
+  }
+
+  public QueryNodeBuilder(Map<Integer, FullParsNode> fflById, Map<Integer, FullParsNode> fullParsById) {
     this.fflById = fflById;
+    this.fullParsById = fullParsById;
   }
 
   public RestoredQueryNode build(FullParsNode fflNode) {
@@ -84,6 +90,22 @@ public class QueryNodeBuilder {
       }
     }
 
+    // Inline subqueries from subqueryIds (for where, virtualTable, select, joinCondition)
+    if (fflNode.getSubqueryIds() != null) {
+      for (int subId : fflNode.getSubqueryIds()) {
+        FullParsNode subNode = fflById.get(subId);
+        if (subNode == null) {
+          subNode = fullParsById.get(subId);
+        }
+        if (subNode != null && subNode.getName() != null && subNode.getName().contains("_INLINE_")) {
+          if (!result.getInlineSubqueries().containsKey(subNode.getName())) {
+            RestoredQueryNode inlineSub = build(subNode);
+            result.getInlineSubqueries().put(subNode.getName(), inlineSub);
+          }
+        }
+      }
+    }
+
     return result;
   }
 
@@ -96,6 +118,11 @@ public class QueryNodeBuilder {
     if (parentNode.getSubqueryIds() == null) return null;
     for (int subId : parentNode.getSubqueryIds()) {
       FullParsNode candidate = fflById.get(subId);
+      if (candidate != null && subqueryName.equals(candidate.getName())) {
+        return candidate;
+      }
+      // Fallback to full model for inline subqueries not in FFL
+      candidate = fullParsById.get(subId);
       if (candidate != null && subqueryName.equals(candidate.getName())) {
         return candidate;
       }

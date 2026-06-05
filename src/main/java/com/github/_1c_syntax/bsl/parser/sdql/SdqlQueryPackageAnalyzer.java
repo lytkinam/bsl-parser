@@ -37,7 +37,8 @@ public class SdqlQueryPackageAnalyzer {
         // 2. SECONDARY PASS: parse entire file via ANTLR → AST per node
         SDBLTokenizer tokenizer = new SDBLTokenizer(content);
         SDBLParser.QueryPackageContext ast = tokenizer.getAst();
-        QueryPackageVisitor visitor = new QueryPackageVisitor(content);
+        List<String> queryNames = fullNodes.stream().map(QueryNode::getName).toList();
+        QueryPackageVisitor visitor = new QueryPackageVisitor(content, queryNames);
         List<QueryAst> asts = visitor.visitQueryPackage(ast);
 
         // 3. MERGE: attach AST to primary nodes by index

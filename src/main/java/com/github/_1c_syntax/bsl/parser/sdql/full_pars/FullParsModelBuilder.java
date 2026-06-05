@@ -22,6 +22,7 @@ public class FullParsModelBuilder {
   private static final ObjectMapper MAPPER = new ObjectMapper();
   private static final Pattern FIELD_REF_PATTERN = Pattern.compile("(?U)([\\w]+)\\.([\\w]+)");
   private static final Pattern THREE_PART_PATTERN = Pattern.compile("(?U)([\\w]+)\\.([\\w]+)\\.([\\w]+)");
+  private static final Pattern INLINE_SUB_PATTERN = Pattern.compile("(?U)[А-Яа-яA-Za-z_][А-Яа-яA-Za-z0-9_]*_INLINE_\\d+");
 
   private Map<Integer, LineParsNode> nodeById;
   private Map<String, LineParsNode> nodeByName;
@@ -207,6 +208,21 @@ public class FullParsModelBuilder {
     for (TableFieldRef ref : candidates) {
       result.addAll(resolveChildField(nodeId, ref.aliasTable, ref.fieldName));
     }
+
+    // Also check for inline subquery references in text
+    Matcher inline = INLINE_SUB_PATTERN.matcher(text);
+    while (inline.find()) {
+      String inlineName = inline.group();
+      LineParsNode inlineNode = nodeByName.get(inlineName);
+      if (inlineNode != null) {
+        FullParsChildField child = new FullParsChildField();
+        child.setNodeId(inlineNode.getId());
+        child.setNodeName(inlineNode.getName());
+        child.setSource(inlineNode.getName());
+        result.add(child);
+      }
+    }
+
     return result;
   }
 

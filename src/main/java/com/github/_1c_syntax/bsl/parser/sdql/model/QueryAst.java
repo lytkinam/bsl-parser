@@ -26,4 +26,5 @@ public class QueryAst {
   private Boolean autoorder;
   private List<String> orderBy;
   private TotalBy totals;
+  private List<InlineSubquery> inlineSubqueries;
 }
