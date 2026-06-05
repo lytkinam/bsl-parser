@@ -198,11 +198,27 @@ public class FullFieldLineageBuilder {
       }
     }
 
+    // Collect subquery_ids from where, having, and virtualTable in from
+    List<Integer> subqueryIds = new ArrayList<>();
+    if (result.getWhere() != null && result.getWhere().getSubqueryIds() != null) {
+      subqueryIds.addAll(result.getWhere().getSubqueryIds());
+    }
+    if (result.getHaving() != null && result.getHaving().getSubqueryIds() != null) {
+      subqueryIds.addAll(result.getHaving().getSubqueryIds());
+    }
+    if (result.getFrom() != null) {
+      for (DataSource ds : result.getFrom()) {
+        if (ds.getVirtualTable() != null && ds.getVirtualTable().getSubqueryIds() != null) {
+          subqueryIds.addAll(ds.getVirtualTable().getSubqueryIds());
+        }
+      }
+    }
+
     // Group by node_id
     Map<Integer, List<FullParsChildField>> grouped = fullChildFields.stream()
       .collect(Collectors.groupingBy(FullParsChildField::getNodeId, LinkedHashMap::new, Collectors.toList()));
 
-    // Recursive calls
+    // Recursive calls for child_fields
     for (Map.Entry<Integer, List<FullParsChildField>> entry : grouped.entrySet()) {
       int usedNodeId = entry.getKey();
       List<String> usedAliases = entry.getValue().stream()
@@ -210,6 +226,11 @@ public class FullFieldLineageBuilder {
         .distinct()
         .collect(Collectors.toList());
       buildLineage(usedNodeId, usedAliases, resultMap);
+    }
+
+    // Recursive calls for subqueries (inline subqueries in WHERE/HAVING/VirtualTable)
+    for (int sqId : subqueryIds) {
+      buildLineage(sqId, List.of(), resultMap);
     }
   }
 
