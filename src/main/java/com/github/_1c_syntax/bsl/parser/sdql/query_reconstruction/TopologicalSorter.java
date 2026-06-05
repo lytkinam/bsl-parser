@@ -30,6 +30,7 @@ public class TopologicalSorter {
 
       Set<Integer> childNodeIds = collectChildNodeIds(node);
       for (int childId : childNodeIds) {
+        if (!nodeById.containsKey(childId)) continue;
         dependencies.get(nodeId).add(childId);
         dependents.putIfAbsent(childId, new HashSet<>());
         dependents.get(childId).add(nodeId);
@@ -62,7 +63,7 @@ public class TopologicalSorter {
     }
 
     // Reverse: from leaves to root
-    Collections.reverse(result);
+    // Collections.reverse(result);
     return result;
   }
 
@@ -125,6 +126,20 @@ public class TopologicalSorter {
             result.add(child.getNodeId());
           }
         }
+      }
+    }
+
+    // From union_nodes_ids
+    if (node.getUnionNodesIds() != null) {
+      for (int unionId : node.getUnionNodesIds()) {
+        result.add(unionId);
+      }
+    }
+
+    // From subquery_ids
+    if (node.getSubqueryIds() != null) {
+      for (int subId : node.getSubqueryIds()) {
+        result.add(subId);
       }
     }
 
