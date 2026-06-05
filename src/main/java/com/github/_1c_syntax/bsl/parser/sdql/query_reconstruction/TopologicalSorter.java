@@ -62,8 +62,11 @@ public class TopologicalSorter {
       }
     }
 
-    // Kahn's algorithm
-    Queue<Integer> queue = new LinkedList<>();
+    // Kahn's algorithm with PriorityQueue sorted by sdbl_id
+    // This ensures temp tables are defined before they are used
+    // when multiple nodes have no unresolved dependencies
+    PriorityQueue<Integer> queue = new PriorityQueue<>(
+      Comparator.comparingInt((Integer id) -> nodeById.get(id).getSdblId()));
     Map<Integer, Integer> inDegree = new HashMap<>();
 
     for (int nodeId : dependencies.keySet()) {
