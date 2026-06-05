@@ -9,6 +9,7 @@ import com.github._1c_syntax.bsl.parser.sdql.md.HierarchyMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.LineParsFieldLineageMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.LineParsModelMdBuilder;
 import com.github._1c_syntax.bsl.parser.sdql.md.SdqlModelMdBuilder;
+import com.github._1c_syntax.bsl.parser.sdql.query_reconstruction.QueryReconstructor;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -58,6 +59,10 @@ public class SdqlCli {
         // Generate Markdown for LINE_PARS field lineage
         java.nio.file.Path fieldLineageDir = outputDir.toPath().getParent().resolve("field_lineage");
         new LineParsFieldLineageMdBuilder().build(fieldLineageDir, baseName);
+
+        // 7. Build restored queries from FFL + FULL_PARS
+        QueryReconstructor reconstructor = new QueryReconstructor();
+        reconstructor.build(fullParsDir, baseName);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
     }

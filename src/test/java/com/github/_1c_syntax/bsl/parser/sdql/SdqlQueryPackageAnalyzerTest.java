@@ -89,6 +89,34 @@ class SdqlQueryPackageAnalyzerTest {
     }
 
     @Test
+    void testRestoredQueryFile() throws Exception {
+        File output = tempDir.resolve("out_restored").toFile();
+        SdqlCli.main(new String[]{"examples/middle_example.sql", output.getAbsolutePath()});
+
+        // RESTORED_QUERIES should exist with restored SQL files
+        Path restoredDir = tempDir.resolve("RESTORED_QUERIES").resolve("middle_example")
+            .resolve("74_ВТ_Суммы_ПР_ТранзитныеВиды");
+        assertThat(restoredDir).exists();
+
+        Path restoredSql = restoredDir.resolve("Суммы_ПР_ТранзитныеВиды_ЗадолженностьПенсии.sql");
+        assertThat(restoredSql).exists();
+
+        String sql = Files.readString(restoredSql);
+        // Check basic SQL blocks
+        assertThat(sql).contains("ВЫБРАТЬ");
+        assertThat(sql).contains("ИЗ");
+        assertThat(sql).contains("ПОМЕСТИТЬ ВТ_ТранзитныеВидыНачалоКонец");
+        assertThat(sql).contains("ПОМЕСТИТЬ ВТ_Суммы_ПР_ТранзитныеВиды");
+        assertThat(sql).contains("СГРУППИРОВАТЬ ПО");
+
+        // Check that restored SQL contains expected blocks
+        assertThat(sql).contains("ПОМЕСТИТЬ ВТ_ТранзитныеВидыНачалоКонец");
+        assertThat(sql).contains("ПОМЕСТИТЬ ВТ_Суммы_ПР_ТранзитныеВиды");
+        assertThat(sql).contains("СГРУППИРОВАТЬ ПО");
+        assertThat(sql).contains("ОБЪЕДИНИТЬ ВСЕ");
+    }
+
+    @Test
     void testFieldLineageExtraction() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         LineParsModel model = mapper.readValue(
