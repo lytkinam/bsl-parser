@@ -4,7 +4,9 @@ import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 public class RestoredQueryNode {
@@ -22,4 +24,6 @@ public class RestoredQueryNode {
   private List<String> orderByFields = new ArrayList<>();
   private String limitations;
   private List<RestoredQueryNode> unionParts = new ArrayList<>();
+  /** Inline subqueries by name (from from[].subquery) */
+  private Map<String, RestoredQueryNode> inlineSubqueries = new HashMap<>();
 }

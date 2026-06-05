@@ -109,6 +109,19 @@ class SdqlQueryPackageAnalyzerTest {
         assertThat(sql).contains("ПОМЕСТИТЬ ВТ_Суммы_ПР_ТранзитныеВиды");
         assertThat(sql).contains("СГРУППИРОВАТЬ ПО");
 
+        // SRS02 v1.4: INTO inserted in UNION_0 between SELECT and FROM, not at end
+        // Check that ПОМЕСТИТЬ ВТ_ОстаткиТранзитныеВиды appears before first ИЗ in its query block
+        int intoOstIdx = sql.indexOf("ПОМЕСТИТЬ ВТ_ОстаткиТранзитныеВиды");
+        int intoSumIdx = sql.indexOf("ПОМЕСТИТЬ ВТ_Суммы_ПР_ТранзитныеВиды");
+        assertThat(intoOstIdx).isGreaterThan(0);
+        assertThat(intoSumIdx).isGreaterThan(0);
+
+        // SRS02 v1.4: sub_query nodes are inlined, not separate queries
+        assertThat(sql).doesNotContain("ПОМЕСТИТЬ ВТ_Суммы_ПР_ТранзитныеВиды_SUB_1");
+        assertThat(sql).doesNotContain("ПОМЕСТИТЬ ВТ_ОстаткиТранзитныеВиды_UNION_0_SUB_1");
+        // Check inline subquery in parentheses
+        assertThat(sql).contains("ИЗ\n    (");
+
         // Check that restored SQL contains expected blocks
         assertThat(sql).contains("ПОМЕСТИТЬ ВТ_ТранзитныеВидыНачалоКонец");
         assertThat(sql).contains("ПОМЕСТИТЬ ВТ_Суммы_ПР_ТранзитныеВиды");

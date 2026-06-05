@@ -1,23 +1,21 @@
 package com.github._1c_syntax.bsl.parser.sdql.query_reconstruction;
 
-import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullParsChildField;
-import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullParsConditionField;
-import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullParsJoinCondition;
 import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullParsNode;
 import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullParsSelectField;
 import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
 import com.github._1c_syntax.bsl.parser.sdql.model.JoinPart;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class QueryNodeBuilder {
 
-  private final Map<Integer, FullParsNode> fullParsById;
+  private final Map<Integer, FullParsNode> fflById;
 
-  public QueryNodeBuilder(Map<Integer, FullParsNode> fullParsById) {
-    this.fullParsById = fullParsById;
+  public QueryNodeBuilder(Map<Integer, FullParsNode> fflById) {
+    this.fflById = fflById;
   }
 
   public RestoredQueryNode build(FullParsNode fflNode) {
@@ -37,57 +35,77 @@ public class QueryNodeBuilder {
       }
     }
 
-    // FROM + JOINs
+    // FROM + JOINs + inline subqueries
     if (fflNode.getFrom() != null) {
       for (DataSource ds : fflNode.getFrom()) {
+        // Handle inline subquery: from[].subquery references a sub_query node by name
+        if (ds.getSubquery() != null) {
+          String subqueryName = (String) ds.getSubquery();
+          FullParsNode subNode = findSubQueryNode(fflNode, subqueryName);
+          if (subNode != null) {
+            RestoredQueryNode inlineSub = build(subNode);
+            result.getInlineSubqueries().put(subqueryName, inlineSub);
+          }
+        }
         result.getFrom().add(ds);
         extractJoins(ds, result);
       }
     }
 
-    // WHERE
-    for (FullParsConditionField cf : fflNode.getWhereFields()) {
-      result.getWhereConditions().add(cf.getText());
+    // WHERE — primary field (string), not where_fields
+    if (fflNode.getWhere() != null && !fflNode.getWhere().isEmpty()) {
+      result.getWhereConditions().add(fflNode.getWhere());
     }
 
-    // GROUP BY
-    for (FullParsConditionField cf : fflNode.getGroupByFields()) {
-      result.getGroupByFields().add(cf.getText());
+    // GROUP BY — primary field (array of strings), not group_by_fields
+    if (fflNode.getGroupBy() != null) {
+      result.getGroupByFields().addAll(fflNode.getGroupBy());
     }
 
-    // HAVING
-    for (FullParsConditionField cf : fflNode.getHavingFields()) {
-      result.getHavingConditions().add(cf.getText());
+    // HAVING — primary field (string), not having_fields
+    if (fflNode.getHaving() != null && !fflNode.getHaving().isEmpty()) {
+      result.getHavingConditions().add(fflNode.getHaving());
     }
 
-    // UNION parts
+    // UNION parts — from FFL, not FULL_PARS
     if (fflNode.getUnionNodesIds() != null && !fflNode.getUnionNodesIds().isEmpty()) {
       for (int unionId : fflNode.getUnionNodesIds()) {
-        FullParsNode unionNode = fullParsById.get(unionId);
+        FullParsNode unionNode = fflById.get(unionId);
         if (unionNode != null) {
           RestoredQueryNode unionPart = build(unionNode);
           result.getUnionParts().add(unionPart);
         }
       }
-      // Union type from the first part or default
-      if (!result.getUnionParts().isEmpty()) {
-        FullParsNode firstUnion = fullParsById.get(fflNode.getUnionNodesIds().get(0));
-        if (firstUnion != null && firstUnion.getUnionType() != null) {
-          result.setUnionType(firstUnion.getUnionType());
-        } else {
-          result.setUnionType("union_all");
-        }
+      // Union type from the parent or first part
+      if (fflNode.getUnionType() != null) {
+        result.setUnionType(fflNode.getUnionType());
+      } else if (!result.getUnionParts().isEmpty()) {
+        result.setUnionType("union_all");
       }
     }
 
     return result;
   }
 
+  /**
+   * Find sub_query node by name among parent's subquery_ids.
+   * SRS02 FR-3.4.4: "Сопоставление выполняется через subquery_ids текущей ноды:
+   * среди нод из subquery_ids выбирается та, чьё name совпадает со значением from[].subquery"
+   */
+  private FullParsNode findSubQueryNode(FullParsNode parentNode, String subqueryName) {
+    if (parentNode.getSubqueryIds() == null) return null;
+    for (int subId : parentNode.getSubqueryIds()) {
+      FullParsNode candidate = fflById.get(subId);
+      if (candidate != null && subqueryName.equals(candidate.getName())) {
+        return candidate;
+      }
+    }
+    return null;
+  }
+
   private String buildSelectExpression(FullParsSelectField sf) {
     String text = sf.getText() != null ? sf.getText() : "";
     String alias = sf.getAlias() != null ? sf.getAlias() : "";
-
-    // Always output "text КАК alias" per SRS02 FR-3.3.1
     return text + " КАК " + alias;
   }
 

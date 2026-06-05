@@ -13,32 +13,56 @@ public class TopologicalSorter {
 
   /**
    * Returns node ids in order from leaves to root (dependencies first).
-   * Physical-only leaf nodes (no child_fields with node_id) are excluded.
+   * sub_query nodes are excluded — they are inlined into parent queries.
+   * Physical-only leaf nodes are also excluded.
    */
   public List<Integer> sort(List<FullParsNode> fflNodes) {
     Map<Integer, FullParsNode> nodeById = fflNodes.stream()
       .collect(Collectors.toMap(FullParsNode::getId, n -> n));
 
+    // Identify sub_query nodes
+    Set<Integer> subQueryIds = fflNodes.stream()
+      .filter(n -> "sub_query".equals(n.getType()))
+      .map(FullParsNode::getId)
+      .collect(Collectors.toSet());
+
     // Build graph: edge from dependent -> dependency
+    // sub_query nodes are NOT in the graph as vertices, but their dependencies
+    // are propagated to their parents via subquery_ids
     Map<Integer, Set<Integer>> dependencies = new HashMap<>();
     Map<Integer, Set<Integer>> dependents = new HashMap<>();
 
     for (FullParsNode node : fflNodes) {
       int nodeId = node.getId();
+      if (subQueryIds.contains(nodeId)) {
+        continue; // sub_query nodes are not in the topological order
+      }
       dependencies.putIfAbsent(nodeId, new HashSet<>());
       dependents.putIfAbsent(nodeId, new HashSet<>());
 
-      Set<Integer> childNodeIds = collectChildNodeIds(node);
+      // Collect child node ids from this node's fields
+      Set<Integer> childNodeIds = collectChildNodeIds(node, nodeById);
       for (int childId : childNodeIds) {
         if (!nodeById.containsKey(childId)) continue;
-        dependencies.get(nodeId).add(childId);
-        dependents.putIfAbsent(childId, new HashSet<>());
-        dependents.get(childId).add(nodeId);
+        if (subQueryIds.contains(childId)) {
+          // If child is a sub_query, add its dependencies instead
+          Set<Integer> subDeps = collectChildNodeIds(nodeById.get(childId), nodeById);
+          for (int subDepId : subDeps) {
+            if (!nodeById.containsKey(subDepId)) continue;
+            if (subQueryIds.contains(subDepId)) continue; // nested sub_query — skip
+            dependencies.get(nodeId).add(subDepId);
+            dependents.putIfAbsent(subDepId, new HashSet<>());
+            dependents.get(subDepId).add(nodeId);
+          }
+        } else {
+          dependencies.get(nodeId).add(childId);
+          dependents.putIfAbsent(childId, new HashSet<>());
+          dependents.get(childId).add(nodeId);
+        }
       }
     }
 
     // Kahn's algorithm
-    // Start with nodes that have no dependencies (or only physical dependencies)
     Queue<Integer> queue = new LinkedList<>();
     Map<Integer, Integer> inDegree = new HashMap<>();
 
@@ -62,12 +86,10 @@ public class TopologicalSorter {
       }
     }
 
-    // Reverse: from leaves to root
-    // Collections.reverse(result);
-    return result;
+    return result; // leaves first, root last
   }
 
-  private Set<Integer> collectChildNodeIds(FullParsNode node) {
+  private Set<Integer> collectChildNodeIds(FullParsNode node, Map<Integer, FullParsNode> nodeById) {
     Set<Integer> result = new HashSet<>();
 
     // From select child_fields

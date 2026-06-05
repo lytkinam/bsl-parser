@@ -56,7 +56,7 @@ public class QueryReconstructor {
       String fileName = fflFile.getFileName().toString();
       String alias = extractAliasFromFileName(fileName, baseName);
 
-      String sql = reconstruct(fflNodes, fullParsById);
+      String sql = reconstruct(fflNodes);
 
       // Output path: RESTORED_QUERIES/<baseName>/<nodeId>_<nodeName>/<alias>.sql
       Path outputDir = fullParsDir.getParent().resolve("RESTORED_QUERIES")
@@ -69,17 +69,12 @@ public class QueryReconstructor {
   }
 
   private String extractAliasFromFileName(String fileName, String baseName) {
-    // FFL_middle_example_74_ВТ_Суммы_ПР_ТранзитныеВиды_ЗадолженностьПенсии.json
     String prefix = "FFL_" + baseName + "_";
     if (fileName.startsWith(prefix)) {
       String rest = fileName.substring(prefix.length());
-      // rest: 74_ВТ_Суммы_ПР_ТранзитныеВиды_ЗадолженностьПенсии.json
-      // Remove .json
       rest = rest.substring(0, rest.length() - 5);
-      // Find first underscore after nodeId
       int firstUnderscore = rest.indexOf('_');
       if (firstUnderscore > 0) {
-        // Skip nodeId and nodeName to get alias
         String afterNodeId = rest.substring(firstUnderscore + 1);
         int aliasStart = afterNodeId.indexOf('_');
         if (aliasStart > 0) {
@@ -87,7 +82,6 @@ public class QueryReconstructor {
         }
       }
     }
-    // Fallback: remove prefix and .json
     String result = fileName;
     if (result.startsWith(prefix)) {
       result = result.substring(prefix.length());
@@ -95,7 +89,6 @@ public class QueryReconstructor {
     if (result.endsWith(".json")) {
       result = result.substring(0, result.length() - 5);
     }
-    // Remove nodeId and nodeName (everything up to second underscore)
     int first = result.indexOf('_');
     if (first > 0) {
       int second = result.indexOf('_', first + 1);
@@ -106,14 +99,14 @@ public class QueryReconstructor {
     return result;
   }
 
-  public String reconstruct(List<FullParsNode> fflNodes, Map<Integer, FullParsNode> fullParsById) {
+  public String reconstruct(List<FullParsNode> fflNodes) {
     TopologicalSorter sorter = new TopologicalSorter();
     List<Integer> order = sorter.sort(fflNodes);
 
     Map<Integer, FullParsNode> fflById = fflNodes.stream()
       .collect(Collectors.toMap(FullParsNode::getId, n -> n));
 
-    QueryNodeBuilder nodeBuilder = new QueryNodeBuilder(fullParsById);
+    QueryNodeBuilder nodeBuilder = new QueryNodeBuilder(fflById);
     SqlGenerator sqlGenerator = new SqlGenerator();
 
     List<String> queries = new ArrayList<>();
@@ -122,7 +115,12 @@ public class QueryReconstructor {
       FullParsNode fflNode = fflById.get(nodeId);
       if (fflNode == null) continue;
 
-      // Skip physical-only leaf nodes (no into, no child node dependencies, not a temp_query/sub_query)
+      // Skip sub_query nodes — they are inlined into parent queries
+      if ("sub_query".equals(fflNode.getType())) {
+        continue;
+      }
+
+      // Skip physical-only leaf nodes
       if (isPhysicalLeaf(fflNode, fflById)) {
         continue;
       }
@@ -143,23 +141,28 @@ public class QueryReconstructor {
   }
 
   private boolean isPhysicalLeaf(FullParsNode node, Map<Integer, FullParsNode> fflById) {
-    // A node is a physical leaf if it has no into (not creating a temp table)
-    // and all its child_fields point to physical tables (node_id=null)
-    // or it has no child_fields at all
+    // Nodes that create temp tables are never leaves
     if (node.getInto() != null) {
       return false;
     }
+    // temp_query always produces a query
     if ("temp_query".equals(node.getType())) {
       return false;
     }
+    // sub_query is inlined, not a separate query
     if ("sub_query".equals(node.getType())) {
+      return true;
+    }
+    // Virtual union parents (with union_nodes_ids) are not leaves — they generate UNION
+    if ("union_query".equals(node.getType()) && node.getUnionNodesIds() != null && !node.getUnionNodesIds().isEmpty()) {
       return false;
     }
-    if ("union_query".equals(node.getType())) {
+    // select nodes also produce queries
+    if ("select".equals(node.getType())) {
       return false;
     }
 
-    // Check if any child_fields reference another node in FFL
+    // A node is a leaf if it has no references to other nodes (all child_fields have node_id=null)
     boolean hasNodeRefs = hasNodeIdRefs(node);
     return !hasNodeRefs;
   }

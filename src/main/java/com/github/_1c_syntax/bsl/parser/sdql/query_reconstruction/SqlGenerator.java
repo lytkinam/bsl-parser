@@ -1,18 +1,33 @@
 package com.github._1c_syntax.bsl.parser.sdql.query_reconstruction;
 
 import com.github._1c_syntax.bsl.parser.sdql.model.DataSource;
-import com.github._1c_syntax.bsl.parser.sdql.model.JoinPart;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SqlGenerator {
 
+  /**
+   * Generate SQL for a node. For sub_query nodes, generates inline SQL without INTO and semicolon.
+   */
   public String generate(RestoredQueryNode node) {
     if (!node.getUnionParts().isEmpty()) {
       return generateUnion(node);
     }
     return generateSingleQuery(node);
+  }
+
+  /**
+   * Generate SQL for inline use (inside parent FROM clause).
+   * No INTO, no trailing semicolon.
+   */
+  public String generateInline(RestoredQueryNode node) {
+    String sql = generate(node);
+    // Remove trailing semicolon for inline use
+    if (sql.endsWith(";")) {
+      sql = sql.substring(0, sql.length() - 1);
+    }
+    return sql;
   }
 
   private String generateUnion(RestoredQueryNode node) {
@@ -25,13 +40,34 @@ public class SqlGenerator {
       ? "\n\nОБЪЕДИНИТЬ ВСЕ\n\n"
       : "\n\nОБЪЕДИНИТЬ\n\n";
 
-    String query = String.join(separator, parts);
-
-    if (node.getInto() != null) {
-      query += "\n\nПОМЕСТИТЬ " + node.getInto();
+    // If temp_query with into — insert ПОМЕСТИТЬ into UNION_0 between SELECT and FROM
+    if (node.getInto() != null && !parts.isEmpty() && isTempQuery(node)) {
+      String firstPart = parts.get(0);
+      firstPart = insertBeforeFirstFrom(firstPart, "\nПОМЕСТИТЬ " + node.getInto());
+      parts.set(0, firstPart);
     }
 
-    return query;
+    return String.join(separator, parts);
+  }
+
+  /**
+   * Insert text before the first occurrence of "ИЗ" or "FROM" (case-insensitive for SDBL).
+   * Looks for "\nИЗ" to avoid matching "ИЗ" inside identifiers.
+   */
+  private String insertBeforeFirstFrom(String query, String toInsert) {
+    int idx = query.indexOf("\nИЗ");
+    if (idx == -1) {
+      idx = query.indexOf("\nИЗ ");
+    }
+    if (idx == -1) {
+      // Fallback: try without newline
+      idx = query.indexOf("ИЗ");
+    }
+    if (idx == -1) {
+      // No FROM found — append at end
+      return query + toInsert;
+    }
+    return query.substring(0, idx) + toInsert + query.substring(idx);
   }
 
   private String generateSingleQuery(RestoredQueryNode node) {
@@ -53,8 +89,8 @@ public class SqlGenerator {
       sb.append("\n");
     }
 
-    // INTO
-    if (node.getInto() != null && isTempQuery(node)) {
+    // INTO — only for temp_query, not for sub_query or union parts
+    if (node.getInto() != null && isTempQuery(node) && !isSubQuery(node)) {
       sb.append("ПОМЕСТИТЬ ").append(node.getInto()).append("\n");
     }
 
@@ -63,7 +99,7 @@ public class SqlGenerator {
       sb.append("ИЗ\n");
       List<String> fromLines = new ArrayList<>();
       for (DataSource ds : node.getFrom()) {
-        fromLines.add(formatDataSource(ds));
+        fromLines.add(formatDataSource(ds, node));
       }
       for (int i = 0; i < fromLines.size(); i++) {
         sb.append("    ").append(fromLines.get(i));
@@ -112,14 +148,22 @@ public class SqlGenerator {
     return sb.toString().trim();
   }
 
-  private String formatDataSource(DataSource ds) {
+  private String formatDataSource(DataSource ds, RestoredQueryNode parentNode) {
     String source;
     if (ds.getTable() != null) {
       source = ds.getTable();
     } else if (ds.getVirtualTable() != null) {
       source = ds.getVirtualTable();
     } else if (ds.getSubquery() != null) {
-      source = (String) ds.getSubquery();
+      // Inline subquery: generate SQL from the inline subquery node
+      String subqueryName = (String) ds.getSubquery();
+      RestoredQueryNode inlineSub = parentNode.getInlineSubqueries().get(subqueryName);
+      if (inlineSub != null) {
+        String subSql = generateInline(inlineSub);
+        source = "(\n" + indent(subSql) + "\n    )";
+      } else {
+        source = subqueryName;
+      }
     } else if (ds.getExternalDataSource() != null) {
       source = ds.getExternalDataSource();
     } else if (ds.getParameterTable() != null) {
@@ -130,6 +174,15 @@ public class SqlGenerator {
 
     String alias = ds.getAlias() != null ? ds.getAlias() : source;
     return source + " КАК " + alias;
+  }
+
+  private String indent(String sql) {
+    String[] lines = sql.split("\n");
+    StringBuilder sb = new StringBuilder();
+    for (String line : lines) {
+      sb.append("        ").append(line).append("\n");
+    }
+    return sb.toString().trim();
   }
 
   private String formatJoinType(String joinType) {
@@ -144,5 +197,9 @@ public class SqlGenerator {
 
   private boolean isTempQuery(RestoredQueryNode node) {
     return "temp_query".equals(node.getType()) || node.getInto() != null;
+  }
+
+  private boolean isSubQuery(RestoredQueryNode node) {
+    return "sub_query".equals(node.getType());
   }
 }
