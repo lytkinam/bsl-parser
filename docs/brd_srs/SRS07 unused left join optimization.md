@@ -58,12 +58,13 @@ FFL строится как урезанный граф зависимостей
 
 #### FR-3.1.1 Точка встраивания
 
-Фильтрация JOIN'ов выполняется в методе `FullFieldLineageBuilder.createNode()` **после** формирования `selectFields` и копирования `where_fields`, `group_by_fields`, `having_fields`, `join_fields`, но **до** возврата результата.
+Фильтрация JOIN'ов выполняется в методе `FullFieldLineageBuilder.createNode()` **после** формирования `selectFields` и копирования `where_fields`, `group_by_fields`, `having_fields`, `join_fields`, но **до возврата результата из `createNode()`**.
 
 Почему здесь:
 - FFL-нода уже содержит урезанный `select` (только нужные поля)
 - Условия (`where_fields`, `group_by_fields`, `having_fields`) уже скопированы
-- Это последний момент перед записью в JSON
+- После возврата из `createNode()` метод `buildLineage()` собирает `fullChildFields` из отфильтрованной ноды; удалённые JOIN'и не порождают лишних рекурсивных вызовов
+- Ноды не удаляются глобально — фильтрация касается только локальной копии ноды в `resultMap`
 
 ### 3.2 Алгоритм сбора используемых источников
 
@@ -287,13 +288,15 @@ function buildLineage(nodeId, aliases, resultMap):
         // Extend select with new aliases
         ...
     else:
-        result = createNode(node, aliases)
-        [NEW] filterUnusedJoins(result)  // <-- фильтрация JOIN'ов
+        result = createNode(node, aliases)  // [NEW] filterUnusedJoins() вызывается внутри createNode()
         resultMap.put(nodeId, result)
     
     // Handle UNION
     ...
     
+    // [CRITICAL] Collect child_fields AFTER join filtering
+    // fullChildFields собирается из result.getSelect/WhereFields/JoinFields/GroupByFields/HavingFields
+    // Удалённые JOIN'и не попадают в fullChildFields → их child-ноды не создаются для данного target
     // Collect child_fields and recurse
     ...
 ```
@@ -385,9 +388,12 @@ function buildLineage(nodeId, aliases, resultMap):
 
 Создать тестовый случай, где JOIN N (used) ссылается в условии на JOIN N-1 (unused сам по себе). Проверить, что JOIN N-1 остался.
 
-### 8.5 Тест каскадного эффекта
+### 8.5 Тест каскадного эффекта (локальный resultMap)
 
-Проверить, что если удалённый LEFT JOIN был единственным пользователем child-ноды, эта child-нода не попадает в FFL.
+Проверить, что если удалённый LEFT JOIN был единственным источником ссылки на child-ноду (через `condition_fields[].child_fields[].nodeId`), то эта child-нода не добавляется в `resultMap` для данного target-поля. Проверить, что:
+- В `resultMap` отсутствует `nodeId`, на который ссылался только удалённый JOIN
+- FULL_PARS и `nodeById` не изменены (глобальное удаление нод не производится)
+- При построении FFL для другого target-поля, использующего эту ноду, она присутствует
 
 ### 8.6 Тест на example_258
 
