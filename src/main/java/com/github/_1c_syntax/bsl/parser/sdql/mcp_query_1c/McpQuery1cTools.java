@@ -493,8 +493,8 @@ public class McpQuery1cTools {
   }
 
   private ModelRepository createRepoForParameter(String parameterName) {
-    Path artifactsDir = store.getArtifactsDir(parameterName);
-    return new FileSystemModelRepository(artifactsDir);
+    Path paramDir = store.getParameterDir(parameterName);
+    return new FileSystemModelRepository(paramDir);
   }
 
   private FullParsNode resolveNode(FullParsModel model, JsonNode args) {

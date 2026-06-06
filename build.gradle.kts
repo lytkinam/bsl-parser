@@ -18,6 +18,7 @@ plugins {
     id("org.jreleaser") version "1.24.0"
     id("org.sonarqube") version "7.3.0.8198"
     id("me.champeau.jmh") version "0.7.3"
+    id("com.gradleup.shadow") version "8.3.6"
 }
 
 repositories {
@@ -36,6 +37,7 @@ dependencies {
     // JSON
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
     implementation("com.fasterxml.jackson.core:jackson-core:2.17.2")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2")
 
     // Graphs
     implementation("org.jgrapht:jgrapht-core:1.5.2")
@@ -350,4 +352,12 @@ tasks.register<JavaExec>("runMcpQuery1cServer") {
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set("com.github._1c_syntax.bsl.parser.sdql.mcp_query_1c.McpQuery1cServer")
     args = listOf("--config=mcp_query_1c.properties")
+}
+
+tasks.shadowJar {
+    archiveClassifier.set("all")
+    mergeServiceFiles()
+    manifest {
+        attributes["Main-Class"] = "com.github._1c_syntax.bsl.parser.sdql.mcp.SdqlMcpServer"
+    }
 }

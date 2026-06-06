@@ -1,0 +1,6 @@
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+COPY build/libs/*-all.jar app.jar
+EXPOSE 15372
+ENTRYPOINT ["java", "-cp", "app.jar", "com.github._1c_syntax.bsl.parser.sdql.mcp_query_1c.McpQuery1cServer"]
+CMD ["--port=15372", "--storage-dir=/app/storage", "--external-mcp-url=http://192.168.117.247/npf_ops_users_test_popov/hs/mcp"]

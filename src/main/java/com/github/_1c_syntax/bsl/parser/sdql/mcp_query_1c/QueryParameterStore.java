@@ -2,6 +2,7 @@ package com.github._1c_syntax.bsl.parser.sdql.mcp_query_1c;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,7 +27,7 @@ import java.util.stream.Collectors;
  */
 public class QueryParameterStore {
 
-  private static final ObjectMapper MAPPER = new ObjectMapper();
+  private static final ObjectMapper MAPPER = new ObjectMapper().registerModule(new JavaTimeModule());
 
   private final Path storageDir;
   private final Path registryFile;
@@ -88,10 +89,19 @@ public class QueryParameterStore {
 
   /**
    * Get the artifacts directory for a parameter.
+   * This is the SDBL_PARS subdirectory used by the pipeline as the analysis root.
    */
   public Path getArtifactsDir(String name) {
     String sanitized = sanitizeName(name);
-    return storageDir.resolve(sanitized).resolve("artifacts");
+    return storageDir.resolve(sanitized).resolve("SDBL_PARS");
+  }
+
+  /**
+   * Get the parameter base directory (parent of SDBL_PARS).
+   */
+  public Path getParameterDir(String name) {
+    String sanitized = sanitizeName(name);
+    return storageDir.resolve(sanitized);
   }
 
   /**
