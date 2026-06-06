@@ -53,6 +53,33 @@ public class McpHttpServer {
           String requestId = jsonRequest.has("id") ? jsonRequest.get("id").asText() : "null";
           String method = jsonRequest.has("method") ? jsonRequest.get("method").asText() : "";
 
+          if ("initialize".equals(method)) {
+            // Initialize must return result directly (not wrapped in content/text)
+            java.util.Map<String, Object> initResult = new java.util.LinkedHashMap<>();
+            initResult.put("protocolVersion", "2025-03-26");
+            java.util.Map<String, Object> caps = new java.util.LinkedHashMap<>();
+            java.util.Map<String, Object> toolsCap = new java.util.LinkedHashMap<>();
+            toolsCap.put("listChanged", false);
+            caps.put("tools", toolsCap);
+            initResult.put("capabilities", caps);
+            initResult.put("serverInfo", java.util.Map.of("name", "sdql-mcp", "version", "1.0"));
+
+            java.util.Map<String, Object> initResp = new java.util.LinkedHashMap<>();
+            initResp.put("jsonrpc", "2.0");
+            initResp.put("id", requestId);
+            initResp.put("result", initResult);
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.getWriter().write(MAPPER.writeValueAsString(initResp));
+            return;
+          }
+
+          if ("notifications/initialized".equals(method)) {
+            // Notification, no response needed
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.getWriter().write("{}");
+            return;
+          }
+
           if (!"tools/call".equals(method) && !"tools/list".equals(method)) {
             McpResponse errorResp = new McpResponse();
             errorResp.setJsonrpc("2.0");
@@ -69,7 +96,7 @@ public class McpHttpServer {
           if ("tools/list".equals(method)) {
             McpResponse listResp = buildToolsListResponse(requestId);
             response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().write(MAPPER.writeValueAsString(listResp));
+            response.getWriter().write(MAPPER.writeValueAsString(McpTools.toJsonRpcMap(listResp)));
             return;
           }
 
@@ -79,7 +106,7 @@ public class McpHttpServer {
 
           McpResponse mcpResponse = mcpTools.handle(toolName, arguments, requestId);
           response.setStatus(HttpServletResponse.SC_OK);
-          response.getWriter().write(MAPPER.writeValueAsString(mcpResponse));
+          response.getWriter().write(MAPPER.writeValueAsString(McpTools.toJsonRpcMap(mcpResponse)));
 
         } catch (Exception e) {
           McpResponse errorResp = new McpResponse();
@@ -145,7 +172,9 @@ public class McpHttpServer {
     );
 
     try {
-      String json = MAPPER.writeValueAsString(java.util.Map.of("tools", tools));
+      java.util.Map<String, Object> schema = new java.util.LinkedHashMap<>();
+      schema.put("tools", tools);
+      String json = MAPPER.writeValueAsString(schema);
       result.setContent(java.util.List.of(new McpResponse.McpContent("text", json)));
     } catch (Exception e) {
       result.setContent(java.util.List.of(new McpResponse.McpContent("text", "{\"tools\":[]}")));

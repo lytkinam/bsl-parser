@@ -62,6 +62,38 @@ public class McpTools {
     }
   }
 
+  /**
+   * Convert McpResponse to a Map for direct JSON serialization (Kimi CLI compatible).
+   * Unwraps result.content[0].text back to the actual result object.
+   */
+  public static Map<String, Object> toJsonRpcMap(McpResponse mcpResponse) {
+    Map<String, Object> map = new LinkedHashMap<>();
+    map.put("jsonrpc", mcpResponse.getJsonrpc());
+    map.put("id", mcpResponse.getId());
+    if (mcpResponse.getError() != null) {
+      Map<String, Object> err = new LinkedHashMap<>();
+      err.put("code", mcpResponse.getError().getCode());
+      err.put("message", mcpResponse.getError().getMessage());
+      if (mcpResponse.getError().getData() != null) {
+        err.put("data", mcpResponse.getError().getData());
+      }
+      map.put("error", err);
+    } else if (mcpResponse.getResult() != null) {
+      List<McpResponse.McpContent> content = mcpResponse.getResult().getContent();
+      if (content != null && !content.isEmpty()) {
+        String text = content.get(0).getText();
+        try {
+          map.put("result", MAPPER.readValue(text, Object.class));
+        } catch (Exception e) {
+          map.put("result", text);
+        }
+      } else {
+        map.put("result", null);
+      }
+    }
+    return map;
+  }
+
   // --- analyze_sql_package ---
 
   private McpResponse handleAnalyze(JsonNode args, String requestId) {

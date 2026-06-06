@@ -72,6 +72,39 @@ public class McpQuery1cTools {
     }
   }
 
+  /**
+   * Handle tool call and return a Map for direct JSON serialization (Kimi CLI compatible).
+   * Unwraps result.content[0].text back to the actual result object.
+   */
+  public Map<String, Object> handleToMap(String toolName, JsonNode args, String requestId) {
+    McpQuery1cResponse response = handle(toolName, args, requestId);
+    Map<String, Object> map = new LinkedHashMap<>();
+    map.put("jsonrpc", response.getJsonrpc());
+    map.put("id", response.getId());
+    if (response.getError() != null) {
+      Map<String, Object> err = new LinkedHashMap<>();
+      err.put("code", response.getError().getCode());
+      err.put("message", response.getError().getMessage());
+      if (response.getError().getData() != null) {
+        err.put("data", response.getError().getData());
+      }
+      map.put("error", err);
+    } else if (response.getResult() != null) {
+      List<McpQuery1cResponse.McpContent> content = response.getResult().getContent();
+      if (content != null && !content.isEmpty()) {
+        String text = content.get(0).getText();
+        try {
+          map.put("result", MAPPER.readValue(text, Object.class));
+        } catch (Exception e) {
+          map.put("result", text);
+        }
+      } else {
+        map.put("result", null);
+      }
+    }
+    return map;
+  }
+
   // --- add_parameter ---
 
   private McpQuery1cResponse handleAddParameter(JsonNode args, String requestId) throws Exception {
