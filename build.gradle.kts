@@ -344,3 +344,10 @@ tasks.register<JavaExec>("runMcpServer") {
     mainClass.set("com.github._1c_syntax.bsl.parser.sdql.mcp.SdqlMcpServer")
     args = listOf("--port=8080", "--artifacts-dir=examples")
 }
+
+tasks.register<JavaExec>("runMcpQuery1cServer") {
+    group = "application"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.github._1c_syntax.bsl.parser.sdql.mcp_query_1c.McpQuery1cServer")
+    args = listOf("--config=mcp_query_1c.properties")
+}

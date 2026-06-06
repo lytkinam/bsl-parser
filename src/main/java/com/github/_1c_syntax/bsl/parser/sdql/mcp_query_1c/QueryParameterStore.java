@@ -2,8 +2,6 @@ package com.github._1c_syntax.bsl.parser.sdql.mcp_query_1c;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,8 +26,7 @@ import java.util.stream.Collectors;
  */
 public class QueryParameterStore {
 
-  private static final ObjectMapper MAPPER = new ObjectMapper()
-    .registerModule(new JavaTimeModule());
+  private static final ObjectMapper MAPPER = new ObjectMapper();
 
   private final Path storageDir;
   private final Path registryFile;
