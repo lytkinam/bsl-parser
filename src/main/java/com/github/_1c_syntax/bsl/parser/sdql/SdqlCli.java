@@ -1,16 +1,9 @@
 package com.github._1c_syntax.bsl.parser.sdql;
 
-import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullFieldLineageBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.full_pars.FullParsModelBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsFieldLineageBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsHierarchyBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.line_pars.LineParsModelBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.md.HierarchyMdBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.md.LineParsFieldLineageMdBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.md.LineParsModelMdBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.md.SdqlModelMdBuilder;
-import com.github._1c_syntax.bsl.parser.sdql.query_extraction.QueryExtractor;
-import com.github._1c_syntax.bsl.parser.sdql.query_reconstruction.QueryReconstructor;
+import com.github._1c_syntax.bsl.parser.sdql.api.FileSystemModelRepository;
+import com.github._1c_syntax.bsl.parser.sdql.api.PipelineResult;
+import com.github._1c_syntax.bsl.parser.sdql.api.SdqlPipeline;
+import com.github._1c_syntax.bsl.parser.sdql.api.SdqlPipelineImpl;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -27,49 +20,16 @@ public class SdqlCli {
         outputDir.mkdirs();
 
         String baseName = baseName(input);
+        String sqlText = java.nio.file.Files.readString(input.toPath());
 
-        // 1. Primary analysis: model.json (stripped text)
-        SdqlQueryPackageAnalyzer analyzer = new SdqlQueryPackageAnalyzer();
-        analyzer.analyze(input, outputDir, baseName);
-
-        // 2. Build LINE_PARS model (subqueries, unions, expanded edges)
-        LineParsModelBuilder lineParsBuilder = new LineParsModelBuilder();
-        java.nio.file.Path lineParsDir = lineParsBuilder.build(outputDir.toPath(), baseName);
-
-        // 3. Build LINE_PARS hierarchy extraction
-        LineParsHierarchyBuilder hierarchyBuilder = new LineParsHierarchyBuilder();
-        hierarchyBuilder.build(lineParsDir, baseName);
-
-        // 4. Build LINE_PARS field lineage (target nodes only)
-        LineParsFieldLineageBuilder fieldLineageBuilder = new LineParsFieldLineageBuilder();
-        fieldLineageBuilder.build(outputDir.toPath(), baseName);
-
-        // 5. Build FULL_PARS model (field_id + child_fields)
-        FullParsModelBuilder fullParsBuilder = new FullParsModelBuilder();
-        java.nio.file.Path fullParsDir = fullParsBuilder.build(lineParsDir, baseName);
-
-        // 6. Build full_field_lineage for all fields of target nodes (result or last temp_query)
-        FullFieldLineageBuilder fflBuilder = new FullFieldLineageBuilder();
-        fflBuilder.build(fullParsDir, baseName);
-
-        // Generate Markdown reports from JSON artifacts
-        new SdqlModelMdBuilder().build(outputDir.toPath(), baseName);
-        new LineParsModelMdBuilder().build(lineParsDir, baseName);
-        new HierarchyMdBuilder().build(lineParsDir, baseName);
-
-        // Generate Markdown for LINE_PARS field lineage
-        java.nio.file.Path fieldLineageDir = outputDir.toPath().getParent().resolve("field_lineage");
-        new LineParsFieldLineageMdBuilder().build(fieldLineageDir, baseName);
-
-        // 7. Build restored queries from FFL + FULL_PARS
-        QueryReconstructor reconstructor = new QueryReconstructor();
-        reconstructor.build(fullParsDir, baseName);
-
-        // 8. Extract queries from FULL_PARS and verify against primary
-        QueryExtractor extractor = new QueryExtractor();
-        extractor.build(fullParsDir, baseName);
+        SdqlPipeline pipeline = new SdqlPipelineImpl(
+            new FileSystemModelRepository(outputDir.toPath())
+        );
+        PipelineResult result = pipeline.analyze(sqlText, outputDir.toPath(), baseName, detailed);
 
         System.out.println("Done: " + outputDir.getAbsolutePath());
+        System.out.println("Base name: " + result.getBaseName());
+        System.out.println("Nodes: " + result.getNodesCount());
     }
 
     private static String baseName(File file) {

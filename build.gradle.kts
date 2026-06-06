@@ -43,6 +43,9 @@ dependencies {
 
     implementation("org.jspecify:jspecify:1.0.0")
 
+    // HTTP server for MCP
+    implementation("org.eclipse.jetty:jetty-server:11.0.20")
+    implementation("org.eclipse.jetty:jetty-servlet:11.0.20")
 
     testImplementation(platform("org.junit:junit-bom:6.0.3"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
@@ -333,4 +336,11 @@ tasks.register<JavaExec>("runSdqlUnion") {
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set("com.github._1c_syntax.bsl.parser.sdql.SdqlCli")
     args = listOf("examples/sdbl/union_subquery_example.sql", "examples/SDBL_PARS")
+}
+
+tasks.register<JavaExec>("runMcpServer") {
+    group = "application"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.github._1c_syntax.bsl.parser.sdql.mcp.SdqlMcpServer")
+    args = listOf("--port=8080", "--artifacts-dir=examples")
 }
