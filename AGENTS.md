@@ -79,6 +79,84 @@ java -cp "build/classes/java/main:build/resources/main:$(find ~/.gradle/caches -
 
 **Почему абсолютный путь**: `LineParsModelBuilder` использует `sdblParsDir.getParent().resolve("LINE_PARS")`. Если путь относительный без родителя (например, `examples/SDBL_PARS` из корня), `getParent()` вернёт `null` → NullPointerException.
 
+## MCP_QUERY_1C Service (BRD08 / SRS08)
+
+Отдельный MCP-сервис — обёртка над `1c-mcp-server-popov` для получения, кэширования и разбора SQL-запросов из 1С.
+
+### Архитектура
+
+```
+Kimi CLI ◄──HTTP──► MCP_QUERY_1C (порт 8081)
+                           │
+           ┌───────────────┼───────────────┐
+           ▼               ▼               ▼
+    1c-mcp-server    SdqlPipeline    FileSystem
+    -popov           (BRD06)         Repository
+```
+
+### Запуск сервиса
+
+```bash
+cd /tmp/bsl-parser
+./gradlew classes
+./gradlew runMcpQuery1cServer
+# или с параметрами:
+java -cp "build/classes/java/main:build/resources/main:$(find ~/.gradle/caches -name '*.jar' | tr '\n' ':')" \
+  com.github._1c_syntax.bsl.parser.sdql.mcp_query_1c.McpQuery1cServer \
+  --port=8081 \
+  --external-mcp-url=http://192.168.117.247/npf_ops_users_test_popov/hs/mcp \
+  --storage-dir=./mcp_query_1c_storage
+```
+
+### MCP-методы
+
+| Метод | Назначение |
+|-------|-----------|
+| `add_parameter` | Получить запрос из 1С по имени параметра, сохранить и разобрать |
+| `add_custom_query` | Добавить произвольный SQL, сохранить и разобрать |
+| `list_parameters` | Список кэшированных параметров |
+| `analyze_parameter` | Переразобрать параметр (перезапросить из 1C если source=1c) |
+| `get_parameter_info` | Метаданные параметра |
+| `get_sdbl_model` | SDBL модель по parameterName |
+| `get_line_pars_model` | LINE_PARS модель по parameterName |
+| `get_full_pars_model` | FULL_PARS модель по parameterName |
+| `get_hierarchy` | Иерархия по parameterName |
+| `get_field_lineage` | Field lineage по parameterName + alias |
+| `get_full_field_lineage` | Full field lineage по parameterName + aliases |
+| `get_restored_query` | Восстановленный SQL по parameterName + aliases |
+| `get_node_info` | Информация об узле по parameterName |
+| `list_nodes` | Список узлов по parameterName |
+| `get_verification_report` | Отчёт верификации по parameterName |
+
+### Пагинация `part_query`
+
+При получении запроса из 1C через `list_query_param` используется аргумент `part_query` (0, 1, 2...).
+Пустой ответ означает конец запроса. Это позволяет получать запросы >100000 символов.
+
+### Конфигурация
+
+Файл `mcp_query_1c.properties`:
+```properties
+server.port=8081
+external.mcp.url=http://192.168.117.247/npf_ops_users_test_popov/hs/mcp
+storage.dir=./mcp_query_1c_storage
+```
+
+### Структура хранения
+
+```
+mcp_query_1c_storage/
+├── parameters.json              # Реестр параметров
+├── 258_proizvZapr_taks6_0/      # sanitized parameter name
+│   ├── query.sql                # Исходный SQL
+│   ├── parameter.json           # Метаданные
+│   └── artifacts/               # Артефакты разбора SDQL
+│       ├── SDBL_PARS/
+│       ├── LINE_PARS/
+│       ├── FULL_PARS/
+│       └── ...
+```
+
 ## Именование артефактов
 
 - `baseName` = имя SQL-файла без расширения
