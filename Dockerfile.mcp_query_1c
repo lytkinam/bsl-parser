@@ -1,6 +1,35 @@
+# syntax=docker/dockerfile:1
 FROM eclipse-temurin:17-jre-alpine
+
+LABEL maintainer="SDQL Team"
+LABEL description="MCP_QUERY_1C Server — 1C query parameter cache and analysis"
+
+# Install wget for healthcheck
+RUN apk add --no-cache wget
+
+# Create non-privileged user
+RUN addgroup -g 1000 sdql && \
+    adduser -u 1000 -G sdql -s /bin/sh -D sdql
+
+# Pre-create working directories with correct ownership
+RUN mkdir -p /app/storage /tmp && \
+    chown -R sdql:sdql /app /tmp
+
 WORKDIR /app
-COPY build/libs/*-all.jar app.jar
+
+# Copy JAR with correct ownership
+COPY --chown=sdql:sdql build/libs/*-all.jar app.jar
+
+# Switch to non-privileged user
+USER sdql
+
+# Ports
 EXPOSE 15372
-ENTRYPOINT ["java", "-cp", "app.jar", "com.github._1c_syntax.bsl.parser.sdql.mcp_query_1c.McpQuery1cServer"]
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD wget -qO- http://127.0.0.1:15372/health >/dev/null 2>&1 || exit 1
+
+# Entrypoint
+ENTRYPOINT ["java", "-cp", "/app/app.jar", "com.github._1c_syntax.bsl.parser.sdql.mcp_query_1c.McpQuery1cServer"]
 CMD ["--port=15372", "--storage-dir=/app/storage", "--external-mcp-url=http://192.168.117.247/npf_ops_users_test_popov/hs/mcp"]
